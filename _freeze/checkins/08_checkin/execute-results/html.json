@@ -1,0 +1,14 @@
+{
+  "hash": "b1e71b2677e461c952beeefa41919d45",
+  "result": {
+    "markdown": "---\ntitle: \"Check-in 8\"\nauthor: \"YOUR NAME HERE\"\nformat: \n  html:\n    embed-resources: true\n    code-tools: true\n    code-summary: \"Code\"\n---\n\n\nRemember, **follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope.** You may find a template file by clicking \"Code\" in the top right corner of this page.\n\n1. Download and read the documentation for the [Childcare Costs data](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-09/readme.md).\n\n2. Use visualization and regression to explore the following question: Is there a relationship between a county's average childcare costs and its median household income? There will be more than one way to answer this question--the important thing is to **explain** the choices you make in your analysis.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

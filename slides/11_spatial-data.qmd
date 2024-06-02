@@ -1,0 +1,550 @@
+---
+title: "MATH167R: Advanced visualizations"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: visual
+---
+
+## Overview of today
+
+-   Visualizing spatial data
+-   Animations
+-   Project work time
+
+## Example: PM 2.5 data
+
+The EPA provides daily data on air quality for monitoring stations across the country, which you can download [here](https://www.epa.gov/outdoor-air-quality-data/download-daily-data). The below code downloads a subset of this data from the course website for the pollutant PM 2.5 (atmospheric particulate matter with a diameter of less than 2.5 micrometers) and AQI for 2023.
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+pm_2_5 <- readr::read_csv("https://math167r-s24.github.io/static/CA_PM2_5_2023.csv")
+```
+
+## Example: PM 2.5 data
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+head(pm_2_5)
+```
+
+```{r}
+#| echo: FALSE
+#| eval: TRUE
+library(knitr)
+kable(head(pm_2_5)) |>
+  kableExtra::kable_styling("striped", full_width = F) |> 
+  kableExtra::scroll_box(height = "480px")
+```
+
+## Example: PM 2.5 data
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+summary(pm_2_5)
+```
+
+## Warm-up: PM 2.5 data
+
+Work with the people around you to identify:
+
+1.  Where and when was the highest `DAILY_AQI_VALUE` observed in 2023?
+2.  Which site had the highest median `DAILY_AQI_VALUE` in 2023?
+3.  How many monitoring sites are in Santa Clara County?
+4.  What is the name of the site in this dataset that is closest to SJSU's campus?
+5.  What is the median `DAILY_AQI_VALUE` for this site in 2023?
+
+## Warm-up: PM 2.5 data
+
+Answers:
+
+1.  Yreka on August 28 (AQI = 285)
+2.  Cortina Indian Rancheria
+3.  3
+4.  San Jose - Jackson
+5.  29
+
+## Data wrangling
+
+Note that the `Date` variable is a character--we can convert this into a `Date` class object using the `lubridate` package.
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+library(tidyverse)
+pm_2_5 <- pm_2_5 |>
+  mutate(Date = mdy(Date))
+summary(pm_2_5)
+```
+
+## Wildfire season 2023
+
+![](images/Screenshot%202024-02-20%20at%2010.24.44%20AM.png)
+
+## Wildfire season 2023
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+jan1_pm_2_5 <- pm_2_5 |> filter(Date == "2023-01-01")
+hist(jan1_pm_2_5$`Daily Mean PM2.5 Concentration`,
+     main = "Jan 1",  xlab = "PM 2.5")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+sep19_pm_2_5 <- pm_2_5 |> filter(Date == "2023-09-19")
+hist(sep19_pm_2_5$`Daily Mean PM2.5 Concentration`,
+     main = "October 19", xlab = "PM 2.5")
+```
+:::
+:::
+
+## Working with spatial data
+
+We can't get an idea of how air quality varies over space using univariate summaries like these. Ideally, we could plot the PM 2.5 or AQI measurements on a map of California.
+
+## Naively working with latitude/longitude
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+ggplot(data = sep19_pm_2_5, 
+       mapping = aes(x = SITE_LONGITUDE, 
+                     y = SITE_LATITUDE, 
+                     color = DAILY_AQI_VALUE)) +
+  geom_point() +
+  scale_color_viridis_c()
+```
+
+## Naively working with latitude/longitude
+
+Compare with January 1:
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+ggplot(data = jan1_pm_2_5, 
+       mapping = aes(x = SITE_LONGITUDE, 
+                     y = SITE_LATITUDE, 
+                     color = DAILY_AQI_VALUE)) +
+  geom_point() +
+  scale_color_viridis_c()
+```
+
+## Naively working with latitude/longitude
+
+We can only get so far just treating longitude and latitude as x and y. In particular, near the poles, we will get large amounts of distortion:
+
+![](https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg)
+
+## Simple features
+
+**Simple Features** is a set of standards for storing and accessing geographic data.
+
+-   Geographic data typically consist of geometries such as points, lines, and polygons
+
+-   In R, the most popular package for working with simple features data is `sf`.
+
+-   Working with spatial data can be extremely memory intensive, so care is needed.
+
+## Converting data to simple features object
+
+When each row in our data frame refers to a point with longitude and latitude, we can use the `st_as_sf` function to convert our data frame to an `sf` object.
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+library(sf)
+sep19_pm_2_5 <- sep19_pm_2_5 |>
+  st_as_sf(
+    # what columns hold lon/lat?
+    coords = c("SITE_LONGITUDE", "SITE_LATITUDE"), 
+     # what projection are we using?
+    crs = st_crs(4326)
+  ) 
+```
+
+## Converting data to simple features object
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+head(sep19_pm_2_5)
+```
+
+## Visualizing point data
+
+We can easily visualize this data now using the `geom_sf()` function, which automatically handles sf objects.
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+ggplot(sep19_pm_2_5) + geom_sf()
+```
+
+## Visualizing point data
+
+We can add a basemap by downloading the outline of California from the `tigris` package.
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+library(tigris)
+CA_sf <- states() |> filter(NAME == "California")
+```
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| include: FALSE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+library(tigris)
+CA_sf <- states() |> filter(NAME == "California")
+```
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+ggplot() +
+  geom_sf(data = CA_sf) +
+  geom_sf(data = sep19_pm_2_5) 
+```
+
+## Visualizing point data
+
+We can then adjust the color to show `DAILY_AQI_VALUE` and also change the color scale:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| cache: TRUE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+ggplot() +
+  geom_sf(data = CA_sf) +
+  geom_sf(data = sep19_pm_2_5, 
+          mapping = aes(color = DAILY_AQI_VALUE)) +
+  scale_color_viridis_c()
+```
+
+## Exercise
+
+How do we create the following plot?
+
+```{r}
+#| echo: FALSE
+#| eval: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| cache: TRUE
+#| fig-width: 7
+#| fig-height: 6.75
+#| out.width: "100%"
+#| fig.align: "center"
+pm_2_5 <- pm_2_5 |>
+  st_as_sf(
+    coords = c("SITE_LONGITUDE", "SITE_LATITUDE"), # what columns hold lon/lat?
+    crs = st_crs(4326) # what projection are we using?
+  ) 
+pm_2_5_subset <- pm_2_5 |>
+  filter(Date >= "2023-09-19" & Date <= "2023-09-22")
+ggplot() +
+  geom_sf(data = CA_sf) +
+  geom_sf(data = pm_2_5_subset, 
+          mapping = aes(color = DAILY_AQI_VALUE),
+          size = .85) +
+  scale_color_viridis_c() +
+  facet_wrap(~Date)
+```
+
+## Spatial Polygon data
+
+The AQI data we downloaded also contains county information. We can compute county level mean AQI using `group_by` and `summarize`:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+sep19_county_means <- sep19_pm_2_5 |>
+  # remove the geometry; we don't need it here
+  st_set_geometry(NULL) |> 
+  group_by(COUNTY) |>
+  summarize(AQI = mean(DAILY_AQI_VALUE))
+```
+
+## Spatial Polygon data
+
+We can then create a county-level **polygon** map by downloading county-level boundaries using `tigris`.
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+CA_counties_sf <- counties(state = "CA")
+```
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| include: FALSE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+CA_counties_sf <- counties(state = "CA")
+```
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+sep19_county_means <- CA_counties_sf |>
+  right_join(sep19_county_means, by = c("NAME" = "COUNTY")) 
+ggplot() +
+  geom_sf(data = CA_sf) +
+  geom_sf(data = sep19_county_means, aes(fill = AQI)) +
+  scale_fill_viridis_c() 
+```
+
+## Spatial Polygon data
+
+```{r}
+#| echo: FALSE
+#| eval: TRUE
+#| cache: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+sep19_county_means <- CA_counties_sf |>
+  right_join(sep19_county_means, 
+             by = c("NAME" = "COUNTY")) 
+ggplot() +
+  geom_sf(data = CA_sf) +
+  geom_sf(data = sep19_county_means, aes(fill = AQI)) +
+  scale_fill_viridis_c() 
+```
+
+## Animation with `gganimate`
+
+The `gganimate` package provides tools for animating `ggplot` visualizations:
+
+```{r}
+#| echo: FALSE
+#| eval: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| cache: TRUE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+library(gapminder)
+library(gganimate)
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {frame_time}', 
+       x = 'GDP per capita', 
+       y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+## Animation with `gganimate`
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| message: FALSE
+#| warning: FALSE
+#| cache: TRUE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {frame_time}',
+       x = 'GDP per capita', 
+       y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+## Animation with `gganimate`
+
+```{r}
+#| echo: FALSE
+#| eval: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| cache: TRUE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+pm_2_5 <- readr::read_csv("https://math167r-s24.github.io/static/CA_PM2_5_2023.csv")
+pm_2_5 <- pm_2_5 |>
+  mutate(Date = mdy(Date)) |>
+  filter(month(Date) == 9)
+ggplot() +
+  geom_sf(data = CA_sf) +
+  geom_point(data = pm_2_5, 
+             mapping = aes(
+               x = SITE_LONGITUDE, 
+               y = SITE_LATITUDE, 
+               color = DAILY_AQI_VALUE
+             )) +
+  scale_color_viridis_c() +
+  # Here comes the gganimate specific bits
+  labs(title = "Date: {frame_time}") +
+  transition_time(Date) + 
+  ease_aes('linear')
+```
+
+## Animation with `gganimate`
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+#| message: FALSE
+#| warning: FALSE
+#| cache: TRUE
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+pm_2_5 <- readr::read_csv("https://math167r-s24.github.io/static/CA_PM2_5_2023.csv")
+pm_2_5 <- pm_2_5 |>
+  mutate(Date = mdy(Date)) |>
+  filter(month(Date) == 9)
+ggplot() +
+  geom_sf(data = CA_sf) +
+  geom_point(data = pm_2_5, 
+             mapping = aes(
+               x = SITE_LONGITUDE, 
+               y = SITE_LATITUDE, 
+               color = DAILY_AQI_VALUE
+             )) +
+  scale_color_viridis_c() +
+  # Here comes the gganimate specific bits
+  labs(title = "Date: {frame_time}") +
+  transition_time(Date) + 
+  ease_aes('linear')
+```
+
+## Takeaways
+
+-   Packages like `sf` and `gganimate` are complex and frequently changing -- but extend `ggplot` for new types of data and visualizations.
+
+-   Don't need to memorize these packages' functions: get comfortable with documentation.
+
+-   Be creative and challenge yourself--don't limit yourself to the visuals we've created in class.
+
+## Other sources of spatial data
+
+-   [San Jose Open Data](https://data.sanjoseca.gov/group/geospatial)
+-   [San Francisco Open Data](https://datasf.org/opendata/)
+
+## Final project
+
+Instructions on the course website.
+
+```{r}
+#| echo: FALSE
+#| eval: TRUE
+knitr::knit_exit()
+```

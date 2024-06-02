@@ -1,0 +1,376 @@
+---
+title: "MATH167R: Linear regression"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: source
+---
+
+## Overview of today
+
+- Review of linear regression 
+- Why use a linear model?
+- Pitfalls of linear regression: breaking assumptions and more
+
+## Warm-up
+
+What is the method of least squares and how does it relate to linear regression?
+
+
+
+
+
+
+## Simple linear regression
+
+How does the speed of a car affect its stopping distance?
+
+```{r cars}
+#| echo: true
+#| eval: true
+#| cache: true
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 5
+#| out.width: "60%"
+#| fig.align: "center"
+#| fig-cap: ""
+plot(dist ~ speed, data = cars,
+     xlab = "Speed (mph)",
+     ylab = "Stopping Distance (ft)",
+     pch  = 16, col = "blue")
+```
+
+## Simple linear regression
+
+Suppose $x_1,\ldots, x_n$ represent the `speed` values of each car in our dataset. Let $Y_1,\ldots, Y_n$ represent the `dist` variable.
+
+The **simple linear regression model** is given by 
+$$Y_i=\beta_0+\beta_1x_i+\epsilon_i$$
+-   $\beta_0$ is the intercept parameter
+
+-   $\beta_1$ is the slope parameter
+
+-   $\epsilon_i$ represents iid $N(0,\sigma^2)$ errors, where $\sigma^2$ is the variance of $\epsilon_i$.
+
+## Simple linear regression
+
+Under this model, we can also write that
+$$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
+As a result
+$$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
+$$\mathrm{Var}(Y_i\mid X_i= x_i)= \sigma^2$$
+
+## Simple linear regression
+
+Typically, we say there are four assumptions for simple linear regression:
+
+- **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
+- **Independence**: The observations $Y_1,\ldots, Y_n$ are independent of each other.
+- **Normality**: $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
+- **Equal variance**: The variance of the errors $\epsilon_i$ is the same for all values of $x_i$.
+
+Note that even if one or more of these assumptions breaks, linear regression can still be useful if used with caution.
+
+## Simple linear regression: Least squares
+
+Typically, we start with data $Y_1,\ldots, Y_n$ and $x_1,\ldots, x_n$. How do we estimate $\beta_0$ and $\beta_1$?
+
+In other words, what is the best line to use for modeling the relationship between $X$ and $Y$?
+
+Usually, we use the least squares line, which is the solution to the following optimization problem:
+$$\arg\min\sum_{i=1}^n (y_i-(\beta_0+\beta_1x_i))^2=\arg\min\sum_{i=1}^n (y_i-\hat{y}_i)^2$$
+where $\hat{y}_i$ is the model prediction for $y_i$.
+
+## Regression methods
+
+Assume we have some data:
+
+-   $X_1,\ldots, X_p$: $p$ **independent variables/explanatory variables/covariates/predictors**
+-   $Y$: the **dependent variables/response/outcome**.
+
+We want to know the relationship between our covariates and our response, we can do this with a method called **regression**. Regression provides us with a statistical method to conduct inference and prediction.
+
+## Regression methods
+
+-   **inference:** assess the relationship between our variables, our statistical model as a whole, predictor importance
+-   What is the relationship between sleep and GPA?
+-   Is parents' education or parents' income more important for explaining income?
+-   **prediction:** predict new/future outcomes from new/future covariates
+-   Can we predict test scores based on hours spent studying?
+
+## Exercise
+
+Classify the following questions as **inference** or **prediction**:
+
+1. Can we use high school students' SAT/ACT scores to estimate their college GPAs?
+2. Is there an association between political candidates' heights and the number of votes they receive?
+3. Do states with higher minimum wages have lower poverty rates?
+
+## Why linear regression?
+
+Regression methods focus on modeling the relationship between response $Y$ and explanatory variables $X_1,\ldots, X_p$. 
+
+Linear regression proposes a model of the form
+$$Y=\beta_0+\beta_1X_1+\cdots +\beta_p X_p+\epsilon; \hspace{1em} \epsilon\sim N(0, \sigma^2)$$
+Sometimes, the following weaker form is used (why is this weaker?)
+$$E(Y\mid X_1,\ldots, X_p)=\beta_0+\beta_1X_1+\cdots +\beta_p X_p$$
+In other words, the expected value of $Y$ (given $X_1,\ldots, X_p$) is a linear transformation of $X_1,\ldots, X_p$.
+
+## Other models
+
+Height/gravity
+
+
+## Other models: use cases
+
+
+
+## Why linear regression?
+
+1. **Simplicity**: Easy to fit, usually gets the general trend correct, hard to **overfit**
+2. **Interpretability**: Consider the following log-normal model:
+$$Y=\exp(\beta_0+\beta_1X_1+\cdots +\beta_p X_p+\epsilon); \hspace{1em} \epsilon\sim N(0, \sigma^2)$$
+How do we interpret $\beta_1$? 
+
+## Additivity
+
+Note that linear regression can often be generalized to encompass other models. Consider the following model:
+$$Y=\beta_0+\beta_1X_1 +\beta_2X_1^2$$
+This is an example of polynomial regression, but the methods for fitting this model are essentially the same as ordinary least squares, using $X_1^2$ as an extra covariate.
+
+Many alternative models can be written in this form by transforming the covariates or transforming the response $Y$.
+
+## Assumptions of linear regression
+
+
+- **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
+- **Independence**: The observations $Y_1,\ldots, Y_n$ are independent of each other.
+- **Normality**: $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
+- **Equal variance**: The variance of the errors $\epsilon_i$ is the same for all values of $x_i$.
+
+## Checking the assumptions
+
+## All assumptions true
+
+::: columns
+::: {.column width="60%"}
+::: {.smaller}
+```{r lm_ex_dummy}
+#| echo: true
+#| eval: false
+#| cache: true
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 5
+#| out.width: "60%"
+#| fig.align: "center"
+#| fig-cap: ""
+library(tidyverse)
+x <- runif(n = 40, min = 0, max = 5)
+y <- rnorm(n = 40, mean = 1 + 2 * x)
+lm_res <- lm(y ~ x)
+ggplot(mapping = aes(x = x, y = y)) +
+  geom_point(size = 1.5) +
+  geom_abline(
+    slope = lm_res$coefficients[2], 
+    intercept = lm_res$coefficients[1],
+    color = "red"
+  ) + 
+  theme_minimal()
+```
+:::
+:::
+
+::: {.column width="40%"}
+```{r lm_ex}
+#| echo: false
+#| eval: true
+#| cache: true
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 4
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+library(tidyverse)
+x <- runif(n = 40, min = 0, max = 5)
+y <- rnorm(n = 40, mean = 1 + 2 * x)
+lm_res <- lm(y ~ x)
+ggplot(mapping = aes(x = x, y = y)) +
+  geom_point(size = 1.5) +
+  geom_abline(
+    slope = lm_res$coefficients[2], 
+    intercept = lm_res$coefficients[1],
+    color = "red"
+  ) + 
+  theme_minimal()
+```
+:::
+:::
+
+## All assumptions true
+
+::: columns
+::: {.column width="45%"}
+::: {.smaller}
+**Inference**: Asymptotically valid confidence intervals and hypothesis tests for $\beta_0$ and $\beta_1$.
+:::
+:::
+
+::: {.column width="55%"}
+```{r lm_res_inf}
+#| echo: true
+#| eval: true
+#| cache: true
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 4
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+summary(lm_res)
+```
+:::
+:::
+
+
+## All assumptions true
+
+::: columns
+::: {.column width="45%"}
+::: {.smaller}
+**Prediction**: Assuming the model holds for new data, unbiased point predictions and asymptotically valid prediction intervals for $Y_{n+1}$.
+:::
+:::
+
+::: {.column width="55%"}
+```{r lm_res_pred}
+#| echo: true
+#| eval: true
+#| cache: true
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 4
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+predict(lm_res, 
+        newdata = list(x = 1), 
+        interval = "prediction")
+```
+:::
+:::
+
+## Breaking linearity
+
+What if $E(Y_i\mid X_i= x_i)\not= \beta_0+\beta_1x_i$?
+
+
+::: columns
+::: {.column width="60%"}
+::: {.smaller}
+```{r cubic_ex_dummy}
+#| echo: true
+#| eval: false
+#| cache: true
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 5
+#| out.width: "60%"
+#| fig.align: "center"
+#| fig-cap: ""
+x <- runif(n = 40, min = 0, max = 5)
+y <- rnorm(n = 40, mean = 1 + 2 * x^3)
+lm_res <- lm(y ~ x)
+ggplot(mapping = aes(x = x, y = y)) +
+  geom_point(size = 1.5) +
+  geom_abline(
+    slope = lm_res$coefficients[2], 
+    intercept = lm_res$coefficients[1],
+    color = "red"
+  ) + 
+  theme_minimal()
+```
+:::
+:::
+
+::: {.column width="40%"}
+```{r cubic_ex}
+#| echo: false
+#| eval: true
+#| cache: true
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 4
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+x <- runif(n = 40, min = 0, max = 5)
+y <- rnorm(n = 40, mean = 1 + 2 * x^3)
+lm_res <- lm(y ~ x)
+ggplot(mapping = aes(x = x, y = y)) +
+  geom_point(size = 1.5) +
+  geom_abline(
+    slope = lm_res$coefficients[2], 
+    intercept = lm_res$coefficients[1],
+    color = "red"
+  ) + 
+  theme_minimal()
+```
+:::
+:::
+
+
+## Breaking linearity
+
+Our standard inference and prediction strategies no longer work in general.
+
+**Inference**: Confidence intervals and hypothesis tests for $\beta_0$ and $\beta_1$ are no longer valid.
+
+**Prediction**: Point predictions are no longer unbiased and prediction intervals are no longer valid.
+
+
+
+## Collinearity
+
+What if our predictor variables are closely related? Consider the following simulation:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+n <- 50
+x1 <- rnorm(n)
+x2 <- x1 * 2
+e <- rnorm(n)
+y <- 1 + 3 * x1 + e
+lm(y ~ x1)
+lm(y ~ x1 + x2)
+```
+
+
+## Collinearity
+
+What if our predictor variables are closely related? Consider the following simulation:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+x2b <- x1 * 2 + rnorm(n, sd = .01)
+lm(y ~ x1 + x2b)
+```
+
+
+```{r}
+knitr::knit_exit()
+```

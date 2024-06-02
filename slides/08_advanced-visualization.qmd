@@ -1,0 +1,522 @@
+---
+title: "MATH167R: Data visualization"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: source
+---
+
+## Warm-up
+
+1.  What does the following code do?
+
+    ```{r, echo = T, eval = F}
+    library(palmerpenguins)
+    library(ggplot2)
+    data(penguins)
+    ggplot(penguins, 
+           aes(x = flipper_length_mm, 
+               y = body_mass_g, 
+               color = species)) + 
+      geom_point()
+    ```
+
+## Warm-up
+
+```{r, echo = T, eval = T, warning = F}
+library(palmerpenguins)
+library(ggplot2)
+data(penguins)
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) + 
+  geom_point()
+```
+
+## Overview of today
+
+-   Reviewing `ggplot2`
+-   Advanced data visualization
+-   Styling R visualizations
+
+## Review: grammar of graphics
+
+The three basic layers:
+
+1.  **Data**: a data frame with all of the variables of interest
+2.  **Aesthetics**: graphical dimensions like `x`, `y`, `color`, `shape`, and more.
+3.  **Geometries**: the specific markings used to illustrate your variables and aesthetics.
+
+## Review: Cats and Dogs
+
+Suppose we have the following data on animal weights. How can we compute the average weights of cats and dogs? \[example from [Andrew Heiss](https://datavizf23.classes.andrewheiss.com/slides/04-slides.html)\]
+
+```{r, echo = F, eval = T, warning = F}
+library(tidyverse)
+# example from Andrew Heiss
+set.seed(12)
+animals <- tibble(animal = c(rep(c("Small cat", "Big cat"), each = 250), rep("Dog", 500))) |> 
+  mutate(weight = case_when(
+    animal == "Small cat" ~ rnorm(n(), 20, 5),
+    animal == "Big cat" ~ rnorm(n(), 60, 5),
+    animal == "Dog" ~ rnorm(n(), 40, 10)
+  )) |> 
+  mutate(animal = ifelse(str_detect(animal, "cat"), "Cat", "Dog"))
+
+```
+
+```{r, echo = T, eval = F, warning = F}
+head(animals, n = 10)
+```
+
+```{r, echo = F, eval = T, warning = F}
+slice_sample(animals, n = 10)
+```
+
+## Code for generating data
+
+```{r, echo = T, eval = F, warning = F}
+library(tidyverse)
+# example from Andrew Heiss
+set.seed(12)
+animals <- tibble(animal = c(rep(c("Small cat", "Big cat"), each = 250), rep("Dog", 500))) |> 
+  mutate(weight = case_when(
+    animal == "Small cat" ~ rnorm(n(), 20, 5),
+    animal == "Big cat" ~ rnorm(n(), 60, 5),
+    animal == "Dog" ~ rnorm(n(), 40, 10)
+  )) |> 
+  mutate(animal = ifelse(str_detect(animal, "cat"), "Cat", "Dog"))
+
+```
+
+## Review: Cats and Dogs
+
+```{r, echo = T, eval = T, warning = F}
+mean_wt <- animals |>
+  group_by(animal) |>
+  summarize(mean_wt = mean(weight))
+mean_wt
+```
+
+How can we turn this into a visual?
+
+## Review: Cats and Dogs
+
+In `ggplot2`, there are two geometries for bar plots: `geom_col()` and `geom_bar()`.
+
+-   The height of the bars of `geom_col()` represent numerical values in each group.
+-   The height of the bars of `geom_bar()` represent the number of rows for each group.
+
+## Review: Cats and Dogs
+
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+ggplot(data = mean_wt, 
+       aes(x = animal, y = mean_wt, fill = animal)) +
+  geom_col() +
+  ylab("Mean weight (lb)")
+```
+
+## Review: Cats and Dogs
+
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+# construct named vector
+mean_wt_vec <- mean_wt$mean_wt
+names(mean_wt_vec) <- mean_wt$animal
+barplot(mean_wt_vec,
+        col = c("red", "blue"),
+        ylab = "Mean weight (lb)")
+```
+
+## If possible, show the data
+
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+ggplot(animals, aes(x = animal, y = weight, color = animal)) +
+  geom_point(position = position_jitter(height = 0)) +
+  labs(x = NULL, y = "Mean Weight (lb)") +
+  guides(color = "none")
+```
+
+## If possible, show the data
+
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+ggplot(animals, aes(x = animal, 
+                    y = weight, 
+                    color = animal)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(height = 0), alpha = 0.5) +
+  labs(x = NULL, y = "Mean weight (lb)") +
+  guides(color = "none")
+```
+
+## Review: Cats and Dogs
+
+Takeaways:
+
+-   Data has to be in the right format to work with `ggplot2`
+-   Geometries can be combined for more complex visualizations
+-   Only showing summary statistics can be misleading and can hide information.
+
+## Gapminder data
+
+![](images/gapminder.png)
+
+[link](https://www.gapminder.org/tools/#$chart-type=bubbles&url=v1)
+
+## Gapminder data
+
+-   What changes do we see over time? What do we notice in this visualization?
+-   What questions arise? Do you have any doubts about this visualization?
+
+## Gapminder data
+
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+library(gapminder)
+data(gapminder)
+head(gapminder)
+```
+
+## Gapminder data
+
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+summary(gapminder)
+```
+
+## Gapminder data
+
+Let's work with the following data:
+
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+gapminder_2007 <- gapminder |> filter(year == 2007)
+```
+
+How do we recreate the following plot?
+
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() 
+```
+
+## Gapminder data
+
+Work with the people around you to recreate this plot:
+
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() 
+```
+
+## Gapminder data
+
+Hopefully, you produced something like this:
+
+```{r, echo = T, eval = F, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() 
+```
+
+## Playing with scales
+
+**Scales** are another layer we can add on top of our plot:
+
+```{r, echo = T, eval = F, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() +
+  scale_x_log10()
+```
+
+What do you expect the output to look like?
+
+## Playing with scales
+
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() +
+  scale_x_log10()
+```
+
+## Playing with scales
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 3.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "8"
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_color_viridis_d() # discrete viridis color scale
+```
+
+## Small multiples
+
+*"At the heart of quantitative reasoning is a single question: Compared to what? Small multiple designs, multivariate and data bountiful, answer directly by visually enforcing comparisons of changes, of the differences among objects, of the scope of alternatives. For a wide range of problems in data presentation, small multiples are the best design solution."*
+
+::: {style="text-align: right"}
+Edward Tufte
+:::
+
+## Small multiples
+
+We can often make comparisons clearer by splitting a plot into many "small multiples" which have the same axes:
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 3.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "8"
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() +
+  scale_x_log10() +
+  facet_wrap(~continent)
+  
+```
+
+## Facets for small multiples
+
+Small multiples are implemented in `ggplot2` via the `facet_wrap()` and `facet_grid()` functions:
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 3.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "8"
+ggplot(data = gapminder_2007,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() +
+  scale_x_log10() +
+  facet_wrap(~continent)
+```
+
+## Gapminder data
+
+Work with the people around you to recreate this plot:
+
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 4.75), out.width="100%", fig.align = "center"}
+gapminder_sub <- gapminder |> filter(year %in% c(1957, 1982, 2007))
+ggplot(data = gapminder_sub,
+       mapping = aes(x = gdpPercap,
+                     y = lifeExp,
+                     color = continent,
+                     size = pop)) +
+  geom_point() +
+  scale_x_log10() +
+  facet_wrap(~year)
+```
+
+## Themes
+
+`ggplot2` provides a default theme: gray background, basic discrete color scheme, etc.
+
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 4.75), out.width="100%", fig.align = "center"}
+library(palmerpenguins)
+data(penguins)
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point()
+```
+
+## Other themes
+
+However, `ggplot2` also comes with additional themes that you can layer on top of your plots:
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 3.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "6"
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point() +
+  theme_minimal()
+```
+
+## Other themes
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 3.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "6"
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point() +
+  theme_bw()
+```
+
+## Other themes
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 3.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "6"
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point() +
+  theme_dark()
+```
+
+## Other themes
+
+Other themes can be obtained from the `ggthemes` package:
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "1,7"
+library(ggthemes)
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point() +
+  theme_economist_white()
+```
+
+## Other themes
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "6"
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point() +
+  theme_wsj()
+```
+
+## Other themes
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "6"
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point() +
+  theme_fivethirtyeight()
+```
+
+## Themes
+
+If you want finer control over your plot appearance, you can dive into the `theme()` function:
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| fig-width: 7
+#| fig-height: 4.75
+#| out.width: "100%"
+#| fig.align: "center"
+#| code-line-numbers: "6"
+ggplot(penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species)) +
+  geom_point() +
+  theme(legend.text = element_text(size = 30))
+```
+
+## Themes
+
+Within the theme function, we can manipulate various **theme elements**:
+
+![](https://henrywang.nl/wp-content/uploads/2020/04/theme_elements.png)
+
+## Themes
+
+Other resources:
+
+- Clara Granell's [ggplot2 Theme System Cheatsheet](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf)
+- Andrew Heiss's [Ways to deal with long labels](https://www.andrewheiss.com/blog/2022/06/23/long-labels-ggplot/)
+- Chapter 8 of Kieran Healy's [Data Visualization](https://socviz.co/refineplots.html#change-the-appearance-of-plots-with-themes)
+- [How to create BBC style graphics](https://bbc.github.io/rcookbook/#how_to_create_bbc_style_graphics)
+
+```{r, echo = F, eval = T, warning = F}
+knitr::knit_exit()
+```

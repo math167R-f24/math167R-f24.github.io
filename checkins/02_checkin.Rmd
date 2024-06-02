@@ -1,0 +1,66 @@
+---
+title: "Check-in 2"
+author: "YOUR NAME HERE"
+date: ""
+format: 
+  html:
+    embed-resources: true
+    code-tools: true
+    code-summary: "Code"
+---
+
+Remember, **follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope.** You may find a template file by clicking "Code" in the top right corner of this page.
+
+### Collaborators
+
+INSERT NAMES OF ANY COLLABORATORS
+
+## A. Flights Data
+
+**1.**  For this lab, we'll be using the `flights` data. You can load this data using the following code:
+
+```{r}
+library(nycflights13)
+data(flights)
+```
+
+**2.** Use the `mutate()` function to turn `origin` into a factor.
+
+```{r}
+# YOUR CODE HERE
+```
+
+**3.** Compute the mean `arr_delay` for each origin airport. Which airport has the longest delays on average? You can drop missing rows.
+
+```{r}
+# YOUR CODE HERE
+```
+
+<!--# YOUR ANSWER/EXPLANATION HERE -->
+
+
+**4.** Use the `mutate()` function to turn `month` into a factor.
+
+```{r}
+# YOUR CODE HERE
+```
+
+<!--# YOUR ANSWER/EXPLANATION HERE -->
+
+
+**5.** Compute the mean `arr_delay` by month. What do you notice?
+
+```{r}
+# YOUR CODE HERE
+```
+
+<!--# YOUR ANSWER/EXPLANATION HERE -->
+
+
+**6.** Compute the mean `arr_delay` by month AND `origin`. What do you notice?
+
+```{r}
+# YOUR CODE HERE
+```
+
+<!--# YOUR ANSWER/EXPLANATION HERE -->

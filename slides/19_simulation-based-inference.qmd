@@ -1,0 +1,599 @@
+---
+title: "MATH167R: Simulation based inference"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: visual
+---
+
+## Overview of today
+
+-   Sampling distributions
+-   Bootstrap distributions
+
+## Sampling distributions
+
+Without explicitly saying so, we have been simulating sampling distributions during our simulations.
+
+Recall: A sampling distribution is the probability distribution of a sample-based statistic.
+
+Example: If $X_1,\ldots, X_{100}$ are iid random variables with variance $1$, what is the distribution of the sample mean $\overline{X}$?
+
+## Simulating a sampling distribution
+
+Example simulation: Suppose $X_1,\ldots, X_{100}\sim N(0,1)$.
+
+```{r sample_mean}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar <- replicate(10000, mean(rnorm(100)))
+hist(Xbar, main = "Sampling distribution of mean of 100 N(0, 1) variables")
+```
+
+## Simulating a sampling distribution
+
+What if $X_1,\ldots, X_{100}\sim \mathrm{Exp}(1)$?
+
+```{r sample_mean_exp}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar <- replicate(10000, mean(rexp(100, rate = 1)))
+hist(Xbar, main = "Sampling distribution of mean of 100 Exponential(1) variables")
+```
+
+## Simulating a sampling distribution
+
+What if $X_1,\ldots, X_{100}\sim \mathrm{Poisson}(1)$?
+
+```{r sample_mean_pois}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar <- replicate(10000, mean(rpois(100, lambda = 1)))
+hist(Xbar, main = "Sampling distribution of mean of 100 Poisson(1) variables")
+```
+
+## Simulating a sampling distribution
+
+By the central limit theorem, all of these sampling distributions are asymptotically Gaussian with variance 1/100 (though the mean values differ between the three). Since $n=100$ is fairly large (for these examples), all of the previous examples are close to Gaussian.
+
+What about if $n$ is smaller? Or if we consider other distributions?
+
+Simulation is a powerful strategy for testing out methods:
+
+-   Suppose you wish to know... is $n$ large?
+-   Create a simulation that generates data that looks like your real world data.
+-   Evaluate whether the results are reasonable/accurate using simulated data.
+
+## Smaller sample sizes
+
+```{r smaller_sample}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10)))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1)))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1)")
+hist(Xbar_exp, main = "Exp(1)")
+hist(Xbar_poisson, main = "Poisson(1)")
+```
+
+## Smaller sample sizes
+
+```{r smaller_sample2}
+#| echo: FALSE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10)))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1)))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1)")
+hist(Xbar_exp, main = "Exp(1)")
+hist(Xbar_poisson, main = "Poisson(1)")
+```
+
+## Other statistics
+
+What if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.
+
+```{r max_sampling_dist}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+set.seed(123)
+Xmax_normal <- replicate(10000, max(rnorm(10)))
+Xmax_exp <- replicate(10000, max(rexp(10, rate = 1)))
+Xmax_poisson <- replicate(10000, max(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xmax_normal, main = "N(0, 1)")
+hist(Xmax_exp, main = "Exp(1)")
+hist(Xmax_poisson, main = "Poisson(1)")
+```
+
+## Other statistics
+
+What if we want the sampling distribution of the maximum? For each of these population models, the sampling distribution of the maximum is different.
+
+```{r max_sampling_dist2}
+#| echo: FALSE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xmax_normal <- replicate(10000, max(rnorm(10)))
+Xmax_exp <- replicate(10000, max(rexp(10, rate = 1)))
+Xmax_poisson <- replicate(10000, max(rpois(10, lambda = 1)))
+par(mfrow = c(1, 3))
+hist(Xmax_normal, main = "N(0, 1)")
+hist(Xmax_exp, main = "Exp(1)")
+hist(Xmax_poisson, main = "Poisson(1)")
+```
+
+## Transformations
+
+We can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.
+
+```{r mean_transformed}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10) ^ 2))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1) ^ 2))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1) squared")
+hist(Xbar_exp, main = "Exp(1) squared")
+hist(Xbar_poisson, main = "Poisson(1) squared")
+```
+
+## Transformations
+
+We can easily simulate sampling distributions for statistics summarizing the distribution of random variables that are defined as transformations of other random variables.
+
+```{r mean_transformed2}
+#| echo: FALSE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar_normal <- replicate(10000, mean(rnorm(10) ^ 2))
+Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1) ^ 2))
+Xbar_poisson <- replicate(10000, mean(rpois(10, lambda = 1) ^ 2))
+par(mfrow = c(1, 3))
+hist(Xbar_normal, main = "N(0, 1) squared")
+hist(Xbar_exp, main = "Exp(1) squared")
+hist(Xbar_poisson, main = "Poisson(1) squared")
+```
+
+## Exercise
+
+-   Write code to create a histogram of the sampling distribution of the sample mean $\overline{Y}$ of $Y_1,\ldots, Y_{10}$ where $Y_i=\sin(X_i)$ and $X_1,\ldots, X_{10}$ are iid Uniform(0, 1) random variables.
+
+## Resampling methods
+
+The previous simulations are all based on parametric models (normal, exponential, Poisson). However, we can also simulate sampling distributions without parametric assumptions on the data generating mechanism.
+
+## Estimating the age of US pennies
+
+Suppose we want to estimate the average age of US pennies. We can't observe every single penny---so what if we take a sample of 50 pennies?
+
+![](images/pennies.png)
+
+Based on an example from [ModernDive](https://moderndive.com/8-confidence-intervals.html).
+
+
+## Estimating the age of US pennies
+
+The `moderndive` package contains data on a sample of 50 pennies in the `pennies_sample` data frame.
+
+```{r pennies_1}
+#| echo: true
+#| eval: TRUE
+#| cache: TRUE
+library(moderndive)
+data(pennies_sample)
+head(pennies_sample)
+```
+
+## Estimating the age of US pennies
+
+The `moderndive` package contains data on a sample of 50 pennies in the `pennies_sample` data frame.
+
+```{r pennies_2}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+#| out.width: "80%"
+#| fig.align: "center"
+#| fig-cap: ""
+library(tidyverse)
+ggplot(pennies_sample, aes(x = year)) +
+  geom_histogram(binwidth = 10, color = "white") +
+  theme_minimal()
+```
+
+
+## Estimating the age of US pennies
+
+Based on this sample, we can compute the sample mean:
+
+```{r pennies_3}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 8
+#| fig-height: 6
+#| out.width: "80%"
+#| fig.align: "center"
+#| fig-cap: ""
+x_bar <- pennies_sample |>
+  summarize(mean_year = mean(year))
+x_bar
+```
+
+## Resampling the pennies
+
+Imagine we put our 50 pennies in a bag and draw a **new** sample of 50 pennies by sampling with replacement. This is called **resampling with replacement.**
+
+```{r pennies_4}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 8
+#| fig-height: 6
+#| out.width: "80%"
+#| fig.align: "center"
+#| fig-cap: ""
+set.seed(327)
+pennies_resample <-
+  data.frame(year = sample(pennies$year, 50, replace = T))
+head(pennies_resample)
+pennies_resample %>% 
+  summarize(mean_year = mean(year))
+```
+
+
+## Resampling the pennies {.smaller}
+
+Imagine we put our 50 pennies in a bag and draw a **new** sample of 50 pennies by sampling with replacement. This is called **resampling with replacement.**
+
+```{r pennies_5}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 4
+#| fig-height: 2
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+pennies_combined <- 
+  bind_rows(pennies_sample |> mutate(title = "Original sample"),
+            pennies_resample |> mutate(title = "Resample"))
+ggplot(pennies_combined, aes(x = year)) +
+  geom_histogram(binwidth = 10, color = "white") +
+  facet_wrap(~title) + 
+  theme_minimal()
+```
+
+## Resampling the pennies
+
+Note that our resample is not the same as drawing a new sample from the population. However, we can still learn about the **sampling variability** of the sample mean. Suppose we repeat this process many times.
+
+```{r pennies_6}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 8
+#| fig-height: 6
+#| out.width: "80%"
+#| fig.align: "center"
+#| fig-cap: ""
+head(pennies_resamples)
+```
+
+## Resampling the pennies
+
+We can compute each resample mean:
+
+```{r pennies_7}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 8
+#| fig-height: 6
+#| out.width: "80%"
+#| fig.align: "center"
+#| fig-cap: ""
+resampled_means <- pennies_resamples |>
+  group_by(name) |>
+  summarize(mean_year = mean(year))
+head(resampled_means)
+```
+
+## Resampling the pennies
+
+We can compute each resample mean:
+
+```{r pennies_8}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 5
+#| fig-height: 2.5
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+ggplot(resampled_means, aes(x = mean_year)) +
+  geom_histogram(binwidth = 1, color = "white", boundary = 1990) +
+  labs(x = "Sampled mean year") +
+  theme_minimal()
+```
+
+
+## Resampling the pennies 1000 times
+
+Using simulation, we can repeat this process virtually 1000 times:
+
+```{r pennies_9}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 5
+#| fig-height: 2.5
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+# Repeat resampling 1000 times
+virtual_resamples <- pennies_sample |>
+  rep_sample_n(size = 50, replace = TRUE, reps = 1000)
+
+# Compute 1000 sample means
+virtual_resampled_means <- virtual_resamples |>
+  group_by(replicate) |>
+  summarize(mean_year = mean(year))
+```
+
+## Resampling the pennies 1000 times
+
+Using simulation, we can repeat this process virtually 1000 times:
+
+```{r pennies_10}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 5
+#| fig-height: 2.5
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+ggplot(virtual_resampled_means, aes(x = mean_year)) +
+  geom_histogram(binwidth = 1, color = "white", boundary = 1990) +
+  labs(x = "sample mean") +
+  theme_minimal()
+```
+
+## Resampling the pennies 1000 times
+
+Note that our resampled means are centered around our original sample mean. This means that resampling doesn't tell us about how far off our particular sample is--only about the variability of the observed values.
+
+```{r pennies_11}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 5
+#| fig-height: 2.5
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+virtual_resampled_means |>
+  summarize(mean_of_means = mean(mean_year))
+mean(pennies_sample$year)
+```
+
+## Resampling confidence intervals {.smaller}
+
+We can obtain a confidence interval based on our resample means:
+
+```{r pennies_12}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 5
+#| fig-height: 2.5
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+quantile(virtual_resampled_means$mean_year, c(.025, .975))
+ggplot(virtual_resampled_means, aes(x = mean_year)) +
+  geom_histogram(binwidth = 1, color = "white", boundary = 1990) +
+  geom_vline(xintercept = quantile(virtual_resampled_means$mean_year, c(.025, .975)), 
+             color = 'red') +
+  labs(x = "sample mean") +
+  theme_minimal()
+```
+
+## Resampling confidence intervals
+
+Compare with a normal sampling distribution based confidence interval:
+
+```{r pennies_113}
+#| echo: true
+#| eval: true
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 5
+#| fig-height: 2.5
+#| out.width: "100%"
+#| fig.align: "center"
+#| fig-cap: ""
+virtual_resampled_means |>
+  summarize(lower = mean(mean_year) - 1.96 * sd(mean_year),
+            upper = mean(mean_year) + 1.96 * sd(mean_year))
+```
+
+
+## Resampling methods
+
+Suppose we know $X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)$. The sampling distribution of the sample mean can be simulated as follows:
+
+```{r exp_samp_dist}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+set.seed(123)
+Xbar_exp <- replicate(10000, mean(rexp(20, rate = 1)))
+hist(Xbar_exp)
+```
+
+## Resampling methods
+
+What if we observe $X_1,\ldots, X_{20}$, but we don't know that $X_i$ is exponentially distributed? We could just try the normal approximation to approximate the sampling distribution.
+
+```{r exp_samp_dist_2, fig.height = 4, fig.width = 5}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+X <- rexp(20, rate = 1)
+x_axis <- seq(0, 3, length.out = 1000)
+
+# plot "true" simulated sampling distribution
+hist(Xbar_exp, freq = F, ylim = c(0, 3))
+
+# plot normal theory
+lines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')
+```
+
+## Resampling methods
+
+```{r exp_samp_dist_22, fig.height = 4, fig.width = 5}
+#| echo: FALSE
+#| eval: TRUE
+#| cache: TRUE
+X <- rexp(20, rate = 1)
+x_axis <- seq(0, 3, length.out = 1000)
+
+# plot "true" simulated sampling distribution
+hist(Xbar_exp, freq = F, ylim = c(0, 3))
+
+# plot normal theory
+lines(x_axis, dnorm(x_axis, mean = 1, sd = 1 / sqrt(20)), col = 'red')
+```
+
+## Bootstrap samples
+
+Bootstrapping is a resampling method that uses random samples with replacement from the sample data to approximate the sampling distribution of sample-based statistics.
+
+```{r exp_samp_dist_3}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+print(sort(X))
+# sample with replacement from X
+X_resample <- sample(X, size = 20, replace = TRUE)
+print(sort(X_resample))
+```
+
+## Bootstrap samples
+
+We can repeatedly resample from $X$, then compute the resample sample means and plot the distribution:
+
+```{r exp_samp_dist_4}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+bootstrap_Xbar <- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))
+hist(bootstrap_Xbar - mean(X) + 1)
+```
+
+## Bootstrap samples
+
+We can compare the bootstrap sampling distributions and true sampling distributions for $\overline{X}-E(\overline{X})$.
+
+```{r exp_samp_dist_5}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+library(ggplot2)
+plot_dat <-
+  data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),
+             source = rep(c("Parametric (Exp)", "Bootstrap"), each = 10000))
+ggplot(plot_dat, aes(x = Xbar, color = source)) +
+  geom_density() +
+  geom_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1 / sqrt(20)),
+                aes(color = "Parametric (Normal)")) +
+  xlab("Xbar - E(Xbar)")
+```
+
+## Bootstrap samples
+
+We can compare the bootstrap sampling distributions and true sampling distributions for $\overline{X}-E(\overline{X})$.
+
+```{r exp_samp_dist_52}
+#| echo: FALSE
+#| eval: TRUE
+#| cache: TRUE
+library(ggplot2)
+plot_dat <-
+  data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),
+             source = rep(c("Parametric (Exp)", "Bootstrap"), each = 10000))
+ggplot(plot_dat, aes(x = Xbar, color = source)) +
+  geom_density() +
+  geom_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1 / sqrt(20)),
+                aes(color = "Parametric (Normal)")) +
+  xlab("Xbar - E(Xbar)")
+```
+
+## Bootstrap confidence intervals
+
+We can take appropriate quantiles of the bootstrap samples to construct a bootstrap confidence interval using the `quantile()` function:
+
+```{r exp_samp_dist_6}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+quantile(bootstrap_Xbar, probs = c(.025, .975))
+```
+
+## Why bootstrap?
+
+In this case, inference based on bootstrapping does not seem better than the normal approximation based on the central limit theorem.
+
+However, for many cases, we may not have a simple parametric approximation to the true sampling distribution. For example, suppose we wish to compute the sampling distribution of the sample median.
+
+Note however that the bootstrap may not work well for all statistics, such as the minimum (why not?).

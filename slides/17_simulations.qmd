@@ -1,0 +1,408 @@
+---
+title: "MATH167R: Simulations"
+author: "Peter Gao"
+format: 
+  revealjs:
+    theme: [./slides.scss, ../theme.scss]
+editor: visual
+---
+
+## Overview of today
+
+-   Random variables in R
+-   The `r`, `p`, `d`, and `q` functions
+-   `replicate()`
+-   Writing simulations
+
+## Random variables in R
+
+We have already seen a number of functions for generating random variables such as `sample()` and `rnorm()`.
+
+Today, we will expand on these functions and related functions for studying random variables and begin using them to write various simulations.
+
+## Random variables in R
+
+Remember that we can use the `sample()` function as follows to draw at random from a finite set with and without replacement:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+sample(0:9, 10, replace = T)
+```
+
+What if we want to generate $n$ samples from a normal distribution? Or a binomial distribution?
+
+## Simulating a coin-flipping game
+
+Can we write code to simulate this game?
+
+![](images/alice-bob.jpeg)
+
+## Simulating a coin-flipping game
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+n <- 100
+flips <- sample(x = c("H", "T"), size = n, replace = T)
+HH_score <- 0
+HT_score <- 0
+for (i in 2:n) {
+  if (flips[i-1] == "H" & flips[i] == "H") {
+    HH_score <- HH_score + 1
+  } 
+  if (flips[i-1] == "H" & flips[i] == "T") {
+    HT_score <- HT_score + 1
+  }
+}
+HH_score
+HT_score
+```
+
+## Simulating a coin-flipping game
+
+What if we want to simulate this game many times? One approach is to wrap our code in a function, which we can run many times.
+
+## Simulating a coin-flipping game {.smaller}
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+run_one_sim <- function(seed, n) {
+  set.seed(seed)
+  flips <- sample(x = c("H", "T"), size = n, replace = T)
+  HH_score <- 0
+  HT_score <- 0
+  for (i in 2:n) {
+    if (flips[i-1] == "H" & flips[i] == "H") {
+      HH_score <- HH_score + 1
+    } 
+    if (flips[i-1] == "H" & flips[i] == "T") {
+      HT_score <- HT_score + 1
+    }
+  }
+  return(list(HH = HH_score, HT = HT_score))
+}
+# run 100000 simulations with n = 100
+results <- lapply(1:10000, run_one_sim, n = 100)
+
+HH_scores <- sapply(results, function(x) x$HH)
+HT_scores <- sapply(results, function(x) x$HT)
+```
+
+## Simulating a coin-flipping game
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+
+# proportion of Alice wins
+mean(HH_scores > HT_scores)
+
+# proportion of Bob wins
+mean(HT_scores > HH_scores)
+
+# proportion of ties
+mean(HH_scores == HT_scores)
+```
+
+## Simulating a coin-flipping game
+
+Why does Bob win more often? Intuitively, both "HH" and "HT" are equally likely when we flip a fair coin twice.
+
+## Simulating a coin-flipping game
+
+Here's a histogram of Alice and Bob's scores across the simulations. What do you notice? How might this explain our results?
+
+```{r}
+#| echo: FALSE
+#| eval: TRUE
+library(ggplot2)
+ggplot() +
+  geom_histogram(aes(x = HH_scores, fill = "HH"), 
+                 alpha = .5, binwidth = 1) +
+  geom_histogram(aes(x = HT_scores, fill = "HT"), 
+                 alpha = .5, binwidth = 1) + 
+  ggtitle("Histogram of scores for Alice and Bob") +
+  xlab("Score")
+```
+
+## Simulating a coin-flipping game
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+library(ggplot2)
+ggplot() +
+  geom_histogram(aes(x = HH_scores, fill = "HH"), 
+                 alpha = .5, binwidth = 1) +
+  geom_histogram(aes(x = HT_scores, fill = "HT"), 
+                 alpha = .5, binwidth = 1) + 
+  ggtitle("Histogram of scores for Alice and Bob") +
+  xlab("Score")
+```
+
+## The `r`, `p`, `d`, and `q` functions
+
+What if we want to generate $n$ samples from a normal distribution? Or a binomial distribution?
+
+R provides functions for working with a variety of probability distributions. For most distributions, there are four functions: `r`, `p`, `d`, and `q`. As an example, let's look at the normal distribution.
+
+`rnorm()` can be used to generate `n` random observations from a normal distribution:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+rnorm(n = 5, mean = 0, sd = 1)
+```
+
+## The `r`, `p`, `d`, and `q` functions
+
+`pnorm()` can be used to compute the distribution function at a value `q`. In other words, if $Z$ is a standard normal, pnorm returns the value of $$F(q)= P\left(Z \leq \frac{q-\mu}{\sigma}\right)$$
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+pnorm(q = 1, mean = 0, sd = 1)
+pnorm(q = 1, mean = 1, sd = 1)
+```
+
+## The `r`, `p`, `d`, and `q` functions
+
+`qnorm()` can be used to compute the quantile function at a percentile `p`. In other words, if $Z$ is a standard normal the quantile function returns the value $x$ such that $$P\left(Z\leq \frac{x-\mu}{\sigma}\right)=p$$
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+qnorm(p = .75, mean = 0, sd = 1)
+qnorm(p = .5, mean = 1, sd = 1)
+```
+
+## The `r`, `p`, `d`, and `q` functions
+
+`dnorm()` can be used to compute the density function at a value `x`: $$ f(x)={\frac {1}{\sigma {\sqrt {2\pi }}}}\exp\left\{-{\frac {1}{2}}\left({\frac {x-\mu }{\sigma }}\right)^{2}\right\}$$
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+dnorm(x = .5, mean = 0, sd = 1)
+```
+
+## Exercise
+
+Create a histogram of 1000 samples from a normal distribution with mean 10 and standard deviation 20.
+
+## Exercise
+
+Suppose we perform a two-sided hypothesis test using a normal distribution and obtain a z-score of 1.24. How would we compute the p-value?
+
+. . .
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+2 * (1 - pnorm(q = 1.24, mean = 0, sd = 1))
+```
+
+. . .
+
+Suppose we perform a two-sided hypothesis test using a normal distribution and obtain a z-score of -2.12. How would we compute the p-value?
+
+. . .
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+2 * pnorm(q = -2.12, mean = 0, sd = 1)
+```
+
+## The `r`, `p`, `d`, and `q` functions: binomial distribution
+
+Practice with the `rbinom()`, `pbinom()`, `dbinom()` and `qbinom()` functions:
+
+1.  If I flip a coin with probability of heads = 0.6 ten times, what is the probability of observing **exactly** 6 heads?
+
+2.  If I flip a coin with probability of heads = 0.6 ten times, what is the probability of observing 6 or fewer heads?
+
+3.  Consider an experiment where you flip a coin with a probability of heads = .6 ten times. Simulate this experiment 1000 times and create a histogram of your results.
+
+## Random seeds
+
+Remember that `set.seed()` can be used to ensure that you obtain the same results each time you run your code.
+
+For example, if you include the command `x <- rnorm(1)` in an .Rmd document with running `set.seed()`, each time you knit, you will produce a different value of `x`.
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+set.seed(1022)
+rnorm(n = 1, mean = 0, sd = 1)
+```
+
+## Monte Carlo methods
+
+Monte Carlo methods or Monte Carlo experiments use repeated random sampling to obtain numerical results or to approximate quantities of interest.
+
+Monte Carlo experiments are often used to:
+
+-   approximate integrals
+-   generate draws from a probability distribution
+-   optimize functions stochastically
+
+## Example: Transformations of random variables
+
+Suppose $X\sim N(0, 1)$. What is $E(e^X)$?
+
+We could use the change of variable formula to compute the expectation. Or we could use simulation to approximate this quantity. Asymptotic analysis is needed to study the convergence of our approximation.
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+#| error: TRUE
+n_sim <- 1000
+x <- rnorm(n_sim)
+exp_X <- exp(x)
+mean(exp_X)
+```
+
+## Example: Maximum of random variables
+
+Suppose $X_i\sim \mathrm{Exponential}(1)$ for $1\leq i\leq n$, for some $n$.
+
+-   What is $E(\mathrm{max}(X_1,\ldots, X_n))?$
+-   How does $E(\mathrm{max}(X_1,\ldots, X_n))$ change for different values of $n$?
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+set.seed(1022)
+n_sim <- 1000
+n <- 10
+maxes <- numeric(n_sim)
+for (i in 1:n_sim) {
+  maxes[i] <- max(rexp(n, rate = 1))
+}
+mean(maxes)
+```
+
+. . .
+
+What about for $n=100$? Should the expected maximum be larger or smaller?
+
+## Example: Maximum of random variables
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+n_sim <- 1000
+n <- 100
+maxes <- numeric(n_sim)
+for (i in 1:n_sim) {
+  maxes[i] <- max(rexp(n, rate = 1))
+}
+mean(maxes)
+```
+
+## `replicate()` for repeated evaluation
+
+In the previous code, we have been using `for` loops, which explicitly and repeatedly change global variables.
+
+We can alternatively use the `replicate()` function to repeatedly evaluate an expression and in particular to repeatedly generate data. The data will be automatically organized into a matrix or vector.
+
+## `replicate()` for repeated evaluation
+
+For example, we can repeatedly generate `n` exponential random variables:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+replicate(10, rexp(10)) # matrix output
+```
+
+## `replicate()` for repeated evaluation
+
+Alternatively, we can repeatedly generate `n` exponential random variables and then take their maximum:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+replicate(10, max(rexp(10))) # vector output
+```
+
+## `replicate()` for repeated evaluation
+
+Using `replicate()`, the previous simulation is just:
+
+```{r}
+#| echo: TRUE
+#| eval: TRUE
+maxes <- replicate(1000, max(rexp(n)))
+mean(maxes)
+```
+
+## Example: Maximum of random variables
+
+We can repeat this for many different values of `n`.
+
+```{r declarative.sim}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+n_sim <- 1000
+n_values <- c(10, 25, 50, 100, 250, 500, 1000)
+max_by_n <- c()
+for (n in n_values) {
+  maxes <- numeric(n_sim)
+  for (i in 1:n_sim) {
+    maxes[i] <- max(rexp(n, rate = 1))
+  }
+  max_by_n <- c(max_by_n, mean(maxes))
+}
+max_by_n
+```
+
+## Example: Maximum of random variables
+
+Note that we can write the maximum of exponentials simulation using `replicate()`:
+
+```{r functional.sim}
+#| echo: TRUE
+#| eval: TRUE
+#| cache: TRUE
+max_by_n <- vapply(
+  n_values, 
+  function(n) mean(replicate(n_sim, max(rexp(n, rate = 1)))), 
+  numeric(1)
+)
+max_by_n
+```
+
+## Example: Maximum of random variables
+
+It turns out that $\mathrm{max}(X_1,\ldots, X_n)$ can be modeled using a Gumbel distribution (after being transformed). Below, we plot the empirical mean and approximate the theoretical expectation (for large $n$).
+
+```{r plot_results}
+#| echo: TRUE
+#| eval: FALSE
+#| cache: TRUE
+plot(n_values, max_by_n,
+     type = "l",
+     xlab = "n", ylab = "Maximum",
+     main = paste0("Sample mean of maximums (black)",
+                   "and theoretical expectation (red)"))
+lines(n_values, -digamma(1) + log(n_values), col = "red")
+```
+
+## Example: Maximum of random variables
+
+```{r plot_results2}
+#| echo: FALSE
+#| eval: TRUE
+#| cache: TRUE
+plot(n_values, max_by_n,
+     type = "l",
+     xlab = "n", ylab = "Maximum",
+     main = paste0("Sample mean of maximums (black)",
+                   "and theoretical expectation (red)"))
+lines(n_values, -digamma(1) + log(n_values), col = "red")
+```
