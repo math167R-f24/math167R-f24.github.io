@@ -6,7 +6,7 @@ project:
 website:
   title: "MATH167R"
   page-navigation: true
-  description: "Homepage for MATH167R, Spring 2024 at SJSU"
+  description: "Homepage for MATH167R, Fall 2024 at SJSU"
   open-graph: true
   page-footer:
     right: "Built with [Quarto](https://quarto.org/) based on the website for [STA 210](https://sta210-s22.github.io/website/)."

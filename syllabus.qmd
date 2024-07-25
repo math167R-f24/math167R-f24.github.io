@@ -12,7 +12,7 @@ draft: false
 | **Instructor**   | Peter Gao                                        |
 +------------------+--------------------------------------------------+
 | **Lectures**     | Weekly on Monday and Wednesday, 12-1:15pm        |
-|                  | (Section 01) and 1:30-2:45pm (Section 02) in     |
+|                  |  in     |
 |                  | MH235.                                           |
 +------------------+--------------------------------------------------+
 | **Office Hours** | Monday and Wednesday, 10:30-11:30am in MH426 or  |
