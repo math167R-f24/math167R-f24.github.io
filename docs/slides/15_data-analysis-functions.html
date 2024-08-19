@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Programming for data analysis</title>
+  <title>MATH167R – MATH167R: Programming for data analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,11 +385,10 @@
       margin-right: 0; 
     }
   </style>
-  
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<meta property="og:title" content="MATH167R - MATH167R: Programming for data analysis">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Programming for data analysis – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -429,28 +429,28 @@ Peter Gao
 </ul>
 <p>Alternatively, suppose that we wish to create a visualization/analysis that we can easily update each week when the data is released.</p>
 
-<img data-src="images/bestsellers.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/bestsellers.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="motivating-example-1" class="slide level2">
 <h2>Motivating example</h2>
 <p>Ideally, we can write functions that will allow us to produce results automatically each week for new data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="do">## skeleton </span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>update_analysis <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="co"># load new data</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  results <span class="ot">&lt;-</span> <span class="fu">load_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="fu">clean_data</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>    <span class="fu">update_visualizations</span>() </span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>}</span>
-<span id="cb1-9"><a href="#cb1-9"></a>load_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="co"># BODY OF FUNCTION</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>}</span>
-<span id="cb1-12"><a href="#cb1-12"></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb1-13"><a href="#cb1-13"></a>  <span class="co"># BODY OF FUNCTION</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>}</span>
-<span id="cb1-15"><a href="#cb1-15"></a>update_visualizations <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb1-16"><a href="#cb1-16"></a>  <span class="co"># BODY OF FUNCTION</span></span>
-<span id="cb1-17"><a href="#cb1-17"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="do">## skeleton </span></span>
+<span id="cb1-2"><a></a>update_analysis <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-3"><a></a>  <span class="co"># load new data</span></span>
+<span id="cb1-4"><a></a>  results <span class="ot">&lt;-</span> <span class="fu">load_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a></a>    <span class="fu">clean_data</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a></a>    <span class="fu">update_visualizations</span>() </span>
+<span id="cb1-7"><a></a>  <span class="fu">return</span>(results)</span>
+<span id="cb1-8"><a></a>}</span>
+<span id="cb1-9"><a></a>load_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-10"><a></a>  <span class="co"># BODY OF FUNCTION</span></span>
+<span id="cb1-11"><a></a>}</span>
+<span id="cb1-12"><a></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-13"><a></a>  <span class="co"># BODY OF FUNCTION</span></span>
+<span id="cb1-14"><a></a>}</span>
+<span id="cb1-15"><a></a>update_visualizations <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-16"><a></a>  <span class="co"># BODY OF FUNCTION</span></span>
+<span id="cb1-17"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="functional-programming" class="slide level2">
@@ -485,19 +485,19 @@ Peter Gao
 <h2>Imperative vs.&nbsp;declarative</h2>
 <p><strong>Imperative programming: <code>for</code> loop</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>out <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
-<span id="cb2-4"><a href="#cb2-4"></a>  out <span class="ot">&lt;-</span> out <span class="sc">+</span> i</span>
-<span id="cb2-5"><a href="#cb2-5"></a>}</span>
-<span id="cb2-6"><a href="#cb2-6"></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>out <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-2"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb2-3"><a></a><span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
+<span id="cb2-4"><a></a>  out <span class="ot">&lt;-</span> out <span class="sc">+</span> i</span>
+<span id="cb2-5"><a></a>}</span>
+<span id="cb2-6"><a></a>out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 55</code></pre>
 </div>
 </div>
 <p><strong>Declarative programming:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">sum</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 55</code></pre>
 </div>
@@ -506,34 +506,34 @@ Peter Gao
 <section id="example-a-complicated-for-loop" class="slide level2">
 <h2>Example: a complicated <code>for</code> loop</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Not the most transparent code</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">data</span>(penguins)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>penguins<span class="sc">$</span>centered_mass <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(penguins<span class="sc">$</span>species)) {</span>
-<span id="cb6-6"><a href="#cb6-6"></a>  current_data <span class="ot">&lt;-</span> penguins[penguins<span class="sc">$</span>species <span class="sc">==</span> i,]</span>
-<span id="cb6-7"><a href="#cb6-7"></a>  species_mean_mass <span class="ot">&lt;-</span> <span class="fu">mean</span>(current_data<span class="sc">$</span>body_mass_g, <span class="at">na.rm =</span> T)</span>
-<span id="cb6-8"><a href="#cb6-8"></a>  penguins<span class="sc">$</span>centered_mass[penguins<span class="sc">$</span>species <span class="sc">==</span> i] <span class="ot">&lt;-</span> </span>
-<span id="cb6-9"><a href="#cb6-9"></a>    current_data<span class="sc">$</span>body_mass_g <span class="sc">-</span> species_mean_mass</span>
-<span id="cb6-10"><a href="#cb6-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Not the most transparent code</span></span>
+<span id="cb6-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb6-3"><a></a><span class="fu">data</span>(penguins)</span>
+<span id="cb6-4"><a></a>penguins<span class="sc">$</span>centered_mass <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb6-5"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(penguins<span class="sc">$</span>species)) {</span>
+<span id="cb6-6"><a></a>  current_data <span class="ot">&lt;-</span> penguins[penguins<span class="sc">$</span>species <span class="sc">==</span> i,]</span>
+<span id="cb6-7"><a></a>  species_mean_mass <span class="ot">&lt;-</span> <span class="fu">mean</span>(current_data<span class="sc">$</span>body_mass_g, <span class="at">na.rm =</span> T)</span>
+<span id="cb6-8"><a></a>  penguins<span class="sc">$</span>centered_mass[penguins<span class="sc">$</span>species <span class="sc">==</span> i] <span class="ot">&lt;-</span> </span>
+<span id="cb6-9"><a></a>    current_data<span class="sc">$</span>body_mass_g <span class="sc">-</span> species_mean_mass</span>
+<span id="cb6-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-a-functional-programming-approach" class="slide level2">
 <h2>Example: a functional programming approach</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">mutate</span>(<span class="at">centered_mass =</span> body_mass_g <span class="sc">-</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb7-2"><a></a>penguins <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a></a>  <span class="fu">mutate</span>(<span class="at">centered_mass =</span> body_mass_g <span class="sc">-</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="functionals" class="slide level2">
 <h2>Functionals</h2>
 <p>Functionals are functions that takes a function (and potentially other parameters) as input and returns a vector as output. For example, here is a simple functional. What do you think the following code does?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>randomize <span class="ot">&lt;-</span> <span class="cf">function</span>(f) <span class="fu">f</span>(<span class="fu">runif</span>(<span class="dv">1000</span>))</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">randomize</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>randomize <span class="ot">&lt;-</span> <span class="cf">function</span>(f) <span class="fu">f</span>(<span class="fu">runif</span>(<span class="dv">1000</span>))</span>
+<span id="cb8-2"><a></a><span class="fu">randomize</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -552,7 +552,7 @@ Peter Gao
 <p>The <code>lapply()</code> function takes two arguments, <code>X</code> (an atomic vector or list), and a function <code>FUN</code> that can be applied to element of <code>X</code>. <code>lapply()</code> returns a list.</p>
 <p>Remember, we can think of every data frame as a list of columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">lapply</span>(penguins, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">lapply</span>(penguins, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$species
 [1] "factor"
@@ -587,7 +587,7 @@ $centered_mass
 <h2><code>lapply()</code>: Apply a function to every element of a list</h2>
 <p>Note that <code>lapply()</code> always returns a list. We can use the <code>unlist()</code> function to turn this into a vector (but be careful).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(penguins, class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(penguins, class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          species            island    bill_length_mm     bill_depth_mm 
          "factor"          "factor"         "numeric"         "numeric" 
@@ -602,9 +602,9 @@ flipper_length_mm       body_mass_g               sex              year
 <h2><code>lapply()</code>: Apply a function to every element of a list</h2>
 <p><code>lapply()</code> is especially helpful when we have datasets of different sizes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Create 20 random datasets</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>l <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>, <span class="fu">runif</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span>)), <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Create 20 random datasets</span></span>
+<span id="cb14-2"><a></a>l <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>, <span class="fu">runif</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span>)), <span class="at">simplify =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb14-3"><a></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 0.75392784 0.04397956
@@ -676,8 +676,8 @@ flipper_length_mm       body_mass_g               sex              year
 <h2><code>lapply()</code>: Apply a function to every element of a list</h2>
 <p>We can use <code>lapply()</code> to summarize all of our datasets:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Print the length of each dataset</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(l, length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># Print the length of each dataset</span></span>
+<span id="cb16-2"><a></a><span class="fu">unlist</span>(<span class="fu">lapply</span>(l, length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  2  8  9  4  7  4  4  2  1  5  3  3  8  7  5  7  3  2 10  1</code></pre>
 </div>
@@ -687,8 +687,8 @@ flipper_length_mm       body_mass_g               sex              year
 <h2><code>vapply()</code></h2>
 <p>There are many other variants of <code>lapply()</code>, including <code>mapply()</code>, <code>sapply()</code>, and <code>vapply()</code>. The only one we will cover today is <code>vapply()</code>, which returns a vector or matrix instead of a list. When we use <code>vapply()</code>, we specify an additional parameter, <code>FUN.VALUE</code> which specifies a template for the return value from <code>FUN</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Print the length of each dataset</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">vapply</span>(l, length, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># Print the length of each dataset</span></span>
+<span id="cb18-2"><a></a><span class="fu">vapply</span>(l, length, <span class="at">FUN.VALUE =</span> <span class="fu">numeric</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  2  8  9  4  7  4  4  2  1  5  3  3  8  7  5  7  3  2 10  1</code></pre>
 </div>
@@ -697,7 +697,7 @@ flipper_length_mm       body_mass_g               sex              year
 <section id="back-to-our-motivating-example" class="slide level2">
 <h2>Back to our motivating example</h2>
 
-<img data-src="images/bestsellers.png" class="r-stretch quarto-figure-center"><p>First, let’s get the data for each week over the last three months. To do so, we need to access the New York Times API (application programming interface)</p>
+<img data-src="images/bestsellers.png" class="quarto-figure quarto-figure-center r-stretch"><p>First, let’s get the data for each week over the last three months. To do so, we need to access the New York Times API (application programming interface)</p>
 <p>APIs allow programs to interact–one of the most common usages is for automatically downloading data using code.</p>
 </section>
 <section id="apis-for-getting-data" class="slide level2">
@@ -722,20 +722,20 @@ flipper_length_mm       body_mass_g               sex              year
 <section id="downloading-the-current-list" class="slide level2">
 <h2>Downloading the current list</h2>
 <div class="cell" data-hash="15_data-analysis-functions_cache/revealjs/unnamed-chunk-13_dd65b2a908ced16e1874b5db0c91c27d">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">library</span>(jsonlite)</span>
-<span id="cb20-3"><a href="#cb20-3"></a>api_key <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"~/Dropbox/teaching/math167R-f23/internal/nyt-key.txt"</span>)</span>
-<span id="cb20-4"><a href="#cb20-4"></a>current_list <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">paste0</span>(</span>
-<span id="cb20-6"><a href="#cb20-6"></a>    <span class="st">"https://api.nytimes.com/svc/books/v3/lists/2024-03-05/hardcover-fiction.json?api-key="</span>,</span>
-<span id="cb20-7"><a href="#cb20-7"></a>    api_key</span>
-<span id="cb20-8"><a href="#cb20-8"></a>  )</span>
-<span id="cb20-9"><a href="#cb20-9"></a>)<span class="sc">$</span>results<span class="sc">$</span>books</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-2"><a></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb20-3"><a></a>api_key <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"~/Dropbox/teaching/math167R-f23/internal/nyt-key.txt"</span>)</span>
+<span id="cb20-4"><a></a>current_list <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
+<span id="cb20-5"><a></a>  <span class="fu">paste0</span>(</span>
+<span id="cb20-6"><a></a>    <span class="st">"https://api.nytimes.com/svc/books/v3/lists/2024-03-05/hardcover-fiction.json?api-key="</span>,</span>
+<span id="cb20-7"><a></a>    api_key</span>
+<span id="cb20-8"><a></a>  )</span>
+<span id="cb20-9"><a></a>)<span class="sc">$</span>results<span class="sc">$</span>books</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="15_data-analysis-functions_cache/revealjs/unnamed-chunk-14_cbd82fe6e0a72f4a6a26ed438a798af3">
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:360px; ">
-<table class="table table-striped" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table table-striped caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">title</th>
@@ -877,23 +877,23 @@ flipper_length_mm       body_mass_g               sex              year
 <section id="downloading-the-past-three-months-data" class="slide level2">
 <h2>Downloading the past three months’ data</h2>
 <div class="cell" data-hash="15_data-analysis-functions_cache/revealjs/download.data_42bedc27e22b07c2149477a8c5e672ef">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2024-03-05"</span>), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
-<span id="cb21-3"><a href="#cb21-3"></a>  dates,</span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="cf">function</span>(x) {</span>
-<span id="cb21-5"><a href="#cb21-5"></a>    <span class="co"># slow down execution by waiting 12 seconds</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>    <span class="fu">Sys.sleep</span>(<span class="dv">15</span>)</span>
-<span id="cb21-7"><a href="#cb21-7"></a>    jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
-<span id="cb21-8"><a href="#cb21-8"></a>      <span class="fu">paste0</span>(</span>
-<span id="cb21-9"><a href="#cb21-9"></a>        <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
-<span id="cb21-10"><a href="#cb21-10"></a>        x,</span>
-<span id="cb21-11"><a href="#cb21-11"></a>        <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
-<span id="cb21-12"><a href="#cb21-12"></a>        api_key</span>
-<span id="cb21-13"><a href="#cb21-13"></a>      )</span>
-<span id="cb21-14"><a href="#cb21-14"></a>    )<span class="sc">$</span>results<span class="sc">$</span>books</span>
-<span id="cb21-15"><a href="#cb21-15"></a>  }</span>
-<span id="cb21-16"><a href="#cb21-16"></a>)</span>
-<span id="cb21-17"><a href="#cb21-17"></a><span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2024-03-05"</span>), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
+<span id="cb21-2"><a></a>bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb21-3"><a></a>  dates,</span>
+<span id="cb21-4"><a></a>  <span class="cf">function</span>(x) {</span>
+<span id="cb21-5"><a></a>    <span class="co"># slow down execution by waiting 12 seconds</span></span>
+<span id="cb21-6"><a></a>    <span class="fu">Sys.sleep</span>(<span class="dv">15</span>)</span>
+<span id="cb21-7"><a></a>    jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
+<span id="cb21-8"><a></a>      <span class="fu">paste0</span>(</span>
+<span id="cb21-9"><a></a>        <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
+<span id="cb21-10"><a></a>        x,</span>
+<span id="cb21-11"><a></a>        <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
+<span id="cb21-12"><a></a>        api_key</span>
+<span id="cb21-13"><a></a>      )</span>
+<span id="cb21-14"><a></a>    )<span class="sc">$</span>results<span class="sc">$</span>books</span>
+<span id="cb21-15"><a></a>  }</span>
+<span id="cb21-16"><a></a>)</span>
+<span id="cb21-17"><a></a><span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="looping-through-many-data-files" class="slide level2">
@@ -901,7 +901,7 @@ flipper_length_mm       body_mass_g               sex              year
 <p>What if we want to get the #1 book for the last 12 weeks?</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">vapply</span>(bestseller_lists, <span class="cf">function</span>(x) x<span class="sc">$</span>title[<span class="dv">1</span>], <span class="fu">character</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">vapply</span>(bestseller_lists, <span class="cf">function</span>(x) x<span class="sc">$</span>title[<span class="dv">1</span>], <span class="fu">character</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -927,25 +927,25 @@ flipper_length_mm       body_mass_g               sex              year
 <h2>Looping through many data files</h2>
 <p>Suppose we wish to see the performance of the books that have been top three at some point in the last three months</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>top_titles <span class="ot">&lt;-</span> </span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x<span class="sc">$</span>title[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]) <span class="sc">|&gt;</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">unlist</span>() <span class="sc">|&gt;</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">unique</span>()</span>
-<span id="cb24-5"><a href="#cb24-5"></a>top_book_data <span class="ot">&lt;-</span> </span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[x<span class="sc">$</span>title <span class="sc">%in%</span> top_titles, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>top_titles <span class="ot">&lt;-</span> </span>
+<span id="cb24-2"><a></a>  <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x<span class="sc">$</span>title[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]) <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">unlist</span>() <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a></a>  <span class="fu">unique</span>()</span>
+<span id="cb24-5"><a></a>top_book_data <span class="ot">&lt;-</span> </span>
+<span id="cb24-6"><a></a>  <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[x<span class="sc">$</span>title <span class="sc">%in%</span> top_titles, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="looping-through-many-data-files-2" class="slide level2">
 <h2>Looping through many data files</h2>
 <p>We can use the <code>bind_rows()</code> to create a data frame combining all the entries in this list. The <code>.id</code> argument creates a column from the list’s names. We can convert these names into a <code>Date</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>top_book_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(top_book_data, <span class="at">.id =</span> <span class="st">"date"</span>)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>top_book_data<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(top_book_data<span class="sc">$</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>top_book_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(top_book_data, <span class="at">.id =</span> <span class="st">"date"</span>)</span>
+<span id="cb25-2"><a></a>top_book_data<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(top_book_data<span class="sc">$</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; ">
-<table class="table table-striped" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<table class="table table-striped caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">date</th>
@@ -1445,22 +1445,22 @@ flipper_length_mm       body_mass_g               sex              year
 <section id="looping-through-many-data-files-3" class="slide level2">
 <h2>Looping through many data files</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">ggplot</span>(top_book_data, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rank, <span class="at">color =</span> title)) <span class="sc">+</span> </span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">trans =</span> <span class="st">"reverse"</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">ylab</span>(<span class="st">"Rank"</span>) <span class="sc">+</span></span>
-<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"Recent NYT Best Seller Ranks"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-2"><a></a><span class="fu">ggplot</span>(top_book_data, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rank, <span class="at">color =</span> title)) <span class="sc">+</span> </span>
+<span id="cb26-3"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb26-4"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">trans =</span> <span class="st">"reverse"</span>) <span class="sc">+</span></span>
+<span id="cb26-5"><a></a>  <span class="fu">xlab</span>(<span class="st">"Date"</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a></a>  <span class="fu">ylab</span>(<span class="st">"Rank"</span>) <span class="sc">+</span></span>
+<span id="cb26-7"><a></a>  <span class="fu">ggtitle</span>(<span class="fu">paste0</span>(<span class="st">"Recent NYT Best Seller Ranks"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="15_data-analysis-functions_files/figure-revealjs/unnamed-chunk-20-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="15_data-analysis-functions_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="looping-through-many-data-files-4" class="slide level2">
 <h2>Looping through many data files</h2>
 <p>We can also pull the top 5 books from each list:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>top_5s <span class="ot">&lt;-</span> <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ])</span>
-<span id="cb27-2"><a href="#cb27-2"></a>top_5s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>top_5s <span class="ot">&lt;-</span> <span class="fu">lapply</span>(bestseller_lists, <span class="cf">function</span>(x) x[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, ])</span>
+<span id="cb27-2"><a></a>top_5s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`2024-03-05`
   rank rank_last_week weeks_on_list asterisk dagger primary_isbn10
@@ -2356,34 +2356,36 @@ $`2023-12-19`
 <h2>Updating results for new data</h2>
 <p>Finally, we can combine some of these functions into a larger function that we can run every week to update our results.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>download_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb29-2"><a href="#cb29-2"></a>  <span class="co"># automatically pull today's date</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>  dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">Sys.Date</span>(), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
-<span id="cb29-4"><a href="#cb29-4"></a>  bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
-<span id="cb29-5"><a href="#cb29-5"></a>    dates,</span>
-<span id="cb29-6"><a href="#cb29-6"></a>    <span class="cf">function</span>(x) {</span>
-<span id="cb29-7"><a href="#cb29-7"></a>      <span class="co"># slow down execution by waiting 12 seconds</span></span>
-<span id="cb29-8"><a href="#cb29-8"></a>      <span class="fu">Sys.sleep</span>(<span class="dv">12</span>)</span>
-<span id="cb29-9"><a href="#cb29-9"></a>      jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
-<span id="cb29-10"><a href="#cb29-10"></a>        <span class="fu">paste0</span>(</span>
-<span id="cb29-11"><a href="#cb29-11"></a>          <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
-<span id="cb29-12"><a href="#cb29-12"></a>          x,</span>
-<span id="cb29-13"><a href="#cb29-13"></a>          <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
-<span id="cb29-14"><a href="#cb29-14"></a>          api_key</span>
-<span id="cb29-15"><a href="#cb29-15"></a>        )</span>
-<span id="cb29-16"><a href="#cb29-16"></a>      )<span class="sc">$</span>results<span class="sc">$</span>books</span>
-<span id="cb29-17"><a href="#cb29-17"></a>    }</span>
-<span id="cb29-18"><a href="#cb29-18"></a>  )</span>
-<span id="cb29-19"><a href="#cb29-19"></a>  <span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span>
-<span id="cb29-20"><a href="#cb29-20"></a>  <span class="fu">return</span>(bestseller_lists)</span>
-<span id="cb29-21"><a href="#cb29-21"></a>}</span>
-<span id="cb29-22"><a href="#cb29-22"></a>generate_plot <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb29-23"><a href="#cb29-23"></a>  <span class="co"># Add code here . . .</span></span>
-<span id="cb29-24"><a href="#cb29-24"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>download_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb29-2"><a></a>  <span class="co"># automatically pull today's date</span></span>
+<span id="cb29-3"><a></a>  dates <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">Sys.Date</span>(), <span class="at">by =</span> <span class="sc">-</span><span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">12</span>)</span>
+<span id="cb29-4"><a></a>  bestseller_lists <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb29-5"><a></a>    dates,</span>
+<span id="cb29-6"><a></a>    <span class="cf">function</span>(x) {</span>
+<span id="cb29-7"><a></a>      <span class="co"># slow down execution by waiting 12 seconds</span></span>
+<span id="cb29-8"><a></a>      <span class="fu">Sys.sleep</span>(<span class="dv">12</span>)</span>
+<span id="cb29-9"><a></a>      jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(</span>
+<span id="cb29-10"><a></a>        <span class="fu">paste0</span>(</span>
+<span id="cb29-11"><a></a>          <span class="st">"https://api.nytimes.com/svc/books/v3/lists/"</span>,</span>
+<span id="cb29-12"><a></a>          x,</span>
+<span id="cb29-13"><a></a>          <span class="st">"/hardcover-fiction.json?api-key="</span>,</span>
+<span id="cb29-14"><a></a>          api_key</span>
+<span id="cb29-15"><a></a>        )</span>
+<span id="cb29-16"><a></a>      )<span class="sc">$</span>results<span class="sc">$</span>books</span>
+<span id="cb29-17"><a></a>    }</span>
+<span id="cb29-18"><a></a>  )</span>
+<span id="cb29-19"><a></a>  <span class="fu">names</span>(bestseller_lists) <span class="ot">&lt;-</span> dates</span>
+<span id="cb29-20"><a></a>  <span class="fu">return</span>(bestseller_lists)</span>
+<span id="cb29-21"><a></a>}</span>
+<span id="cb29-22"><a></a>generate_plot <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb29-23"><a></a>  <span class="co"># Add code here . . .</span></span>
+<span id="cb29-24"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -2412,7 +2414,6 @@ $`2023-12-19`
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -2667,18 +2668,7 @@ $`2023-12-19`
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2710,11 +2700,50 @@ $`2023-12-19`
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2724,8 +2753,17 @@ $`2023-12-19`
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2739,7 +2777,11 @@ $`2023-12-19`
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

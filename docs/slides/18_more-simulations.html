@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Simulations</title>
+  <title>MATH167R – MATH167R: Simulations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Simulations">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Simulations – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -418,15 +419,15 @@ Peter Gao
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb1-4"><a href="#cb1-4"></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb1-5"><a href="#cb1-5"></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">mutate</span>(<span class="at">in_circle =</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="fu">ggplot</span>(random_points, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> in_circle)) <span class="sc">+</span> </span>
-<span id="cb1-8"><a href="#cb1-8"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb1-4"><a></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb1-5"><a></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">mutate</span>(<span class="at">in_circle =</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb1-7"><a></a><span class="fu">ggplot</span>(random_points, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> in_circle)) <span class="sc">+</span> </span>
+<span id="cb1-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-9"><a></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -437,11 +438,11 @@ Peter Gao
 <section id="warm-up-estimating-pi-2" class="slide level2">
 <h2>Warm up: Estimating <span class="math inline">\(\pi\)</span></h2>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/random_points_425063fdb6ffed3243d497a9a0b06835">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb2-2"><a href="#cb2-2"></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb2-3"><a href="#cb2-3"></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">mutate</span>(<span class="at">in_circle =</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>random_points <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pi_est =</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">mean</span>(in_circle))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb2-2"><a></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb2-3"><a></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a></a>  <span class="fu">mutate</span>(<span class="at">in_circle =</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb2-5"><a></a>random_points <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pi_est =</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">mean</span>(in_circle))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pi_est
 1  3.144</code></pre>
@@ -457,22 +458,22 @@ Peter Gao
 <h2>Random walks</h2>
 <p>We can simulate a one-dimensional random walk:</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_fb6d12257ddf96fdbae4c8218aee0ff6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>n_steps <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>x <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_steps)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>x[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n_steps) {</span>
-<span id="cb4-6"><a href="#cb4-6"></a>  x[i] <span class="ot">&lt;-</span> x[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb4-2"><a></a>n_steps <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb4-3"><a></a>x <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_steps)</span>
+<span id="cb4-4"><a></a>x[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb4-5"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n_steps) {</span>
+<span id="cb4-6"><a></a>  x[i] <span class="ot">&lt;-</span> x[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>)</span>
+<span id="cb4-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="random-walks-2" class="slide level2">
 <h2>Random walks</h2>
 <p>We can then plot our results:</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_plot_7c5f66019ceecda4873cc30ebb602f64">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_steps, x, <span class="at">type =</span> <span class="st">"l"</span>,</span>
-<span id="cb5-2"><a href="#cb5-2"></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_steps, x, <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb5-2"><a></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
+<span id="cb5-3"><a></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="18_more-simulations_files/figure-revealjs/random_walk_plot-1.png" width="960" class="r-stretch"></section>
@@ -480,25 +481,25 @@ Peter Gao
 <h2>A more functional version with recursion</h2>
 <p>We can also adopt a more functional approach:</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_functional_d66df8796bcb6156786c64845724d0aa">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>take_step <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">return</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>))</span>
-<span id="cb6-3"><a href="#cb6-3"></a>}</span>
-<span id="cb6-4"><a href="#cb6-4"></a>walk_randomly <span class="ot">&lt;-</span> <span class="cf">function</span>(n_steps, <span class="at">start =</span> <span class="dv">0</span>) {</span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="cf">if</span> (n_steps <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb6-6"><a href="#cb6-6"></a>    <span class="fu">return</span>(start)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>  }</span>
-<span id="cb6-8"><a href="#cb6-8"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(start, </span>
-<span id="cb6-9"><a href="#cb6-9"></a>         <span class="fu">walk_randomly</span>(n_steps <span class="sc">-</span> <span class="dv">1</span>, start <span class="sc">+</span> <span class="fu">take_step</span>()))</span>
-<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb6-11"><a href="#cb6-11"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>take_step <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb6-2"><a></a>  <span class="fu">return</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>))</span>
+<span id="cb6-3"><a></a>}</span>
+<span id="cb6-4"><a></a>walk_randomly <span class="ot">&lt;-</span> <span class="cf">function</span>(n_steps, <span class="at">start =</span> <span class="dv">0</span>) {</span>
+<span id="cb6-5"><a></a>  <span class="cf">if</span> (n_steps <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb6-6"><a></a>    <span class="fu">return</span>(start)</span>
+<span id="cb6-7"><a></a>  }</span>
+<span id="cb6-8"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(start, </span>
+<span id="cb6-9"><a></a>         <span class="fu">walk_randomly</span>(n_steps <span class="sc">-</span> <span class="dv">1</span>, start <span class="sc">+</span> <span class="fu">take_step</span>()))</span>
+<span id="cb6-10"><a></a>  <span class="fu">return</span>(x)</span>
+<span id="cb6-11"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="a-more-functional-version-with-recursion-1" class="slide level2">
 <h2>A more functional version with recursion</h2>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_functional_plot_ea3a05175423579cd34206ea838b2f70">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">walk_randomly</span>(<span class="dv">100</span>), <span class="at">type =</span> <span class="st">"l"</span>,</span>
-<span id="cb7-2"><a href="#cb7-2"></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3"></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">walk_randomly</span>(<span class="dv">100</span>), <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb7-2"><a></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
+<span id="cb7-3"><a></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="18_more-simulations_files/figure-revealjs/random_walk_functional_plot-1.png" width="960" class="r-stretch"></section>
@@ -506,22 +507,22 @@ Peter Gao
 <h2>A two-dimensional random walk</h2>
 <p>A two-dimensional random walk takes place on the integer grid, where at each step, we can either walk north, south, east, or west.</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/2d_random_walk_functional_17a91c5c768da7afc3e696ddd782c56a">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>take_step_2d <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  steps <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb8-3"><a href="#cb8-3"></a>                 <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
-<span id="cb8-4"><a href="#cb8-4"></a>                 <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb8-5"><a href="#cb8-5"></a>                 <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">return</span>(steps[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span>), ])</span>
-<span id="cb8-7"><a href="#cb8-7"></a>}</span>
-<span id="cb8-8"><a href="#cb8-8"></a>walk_randomly_2d <span class="ot">&lt;-</span> <span class="cf">function</span>(n_steps, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) {</span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="cf">if</span> (n_steps <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb8-10"><a href="#cb8-10"></a>    <span class="fu">return</span>(start)</span>
-<span id="cb8-11"><a href="#cb8-11"></a>  }</span>
-<span id="cb8-12"><a href="#cb8-12"></a>  x <span class="ot">&lt;-</span> <span class="fu">rbind</span>(start, </span>
-<span id="cb8-13"><a href="#cb8-13"></a>             <span class="fu">walk_randomly_2d</span>(n_steps <span class="sc">-</span> <span class="dv">1</span>, start <span class="sc">+</span> <span class="fu">take_step_2d</span>()))</span>
-<span id="cb8-14"><a href="#cb8-14"></a>  <span class="fu">rownames</span>(x) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb8-16"><a href="#cb8-16"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>take_step_2d <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb8-2"><a></a>  steps <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb8-3"><a></a>                 <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
+<span id="cb8-4"><a></a>                 <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb8-5"><a></a>                 <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb8-6"><a></a>  <span class="fu">return</span>(steps[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span>), ])</span>
+<span id="cb8-7"><a></a>}</span>
+<span id="cb8-8"><a></a>walk_randomly_2d <span class="ot">&lt;-</span> <span class="cf">function</span>(n_steps, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) {</span>
+<span id="cb8-9"><a></a>  <span class="cf">if</span> (n_steps <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb8-10"><a></a>    <span class="fu">return</span>(start)</span>
+<span id="cb8-11"><a></a>  }</span>
+<span id="cb8-12"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">rbind</span>(start, </span>
+<span id="cb8-13"><a></a>             <span class="fu">walk_randomly_2d</span>(n_steps <span class="sc">-</span> <span class="dv">1</span>, start <span class="sc">+</span> <span class="fu">take_step_2d</span>()))</span>
+<span id="cb8-14"><a></a>  <span class="fu">rownames</span>(x) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb8-15"><a></a>  <span class="fu">return</span>(x)</span>
+<span id="cb8-16"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="a-two-dimensional-random-walk-1" class="slide level2">
@@ -636,12 +637,12 @@ Peter Gao
 <h2>A two-dimensional random walk</h2>
 <p>We can use <code>geom_path()</code> to illustrate the path taken by the random walker:</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/2d_random_walk_functional_plot_b8ee5a2c19ccc82903141791cbc519e8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>coords_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> coords[, <span class="dv">1</span>],</span>
-<span id="cb10-3"><a href="#cb10-3"></a>                         <span class="at">y =</span> coords[, <span class="dv">2</span>],</span>
-<span id="cb10-4"><a href="#cb10-4"></a>                         <span class="at">step =</span> <span class="dv">1</span><span class="sc">:</span>n_steps)</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">ggplot</span>(coords_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> step)) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">geom_path</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a></a>coords_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> coords[, <span class="dv">1</span>],</span>
+<span id="cb10-3"><a></a>                         <span class="at">y =</span> coords[, <span class="dv">2</span>],</span>
+<span id="cb10-4"><a></a>                         <span class="at">step =</span> <span class="dv">1</span><span class="sc">:</span>n_steps)</span>
+<span id="cb10-5"><a></a><span class="fu">ggplot</span>(coords_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> step)) <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">geom_path</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="18_more-simulations_files/figure-revealjs/2d_random_walk_functional_plot-1.png" width="960" class="r-stretch"></section>
@@ -649,11 +650,11 @@ Peter Gao
 <h2>A two-dimensional random walk</h2>
 <p>We can use the <code>gganimate</code> package to animate our visualization:</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/2d_random_walk_functional_anim_23650307ee002e617845645b89ee1fab">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>anim_walk <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coords_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> step)) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">transition_reveal</span>(<span class="at">along =</span> step)</span>
-<span id="cb11-5"><a href="#cb11-5"></a>anim_walk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb11-2"><a></a>anim_walk <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coords_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> step)) <span class="sc">+</span></span>
+<span id="cb11-3"><a></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
+<span id="cb11-4"><a></a>  <span class="fu">transition_reveal</span>(<span class="at">along =</span> step)</span>
+<span id="cb11-5"><a></a>anim_walk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="18_more-simulations_files/figure-revealjs/2d_random_walk_functional_anim-1.gif" class="r-stretch"></section>
@@ -661,20 +662,20 @@ Peter Gao
 <h2>Random walks continued</h2>
 <p>Return to the code for a one-dimensional random walk:</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/unnamed-chunk-2_3a3db262f460d398ac2be4d695960191">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>take_step <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="co"># move forwards or backwards with equal probability</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">return</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>))</span>
-<span id="cb12-4"><a href="#cb12-4"></a>}</span>
-<span id="cb12-5"><a href="#cb12-5"></a>walk_randomly <span class="ot">&lt;-</span> <span class="cf">function</span>(n_steps, <span class="at">start =</span> <span class="dv">0</span>) {</span>
-<span id="cb12-6"><a href="#cb12-6"></a>  <span class="cf">if</span> (n_steps <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
-<span id="cb12-7"><a href="#cb12-7"></a>    <span class="fu">return</span>(start)</span>
-<span id="cb12-8"><a href="#cb12-8"></a>  }</span>
-<span id="cb12-9"><a href="#cb12-9"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(start, <span class="fu">walk_randomly</span>(n_steps <span class="sc">-</span> <span class="dv">1</span>, start <span class="sc">+</span> <span class="fu">take_step</span>()))</span>
-<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb12-11"><a href="#cb12-11"></a>}</span>
-<span id="cb12-12"><a href="#cb12-12"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">walk_randomly</span>(<span class="dv">100</span>), <span class="at">type =</span> <span class="st">"l"</span>,</span>
-<span id="cb12-13"><a href="#cb12-13"></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
-<span id="cb12-14"><a href="#cb12-14"></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>take_step <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb12-2"><a></a>  <span class="co"># move forwards or backwards with equal probability</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">return</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>))</span>
+<span id="cb12-4"><a></a>}</span>
+<span id="cb12-5"><a></a>walk_randomly <span class="ot">&lt;-</span> <span class="cf">function</span>(n_steps, <span class="at">start =</span> <span class="dv">0</span>) {</span>
+<span id="cb12-6"><a></a>  <span class="cf">if</span> (n_steps <span class="sc">&lt;=</span> <span class="dv">1</span>) {</span>
+<span id="cb12-7"><a></a>    <span class="fu">return</span>(start)</span>
+<span id="cb12-8"><a></a>  }</span>
+<span id="cb12-9"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>(start, <span class="fu">walk_randomly</span>(n_steps <span class="sc">-</span> <span class="dv">1</span>, start <span class="sc">+</span> <span class="fu">take_step</span>()))</span>
+<span id="cb12-10"><a></a>  <span class="fu">return</span>(x)</span>
+<span id="cb12-11"><a></a>}</span>
+<span id="cb12-12"><a></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">walk_randomly</span>(<span class="dv">100</span>), <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb12-13"><a></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
+<span id="cb12-14"><a></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="random-walks-continued-1" class="slide level2">
@@ -696,8 +697,8 @@ Peter Gao
 <p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</p>
 <p>Consider that the results of <code>walk_randomly(n_steps)</code> is a vector of length <code>n_steps</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">walk_randomly</span>(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb13-2"><a></a><span class="fu">walk_randomly</span>(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  0  1  2  3  2  3  2  1  0  1  2  1  0 -1  0 -1  0 -1  0  1</code></pre>
 </div>
@@ -705,8 +706,8 @@ Peter Gao
 <div class="fragment">
 <p>We need an expression to count the number of times we reach <span class="math inline">\(x=0\)</span> (minus the start).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">sum</span>(<span class="fu">walk_randomly</span>(<span class="dv">20</span>) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb15-2"><a></a><span class="fu">sum</span>(<span class="fu">walk_randomly</span>(<span class="dv">20</span>) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
@@ -718,8 +719,8 @@ Peter Gao
 <p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</p>
 <p>Now we can use <code>replicate()</code> to repeatedly evaluate our expression and then take the mean:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(<span class="dv">20</span>) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">-</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb17-2"><a></a><span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(<span class="dv">20</span>) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">-</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.518</code></pre>
 </div>
@@ -729,16 +730,16 @@ Peter Gao
 <h2>Varying <code>n_steps</code> parameter</h2>
 <p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/varying_n_steps_47960fc6a3fea8f443cdd1b85daa1327">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb19-2"><a href="#cb19-2"></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
-<span id="cb19-3"><a href="#cb19-3"></a>expected_returns <span class="ot">&lt;-</span> </span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">vapply</span>(ns, </span>
-<span id="cb19-5"><a href="#cb19-5"></a>         <span class="cf">function</span>(n_steps) </span>
-<span id="cb19-6"><a href="#cb19-6"></a>           <span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(n_steps) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">-</span> <span class="dv">1</span>)),</span>
-<span id="cb19-7"><a href="#cb19-7"></a>         <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
-<span id="cb19-8"><a href="#cb19-8"></a><span class="fu">plot</span>(ns, expected_returns, <span class="at">type =</span> <span class="st">"l"</span>, </span>
-<span id="cb19-9"><a href="#cb19-9"></a>     <span class="at">xlab =</span> <span class="st">"Number of steps"</span>, </span>
-<span id="cb19-10"><a href="#cb19-10"></a>     <span class="at">ylab =</span> <span class="st">"Mean returns to x = 0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb19-2"><a></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
+<span id="cb19-3"><a></a>expected_returns <span class="ot">&lt;-</span> </span>
+<span id="cb19-4"><a></a>  <span class="fu">vapply</span>(ns, </span>
+<span id="cb19-5"><a></a>         <span class="cf">function</span>(n_steps) </span>
+<span id="cb19-6"><a></a>           <span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(n_steps) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">-</span> <span class="dv">1</span>)),</span>
+<span id="cb19-7"><a></a>         <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
+<span id="cb19-8"><a></a><span class="fu">plot</span>(ns, expected_returns, <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb19-9"><a></a>     <span class="at">xlab =</span> <span class="st">"Number of steps"</span>, </span>
+<span id="cb19-10"><a></a>     <span class="at">ylab =</span> <span class="st">"Mean returns to x = 0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="varying-n_steps-parameter-1" class="slide level2">
@@ -756,16 +757,16 @@ Peter Gao
 <h2>Random walks continued</h2>
 <p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=10\)</span>, on average?</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/varying_n_steps_10_acd156f26db65d9ebc2aa7c65edd0399">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb20-2"><a href="#cb20-2"></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
-<span id="cb20-3"><a href="#cb20-3"></a>expected_returns <span class="ot">&lt;-</span> </span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">vapply</span>(ns, </span>
-<span id="cb20-5"><a href="#cb20-5"></a>         <span class="cf">function</span>(n_steps) </span>
-<span id="cb20-6"><a href="#cb20-6"></a>           <span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(n_steps) <span class="sc">==</span> <span class="dv">10</span>))),</span>
-<span id="cb20-7"><a href="#cb20-7"></a>         <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
-<span id="cb20-8"><a href="#cb20-8"></a><span class="fu">plot</span>(ns, expected_returns, <span class="at">type =</span> <span class="st">"l"</span>, </span>
-<span id="cb20-9"><a href="#cb20-9"></a>     <span class="at">xlab =</span> <span class="st">"Number of steps"</span>, </span>
-<span id="cb20-10"><a href="#cb20-10"></a>     <span class="at">ylab =</span> <span class="st">"Mean visits to x = 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb20-2"><a></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
+<span id="cb20-3"><a></a>expected_returns <span class="ot">&lt;-</span> </span>
+<span id="cb20-4"><a></a>  <span class="fu">vapply</span>(ns, </span>
+<span id="cb20-5"><a></a>         <span class="cf">function</span>(n_steps) </span>
+<span id="cb20-6"><a></a>           <span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(n_steps) <span class="sc">==</span> <span class="dv">10</span>))),</span>
+<span id="cb20-7"><a></a>         <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
+<span id="cb20-8"><a></a><span class="fu">plot</span>(ns, expected_returns, <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb20-9"><a></a>     <span class="at">xlab =</span> <span class="st">"Number of steps"</span>, </span>
+<span id="cb20-10"><a></a>     <span class="at">ylab =</span> <span class="st">"Mean visits to x = 10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="random-walks-continued-7" class="slide level2">
@@ -784,19 +785,19 @@ Peter Gao
 <section id="expected-time-of-return-1" class="slide level2">
 <h2>Expected time of return</h2>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/expected_return_41d36a43213f2085389c4938db8ac5b6">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>ns <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># for each n, estimate the proportion of random walks that do NOT return</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="co"># to zero, using simulations</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a>proportion_no_returns <span class="ot">&lt;-</span> </span>
-<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">vapply</span>(ns, </span>
-<span id="cb21-7"><a href="#cb21-7"></a>         <span class="cf">function</span>(n_steps) </span>
-<span id="cb21-8"><a href="#cb21-8"></a>           <span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">2500</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(n_steps) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">&lt;</span> <span class="dv">2</span>)),</span>
-<span id="cb21-9"><a href="#cb21-9"></a>         <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
-<span id="cb21-10"><a href="#cb21-10"></a><span class="fu">plot</span>(ns, proportion_no_returns, <span class="at">type =</span> <span class="st">"l"</span>, </span>
-<span id="cb21-11"><a href="#cb21-11"></a>     <span class="at">xlab =</span> <span class="st">"Number of steps"</span>, </span>
-<span id="cb21-12"><a href="#cb21-12"></a>     <span class="at">ylab =</span> <span class="st">"Mean visits to x = 10"</span>)</span>
-<span id="cb21-13"><a href="#cb21-13"></a>proportion_no_returns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-2"><a></a>ns <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb21-3"><a></a><span class="co"># for each n, estimate the proportion of random walks that do NOT return</span></span>
+<span id="cb21-4"><a></a><span class="co"># to zero, using simulations</span></span>
+<span id="cb21-5"><a></a>proportion_no_returns <span class="ot">&lt;-</span> </span>
+<span id="cb21-6"><a></a>  <span class="fu">vapply</span>(ns, </span>
+<span id="cb21-7"><a></a>         <span class="cf">function</span>(n_steps) </span>
+<span id="cb21-8"><a></a>           <span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="dv">2500</span>, <span class="fu">sum</span>(<span class="fu">walk_randomly</span>(n_steps) <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">&lt;</span> <span class="dv">2</span>)),</span>
+<span id="cb21-9"><a></a>         <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
+<span id="cb21-10"><a></a><span class="fu">plot</span>(ns, proportion_no_returns, <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb21-11"><a></a>     <span class="at">xlab =</span> <span class="st">"Number of steps"</span>, </span>
+<span id="cb21-12"><a></a>     <span class="at">ylab =</span> <span class="st">"Mean visits to x = 10"</span>)</span>
+<span id="cb21-13"><a></a>proportion_no_returns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="expected-time-of-return-2" class="slide level2">
@@ -813,8 +814,8 @@ Peter Gao
 <h2>Expected time of return</h2>
 <p>Does the infinite series converge?</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/partial_sums_2b0dae7e4ffd98193401cefa73372052">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># calculate partial sums of the infinite series</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">cumsum</span>(proportion_no_returns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># calculate partial sums of the infinite series</span></span>
+<span id="cb23-2"><a></a><span class="fu">cumsum</span>(proportion_no_returns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1.0000 2.0000 2.5080 2.9908 3.3628 3.7332 4.0640 4.3676 4.6512 4.9212
 [11] 5.1548 5.4052 5.6188 5.8528 6.0668 6.2752 6.4696 6.6892 6.8836 7.0620</code></pre>
@@ -837,32 +838,32 @@ Peter Gao
 <p>We often may want to be able to estimate the runtime of our simulations or to compare the speed of various versions of a simulation.</p>
 <p><strong>Example</strong>: Which is faster: vectorized code or a for loop?</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/example_vec_52e92f694d855fded8ecad789087a1c8">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># vectorized</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># for loop</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>x_for <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>){</span>
-<span id="cb25-7"><a href="#cb25-7"></a>  x_for[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb25-8"><a href="#cb25-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># vectorized</span></span>
+<span id="cb25-2"><a></a>x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb25-3"><a></a></span>
+<span id="cb25-4"><a></a><span class="co"># for loop</span></span>
+<span id="cb25-5"><a></a>x_for <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb25-6"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>){</span>
+<span id="cb25-7"><a></a>  x_for[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb25-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sys.time" class="slide level2">
 <h2><code>Sys.time()</code></h2>
 <p>The <code>Sys.time()</code> function can be used to report the time at evaluation.</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/systime_fe8e00a89f5c0876f1a2c3d0390b26ee">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb26-2"><a href="#cb26-2"></a>x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb26-3"><a href="#cb26-3"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>() <span class="sc">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb26-2"><a></a>x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb26-3"><a></a><span class="fu">print</span>(<span class="fu">Sys.time</span>() <span class="sc">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time difference of 0.003158092 secs</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb28-2"><a href="#cb28-2"></a>x_for <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>){</span>
-<span id="cb28-4"><a href="#cb28-4"></a>  x_for[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a>}</span>
-<span id="cb28-6"><a href="#cb28-6"></a><span class="fu">print</span>(<span class="fu">Sys.time</span>() <span class="sc">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb28-2"><a></a>x_for <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb28-3"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>){</span>
+<span id="cb28-4"><a></a>  x_for[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb28-5"><a></a>}</span>
+<span id="cb28-6"><a></a><span class="fu">print</span>(<span class="fu">Sys.time</span>() <span class="sc">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Time difference of 0.1249311 secs</code></pre>
 </div>
@@ -872,18 +873,18 @@ Peter Gao
 <h2><code>system.time()</code></h2>
 <p>Altenatively, the <code>system.time()</code> function can be used to time the evaluation of a specific expression,</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/systemtime_46ec9c93364c067ef80cd7bdbffa9b68">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">system.time</span>(x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">system.time</span>(x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
   0.003   0.000   0.002 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>x_for <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="fu">system.time</span>(</span>
-<span id="cb32-3"><a href="#cb32-3"></a></span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>){</span>
-<span id="cb32-5"><a href="#cb32-5"></a>    x_for[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb32-6"><a href="#cb32-6"></a>  }</span>
-<span id="cb32-7"><a href="#cb32-7"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>x_for <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb32-2"><a></a><span class="fu">system.time</span>(</span>
+<span id="cb32-3"><a></a></span>
+<span id="cb32-4"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100000</span>){</span>
+<span id="cb32-5"><a></a>    x_for[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb32-6"><a></a>  }</span>
+<span id="cb32-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
   0.108   0.009   0.118 </code></pre>
@@ -894,25 +895,25 @@ Peter Gao
 <h2><code>microbenchmark</code></h2>
 <p>Finally, the <code>microbenchmark</code> package can be used to time functions repeatedly.</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/microbenchmark_ea2c13f560d2d14287414a1dc1608977">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># vectorized</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>sq_vectorized <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb34-3"><a href="#cb34-3"></a>    <span class="fu">return</span>(x <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb34-4"><a href="#cb34-4"></a>}</span>
-<span id="cb34-5"><a href="#cb34-5"></a><span class="co"># for loop</span></span>
-<span id="cb34-6"><a href="#cb34-6"></a>sq_for_loop <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb34-7"><a href="#cb34-7"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
-<span id="cb34-8"><a href="#cb34-8"></a>        x[i] <span class="ot">&lt;-</span> x[i] <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb34-9"><a href="#cb34-9"></a>    }</span>
-<span id="cb34-10"><a href="#cb34-10"></a>    <span class="fu">return</span>(x)</span>
-<span id="cb34-11"><a href="#cb34-11"></a>}</span>
-<span id="cb34-12"><a href="#cb34-12"></a></span>
-<span id="cb34-13"><a href="#cb34-13"></a><span class="fu">library</span>(microbenchmark)</span>
-<span id="cb34-14"><a href="#cb34-14"></a><span class="co"># microbenchmark to compare the two functions</span></span>
-<span id="cb34-15"><a href="#cb34-15"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb34-16"><a href="#cb34-16"></a>compare_sq <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(<span class="fu">sq_vectorized</span>(x),</span>
-<span id="cb34-17"><a href="#cb34-17"></a>                             <span class="fu">sq_for_loop</span>(x),</span>
-<span id="cb34-18"><a href="#cb34-18"></a>                             <span class="at">times =</span> <span class="dv">100</span>)</span>
-<span id="cb34-19"><a href="#cb34-19"></a>compare_sq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="co"># vectorized</span></span>
+<span id="cb34-2"><a></a>sq_vectorized <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb34-3"><a></a>    <span class="fu">return</span>(x <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb34-4"><a></a>}</span>
+<span id="cb34-5"><a></a><span class="co"># for loop</span></span>
+<span id="cb34-6"><a></a>sq_for_loop <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb34-7"><a></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
+<span id="cb34-8"><a></a>        x[i] <span class="ot">&lt;-</span> x[i] <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb34-9"><a></a>    }</span>
+<span id="cb34-10"><a></a>    <span class="fu">return</span>(x)</span>
+<span id="cb34-11"><a></a>}</span>
+<span id="cb34-12"><a></a></span>
+<span id="cb34-13"><a></a><span class="fu">library</span>(microbenchmark)</span>
+<span id="cb34-14"><a></a><span class="co"># microbenchmark to compare the two functions</span></span>
+<span id="cb34-15"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb34-16"><a></a>compare_sq <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(<span class="fu">sq_vectorized</span>(x),</span>
+<span id="cb34-17"><a></a>                             <span class="fu">sq_for_loop</span>(x),</span>
+<span id="cb34-18"><a></a>                             <span class="at">times =</span> <span class="dv">100</span>)</span>
+<span id="cb34-19"><a></a>compare_sq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: nanoseconds
              expr   min    lq     mean median    uq     max neval
@@ -935,15 +936,15 @@ Peter Gao
 <h2>Example: inverting matrices.</h2>
 <p>In practice, timing code can be used to examine these relationships.</p>
 <div class="cell" data-hash="18_more-simulations_cache/revealjs/inversion_b72712dd7f5d83e0c53f7afdc3629f7e">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>compare_mat <span class="ot">&lt;-</span> </span>
-<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">microbenchmark</span>(</span>
-<span id="cb36-3"><a href="#cb36-3"></a>    <span class="at">mat_3_x_3 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">9</span>), <span class="at">nrow =</span> <span class="dv">3</span>)),</span>
-<span id="cb36-4"><a href="#cb36-4"></a>    <span class="at">mat_5_x_5 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">25</span>), <span class="at">nrow =</span> <span class="dv">5</span>)),</span>
-<span id="cb36-5"><a href="#cb36-5"></a>    <span class="at">mat_7_x_7 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">49</span>), <span class="at">nrow =</span> <span class="dv">7</span>)),</span>
-<span id="cb36-6"><a href="#cb36-6"></a>    <span class="at">mat_9_x_9 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">81</span>), <span class="at">nrow =</span> <span class="dv">9</span>)),</span>
-<span id="cb36-7"><a href="#cb36-7"></a>    <span class="at">times =</span> <span class="dv">100</span></span>
-<span id="cb36-8"><a href="#cb36-8"></a>  )</span>
-<span id="cb36-9"><a href="#cb36-9"></a>compare_mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>compare_mat <span class="ot">&lt;-</span> </span>
+<span id="cb36-2"><a></a>  <span class="fu">microbenchmark</span>(</span>
+<span id="cb36-3"><a></a>    <span class="at">mat_3_x_3 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">9</span>), <span class="at">nrow =</span> <span class="dv">3</span>)),</span>
+<span id="cb36-4"><a></a>    <span class="at">mat_5_x_5 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">25</span>), <span class="at">nrow =</span> <span class="dv">5</span>)),</span>
+<span id="cb36-5"><a></a>    <span class="at">mat_7_x_7 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">49</span>), <span class="at">nrow =</span> <span class="dv">7</span>)),</span>
+<span id="cb36-6"><a></a>    <span class="at">mat_9_x_9 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">81</span>), <span class="at">nrow =</span> <span class="dv">9</span>)),</span>
+<span id="cb36-7"><a></a>    <span class="at">times =</span> <span class="dv">100</span></span>
+<span id="cb36-8"><a></a>  )</span>
+<span id="cb36-9"><a></a>compare_mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: microseconds
       expr    min      lq     mean  median      uq      max neval
@@ -957,8 +958,10 @@ Peter Gao
 <section id="section" class="slide level2">
 <h2></h2>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -987,7 +990,6 @@ Peter Gao
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1242,18 +1244,7 @@ Peter Gao
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1285,11 +1276,50 @@ Peter Gao
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1299,8 +1329,17 @@ Peter Gao
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1314,7 +1353,11 @@ Peter Gao
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

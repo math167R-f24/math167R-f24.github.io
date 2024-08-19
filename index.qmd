@@ -2,13 +2,14 @@
 title: "MATH167R: Statistical Programming with R"
 subtitle: "Fall 2024"
 tbl-colwidths: [5,10,20,10,10,10]
+format: html
 draft: false
 ---
 
 ::: column-screen-inset-right
 | Week | Date   | Topic                                 | Slides | Check-in | Lab |
 |:----:|--------|---------------------------------------|:------:|:--------:|:---:|
-|  1   | W 8/21 | Course Overview and Introduction to R |        |          |     |
+|  1   | W 8/21 | Course Overview and Introduction to R |    [Slides 01](slides/01_overview.html){.label .label-green}          |                                                               | [Lab 01](labs/01_lab.html){.label .label-red} |
 |  2   | M 8/26 | R fundamentals                        |        |          |     |
 |      | W 8/28 | R fundamentals                        |        |          |     |
 |  3   | M 9/2  | *Labor Day - No class*                       |        |          |     |

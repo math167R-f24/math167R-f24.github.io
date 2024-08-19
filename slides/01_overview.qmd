@@ -12,9 +12,9 @@ editor: visual
 +------------------+------------------------------------------------------------------------------------------------------------------+
 | **Instructor**   | Peter Gao                                                                                                        |
 +==================+==================================================================================================================+
-| **Lectures**     | MW 12-1:15pm (Section 01) and 1:30-2:45pm (Section 02) in MH235.                                                 |
+| **Lectures**     |  Weekly on Monday and Wednesday, 12-1:15pm in MH235.                                                 |
 +------------------+------------------------------------------------------------------------------------------------------------------+
-| **Office Hours** | MW 10:30-11:30am in MH311 or email for an appointment                                                            |
+| **Office Hours** | M 3-4pm and W 10:30-11:30am in MH426                                                           |
 +------------------+------------------------------------------------------------------------------------------------------------------+
 | **Email**        | peter.gao \[at sjsu\]                                                                                            |
 |                  |                                                                                                                  |
@@ -155,9 +155,9 @@ Posts may not include substantial amounts of code that can be used for a solutio
     `code snippet` \
     It returned the following error: \
     `error message` \
-    Does anyone know why? I already tried\...
+    Does anyone know why? I already tried...
 
--   I don't understand the concept from Slide 18 today. Could anyone elaborate on why\...
+-   I don't understand the concept from Slide 18 today. Could anyone elaborate on why...
 :::
 :::
 
@@ -165,7 +165,7 @@ Posts may not include substantial amounts of code that can be used for a solutio
 
 |           |                                                       |
 |-----------|-------------------------------------------------------|
-| In-person | MW 10:30-11:30am in MH311 or email for an appointment |
+| In-person | M 3-4pm and W 10:30-11:30am in MH426 or email for an appointment |
 | Zoom      | By appointment                                        |
 
 Come by:
@@ -335,7 +335,7 @@ This isn't necessarily "right" or "wrong"-- this is just how R works! R is full 
 
 RStudio is an integrated development environment (IDE) designed to make your life easier.
 
--   Organizes scripts, files, plots, code console, \...
+-   Organizes scripts, files, plots, code console, ...
 
 -   Highlights syntax
 
@@ -366,11 +366,13 @@ lm(body_mass_g ~ flipper_length_mm, data = penguins)
 
 ## Visualization
 
-```{r, echo = T, warning = F}
+```{r, echo = T, warning = F, fig.cap = "Scatter plot showing the positive correlation between flipper length in millimeters and body mass in grams, with a blue line of best fit."}
 library(ggplot2)
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point() + geom_smooth(method = "lm")
 ```
+
+
 
 ## Communication
 

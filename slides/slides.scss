@@ -86,3 +86,12 @@ table {
 .cell-output {
   font-size: 75%;
 }
+.reveal {
+  .slides {
+    .slide {
+      img+p.caption {
+        font-size: 0.5em;
+      }
+    }
+  }
+}

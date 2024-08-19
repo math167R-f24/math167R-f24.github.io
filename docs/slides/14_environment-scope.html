@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Environment and Scope</title>
+  <title>MATH167R – MATH167R: Environment and Scope</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Environment and Scope">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Environment and Scope – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -416,8 +417,8 @@ Peter Gao
 <p>For example, if <span class="math inline">\(f(x) = x^2\)</span> and <span class="math inline">\(g(x)=x+2\)</span>, what is <span class="math inline">\(f(g(x))\)</span>?</p>
 <p>Throughout this class we have been composing functions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">print</span>(<span class="fu">sum</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb1-2"><a></a><span class="fu">print</span>(<span class="fu">sum</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 55</code></pre>
 </div>
@@ -425,7 +426,7 @@ Peter Gao
 <div class="fragment">
 <p>We can also compose functions using pipes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>x <span class="sc">|&gt;</span> <span class="fu">sum</span>() <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 55</code></pre>
 </div>
@@ -447,11 +448,11 @@ Peter Gao
 <p>Today we’ll talk about <strong>scoping</strong>, which involves finding a value associated with a name.</p>
 <p>Exercise: What will the following code return?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>}</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">my_function</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb5-3"><a></a>  <span class="fu">return</span>(x)</span>
+<span id="cb5-4"><a></a>}</span>
+<span id="cb5-5"><a></a><span class="fu">my_function</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -465,12 +466,12 @@ Peter Gao
 <h2>Environments and scoping</h2>
 <p>Exercise: What about this code?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  x <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>}</span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">my_function</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb7-2"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb7-3"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb7-4"><a></a>  <span class="fu">return</span>(x)</span>
+<span id="cb7-5"><a></a>}</span>
+<span id="cb7-6"><a></a><span class="fu">my_function</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -489,15 +490,15 @@ Peter Gao
 <p><strong>Name masking</strong>: names defined within a function mask names defined outside the function.</p>
 <p><strong>Exercise</strong>: What will the following code return?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb9-4"><a href="#cb9-4"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>  y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">return</span>(<span class="fu">c</span>(x, y))</span>
-<span id="cb9-7"><a href="#cb9-7"></a>}</span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="fu">my_function</span>()</span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb9-2"><a></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb9-3"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb9-4"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb9-5"><a></a>  y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">return</span>(<span class="fu">c</span>(x, y))</span>
+<span id="cb9-7"><a></a>}</span>
+<span id="cb9-8"><a></a><span class="fu">my_function</span>()</span>
+<span id="cb9-9"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -515,14 +516,14 @@ Peter Gao
 <p>Now, <code>y</code> is a <strong>free variable</strong>, meaning that it is not defined as a formal argument or declared in the body of the function?</p>
 <p><strong>Exercise</strong>: What will the following code return?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb12-4"><a href="#cb12-4"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">return</span>(<span class="fu">c</span>(x, y))</span>
-<span id="cb12-6"><a href="#cb12-6"></a>}</span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="fu">my_function</span>()</span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb12-2"><a></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb12-3"><a></a>my_function <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb12-4"><a></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">return</span>(<span class="fu">c</span>(x, y))</span>
+<span id="cb12-6"><a></a>}</span>
+<span id="cb12-7"><a></a><span class="fu">my_function</span>()</span>
+<span id="cb12-8"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -544,13 +545,13 @@ Peter Gao
 <p>An environment is a collection of pairs of symbols (names) and values.</p>
 <p>We can think of environments as simply bags of names bound to values (figure from <em>Advanced R</em>)</p>
 
-<img data-src="https://d33wubrfki0l68.cloudfront.net/f5dbd02f5235283e78decdd4f18692b40f1ddf42/c5683/diagrams/environments/bindings.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="https://d33wubrfki0l68.cloudfront.net/f5dbd02f5235283e78decdd4f18692b40f1ddf42/c5683/diagrams/environments/bindings.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="environments-1" class="slide level2">
 <h2>Environments</h2>
 <p>Environments are organized hierarchically: Every environment has a parent and may have one or multiple children.</p>
 <p>There is one environment without a parent: the empty environment.</p>
 
-<img data-src="https://d33wubrfki0l68.cloudfront.net/ff7bec1ccb1455917a6c9d0f44f114ef5c78519f/39793/diagrams/environments/parents-empty.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="https://d33wubrfki0l68.cloudfront.net/ff7bec1ccb1455917a6c9d0f44f114ef5c78519f/39793/diagrams/environments/parents-empty.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="the-global-environment" class="slide level2">
 <h2>The global environment</h2>
 <p>When we work in RStudio and interact with the console, we are generally working in the <strong>global environment</strong>. The global environment is often called the workspace.</p>
@@ -560,7 +561,7 @@ Peter Gao
 <h2>Package environments</h2>
 <p>Whenever we load a package with <code>library()</code> we add a parent to the global environment:</p>
 
-<img data-src="https://d33wubrfki0l68.cloudfront.net/038b2da4f5db1d2a8acaf4ee1e7d08d04ab36ebc/ac22a/diagrams/environments/search-path.png" class="r-stretch quarto-figure-center"><p>We can see the current search path using the <code>search()</code> function.</p>
+<img data-src="https://d33wubrfki0l68.cloudfront.net/038b2da4f5db1d2a8acaf4ee1e7d08d04ab36ebc/ac22a/diagrams/environments/search-path.png" class="quarto-figure quarto-figure-center r-stretch"><p>We can see the current search path using the <code>search()</code> function.</p>
 </section>
 <section id="searching-for-a-value" class="slide level2">
 <h2>Searching for a value</h2>
@@ -576,17 +577,17 @@ Peter Gao
 <h2>Example</h2>
 <p><strong>Exercise</strong>: What will the following code return?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb15-4"><a href="#cb15-4"></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb15-6"><a href="#cb15-6"></a>}</span>
-<span id="cb15-7"><a href="#cb15-7"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb15-8"><a href="#cb15-8"></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">return</span>(y)</span>
-<span id="cb15-10"><a href="#cb15-10"></a>}</span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="fu">g</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb15-2"><a></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb15-3"><a></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb15-4"><a></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">return</span>(x)</span>
+<span id="cb15-6"><a></a>}</span>
+<span id="cb15-7"><a></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb15-8"><a></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb15-9"><a></a>  <span class="fu">return</span>(y)</span>
+<span id="cb15-10"><a></a>}</span>
+<span id="cb15-11"><a></a><span class="fu">g</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -600,17 +601,17 @@ Peter Gao
 <h2>Example</h2>
 <p><strong>Exercise</strong>: What will the following code return?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb17-4"><a href="#cb17-4"></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">return</span>(x)</span>
-<span id="cb17-6"><a href="#cb17-6"></a>}</span>
-<span id="cb17-7"><a href="#cb17-7"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb17-8"><a href="#cb17-8"></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">return</span>(y)</span>
-<span id="cb17-10"><a href="#cb17-10"></a>}</span>
-<span id="cb17-11"><a href="#cb17-11"></a><span class="fu">g</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb17-2"><a></a>y <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb17-3"><a></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb17-4"><a></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb17-5"><a></a>  <span class="fu">return</span>(x)</span>
+<span id="cb17-6"><a></a>}</span>
+<span id="cb17-7"><a></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
+<span id="cb17-8"><a></a>  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb17-9"><a></a>  <span class="fu">return</span>(y)</span>
+<span id="cb17-10"><a></a>}</span>
+<span id="cb17-11"><a></a><span class="fu">g</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -624,16 +625,16 @@ Peter Gao
 <h2>Example</h2>
 <p><strong>Exercise</strong>: What will the following code return?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb19-2"><a href="#cb19-2"></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb19-3"><a href="#cb19-3"></a>    f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb19-4"><a href="#cb19-4"></a>      x <span class="sc">^</span> <span class="dv">2</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>    }</span>
-<span id="cb19-6"><a href="#cb19-6"></a>    <span class="fu">f</span>() <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a>  }</span>
-<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">f</span>(x) <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>}</span>
-<span id="cb19-10"><a href="#cb19-10"></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb19-2"><a></a>  f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb19-3"><a></a>    f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb19-4"><a></a>      x <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb19-5"><a></a>    }</span>
+<span id="cb19-6"><a></a>    <span class="fu">f</span>() <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb19-7"><a></a>  }</span>
+<span id="cb19-8"><a></a>  <span class="fu">f</span>(x) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb19-9"><a></a>}</span>
+<span id="cb19-10"><a></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -655,16 +656,16 @@ Peter Gao
 <p>Each time you <strong>execute</strong> a function by calling it, a temporary environment is created.</p>
 <p><strong>Exercise</strong>: What will the following code return?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"a"</span>)) {</span>
-<span id="cb21-3"><a href="#cb21-3"></a>    a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>  } <span class="cf">else</span> {</span>
-<span id="cb21-5"><a href="#cb21-5"></a>    a <span class="ot">&lt;-</span> a <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>  }</span>
-<span id="cb21-7"><a href="#cb21-7"></a>  a</span>
-<span id="cb21-8"><a href="#cb21-8"></a>}</span>
-<span id="cb21-9"><a href="#cb21-9"></a><span class="fu">f</span>()</span>
-<span id="cb21-10"><a href="#cb21-10"></a><span class="fu">f</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb21-2"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">exists</span>(<span class="st">"a"</span>)) {</span>
+<span id="cb21-3"><a></a>    a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb21-4"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb21-5"><a></a>    a <span class="ot">&lt;-</span> a <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb21-6"><a></a>  }</span>
+<span id="cb21-7"><a></a>  a</span>
+<span id="cb21-8"><a></a>}</span>
+<span id="cb21-9"><a></a><span class="fu">f</span>()</span>
+<span id="cb21-10"><a></a><span class="fu">f</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -681,12 +682,12 @@ Peter Gao
 <h2>Super assignment</h2>
 <p>The <code>&lt;&lt;-</code> operator doesn’t create a variable in the current environment. It looks for a matching name in the parent environments. If it finds one, it updates that variable. If it doesn’t, it creates a variable in the <strong>global environment</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb24-3"><a href="#cb24-3"></a>  x <span class="ot">&lt;&lt;-</span> <span class="dv">1</span></span>
-<span id="cb24-4"><a href="#cb24-4"></a>}</span>
-<span id="cb24-5"><a href="#cb24-5"></a><span class="fu">f</span>()</span>
-<span id="cb24-6"><a href="#cb24-6"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb24-2"><a></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb24-3"><a></a>  x <span class="ot">&lt;&lt;-</span> <span class="dv">1</span></span>
+<span id="cb24-4"><a></a>}</span>
+<span id="cb24-5"><a></a><span class="fu">f</span>()</span>
+<span id="cb24-6"><a></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
@@ -702,8 +703,10 @@ Peter Gao
 <li><p><strong>Function execution environments</strong>: Function execution environments are generally temporary, so whatever happens within a function does not affect the global environment.</p></li>
 </ul>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -732,7 +735,6 @@ Peter Gao
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -987,18 +989,7 @@ Peter Gao
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1030,11 +1021,50 @@ Peter Gao
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1044,8 +1074,17 @@ Peter Gao
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1059,7 +1098,11 @@ Peter Gao
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Advanced visualizations</title>
+  <title>MATH167R – MATH167R: Advanced visualizations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,11 +385,10 @@
       margin-right: 0; 
     }
   </style>
-  
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<meta property="og:title" content="MATH167R - MATH167R: Advanced visualizations">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Advanced visualizations – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -418,18 +418,18 @@ Peter Gao
 <h2>Example: PM 2.5 data</h2>
 <p>The EPA provides daily data on air quality for monitoring stations across the country, which you can download <a href="https://www.epa.gov/outdoor-air-quality-data/download-daily-data">here</a>. The below code downloads a subset of this data from the course website for the pollutant PM 2.5 (atmospheric particulate matter with a diameter of less than 2.5 micrometers) and AQI for 2023.</p>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-1_88079df84b2e8b05ec7ea7b757a6b46c">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pm_2_5 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://math167r-s24.github.io/static/CA_PM2_5_2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>pm_2_5 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://math167r-s24.github.io/static/CA_PM2_5_2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-pm-2.5-data-1" class="slide level2">
 <h2>Example: PM 2.5 data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">head</span>(pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">head</span>(pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:480px; ">
-<table class="table table-striped" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped caption-top" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Date</th>
@@ -597,7 +597,7 @@ Peter Gao
 <section id="example-pm-2.5-data-2" class="slide level2">
 <h2>Example: PM 2.5 data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">summary</span>(pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">summary</span>(pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Date              Source            Site ID               POC        
  Length:51541       Length:51541       Length:51541       Min.   : 1.000  
@@ -676,10 +676,10 @@ Peter Gao
 <h2>Data wrangling</h2>
 <p>Note that the <code>Date</code> variable is a character–we can convert this into a <code>Date</code> class object using the <code>lubridate</code> package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">mdy</span>(Date))</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">summary</span>(pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a></a>pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">mdy</span>(Date))</span>
+<span id="cb5-4"><a></a><span class="fu">summary</span>(pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      Date               Source            Site ID               POC        
  Min.   :2023-01-01   Length:51541       Length:51541       Min.   : 1.000  
@@ -741,32 +741,31 @@ Peter Gao
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>jan1_pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">"2023-01-01"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">hist</span>(jan1_pm_2_5<span class="sc">$</span><span class="st">`</span><span class="at">Daily Mean PM2.5 Concentration</span><span class="st">`</span>,</span>
-<span id="cb7-3"><a href="#cb7-3"></a>     <span class="at">main =</span> <span class="st">"Jan 1"</span>,  <span class="at">xlab =</span> <span class="st">"PM 2.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>jan1_pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">"2023-01-01"</span>)</span>
+<span id="cb7-2"><a></a><span class="fu">hist</span>(jan1_pm_2_5<span class="sc">$</span><span class="st">`</span><span class="at">Daily Mean PM2.5 Concentration</span><span class="st">`</span>,</span>
+<span id="cb7-3"><a></a>     <span class="at">main =</span> <span class="st">"Jan 1"</span>,  <span class="at">xlab =</span> <span class="st">"PM 2.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:100.0%"></p>
+<p><img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>sep19_pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">"2023-09-19"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">hist</span>(sep19_pm_2_5<span class="sc">$</span><span class="st">`</span><span class="at">Daily Mean PM2.5 Concentration</span><span class="st">`</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>     <span class="at">main =</span> <span class="st">"October 19"</span>, <span class="at">xlab =</span> <span class="st">"PM 2.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>sep19_pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">"2023-09-19"</span>)</span>
+<span id="cb8-2"><a></a><span class="fu">hist</span>(sep19_pm_2_5<span class="sc">$</span><span class="st">`</span><span class="at">Daily Mean PM2.5 Concentration</span><span class="st">`</span>,</span>
+<span id="cb8-3"><a></a>     <span class="at">main =</span> <span class="st">"October 19"</span>, <span class="at">xlab =</span> <span class="st">"PM 2.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:100.0%"></p>
+<p><img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="working-with-spatial-data" class="slide level2">
 <h2>Working with spatial data</h2>
@@ -775,28 +774,28 @@ Peter Gao
 <section id="naively-working-with-latitudelongitude" class="slide level2">
 <h2>Naively working with latitude/longitude</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sep19_pm_2_5, </span>
-<span id="cb9-2"><a href="#cb9-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> SITE_LONGITUDE, </span>
-<span id="cb9-3"><a href="#cb9-3"></a>                     <span class="at">y =</span> SITE_LATITUDE, </span>
-<span id="cb9-4"><a href="#cb9-4"></a>                     <span class="at">color =</span> DAILY_AQI_VALUE)) <span class="sc">+</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> sep19_pm_2_5, </span>
+<span id="cb9-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> SITE_LONGITUDE, </span>
+<span id="cb9-3"><a></a>                     <span class="at">y =</span> SITE_LATITUDE, </span>
+<span id="cb9-4"><a></a>                     <span class="at">color =</span> DAILY_AQI_VALUE)) <span class="sc">+</span></span>
+<span id="cb9-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="naively-working-with-latitudelongitude-1" class="slide level2">
 <h2>Naively working with latitude/longitude</h2>
 <p>Compare with January 1:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> jan1_pm_2_5, </span>
-<span id="cb10-2"><a href="#cb10-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> SITE_LONGITUDE, </span>
-<span id="cb10-3"><a href="#cb10-3"></a>                     <span class="at">y =</span> SITE_LATITUDE, </span>
-<span id="cb10-4"><a href="#cb10-4"></a>                     <span class="at">color =</span> DAILY_AQI_VALUE)) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> jan1_pm_2_5, </span>
+<span id="cb10-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> SITE_LONGITUDE, </span>
+<span id="cb10-3"><a></a>                     <span class="at">y =</span> SITE_LATITUDE, </span>
+<span id="cb10-4"><a></a>                     <span class="at">color =</span> DAILY_AQI_VALUE)) <span class="sc">+</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="naively-working-with-latitudelongitude-2" class="slide level2">
 <h2>Naively working with latitude/longitude</h2>
 <p>We can only get so far just treating longitude and latitude as x and y. In particular, near the poles, we will get large amounts of distortion:</p>
@@ -815,20 +814,20 @@ Peter Gao
 <h2>Converting data to simple features object</h2>
 <p>When each row in our data frame refers to a point with longitude and latitude, we can use the <code>st_as_sf</code> function to convert our data frame to an <code>sf</code> object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>sep19_pm_2_5 <span class="ot">&lt;-</span> sep19_pm_2_5 <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">st_as_sf</span>(</span>
-<span id="cb11-4"><a href="#cb11-4"></a>    <span class="co"># what columns hold lon/lat?</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>    <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"SITE_LONGITUDE"</span>, <span class="st">"SITE_LATITUDE"</span>), </span>
-<span id="cb11-6"><a href="#cb11-6"></a>     <span class="co"># what projection are we using?</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a>    <span class="at">crs =</span> <span class="fu">st_crs</span>(<span class="dv">4326</span>)</span>
-<span id="cb11-8"><a href="#cb11-8"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(sf)</span>
+<span id="cb11-2"><a></a>sep19_pm_2_5 <span class="ot">&lt;-</span> sep19_pm_2_5 <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a></a>  <span class="fu">st_as_sf</span>(</span>
+<span id="cb11-4"><a></a>    <span class="co"># what columns hold lon/lat?</span></span>
+<span id="cb11-5"><a></a>    <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"SITE_LONGITUDE"</span>, <span class="st">"SITE_LATITUDE"</span>), </span>
+<span id="cb11-6"><a></a>     <span class="co"># what projection are we using?</span></span>
+<span id="cb11-7"><a></a>    <span class="at">crs =</span> <span class="fu">st_crs</span>(<span class="dv">4326</span>)</span>
+<span id="cb11-8"><a></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="converting-data-to-simple-features-object-1" class="slide level2">
 <h2>Converting data to simple features object</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">head</span>(sep19_pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">head</span>(sep19_pm_2_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 6 features and 18 fields
 Geometry type: POINT
@@ -856,7 +855,7 @@ Geodetic CRS:  WGS 84
 <h2>Visualizing point data</h2>
 <p>We can easily visualize this data now using the <code>geom_sf()</code> function, which automatically handles sf objects.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ggplot</span>(sep19_pm_2_5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(sep19_pm_2_5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
@@ -864,109 +863,109 @@ Geodetic CRS:  WGS 84
 <h2>Visualizing point data</h2>
 <p>We can add a basemap by downloading the outline of California from the <code>tigris</code> package.</p>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-13_626f156df3a36cb7f2434a59faa3133c">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tigris)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>CA_sf <span class="ot">&lt;-</span> <span class="fu">states</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"California"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(tigris)</span>
+<span id="cb15-2"><a></a>CA_sf <span class="ot">&lt;-</span> <span class="fu">states</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"California"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-15_a06ed0a49e9a447ba1b55d595ff2fb82">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_pm_2_5) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
+<span id="cb16-3"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_pm_2_5) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-15-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="visualizing-point-data-2" class="slide level2">
 <h2>Visualizing point data</h2>
 <p>We can then adjust the color to show <code>DAILY_AQI_VALUE</code> and also change the color scale:</p>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-16_e310a9e7a5ff6d0cf8582185588ac6a3">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_pm_2_5, </span>
-<span id="cb17-4"><a href="#cb17-4"></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> DAILY_AQI_VALUE)) <span class="sc">+</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
+<span id="cb17-3"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_pm_2_5, </span>
+<span id="cb17-4"><a></a>          <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> DAILY_AQI_VALUE)) <span class="sc">+</span></span>
+<span id="cb17-5"><a></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-16-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="exercise" class="slide level2">
 <h2>Exercise</h2>
 <p>How do we create the following plot?</p>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-17-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="spatial-polygon-data" class="slide level2">
 <h2>Spatial Polygon data</h2>
 <p>The AQI data we downloaded also contains county information. We can compute county level mean AQI using <code>group_by</code> and <code>summarize</code>:</p>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-18_4379410c01cc232bda4b5a0603123eee">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>sep19_county_means <span class="ot">&lt;-</span> sep19_pm_2_5 <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="co"># remove the geometry; we don't need it here</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">st_set_geometry</span>(<span class="cn">NULL</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">group_by</span>(COUNTY) <span class="sc">|&gt;</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">summarize</span>(<span class="at">AQI =</span> <span class="fu">mean</span>(DAILY_AQI_VALUE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>sep19_county_means <span class="ot">&lt;-</span> sep19_pm_2_5 <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a></a>  <span class="co"># remove the geometry; we don't need it here</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">st_set_geometry</span>(<span class="cn">NULL</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-4"><a></a>  <span class="fu">group_by</span>(COUNTY) <span class="sc">|&gt;</span></span>
+<span id="cb18-5"><a></a>  <span class="fu">summarize</span>(<span class="at">AQI =</span> <span class="fu">mean</span>(DAILY_AQI_VALUE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="spatial-polygon-data-1" class="slide level2">
 <h2>Spatial Polygon data</h2>
 <p>We can then create a county-level <strong>polygon</strong> map by downloading county-level boundaries using <code>tigris</code>.</p>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-19_ec50a051a53921119b6e09754a6dfdd7">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>CA_counties_sf <span class="ot">&lt;-</span> <span class="fu">counties</span>(<span class="at">state =</span> <span class="st">"CA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>CA_counties_sf <span class="ot">&lt;-</span> <span class="fu">counties</span>(<span class="at">state =</span> <span class="st">"CA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-21_b7c958ad96fb908f09efeccf2252ed26">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>sep19_county_means <span class="ot">&lt;-</span> CA_counties_sf <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">right_join</span>(sep19_county_means, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"NAME"</span> <span class="ot">=</span> <span class="st">"COUNTY"</span>)) </span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_county_means, <span class="fu">aes</span>(<span class="at">fill =</span> AQI)) <span class="sc">+</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a>  <span class="fu">scale_fill_viridis_c</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>sep19_county_means <span class="ot">&lt;-</span> CA_counties_sf <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a></a>  <span class="fu">right_join</span>(sep19_county_means, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"NAME"</span> <span class="ot">=</span> <span class="st">"COUNTY"</span>)) </span>
+<span id="cb20-3"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-4"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
+<span id="cb20-5"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_county_means, <span class="fu">aes</span>(<span class="at">fill =</span> AQI)) <span class="sc">+</span></span>
+<span id="cb20-6"><a></a>  <span class="fu">scale_fill_viridis_c</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="spatial-polygon-data-2" class="slide level2">
 <h2>Spatial Polygon data</h2>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-22-1.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="animation-with-gganimate" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
 <p>The <code>gganimate</code> package provides tools for animating <code>ggplot</code> visualizations:</p>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-23-1.gif" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-23-1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="animation-with-gganimate-1" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-24_47ba2cb89c4d94c1986aa17e45486e52">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7"></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
-<span id="cb21-8"><a href="#cb21-8"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>,</span>
-<span id="cb21-9"><a href="#cb21-9"></a>       <span class="at">x =</span> <span class="st">'GDP per capita'</span>, </span>
-<span id="cb21-10"><a href="#cb21-10"></a>       <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
-<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
+<span id="cb21-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb21-3"><a></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
+<span id="cb21-4"><a></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">12</span>)) <span class="sc">+</span></span>
+<span id="cb21-5"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb21-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span></span>
+<span id="cb21-7"><a></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
+<span id="cb21-8"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Year: {frame_time}'</span>,</span>
+<span id="cb21-9"><a></a>       <span class="at">x =</span> <span class="st">'GDP per capita'</span>, </span>
+<span id="cb21-10"><a></a>       <span class="at">y =</span> <span class="st">'life expectancy'</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a></a>  <span class="fu">transition_time</span>(year) <span class="sc">+</span></span>
+<span id="cb21-12"><a></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="animation-with-gganimate-2" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-25-1.gif" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-25-1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="animation-with-gganimate-3" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
 <div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-26_5051bfb5948aa30aacdc3bf444d5a745">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>pm_2_5 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://math167r-s24.github.io/static/CA_PM2_5_2023.csv"</span>)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span></span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">mdy</span>(Date)) <span class="sc">|&gt;</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">filter</span>(<span class="fu">month</span>(Date) <span class="sc">==</span> <span class="dv">9</span>)</span>
-<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> pm_2_5, </span>
-<span id="cb22-8"><a href="#cb22-8"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb22-9"><a href="#cb22-9"></a>               <span class="at">x =</span> SITE_LONGITUDE, </span>
-<span id="cb22-10"><a href="#cb22-10"></a>               <span class="at">y =</span> SITE_LATITUDE, </span>
-<span id="cb22-11"><a href="#cb22-11"></a>               <span class="at">color =</span> DAILY_AQI_VALUE</span>
-<span id="cb22-12"><a href="#cb22-12"></a>             )) <span class="sc">+</span></span>
-<span id="cb22-13"><a href="#cb22-13"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb22-14"><a href="#cb22-14"></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
-<span id="cb22-15"><a href="#cb22-15"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Date: {frame_time}"</span>) <span class="sc">+</span></span>
-<span id="cb22-16"><a href="#cb22-16"></a>  <span class="fu">transition_time</span>(Date) <span class="sc">+</span> </span>
-<span id="cb22-17"><a href="#cb22-17"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>pm_2_5 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://math167r-s24.github.io/static/CA_PM2_5_2023.csv"</span>)</span>
+<span id="cb22-2"><a></a>pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span></span>
+<span id="cb22-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">mdy</span>(Date)) <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a></a>  <span class="fu">filter</span>(<span class="fu">month</span>(Date) <span class="sc">==</span> <span class="dv">9</span>)</span>
+<span id="cb22-5"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb22-6"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
+<span id="cb22-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> pm_2_5, </span>
+<span id="cb22-8"><a></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb22-9"><a></a>               <span class="at">x =</span> SITE_LONGITUDE, </span>
+<span id="cb22-10"><a></a>               <span class="at">y =</span> SITE_LATITUDE, </span>
+<span id="cb22-11"><a></a>               <span class="at">color =</span> DAILY_AQI_VALUE</span>
+<span id="cb22-12"><a></a>             )) <span class="sc">+</span></span>
+<span id="cb22-13"><a></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb22-14"><a></a>  <span class="co"># Here comes the gganimate specific bits</span></span>
+<span id="cb22-15"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Date: {frame_time}"</span>) <span class="sc">+</span></span>
+<span id="cb22-16"><a></a>  <span class="fu">transition_time</span>(Date) <span class="sc">+</span> </span>
+<span id="cb22-17"><a></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="takeaways" class="slide level2">
@@ -988,8 +987,10 @@ Geodetic CRS:  WGS 84
 <h2>Final project</h2>
 <p>Instructions on the course website.</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -1018,7 +1019,6 @@ Geodetic CRS:  WGS 84
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1273,18 +1273,7 @@ Geodetic CRS:  WGS 84
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1316,11 +1305,50 @@ Geodetic CRS:  WGS 84
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1330,8 +1358,17 @@ Geodetic CRS:  WGS 84
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1345,7 +1382,11 @@ Geodetic CRS:  WGS 84
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

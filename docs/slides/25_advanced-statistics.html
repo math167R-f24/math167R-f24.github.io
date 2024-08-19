@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Advanced statistical methods</title>
+  <title>MATH167R – MATH167R: Advanced statistical methods</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Advanced statistical methods">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Advanced statistical methods – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -442,8 +443,8 @@ Peter Gao
 <h2>Example: <em>Challenger</em> disaster</h2>
 <p>On January 28, 1986, the Challenger space shuttle suffered an accident shortly after launch, killing all crew members on board. An investigation suspected that damage to a set of critical parts called O-rings caused the disaster. It is believed that the damage is related to the temperature at launch time. The following data summarize data on O-rings for 23 shuttle missions.</p>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-1_ac52b17d9463b5b1ebbe4ff5aa0fc142">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>orings <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://www.openintro.org/data/csv/orings.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">head</span>(orings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>orings <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://www.openintro.org/data/csv/orings.csv"</span>)</span>
+<span id="cb1-2"><a></a><span class="fu">head</span>(orings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   mission temperature damaged undamaged
@@ -461,8 +462,8 @@ Peter Gao
 <h2>Example: <em>Challenger</em> disaster</h2>
 <p>This plot visualizes the empirical proportion of damaged O-rings for each mission:</p>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-2_fba4051fc17952454a774839b855ad95">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">plot</span>((damaged <span class="sc">/</span> <span class="dv">6</span>) <span class="sc">~</span> temperature, <span class="at">data =</span> orings, <span class="at">pch =</span> <span class="dv">16</span>,</span>
-<span id="cb3-2"><a href="#cb3-2"></a>     <span class="at">ylab =</span> <span class="st">"Proportion of O-rings damaged"</span>, <span class="at">xlab =</span> <span class="st">"Temperature (F)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">plot</span>((damaged <span class="sc">/</span> <span class="dv">6</span>) <span class="sc">~</span> temperature, <span class="at">data =</span> orings, <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb3-2"><a></a>     <span class="at">ylab =</span> <span class="st">"Proportion of O-rings damaged"</span>, <span class="at">xlab =</span> <span class="st">"Temperature (F)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="25_advanced-statistics_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
@@ -470,8 +471,8 @@ Peter Gao
 <h2>Example: <em>Challenger</em> disaster</h2>
 <p>The <code>glm()</code> function can be used to fit generalized linear models including logistic regression models. The <code>family</code> argument is used to specify the distribution of the response variable (in this case, binomial for a logistic rgression).</p>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-3_fd0acfa00a9fd8016835facb2ef79715">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>orings_res <span class="ot">&lt;-</span> <span class="fu">glm</span>((damaged <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">~</span> temperature, <span class="at">data =</span> orings, <span class="at">family =</span> binomial)</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">summary</span>(orings_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>orings_res <span class="ot">&lt;-</span> <span class="fu">glm</span>((damaged <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">~</span> temperature, <span class="at">data =</span> orings, <span class="at">family =</span> binomial)</span>
+<span id="cb4-2"><a></a><span class="fu">summary</span>(orings_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -516,7 +517,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <section id="example-challenger-disaster-5" class="slide level2">
 <h2>Example: <em>Challenger</em> disaster</h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-4_7ee3ca42efe1064dacf34965be21cd9d">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">fitted</span>(orings_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">fitted</span>(orings_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         1          2          3          4          5          6          7 
 0.93924781 0.85931657 0.82884484 0.60268105 0.43049313 0.37472428 0.37472428 
@@ -532,8 +533,8 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <section id="example-challenger-disaster-6" class="slide level2">
 <h2>Example: <em>Challenger</em> disaster</h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-5_30aecc2980f5f3afb53ad3fc34041559">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>base_res <span class="ot">&lt;-</span> <span class="fu">glm</span>((damaged <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> orings, <span class="at">family =</span> binomial)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">anova</span>(orings_res, base_res, <span class="at">test =</span> <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>base_res <span class="ot">&lt;-</span> <span class="fu">glm</span>((damaged <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> orings, <span class="at">family =</span> binomial)</span>
+<span id="cb8-2"><a></a><span class="fu">anova</span>(orings_res, base_res, <span class="at">test =</span> <span class="st">"F"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Deviance Table
 
@@ -585,16 +586,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2>Example: <code>PlantGrowth</code></h2>
 <p>The <code>PlantGrowth</code> data provides results from an experiment comparing plant growth under a control and two different treatment conditions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth, <span class="at">main =</span> <span class="st">"PlantGrowth data"</span>,</span>
-<span id="cb10-2"><a href="#cb10-2"></a>        <span class="at">ylab =</span> <span class="st">"Dried weight of plants"</span>, <span class="at">col =</span> <span class="st">"lightgray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">boxplot</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth, <span class="at">main =</span> <span class="st">"PlantGrowth data"</span>,</span>
+<span id="cb10-2"><a></a>        <span class="at">ylab =</span> <span class="st">"Dried weight of plants"</span>, <span class="at">col =</span> <span class="st">"lightgray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="25_advanced-statistics_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="example-plantgrowth-1" class="slide level2">
 <h2>Example: <code>PlantGrowth</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>anova_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth))</span>
-<span id="cb11-2"><a href="#cb11-2"></a>anova_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>anova_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth))</span>
+<span id="cb11-2"><a></a>anova_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -611,15 +612,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2>Obtaining a <span class="math inline">\(p\)</span>-value with an <span class="math inline">\(F\)</span>-test statistic</h2>
 <p>When <span class="math inline">\(H_0\)</span> is true, <span class="math inline">\(F\)</span> follows an <span class="math inline">\(F\)</span>-distribution with <span class="math inline">\(\nu_1=I-1\)</span> and <span class="math inline">\(\nu_2=I(J-1)\)</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">8</span>, <span class="at">length.out =</span> <span class="dv">3</span>))</span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> </span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> df, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">27</span>)) <span class="sc">+</span> </span>
-<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> anova_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">8</span>, <span class="at">length.out =</span> <span class="dv">3</span>))</span>
+<span id="cb13-3"><a></a><span class="fu">ggplot</span>(x, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span> </span>
+<span id="cb13-4"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> df, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">27</span>)) <span class="sc">+</span> </span>
+<span id="cb13-5"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> anova_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="25_advanced-statistics_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="25_advanced-statistics_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="the-f-distribution" class="slide level2">
 <h2>The <span class="math inline">\(F\)</span>-distribution</h2>
 <p>The <span class="math inline">\(F\)</span> distribution has two parameters:</p>
@@ -635,17 +636,17 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2>Example: <code>emails</code></h2>
 <p>The <code>emails</code> data provides information on emails categorized as spam and non-spam.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>emails <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www.openintro.org/data/csv/email50.csv"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">boxplot</span>(num_char <span class="sc">~</span> spam, <span class="at">data =</span> emails, <span class="at">main =</span> <span class="st">"Emails data"</span>,</span>
-<span id="cb14-3"><a href="#cb14-3"></a>        <span class="at">ylab =</span> <span class="st">"Length of email (characters)"</span>, <span class="at">col =</span> <span class="st">"lightgray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>emails <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://www.openintro.org/data/csv/email50.csv"</span>)</span>
+<span id="cb14-2"><a></a><span class="fu">boxplot</span>(num_char <span class="sc">~</span> spam, <span class="at">data =</span> emails, <span class="at">main =</span> <span class="st">"Emails data"</span>,</span>
+<span id="cb14-3"><a></a>        <span class="at">ylab =</span> <span class="st">"Length of email (characters)"</span>, <span class="at">col =</span> <span class="st">"lightgray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="25_advanced-statistics_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
 <section id="example-emails-1" class="slide level2">
 <h2>Example: <code>emails</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>anova_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(num_char <span class="sc">~</span> spam, <span class="at">data =</span> emails))</span>
-<span id="cb15-2"><a href="#cb15-2"></a>anova_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>anova_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(num_char <span class="sc">~</span> spam, <span class="at">data =</span> emails))</span>
+<span id="cb15-2"><a></a>anova_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -681,8 +682,8 @@ F = \frac{(SSE_{reduced}-SSE_{full})/(p_{full}-p_{reduced})}{SSE_{full}/p_{full}
 <section id="example-mtcars" class="slide level2">
 <h2>Example: <code>mtcars</code></h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-11_b177ffa5b97e528ba1c83bae2454b0b8">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">anova</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb17-2"><a></a><span class="fu">anova</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -699,7 +700,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2>Example: <code>mtcars</code></h2>
 <p>Note that this is equivalent to the Wald test for the coefficient for <code>wt</code> in the univariate case:</p>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-12_c210a8c4044151c0d113716c1b887fd9">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">summary</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">summary</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -734,8 +735,8 @@ F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10</code></pre>
 <section id="example-mtcars-2" class="slide level2">
 <h2>Example: <code>mtcars</code></h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-13_02efe9ac1dc03a04233fe3d6173a4262">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">anova</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb21-2"><a></a><span class="fu">anova</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -753,7 +754,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="example-mtcars-3" class="slide level2">
 <h2>Example: <code>mtcars</code></h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-14_cb33d364ffa8407ee1a94b52278e8cd6">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">summary</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">summary</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -781,9 +782,9 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <h2>Example: <code>mtcars</code></h2>
 <p>We can explicitly specify the full and reduced models:</p>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-15_61f88cae873e26e77c928debe6e1811a">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>my_lm_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
-<span id="cb25-2"><a href="#cb25-2"></a>my_lm_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> mtcars)</span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">anova</span>(my_lm_full, my_lm_reduced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>my_lm_full <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
+<span id="cb25-2"><a></a>my_lm_reduced <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> mtcars)</span>
+<span id="cb25-3"><a></a><span class="fu">anova</span>(my_lm_full, my_lm_reduced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -809,12 +810,12 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="fishers-exact-test-1" class="slide level2">
 <h2>Fisher’s exact test</h2>
 <div class="cell" data-hash="25_advanced-statistics_cache/revealjs/unnamed-chunk-16_6561fcda363934724a5b19b2240aeebb">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>TeaTasting <span class="ot">&lt;-</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
-<span id="cb27-3"><a href="#cb27-3"></a>         <span class="at">nrow =</span> <span class="dv">2</span>,</span>
-<span id="cb27-4"><a href="#cb27-4"></a>         <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">Guess =</span> <span class="fu">c</span>(<span class="st">"Milk"</span>, <span class="st">"Tea"</span>),</span>
-<span id="cb27-5"><a href="#cb27-5"></a>                         <span class="at">Truth =</span> <span class="fu">c</span>(<span class="st">"Milk"</span>, <span class="st">"Tea"</span>)))</span>
-<span id="cb27-6"><a href="#cb27-6"></a><span class="fu">fisher.test</span>(TeaTasting, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>TeaTasting <span class="ot">&lt;-</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb27-3"><a></a>         <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb27-4"><a></a>         <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">Guess =</span> <span class="fu">c</span>(<span class="st">"Milk"</span>, <span class="st">"Tea"</span>),</span>
+<span id="cb27-5"><a></a>                         <span class="at">Truth =</span> <span class="fu">c</span>(<span class="st">"Milk"</span>, <span class="st">"Tea"</span>)))</span>
+<span id="cb27-6"><a></a><span class="fu">fisher.test</span>(TeaTasting, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -830,8 +831,10 @@ odds ratio
 </div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -860,7 +863,6 @@ odds ratio
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1115,18 +1117,7 @@ odds ratio
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1158,11 +1149,50 @@ odds ratio
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1172,8 +1202,17 @@ odds ratio
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1187,7 +1226,11 @@ odds ratio
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

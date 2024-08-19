@@ -3,18 +3,18 @@ title: "Resources"
 editor: 
   markdown: 
     wrap: 72
-    
+format: html
 draft: false
 ---
 
-# Examples of data analyses/visualizations 
+## Examples of data analyses/visualizations 
 
 - [Advanced data visualizations by Tanya Shapiro](https://github.com/tashapiro/tanya-data-viz): Going above and beyond the basic capabilities of R visualizations
 - [Data visualization with NFL data by Bradley J Congelio](https://bradcongelio.com/nfl-analytics-with-r-book/04-nfl-analytics-visualization.html): Great example of using R to generate advanced data visualizations about the NFL.
 - [Exploring college major and income: a live data analysis in R by David Robinson](http://varianceexplained.org/r/tidy-tuesday-college-major/): Video example of a data analysis, in real time.
 
 
-# Datasets
+## Datasets
 
 -   [CDC](https://www.cdc.gov/datastatistics/)
 -   [Data.gov](https://www.data.gov/)

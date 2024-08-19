@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Hypothesis testing</title>
+  <title>MATH167R – MATH167R: Hypothesis testing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Hypothesis testing">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Hypothesis testing – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -478,16 +479,16 @@ H_a: p&amp;\neq 1/2
 <h2>Example: flipping coins</h2>
 <p>Instead of actually flipping the coin, let’s carry out this example in R.</p>
 <div class="cell" data-hash="21_hypothesis-testing_cache/revealjs/unnamed-chunk-1_ed809816310f1de4f64eabc43fc0a611">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># the true population parameter (in practice, we don't know this).</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>p <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># simulate 100 coin flips</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>coin_flips <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> p)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">head</span>(coin_flips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
+<span id="cb1-2"><a></a><span class="co"># the true population parameter (in practice, we don't know this).</span></span>
+<span id="cb1-3"><a></a>p <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
+<span id="cb1-4"><a></a><span class="co"># simulate 100 coin flips</span></span>
+<span id="cb1-5"><a></a>coin_flips <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> p)</span>
+<span id="cb1-6"><a></a><span class="fu">head</span>(coin_flips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 0 0 1 1 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">sum</span>(coin_flips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sum</span>(coin_flips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 61</code></pre>
 </div>
@@ -516,15 +517,15 @@ H_a: p&amp;\neq 1/2
 <section id="example-flipping-coins-4" class="slide level2">
 <h2>Example: flipping coins</h2>
 <div class="cell" data-hash="21_hypothesis-testing_cache/revealjs/unnamed-chunk-2_8a8aed18e578fcba89e4307edd038513">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># record test statistic</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>test_stat <span class="ot">&lt;-</span> <span class="fu">sum</span>(coin_flips)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># record how "extreme" our test statistic is</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>diff_from_exp <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="dv">50</span> <span class="sc">-</span> test_stat)</span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># first component: lower tail</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># second component: upper tail</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>p_val <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">50</span> <span class="sc">-</span> diff_from_exp, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">pbinom</span>(<span class="dv">50</span> <span class="sc">+</span> diff_from_exp <span class="sc">-</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="fu">round</span>(p_val, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># record test statistic</span></span>
+<span id="cb5-2"><a></a>test_stat <span class="ot">&lt;-</span> <span class="fu">sum</span>(coin_flips)</span>
+<span id="cb5-3"><a></a><span class="co"># record how "extreme" our test statistic is</span></span>
+<span id="cb5-4"><a></a>diff_from_exp <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="dv">50</span> <span class="sc">-</span> test_stat)</span>
+<span id="cb5-5"><a></a><span class="co"># first component: lower tail</span></span>
+<span id="cb5-6"><a></a><span class="co"># second component: upper tail</span></span>
+<span id="cb5-7"><a></a>p_val <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(<span class="dv">50</span> <span class="sc">-</span> diff_from_exp, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a></a>  <span class="fu">pbinom</span>(<span class="dv">50</span> <span class="sc">+</span> diff_from_exp <span class="sc">-</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb5-9"><a></a><span class="fu">round</span>(p_val, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.035</code></pre>
 </div>
@@ -598,10 +599,10 @@ H_a: \mu_x &amp;\neq  \mu_y
 <section id="t.test-t-tests-in-r-1" class="slide level2">
 <h2><code>t.test()</code>: t-tests in R</h2>
 <div class="cell" data-hash="21_hypothesis-testing_cache/revealjs/unnamed-chunk-3_d022fdd8056479317a9f6a1e25370501">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">1.5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">t.test</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
+<span id="cb7-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb7-3"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">1.5</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb7-4"><a></a><span class="fu">t.test</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -627,7 +628,7 @@ H_a: \mu_x &amp;&lt; \mu_y
 \end{align}
 \]</span></p>
 <div class="cell" data-hash="21_hypothesis-testing_cache/revealjs/unnamed-chunk-4_9175854e0430c7eb2b5eb0b2a680a681">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">t.test</span>(x, y, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">t.test</span>(x, y, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -657,7 +658,7 @@ H_a: \mu_x &amp;\neq 0
 <section id="t.test-t-tests-in-r-4" class="slide level2">
 <h2><code>t.test()</code>: t-tests in R</h2>
 <div class="cell" data-hash="21_hypothesis-testing_cache/revealjs/unnamed-chunk-5_f08e1d188b293c6b2714073aa40ec0e2">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -717,8 +718,10 @@ mean of x
 <p><strong>P-hacking</strong> refers to the practice of repeatedly performing hypothesis tests (and potentially manipulating the data) until a statistically significant P-values is obtained. Usually, only this final result is published, without mentioning all of the manipulations that came before.</p>
 <p>For this reason, it’s crucial to document carefully everything you do in the data analysis pipeline to ensure that your work is taken seriously. Publishing code and data can help others to reproduce your research.</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -747,7 +750,6 @@ mean of x
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1002,18 +1004,7 @@ mean of x
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1045,11 +1036,50 @@ mean of x
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1059,8 +1089,17 @@ mean of x
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1074,7 +1113,11 @@ mean of x
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

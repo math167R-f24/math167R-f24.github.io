@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Programming Basics</title>
+  <title>MATH167R – MATH167R: Programming Basics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Programming Basics">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Programming Basics – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -451,7 +452,7 @@ Peter Gao
 <h2>Flowcharts for algorithms</h2>
 <p>You may also find it helpful to imagine an algorithm as a flowchart (from Wikipedia):</p>
 
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png" width="300" class="r-stretch quarto-figure-center"></section>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png" class="quarto-figure quarto-figure-center r-stretch" width="300"></section>
 <section id="algorithms-in-code" class="slide level2">
 <h2>Algorithms in code</h2>
 <p>Since algorithms are simply sets of instructions or “recipes,” we can represent them as:</p>
@@ -466,13 +467,13 @@ Peter Gao
 <h2>Functions as algorithms</h2>
 <p>Each function is an implementation of an algorithm. For example, consider the <code>rank()</code> function which returns the rank-ordering of each number in a vector:</p>
 <div class="cell" data-hash="12_programming-basics_cache/revealjs/unnamed-chunk-1_e51b53086bfe0cfc2ce182d5c4875095">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 2 1</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="12_programming-basics_cache/revealjs/unnamed-chunk-2_3f36ea56b0c204714d6f630f58d8f111">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>rank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>rank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>function (x, na.last = TRUE, ties.method = c("average", "first", 
     "last", "random", "max", "min")) 
@@ -520,7 +521,7 @@ Peter Gao
 <h2>Control statements</h2>
 <p>Most algorithms will require the interpreter to check some conditions to determine the outcome.</p>
 
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png" width="250" class="r-stretch quarto-figure-center"><p>By default, the expressions in the body of a function are evaluated sequentially.</p>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png" class="quarto-figure quarto-figure-center r-stretch" width="250"><p>By default, the expressions in the body of a function are evaluated sequentially.</p>
 <p>In programming, control statements allow the developer (the person writing the code) to tell the interpreter what to do in different scenarios.</p>
 </section>
 <section id="if-statements" class="slide level2">
@@ -539,12 +540,12 @@ Peter Gao
 <section id="if-statements-1" class="slide level2">
 <h2><code>if</code> statements</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># Conditions go in parentheses after if</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="co"># code chunks get surrounded by curly brackets</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
-<span id="cb5-6"><a href="#cb5-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb5-2"><a></a><span class="co"># Conditions go in parentheses after if</span></span>
+<span id="cb5-3"><a></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb5-4"><a></a>  <span class="co"># code chunks get surrounded by curly brackets</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
+<span id="cb5-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -557,31 +558,31 @@ Peter Gao
 <section id="if-statements-2" class="slide level2">
 <h2><code>if</code> statements</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># Conditions go in parenthesis after if</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="co"># code chunks get surrounded by curly brackets</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
-<span id="cb7-6"><a href="#cb7-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb7-2"><a></a><span class="co"># Conditions go in parenthesis after if</span></span>
+<span id="cb7-3"><a></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb7-4"><a></a>  <span class="co"># code chunks get surrounded by curly brackets</span></span>
+<span id="cb7-5"><a></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
+<span id="cb7-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="if-statements-3" class="slide level2">
 <h2><code>if</code> statements</h2>
 <p>We can also write one line <code>if</code> statements without braces:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>grade <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>score <span class="ot">&lt;-</span> <span class="dv">65</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) grade <span class="ot">&lt;-</span> <span class="st">"CR"</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">print</span>(grade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>grade <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb8-2"><a></a>score <span class="ot">&lt;-</span> <span class="dv">65</span></span>
+<span id="cb8-3"><a></a><span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) grade <span class="ot">&lt;-</span> <span class="st">"CR"</span></span>
+<span id="cb8-4"><a></a><span class="fu">print</span>(grade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "CR"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>grade <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>score <span class="ot">&lt;-</span> <span class="dv">55</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) grade <span class="ot">&lt;-</span> <span class="st">"CR"</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">print</span>(grade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>grade <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb10-2"><a></a>score <span class="ot">&lt;-</span> <span class="dv">55</span></span>
+<span id="cb10-3"><a></a><span class="cf">if</span> (score <span class="sc">&gt;=</span> <span class="dv">60</span>) grade <span class="ot">&lt;-</span> <span class="st">"CR"</span></span>
+<span id="cb10-4"><a></a><span class="fu">print</span>(grade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
@@ -591,12 +592,12 @@ Peter Gao
 <h2><code>else</code> statements</h2>
 <p>We can use <code>else</code> to specify what we want to happen when the condition is <code>FALSE</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
-<span id="cb12-4"><a href="#cb12-4"></a>} <span class="cf">else</span> {</span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>))</span>
-<span id="cb12-6"><a href="#cb12-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb12-2"><a></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb12-3"><a></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
+<span id="cb12-4"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb12-5"><a></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>))</span>
+<span id="cb12-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -609,12 +610,12 @@ Peter Gao
 <section id="else-statements-1" class="slide level2">
 <h2><code>else</code> statements</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
-<span id="cb14-4"><a href="#cb14-4"></a>} <span class="cf">else</span> {</span>
-<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>))</span>
-<span id="cb14-6"><a href="#cb14-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb14-2"><a></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb14-3"><a></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>))</span>
+<span id="cb14-4"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb14-5"><a></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>))</span>
+<span id="cb14-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x is equal to -1, a negative number!"</code></pre>
 </div>
@@ -624,14 +625,14 @@ Peter Gao
 <h2><code>else if</code></h2>
 <p>We use <code>else if</code> when there are more than two possible paths. Here, the final <code>else</code> chunk will evaluate for any cases not covered by the <code>if</code> or <code>else if</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>)</span>
-<span id="cb16-4"><a href="#cb16-4"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>)</span>
-<span id="cb16-6"><a href="#cb16-6"></a>} <span class="cf">else</span> {</span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">"!"</span>)</span>
-<span id="cb16-8"><a href="#cb16-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb16-2"><a></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb16-3"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>)</span>
+<span id="cb16-4"><a></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb16-5"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>)</span>
+<span id="cb16-6"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb16-7"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">"!"</span>)</span>
+<span id="cb16-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x is equal to 1, a positive number!"</code></pre>
 </div>
@@ -640,14 +641,14 @@ Peter Gao
 <section id="else-if-1" class="slide level2">
 <h2><code>else if</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>)</span>
-<span id="cb18-6"><a href="#cb18-6"></a>} <span class="cf">else</span> {</span>
-<span id="cb18-7"><a href="#cb18-7"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">"!"</span>)</span>
-<span id="cb18-8"><a href="#cb18-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb18-2"><a></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb18-3"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>)</span>
+<span id="cb18-4"><a></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb18-5"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>)</span>
+<span id="cb18-6"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb18-7"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">"!"</span>)</span>
+<span id="cb18-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x is equal to -1, a negative number!"</code></pre>
 </div>
@@ -656,14 +657,14 @@ Peter Gao
 <section id="else-if-2" class="slide level2">
 <h2><code>else if</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>)</span>
-<span id="cb20-4"><a href="#cb20-4"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>)</span>
-<span id="cb20-6"><a href="#cb20-6"></a>} <span class="cf">else</span> {</span>
-<span id="cb20-7"><a href="#cb20-7"></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">"!"</span>)</span>
-<span id="cb20-8"><a href="#cb20-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-2"><a></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb20-3"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a positive number!"</span>)</span>
+<span id="cb20-4"><a></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb20-5"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">", a negative number!"</span>)</span>
+<span id="cb20-6"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb20-7"><a></a>  <span class="fu">paste0</span>(<span class="st">"x is equal to "</span>, x, <span class="st">"!"</span>)</span>
+<span id="cb20-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "x is equal to 0!"</code></pre>
 </div>
@@ -678,25 +679,25 @@ Peter Gao
 <h2>Divisibility</h2>
 <p>Suppose we want to check if <code>x</code> is divisible by 3 and print out the answer. What should <code>CONDITION</code> be?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="cf">if</span> (CONDITION) {</span>
-<span id="cb22-3"><a href="#cb22-3"></a>  IF <span class="cn">TRUE</span>, DO THIS</span>
-<span id="cb22-4"><a href="#cb22-4"></a>} <span class="cf">else</span> {</span>
-<span id="cb22-5"><a href="#cb22-5"></a>  ELSE, DO THIS</span>
-<span id="cb22-6"><a href="#cb22-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb22-2"><a></a><span class="cf">if</span> (CONDITION) {</span>
+<span id="cb22-3"><a></a>  IF <span class="cn">TRUE</span>, DO THIS</span>
+<span id="cb22-4"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb22-5"><a></a>  ELSE, DO THIS</span>
+<span id="cb22-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="divisibility-1" class="slide level2">
 <h2>Divisibility</h2>
 <p>Suppose we want to check if <code>x</code> is divisible by 5 and print out the answer. What should <code>CONDITION</code> be?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="co"># modulo operator</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">print</span>(<span class="st">"divisible by 3"</span>)</span>
-<span id="cb23-5"><a href="#cb23-5"></a>} <span class="cf">else</span> {</span>
-<span id="cb23-6"><a href="#cb23-6"></a>  <span class="fu">print</span>(<span class="st">"not divisible by 3"</span>)</span>
-<span id="cb23-7"><a href="#cb23-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb23-2"><a></a><span class="co"># modulo operator</span></span>
+<span id="cb23-3"><a></a><span class="cf">if</span> (x <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb23-4"><a></a>  <span class="fu">print</span>(<span class="st">"divisible by 3"</span>)</span>
+<span id="cb23-5"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb23-6"><a></a>  <span class="fu">print</span>(<span class="st">"not divisible by 3"</span>)</span>
+<span id="cb23-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -710,17 +711,17 @@ Peter Gao
 <h2>Check length of strings</h2>
 <p>Note: We will need the <code>stringr</code> package for this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Run this if you have never installed stringr before!</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="co"># install.packages("stringr")</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># Run this if you have never installed stringr before!</span></span>
+<span id="cb25-2"><a></a><span class="co"># install.packages("stringr")</span></span>
+<span id="cb25-3"><a></a><span class="fu">library</span>(stringr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>x <span class="ot">&lt;-</span> <span class="st">"cat"</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="cf">if</span> (<span class="fu">str_length</span>(x) <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">cat</span>(<span class="st">"x is a short string."</span>)</span>
-<span id="cb26-4"><a href="#cb26-4"></a>} <span class="cf">else</span> {</span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">cat</span>(<span class="st">"x is a long string."</span>)</span>
-<span id="cb26-6"><a href="#cb26-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>x <span class="ot">&lt;-</span> <span class="st">"cat"</span></span>
+<span id="cb26-2"><a></a><span class="cf">if</span> (<span class="fu">str_length</span>(x) <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb26-3"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a short string."</span>)</span>
+<span id="cb26-4"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb26-5"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a long string."</span>)</span>
+<span id="cb26-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x is a short string.</code></pre>
 </div>
@@ -729,12 +730,12 @@ Peter Gao
 <section id="check-length-of-strings-1" class="slide level2">
 <h2>Check length of strings</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>x <span class="ot">&lt;-</span> <span class="st">"A big fluffy cat with orange fur and stripes"</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="cf">if</span> (<span class="fu">str_length</span>(x) <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
-<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">cat</span>(<span class="st">"x is a short string."</span>)</span>
-<span id="cb28-4"><a href="#cb28-4"></a>} <span class="cf">else</span> {</span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">cat</span>(<span class="st">"x is a long string."</span>)</span>
-<span id="cb28-6"><a href="#cb28-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>x <span class="ot">&lt;-</span> <span class="st">"A big fluffy cat with orange fur and stripes"</span></span>
+<span id="cb28-2"><a></a><span class="cf">if</span> (<span class="fu">str_length</span>(x) <span class="sc">&lt;=</span> <span class="dv">10</span>) {</span>
+<span id="cb28-3"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a short string."</span>)</span>
+<span id="cb28-4"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb28-5"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a long string."</span>)</span>
+<span id="cb28-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x is a long string.</code></pre>
 </div>
@@ -743,14 +744,14 @@ Peter Gao
 <section id="check-class" class="slide level2">
 <h2>Check class</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="cf">if</span> (<span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">cat</span>(<span class="st">"x is a numeric."</span>)</span>
-<span id="cb30-4"><a href="#cb30-4"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.character</span>(x)) {</span>
-<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">cat</span>(<span class="st">"x is a character."</span>)</span>
-<span id="cb30-6"><a href="#cb30-6"></a>} <span class="cf">else</span> {</span>
-<span id="cb30-7"><a href="#cb30-7"></a>  <span class="fu">cat</span>(<span class="st">"x is some class I didn't check for in my code."</span>)</span>
-<span id="cb30-8"><a href="#cb30-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb30-2"><a></a><span class="cf">if</span> (<span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb30-3"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a numeric."</span>)</span>
+<span id="cb30-4"><a></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.character</span>(x)) {</span>
+<span id="cb30-5"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a character."</span>)</span>
+<span id="cb30-6"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb30-7"><a></a>  <span class="fu">cat</span>(<span class="st">"x is some class I didn't check for in my code."</span>)</span>
+<span id="cb30-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x is a numeric.</code></pre>
 </div>
@@ -759,14 +760,14 @@ Peter Gao
 <section id="check-class-1" class="slide level2">
 <h2>Check class</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="cf">if</span> (<span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">cat</span>(<span class="st">"x is a numeric."</span>)</span>
-<span id="cb32-4"><a href="#cb32-4"></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.character</span>(x)) {</span>
-<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">cat</span>(<span class="st">"x is a character."</span>)</span>
-<span id="cb32-6"><a href="#cb32-6"></a>} <span class="cf">else</span> {</span>
-<span id="cb32-7"><a href="#cb32-7"></a>  <span class="fu">cat</span>(<span class="st">"x is some class I didn't check for in my code."</span>)</span>
-<span id="cb32-8"><a href="#cb32-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb32-2"><a></a><span class="cf">if</span> (<span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb32-3"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a numeric."</span>)</span>
+<span id="cb32-4"><a></a>} <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.character</span>(x)) {</span>
+<span id="cb32-5"><a></a>  <span class="fu">cat</span>(<span class="st">"x is a character."</span>)</span>
+<span id="cb32-6"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb32-7"><a></a>  <span class="fu">cat</span>(<span class="st">"x is some class I didn't check for in my code."</span>)</span>
+<span id="cb32-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x is some class I didn't check for in my code.</code></pre>
 </div>
@@ -797,8 +798,8 @@ Peter Gao
 <p><code>function(formal arguments) {body}</code></p>
 <p>The body comprises one or more lines of code that will perform the desired computations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>celsiusToFahrenheit <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {x <span class="sc">*</span> <span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">32</span>}</span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">celsiusToFahrenheit</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>celsiusToFahrenheit <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {x <span class="sc">*</span> <span class="dv">9</span> <span class="sc">/</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">32</span>}</span>
+<span id="cb34-2"><a></a><span class="fu">celsiusToFahrenheit</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -812,10 +813,10 @@ Peter Gao
 <h2>Anatomy of a function</h2>
 <p>For more complicated functions, we typically move the body to a new line:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(param1, <span class="at">param2 =</span> <span class="st">"default"</span>) {</span>
-<span id="cb36-2"><a href="#cb36-2"></a>  <span class="co"># body of the function</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">return</span>(output)</span>
-<span id="cb36-4"><a href="#cb36-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(param1, <span class="at">param2 =</span> <span class="st">"default"</span>) {</span>
+<span id="cb36-2"><a></a>  <span class="co"># body of the function</span></span>
+<span id="cb36-3"><a></a>  <span class="fu">return</span>(output)</span>
+<span id="cb36-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>function_name</code>: the name you want to give your function, what you will use to call it</li>
@@ -828,20 +829,20 @@ Peter Gao
 <section id="square-a-number-add-2" class="slide level2">
 <h2>Square a number, add 2</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb37-2"><a href="#cb37-2"></a>  y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">return</span>(y)</span>
-<span id="cb37-4"><a href="#cb37-4"></a>}</span>
-<span id="cb37-5"><a href="#cb37-5"></a></span>
-<span id="cb37-6"><a href="#cb37-6"></a><span class="fu">square_plus_2</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb37-2"><a></a>  y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb37-3"><a></a>  <span class="fu">return</span>(y)</span>
+<span id="cb37-4"><a></a>}</span>
+<span id="cb37-5"><a></a></span>
+<span id="cb37-6"><a></a><span class="fu">square_plus_2</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">square_plus_2</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a><span class="fu">square_plus_2</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 102</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">square_plus_2</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">square_plus_2</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  3  6 11 18 27</code></pre>
 </div>
@@ -850,7 +851,7 @@ Peter Gao
 <section id="square-a-number-add-2-1" class="slide level2">
 <h2>Square a number, add 2</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">square_plus_2</span>(<span class="st">"some string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">square_plus_2</span>(<span class="st">"some string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in x^2: non-numeric argument to binary operator</code></pre>
 </div>
@@ -864,16 +865,16 @@ Peter Gao
 <h2>Square a number, add 2</h2>
 <p>Let’s try making our function more robust by adding a <code>if</code> statement and a <code>stop</code> call.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb45-2"><a href="#cb45-2"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb45-3"><a href="#cb45-3"></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
-<span id="cb45-4"><a href="#cb45-4"></a>  } <span class="cf">else</span> {</span>
-<span id="cb45-5"><a href="#cb45-5"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb45-6"><a href="#cb45-6"></a>    <span class="fu">return</span>(y)</span>
-<span id="cb45-7"><a href="#cb45-7"></a>  }</span>
-<span id="cb45-8"><a href="#cb45-8"></a>}</span>
-<span id="cb45-9"><a href="#cb45-9"></a></span>
-<span id="cb45-10"><a href="#cb45-10"></a><span class="fu">square_plus_2</span>(<span class="st">"some string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb45-2"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb45-3"><a></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
+<span id="cb45-4"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb45-5"><a></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb45-6"><a></a>    <span class="fu">return</span>(y)</span>
+<span id="cb45-7"><a></a>  }</span>
+<span id="cb45-8"><a></a>}</span>
+<span id="cb45-9"><a></a></span>
+<span id="cb45-10"><a></a><span class="fu">square_plus_2</span>(<span class="st">"some string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in square_plus_2("some string"): x must be numeric!</code></pre>
 </div>
@@ -888,43 +889,43 @@ Peter Gao
 <h2>Function Names</h2>
 <p>Strive to have function names based on verbs. Otherwise, standard variable name style guidelines apply!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Good</span></span>
-<span id="cb47-2"><a href="#cb47-2"></a><span class="fu">add_row</span>()</span>
-<span id="cb47-3"><a href="#cb47-3"></a><span class="fu">permute</span>()</span>
-<span id="cb47-4"><a href="#cb47-4"></a></span>
-<span id="cb47-5"><a href="#cb47-5"></a><span class="co"># Bad</span></span>
-<span id="cb47-6"><a href="#cb47-6"></a><span class="fu">row_adder</span>()</span>
-<span id="cb47-7"><a href="#cb47-7"></a><span class="fu">permutation</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="co"># Good</span></span>
+<span id="cb47-2"><a></a><span class="fu">add_row</span>()</span>
+<span id="cb47-3"><a></a><span class="fu">permute</span>()</span>
+<span id="cb47-4"><a></a></span>
+<span id="cb47-5"><a></a><span class="co"># Bad</span></span>
+<span id="cb47-6"><a></a><span class="fu">row_adder</span>()</span>
+<span id="cb47-7"><a></a><span class="fu">permutation</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="spacing" class="slide level2">
 <h2>Spacing</h2>
 <p>Place a space before and after <code>()</code> when used with <code>if</code>, <code>for</code>, or <code>while</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Good</span></span>
-<span id="cb48-2"><a href="#cb48-2"></a><span class="cf">if</span> (condition) {</span>
-<span id="cb48-3"><a href="#cb48-3"></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb48-4"><a href="#cb48-4"></a>}</span>
-<span id="cb48-5"><a href="#cb48-5"></a></span>
-<span id="cb48-6"><a href="#cb48-6"></a><span class="co"># Bad</span></span>
-<span id="cb48-7"><a href="#cb48-7"></a><span class="cf">if</span>(condition){</span>
-<span id="cb48-8"><a href="#cb48-8"></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb48-9"><a href="#cb48-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="co"># Good</span></span>
+<span id="cb48-2"><a></a><span class="cf">if</span> (condition) {</span>
+<span id="cb48-3"><a></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb48-4"><a></a>}</span>
+<span id="cb48-5"><a></a></span>
+<span id="cb48-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb48-7"><a></a><span class="cf">if</span>(condition){</span>
+<span id="cb48-8"><a></a>  x <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb48-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="spacing-1" class="slide level2">
 <h2>Spacing</h2>
 <p>Place a space after <code>()</code> used for function arguments.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Good</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a><span class="cf">if</span> (debug) {</span>
-<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">show</span>(x)</span>
-<span id="cb49-4"><a href="#cb49-4"></a>}</span>
-<span id="cb49-5"><a href="#cb49-5"></a></span>
-<span id="cb49-6"><a href="#cb49-6"></a><span class="co"># Bad</span></span>
-<span id="cb49-7"><a href="#cb49-7"></a><span class="cf">if</span>(debug){</span>
-<span id="cb49-8"><a href="#cb49-8"></a>  <span class="fu">show</span>(x)</span>
-<span id="cb49-9"><a href="#cb49-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="co"># Good</span></span>
+<span id="cb49-2"><a></a><span class="cf">if</span> (debug) {</span>
+<span id="cb49-3"><a></a>  <span class="fu">show</span>(x)</span>
+<span id="cb49-4"><a></a>}</span>
+<span id="cb49-5"><a></a></span>
+<span id="cb49-6"><a></a><span class="co"># Bad</span></span>
+<span id="cb49-7"><a></a><span class="cf">if</span>(debug){</span>
+<span id="cb49-8"><a></a>  <span class="fu">show</span>(x)</span>
+<span id="cb49-9"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="code-blocks" class="slide level2">
@@ -938,107 +939,107 @@ Peter Gao
 <section id="code-blocks-1" class="slide level2">
 <h2>Code Blocks</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># Good</span></span>
-<span id="cb50-2"><a href="#cb50-2"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">message</span>(<span class="st">"y is negative"</span>)</span>
-<span id="cb50-4"><a href="#cb50-4"></a>}</span>
-<span id="cb50-5"><a href="#cb50-5"></a></span>
-<span id="cb50-6"><a href="#cb50-6"></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb50-7"><a href="#cb50-7"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb50-8"><a href="#cb50-8"></a>    <span class="fu">log</span>(x)</span>
-<span id="cb50-9"><a href="#cb50-9"></a>  } <span class="cf">else</span> {</span>
-<span id="cb50-10"><a href="#cb50-10"></a>    <span class="fu">message</span>(<span class="st">"x is negative or zero"</span>)</span>
-<span id="cb50-11"><a href="#cb50-11"></a>  }</span>
-<span id="cb50-12"><a href="#cb50-12"></a>} <span class="cf">else</span> {</span>
-<span id="cb50-13"><a href="#cb50-13"></a>  y<span class="sc">^</span>x</span>
-<span id="cb50-14"><a href="#cb50-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a><span class="co"># Good</span></span>
+<span id="cb50-2"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb50-3"><a></a>  <span class="fu">message</span>(<span class="st">"y is negative"</span>)</span>
+<span id="cb50-4"><a></a>}</span>
+<span id="cb50-5"><a></a></span>
+<span id="cb50-6"><a></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb50-7"><a></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb50-8"><a></a>    <span class="fu">log</span>(x)</span>
+<span id="cb50-9"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb50-10"><a></a>    <span class="fu">message</span>(<span class="st">"x is negative or zero"</span>)</span>
+<span id="cb50-11"><a></a>  }</span>
+<span id="cb50-12"><a></a>} <span class="cf">else</span> {</span>
+<span id="cb50-13"><a></a>  y<span class="sc">^</span>x</span>
+<span id="cb50-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="code-blocks-2" class="slide level2">
 <h2>Code Blocks</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Bad</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="cf">if</span> (y<span class="sc">&lt;</span><span class="dv">0</span>){</span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="fu">message</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb51-4"><a href="#cb51-4"></a>}</span>
-<span id="cb51-5"><a href="#cb51-5"></a></span>
-<span id="cb51-6"><a href="#cb51-6"></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb51-7"><a href="#cb51-7"></a>{</span>
-<span id="cb51-8"><a href="#cb51-8"></a>    <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb51-9"><a href="#cb51-9"></a>      <span class="fu">log</span>(x)</span>
-<span id="cb51-10"><a href="#cb51-10"></a>    } <span class="cf">else</span> {</span>
-<span id="cb51-11"><a href="#cb51-11"></a>  <span class="fu">message</span>(<span class="st">"x is negative or zero"</span>)</span>
-<span id="cb51-12"><a href="#cb51-12"></a>    }</span>
-<span id="cb51-13"><a href="#cb51-13"></a>} <span class="cf">else</span> { y <span class="sc">^</span> x }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="co"># Bad</span></span>
+<span id="cb51-2"><a></a><span class="cf">if</span> (y<span class="sc">&lt;</span><span class="dv">0</span>){</span>
+<span id="cb51-3"><a></a><span class="fu">message</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb51-4"><a></a>}</span>
+<span id="cb51-5"><a></a></span>
+<span id="cb51-6"><a></a><span class="cf">if</span> (y <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb51-7"><a></a>{</span>
+<span id="cb51-8"><a></a>    <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb51-9"><a></a>      <span class="fu">log</span>(x)</span>
+<span id="cb51-10"><a></a>    } <span class="cf">else</span> {</span>
+<span id="cb51-11"><a></a>  <span class="fu">message</span>(<span class="st">"x is negative or zero"</span>)</span>
+<span id="cb51-12"><a></a>    }</span>
+<span id="cb51-13"><a></a>} <span class="cf">else</span> { y <span class="sc">^</span> x }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="in-line-statements" class="slide level2">
 <h2>In-line Statements</h2>
 <p>In general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (<code>return</code>, <code>stop</code>, etc.) should always go in their own <code>{}</code> block:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Good</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb52-3"><a href="#cb52-3"></a>x <span class="ot">&lt;-</span> <span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">20</span>) <span class="st">"Too low"</span> <span class="cf">else</span> <span class="st">"Too high"</span></span>
-<span id="cb52-4"><a href="#cb52-4"></a></span>
-<span id="cb52-5"><a href="#cb52-5"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb52-6"><a href="#cb52-6"></a>  <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb52-7"><a href="#cb52-7"></a>}</span>
-<span id="cb52-8"><a href="#cb52-8"></a></span>
-<span id="cb52-9"><a href="#cb52-9"></a>find_abs <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb52-10"><a href="#cb52-10"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb52-11"><a href="#cb52-11"></a>    <span class="fu">return</span>(x)</span>
-<span id="cb52-12"><a href="#cb52-12"></a>  }</span>
-<span id="cb52-13"><a href="#cb52-13"></a>  x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb52-14"><a href="#cb52-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="co"># Good</span></span>
+<span id="cb52-2"><a></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb52-3"><a></a>x <span class="ot">&lt;-</span> <span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">20</span>) <span class="st">"Too low"</span> <span class="cf">else</span> <span class="st">"Too high"</span></span>
+<span id="cb52-4"><a></a></span>
+<span id="cb52-5"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb52-6"><a></a>  <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb52-7"><a></a>}</span>
+<span id="cb52-8"><a></a></span>
+<span id="cb52-9"><a></a>find_abs <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb52-10"><a></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb52-11"><a></a>    <span class="fu">return</span>(x)</span>
+<span id="cb52-12"><a></a>  }</span>
+<span id="cb52-13"><a></a>  x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb52-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="in-line-statements-1" class="slide level2">
 <h2>In-line Statements</h2>
 <p>In general, it’s ok to drop the curly braces for very simple statements that fit on one line. However, function calls that affect control flow (<code>return</code>, <code>stop</code>, etc.) should always go in their own <code>{}</code> block:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># Bad</span></span>
-<span id="cb53-2"><a href="#cb53-2"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb53-3"><a href="#cb53-3"></a></span>
-<span id="cb53-4"><a href="#cb53-4"></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb53-5"><a href="#cb53-5"></a>  <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
-<span id="cb53-6"><a href="#cb53-6"></a></span>
-<span id="cb53-7"><a href="#cb53-7"></a>find_abs <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb53-8"><a href="#cb53-8"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">return</span>(x)</span>
-<span id="cb53-9"><a href="#cb53-9"></a>  x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb53-10"><a href="#cb53-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a><span class="co"># Bad</span></span>
+<span id="cb53-2"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb53-3"><a></a></span>
+<span id="cb53-4"><a></a><span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
+<span id="cb53-5"><a></a>  <span class="fu">stop</span>(<span class="st">"Y is negative"</span>)</span>
+<span id="cb53-6"><a></a></span>
+<span id="cb53-7"><a></a>find_abs <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb53-8"><a></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="fu">return</span>(x)</span>
+<span id="cb53-9"><a></a>  x <span class="sc">*</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb53-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="long-lines-in-functions" class="slide level2">
 <h2>Long lines in functions</h2>
 <p>If a function definition runs over multiple lines, indent the second line to where the definition starts.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># Good</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>,</span>
-<span id="cb54-3"><a href="#cb54-3"></a>                               <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
-<span id="cb54-4"><a href="#cb54-4"></a>                               <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
-<span id="cb54-5"><a href="#cb54-5"></a>  <span class="co"># As usual code is indented by two spaces.</span></span>
-<span id="cb54-6"><a href="#cb54-6"></a>}</span>
-<span id="cb54-7"><a href="#cb54-7"></a></span>
-<span id="cb54-8"><a href="#cb54-8"></a><span class="co"># Bad</span></span>
-<span id="cb54-9"><a href="#cb54-9"></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>,</span>
-<span id="cb54-10"><a href="#cb54-10"></a>  <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
-<span id="cb54-11"><a href="#cb54-11"></a>  <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
-<span id="cb54-12"><a href="#cb54-12"></a>  <span class="co"># Here it's hard to spot where the definition ends and the</span></span>
-<span id="cb54-13"><a href="#cb54-13"></a>  <span class="co"># code begins</span></span>
-<span id="cb54-14"><a href="#cb54-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="co"># Good</span></span>
+<span id="cb54-2"><a></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>,</span>
+<span id="cb54-3"><a></a>                               <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
+<span id="cb54-4"><a></a>                               <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
+<span id="cb54-5"><a></a>  <span class="co"># As usual code is indented by two spaces.</span></span>
+<span id="cb54-6"><a></a>}</span>
+<span id="cb54-7"><a></a></span>
+<span id="cb54-8"><a></a><span class="co"># Bad</span></span>
+<span id="cb54-9"><a></a>long_function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">a =</span> <span class="st">"a long argument"</span>,</span>
+<span id="cb54-10"><a></a>  <span class="at">b =</span> <span class="st">"another argument"</span>,</span>
+<span id="cb54-11"><a></a>  <span class="at">c =</span> <span class="st">"another long argument"</span>) {</span>
+<span id="cb54-12"><a></a>  <span class="co"># Here it's hard to spot where the definition ends and the</span></span>
+<span id="cb54-13"><a></a>  <span class="co"># code begins</span></span>
+<span id="cb54-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="return" class="slide level2">
 <h2><code>return</code></h2>
 <p>Strictly speaking, <code>return</code> is not necessary in a function definition. The function will output the last line of executable R code. The following function definitions will output the same results!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>Add_Values <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb55-2"><a href="#cb55-2"></a>  <span class="fu">return</span>(x <span class="sc">+</span> y)</span>
-<span id="cb55-3"><a href="#cb55-3"></a>}</span>
-<span id="cb55-4"><a href="#cb55-4"></a></span>
-<span id="cb55-5"><a href="#cb55-5"></a>Add_Values <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb55-6"><a href="#cb55-6"></a>  x <span class="sc">+</span> y</span>
-<span id="cb55-7"><a href="#cb55-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>Add_Values <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb55-2"><a></a>  <span class="fu">return</span>(x <span class="sc">+</span> y)</span>
+<span id="cb55-3"><a></a>}</span>
+<span id="cb55-4"><a></a></span>
+<span id="cb55-5"><a></a>Add_Values <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb55-6"><a></a>  x <span class="sc">+</span> y</span>
+<span id="cb55-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="commenting-functions" class="slide level2">
@@ -1054,35 +1055,35 @@ Peter Gao
 <section id="commenting-functions-1" class="slide level2">
 <h2>Commenting functions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># Good ----</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a><span class="co"># Function: square_plus_2, squares a number and then adds 2</span></span>
-<span id="cb56-3"><a href="#cb56-3"></a><span class="co"># Input: x, must be numeric</span></span>
-<span id="cb56-4"><a href="#cb56-4"></a><span class="co"># Output: numeric equal to x^2 + 2</span></span>
-<span id="cb56-5"><a href="#cb56-5"></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb56-6"><a href="#cb56-6"></a>  <span class="co"># check that x is numeric</span></span>
-<span id="cb56-7"><a href="#cb56-7"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb56-8"><a href="#cb56-8"></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
-<span id="cb56-9"><a href="#cb56-9"></a>  } <span class="cf">else</span> {</span>
-<span id="cb56-10"><a href="#cb56-10"></a>    <span class="co"># if numeric, then square and add 2</span></span>
-<span id="cb56-11"><a href="#cb56-11"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb56-12"><a href="#cb56-12"></a>    <span class="fu">return</span>(y)</span>
-<span id="cb56-13"><a href="#cb56-13"></a>  }</span>
-<span id="cb56-14"><a href="#cb56-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="co"># Good ----</span></span>
+<span id="cb56-2"><a></a><span class="co"># Function: square_plus_2, squares a number and then adds 2</span></span>
+<span id="cb56-3"><a></a><span class="co"># Input: x, must be numeric</span></span>
+<span id="cb56-4"><a></a><span class="co"># Output: numeric equal to x^2 + 2</span></span>
+<span id="cb56-5"><a></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb56-6"><a></a>  <span class="co"># check that x is numeric</span></span>
+<span id="cb56-7"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb56-8"><a></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
+<span id="cb56-9"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb56-10"><a></a>    <span class="co"># if numeric, then square and add 2</span></span>
+<span id="cb56-11"><a></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb56-12"><a></a>    <span class="fu">return</span>(y)</span>
+<span id="cb56-13"><a></a>  }</span>
+<span id="cb56-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="commenting-functions-2" class="slide level2">
 <h2>Commenting functions</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Bad ----</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="co"># Function for problem 2c</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb57-4"><a href="#cb57-4"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
-<span id="cb57-5"><a href="#cb57-5"></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
-<span id="cb57-6"><a href="#cb57-6"></a>  } <span class="cf">else</span> {</span>
-<span id="cb57-7"><a href="#cb57-7"></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb57-8"><a href="#cb57-8"></a>    <span class="fu">return</span>(y)</span>
-<span id="cb57-9"><a href="#cb57-9"></a>  }</span>
-<span id="cb57-10"><a href="#cb57-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="co"># Bad ----</span></span>
+<span id="cb57-2"><a></a><span class="co"># Function for problem 2c</span></span>
+<span id="cb57-3"><a></a>square_plus_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-4"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb57-5"><a></a>    <span class="fu">stop</span>(<span class="st">"x must be numeric!"</span>)</span>
+<span id="cb57-6"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb57-7"><a></a>    y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb57-8"><a></a>    <span class="fu">return</span>(y)</span>
+<span id="cb57-9"><a></a>  }</span>
+<span id="cb57-10"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercises" class="slide level2">
@@ -1092,8 +1093,10 @@ Peter Gao
 <li>Write a function that takes as input one number, <code>a</code>, and returns its absolute value, <strong>without using the <code>abs</code> function</strong>.</li>
 </ol>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -1122,7 +1125,6 @@ Peter Gao
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1377,18 +1379,7 @@ Peter Gao
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1420,11 +1411,50 @@ Peter Gao
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1434,8 +1464,17 @@ Peter Gao
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1449,7 +1488,11 @@ Peter Gao
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

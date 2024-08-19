@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Overview</title>
+  <title>MATH167R – MATH167R: Overview</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Overview">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Overview – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -405,7 +406,7 @@ Peter Gao
 </section>
 <section id="course-information" class="slide level2">
 <h2>Course information</h2>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 85%">
@@ -419,11 +420,11 @@ Peter Gao
 <tbody>
 <tr class="odd">
 <td><strong>Lectures</strong></td>
-<td>MW 12-1:15pm (Section 01) and 1:30-2:45pm (Section 02) in MH235.</td>
+<td>Weekly on Monday and Wednesday, 12-1:15pm in MH235. |</td>
 </tr>
 <tr class="even">
 <td><strong>Office Hours</strong></td>
-<td>MW 10:30-11:30am in MH311 or email for an appointment</td>
+<td>M 3-4pm and W 10:30-11:30am in MH426 |</td>
 </tr>
 <tr class="odd">
 <td><strong>Email</strong></td>
@@ -556,19 +557,22 @@ Peter Gao
 <code>code snippet</code>&nbsp;<br>
 It returned the following error:&nbsp;<br>
 <code>error message</code>&nbsp;<br>
-Does anyone know why? I already tried...</p></li>
-<li><p>I don’t understand the concept from Slide 18 today. Could anyone elaborate on why...</p></li>
+Does anyone know why? I already tried…</p></li>
+<li><p>I don’t understand the concept from Slide 18 today. Could anyone elaborate on why…</p></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="office-hours-aka-drop-in-hours" class="slide level2">
 <h2>Office Hours (aka drop-in hours)</h2>
-<table>
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 83%">
+</colgroup>
 <tbody>
 <tr class="odd">
 <td>In-person</td>
-<td>MW 10:30-11:30am in MH311 or email for an appointment</td>
+<td>M 3-4pm and W 10:30-11:30am in MH426 or email for an appointment</td>
 </tr>
 <tr class="even">
 <td>Zoom</td>
@@ -589,8 +593,8 @@ Does anyone know why? I already tried...</p></li>
 <p>Slides will usually be posted on the course website before class. I encourage you to return to the slides after class and make sure you understand the code used and the concepts covered.</p>
 <p>Generally speaking, code will be contained in blocks that look like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># example comment</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>example line of code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># example comment</span></span>
+<span id="cb1-2"><a></a>example line of code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-to-know-each-other" class="slide level2">
@@ -635,16 +639,16 @@ Does anyone know why? I already tried...</p></li>
 <section id="r-a-fancy-calculator" class="slide level2">
 <h2>R: A fancy calculator</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Addition</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="dv">6</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Addition</span></span>
+<span id="cb2-2"><a></a><span class="dv">6</span> <span class="sc">+</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9</code></pre>
 </div>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Subtraction</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="dv">6</span> <span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Subtraction</span></span>
+<span id="cb4-2"><a></a><span class="dv">6</span> <span class="sc">-</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -652,8 +656,8 @@ Does anyone know why? I already tried...</p></li>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Multiplication</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="dv">6</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Multiplication</span></span>
+<span id="cb6-2"><a></a><span class="dv">6</span> <span class="sc">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18</code></pre>
 </div>
@@ -661,8 +665,8 @@ Does anyone know why? I already tried...</p></li>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Division</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="dv">6</span> <span class="sc">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Division</span></span>
+<span id="cb8-2"><a></a><span class="dv">6</span> <span class="sc">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
@@ -673,8 +677,8 @@ Does anyone know why? I already tried...</p></li>
 <section id="r-a-fancy-calculator-1" class="slide level2">
 <h2>R: A fancy calculator</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Exponentiation</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Exponentiation</span></span>
+<span id="cb10-2"><a></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3486784401</code></pre>
 </div>
@@ -682,8 +686,8 @@ Does anyone know why? I already tried...</p></li>
 <p>R can usually handle bigger numbers than your handheld calculator, but even R has limits:</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Bigger exponentiation</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Bigger exponentiation</span></span>
+<span id="cb12-2"><a></a><span class="dv">3</span> <span class="sc">^</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Inf</code></pre>
 </div>
@@ -694,13 +698,13 @@ Does anyone know why? I already tried...</p></li>
 <h2>Assignment</h2>
 <p>R can also store values (like numbers) as <strong>objects</strong>, which can be referenced later:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb14-2"><a></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">print</span>(x <span class="sc">+</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb16-2"><a></a><span class="fu">print</span>(x <span class="sc">+</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
@@ -710,9 +714,9 @@ Does anyone know why? I already tried...</p></li>
 <h2>A tricky calculator</h2>
 <p>What do you expect the output to be?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb18-2"><a></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb18-3"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell">
@@ -724,10 +728,10 @@ Does anyone know why? I already tried...</p></li>
 <div class="fragment">
 <p>What about this code?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>x <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb20-2"><a></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb20-3"><a></a>x <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-4"><a></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -747,7 +751,7 @@ Does anyone know why? I already tried...</p></li>
 <h2>What is RStudio?</h2>
 <p>RStudio is an integrated development environment (IDE) designed to make your life easier.</p>
 <ul>
-<li><p>Organizes scripts, files, plots, code console, ...</p></li>
+<li><p>Organizes scripts, files, plots, code console, …</p></li>
 <li><p>Highlights syntax</p></li>
 <li><p>Helpful interactive graphical interface</p></li>
 <li><p>Will make an efficient, reproducible workflow&nbsp;<em>much</em>&nbsp;easier</p></li>
@@ -770,9 +774,9 @@ Does anyone know why? I already tried...</p></li>
 <section id="data-analysis" class="slide level2">
 <h2>Data analysis</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">data</span>(penguins)</span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb22-2"><a></a><span class="fu">data</span>(penguins)</span>
+<span id="cb22-3"><a></a><span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -787,12 +791,12 @@ Coefficients:
 <section id="visualization" class="slide level2">
 <h2>Visualization</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-2"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> </span>
+<span id="cb24-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="01_overview_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<img data-src="01_overview_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Scatter plot showing the positive correlation between flipper length in millimeters and body mass in grams, with a blue line of best fit.</p></section>
 <section id="communication" class="slide level2">
 <h2>Communication</h2>
 <p>R Markdown files (see examples <a href="https://rmarkdown.rstudio.com/gallery.html">here</a>)</p>
@@ -809,8 +813,10 @@ Coefficients:
 <li><p>Download and install RStudio Desktop from <a href="https://posit.co/download/rstudio-desktop/">this link</a>.</p></li>
 </ol>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -839,7 +845,6 @@ Coefficients:
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1094,18 +1099,7 @@ Coefficients:
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1137,11 +1131,50 @@ Coefficients:
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1151,8 +1184,17 @@ Coefficients:
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1166,7 +1208,11 @@ Coefficients:
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

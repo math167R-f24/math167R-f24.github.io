@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Statistical inference</title>
+  <title>MATH167R – MATH167R: Statistical inference</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Statistical inference">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Statistical inference – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -424,12 +425,12 @@ Peter Gao
 <section id="law-of-large-numbers-simulation" class="slide level2">
 <h2>Law of large numbers simulation</h2>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/lln_3fb0bb2d2be61d912ee87718aa0ef19e">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">set.seed</span>(<span class="dv">1028</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>dice_rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>sample_avg <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dice_rolls), <span class="cf">function</span>(i) <span class="fu">mean</span>(dice_rolls[<span class="dv">1</span><span class="sc">:</span>i]))</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, sample_avg, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>,</span>
-<span id="cb1-5"><a href="#cb1-5"></a>     <span class="at">xlab =</span> <span class="st">"Rolls"</span>, <span class="at">ylab =</span> <span class="st">"Average"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">3.5</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">1028</span>)</span>
+<span id="cb1-2"><a></a>dice_rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-3"><a></a>sample_avg <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dice_rolls), <span class="cf">function</span>(i) <span class="fu">mean</span>(dice_rolls[<span class="dv">1</span><span class="sc">:</span>i]))</span>
+<span id="cb1-4"><a></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, sample_avg, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>,</span>
+<span id="cb1-5"><a></a>     <span class="at">xlab =</span> <span class="st">"Rolls"</span>, <span class="at">ylab =</span> <span class="st">"Average"</span>)</span>
+<span id="cb1-6"><a></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">3.5</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="21_confidence-intervals_files/figure-html/lln-1.png" width="672" class="r-stretch"></section>
@@ -449,11 +450,11 @@ Peter Gao
 <h2>Central limit theorem</h2>
 <p>Suppose <span class="math inline">\(X_1,\ldots, X_{10}\sim N(2, 4)\)</span>:</p>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/clt1_3247746089da538abe0e3d56cf20f8c0">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span>))))</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span> </span>
-<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">10</span>)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span>))))</span>
+<span id="cb2-3"><a></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
+<span id="cb2-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span> </span>
+<span id="cb2-5"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">10</span>)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="21_confidence-intervals_files/figure-html/clt1-1.png" width="672" class="r-stretch"></section>
@@ -461,11 +462,11 @@ Peter Gao
 <h2>Central limit theorem</h2>
 <p>What if <span class="math inline">\(n = 5\)</span>?</p>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/clt2_023a392f9b5b04136c62ad2c91c037db">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span>))))</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span> </span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-2"><a></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span>))))</span>
+<span id="cb3-3"><a></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
+<span id="cb3-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span> </span>
+<span id="cb3-5"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
@@ -476,11 +477,11 @@ Peter Gao
 <h2>Central limit theorem</h2>
 <p>What if <span class="math inline">\(n = 5\)</span>, but <span class="math inline">\(X_1,\ldots, X_{5}\sim \mathrm{Exp}(1)\)</span>:</p>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/clt3_d717016779b1510b5200c295926eb3d0">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>))))</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span> </span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb5-2"><a></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>))))</span>
+<span id="cb5-3"><a></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
+<span id="cb5-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..)) <span class="sc">+</span> </span>
+<span id="cb5-5"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="21_confidence-intervals_files/figure-html/clt3-1.png" width="672" class="r-stretch"></section>
@@ -544,12 +545,12 @@ Peter Gao
 <section id="simulating-many-confidence-intervals" class="slide level2">
 <h2>Simulating many confidence intervals</h2>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/many.ci_dcfbc8a7148094a9c13bcbd952e11e3b">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># sample size</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>mu <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># unknown true mean</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>sigma <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># known standard deviation</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>Xbars <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)))</span>
-<span id="cb6-5"><a href="#cb6-5"></a>coverage_rate <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(Xbars <span class="sc">-</span> mu) <span class="sc">&lt;</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
-<span id="cb6-6"><a href="#cb6-6"></a>coverage_rate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># sample size</span></span>
+<span id="cb6-2"><a></a>mu <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># unknown true mean</span></span>
+<span id="cb6-3"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># known standard deviation</span></span>
+<span id="cb6-4"><a></a>Xbars <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)))</span>
+<span id="cb6-5"><a></a>coverage_rate <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(Xbars <span class="sc">-</span> mu) <span class="sc">&lt;</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb6-6"><a></a>coverage_rate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.92</code></pre>
 </div>
@@ -559,17 +560,17 @@ Peter Gao
 <h2>Simulating many confidence intervals</h2>
 <p>Code to visualize all of our confidence intervals:</p>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/many.ci.vis_18b10daac9d6e5cac0aec0514eaa6bf5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>plot_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>                       <span class="at">Xbar =</span> Xbars) <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">mutate</span>(<span class="at">upper =</span> Xbar <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n),</span>
-<span id="cb8-5"><a href="#cb8-5"></a>         <span class="at">lower =</span> Xbar <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="fu">ggplot</span>(plot_dat, </span>
-<span id="cb8-7"><a href="#cb8-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> id, <span class="at">y =</span> Xbar, </span>
-<span id="cb8-8"><a href="#cb8-8"></a>           <span class="at">color =</span> <span class="fu">abs</span>(Xbars <span class="sc">-</span> mu) <span class="sc">&lt;</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))) <span class="sc">+</span> </span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper)) <span class="sc">+</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> mu, <span class="at">slope =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
-<span id="cb8-11"><a href="#cb8-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a></a>plot_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb8-3"><a></a>                       <span class="at">Xbar =</span> Xbars) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a></a>  <span class="fu">mutate</span>(<span class="at">upper =</span> Xbar <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n),</span>
+<span id="cb8-5"><a></a>         <span class="at">lower =</span> Xbar <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb8-6"><a></a><span class="fu">ggplot</span>(plot_dat, </span>
+<span id="cb8-7"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> id, <span class="at">y =</span> Xbar, </span>
+<span id="cb8-8"><a></a>           <span class="at">color =</span> <span class="fu">abs</span>(Xbars <span class="sc">-</span> mu) <span class="sc">&lt;</span> <span class="fl">1.96</span> <span class="sc">*</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n))) <span class="sc">+</span> </span>
+<span id="cb8-9"><a></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower, <span class="at">ymax =</span> upper)) <span class="sc">+</span></span>
+<span id="cb8-10"><a></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> mu, <span class="at">slope =</span> <span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb8-11"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="simulating-many-confidence-intervals-2" class="slide level2">
@@ -586,21 +587,21 @@ Peter Gao
 <section id="simulating-many-confidence-intervals-3" class="slide level2">
 <h2>Simulating many confidence intervals</h2>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/many.ci.pois_6ab3a1574008480dc92020ad650978cf">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># sample size</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>lambda <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>sample_stats_poisson <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb9-4"><a href="#cb9-4"></a>  x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(n, lambda)</span>
-<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">return</span>(<span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">sd</span>(x)))</span>
-<span id="cb9-6"><a href="#cb9-6"></a>}</span>
-<span id="cb9-7"><a href="#cb9-7"></a>stats <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">sample_stats_poisson</span>())</span>
-<span id="cb9-8"><a href="#cb9-8"></a>stats[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># print out first five simulation results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># sample size</span></span>
+<span id="cb9-2"><a></a>lambda <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb9-3"><a></a>sample_stats_poisson <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb9-4"><a></a>  x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(n, lambda)</span>
+<span id="cb9-5"><a></a>  <span class="fu">return</span>(<span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">sd</span>(x)))</span>
+<span id="cb9-6"><a></a>}</span>
+<span id="cb9-7"><a></a>stats <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">sample_stats_poisson</span>())</span>
+<span id="cb9-8"><a></a>stats[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># print out first five simulation results</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]      [,2]      [,3]     [,4]     [,5]
 [1,] 10.666667 10.733333 10.500000 9.633333 9.800000
 [2,]  2.940013  2.702915  2.933164 2.953471 3.252585</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>coverage_rate <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(stats[<span class="dv">1</span>,] <span class="sc">-</span> mu) <span class="sc">&lt;</span> <span class="fl">1.96</span> <span class="sc">*</span> stats[<span class="dv">2</span>,] <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
-<span id="cb11-2"><a href="#cb11-2"></a>coverage_rate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>coverage_rate <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(stats[<span class="dv">1</span>,] <span class="sc">-</span> mu) <span class="sc">&lt;</span> <span class="fl">1.96</span> <span class="sc">*</span> stats[<span class="dv">2</span>,] <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span>
+<span id="cb11-2"><a></a>coverage_rate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.98</code></pre>
 </div>
@@ -626,12 +627,12 @@ Peter Gao
 <h2>Example: Precipitation</h2>
 <p>The <code>precip</code> dataset includes annual precipitation in inches for a number of US cities. Is this normally distributed?</p>
 <div class="cell" data-hash="21_confidence-intervals_cache/html/precip_5c638f27b5997787557667d9b3d661b2">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">head</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">head</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Mobile      Juneau     Phoenix Little Rock Los Angeles  Sacramento 
        67.0        54.7         7.0        48.5        14.0        17.2 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">hist</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">hist</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="21_confidence-intervals_files/figure-html/precip-1.png" width="672" class="r-stretch"></section>
@@ -639,52 +640,52 @@ Peter Gao
 <h2>Example: Precipitation</h2>
 <p>The <code>qqnorm()</code> function can be used to compare the empirical/sample quantiles and the theoretical quantiles of a standard normal. The <code>qqline()</code> function adds a line that passes through the first and third quartiles.</p>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="21_confidence-intervals_cache/html/precip.qq_076c5d4e31008a9c31295be944bc1572">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">qqnorm</span>(precip, <span class="at">ylab =</span> <span class="st">"Precipitation [in/yr] for 70 US cities"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">qqline</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">qqnorm</span>(precip, <span class="at">ylab =</span> <span class="st">"Precipitation [in/yr] for 70 US cities"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb16-2"><a></a><span class="fu">qqline</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="21_confidence-intervals_files/figure-html/precip.qq-1.png" width="480" class="r-stretch quarto-figure-center"></section>
+<img data-src="21_confidence-intervals_files/figure-html/precip.qq-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
 <section id="example-penguins" class="slide level2">
 <h2>Example: Penguins</h2>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="21_confidence-intervals_cache/html/peng.qq_c30ca0f84ea26ffe2aa5daaa5597a2f4">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">data</span>(penguins)</span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="fu">qqnorm</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">ylab =</span> <span class="st">"Penguin bill lengths"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">qqline</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb17-2"><a></a><span class="fu">data</span>(penguins)</span>
+<span id="cb17-3"><a></a><span class="fu">qqnorm</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">ylab =</span> <span class="st">"Penguin bill lengths"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb17-4"><a></a><span class="fu">qqline</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="21_confidence-intervals_files/figure-html/peng.qq-1.png" width="480" class="r-stretch quarto-figure-center"></section>
+<img data-src="21_confidence-intervals_files/figure-html/peng.qq-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
 <section id="example-penguins-1" class="slide level2">
 <h2>Example: Penguins</h2>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="21_confidence-intervals_cache/html/peng.hist.2_aeee73cc126b0e827f96057400da9734">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">hist</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">hist</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="21_confidence-intervals_files/figure-html/peng.hist.2-1.png" width="480" class="r-stretch quarto-figure-center"></section>
+<img data-src="21_confidence-intervals_files/figure-html/peng.hist.2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
 <section id="example-penguins-2" class="slide level2">
 <h2>Example: Penguins</h2>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="21_confidence-intervals_cache/html/peng.qq.2_a4a8b93ad13bd5cf0fe195111cf3383b">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>adelie <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">qqnorm</span>(adelie<span class="sc">$</span>bill_length_mm, <span class="at">ylab =</span> <span class="st">"Penguin bill lengths"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="fu">qqline</span>(adelie<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>adelie <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
+<span id="cb19-2"><a></a><span class="fu">qqnorm</span>(adelie<span class="sc">$</span>bill_length_mm, <span class="at">ylab =</span> <span class="st">"Penguin bill lengths"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb19-3"><a></a><span class="fu">qqline</span>(adelie<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="21_confidence-intervals_files/figure-html/peng.qq.2-1.png" width="480" class="r-stretch quarto-figure-center"></section>
+<img data-src="21_confidence-intervals_files/figure-html/peng.qq.2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
 <section id="example-penguins-3" class="slide level2">
 <h2>Example: Penguins</h2>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="21_confidence-intervals_cache/html/peng.hist.3_b26374e751c1640c7dedbf242e575e10">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">hist</span>(adelie<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">hist</span>(adelie<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="21_confidence-intervals_files/figure-html/peng.hist.3-1.png" width="480" class="r-stretch quarto-figure-center"></section>
+<img data-src="21_confidence-intervals_files/figure-html/peng.hist.3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
 <section id="using-r-to-compute-confidence-intervals" class="slide level2">
 <h2>Using R to compute confidence intervals</h2>
 <p>Generally, if you are only doing a simple normal-based or <span class="math inline">\(t\)</span>-based confidence interval for a mean, I recommend computing <span class="math inline">\(\overline{X}_n\)</span> and <span class="math inline">\(S\)</span> using <code>mean()</code> and <code>sd()</code>, and then computing the confidence interval by hand.</p>
 <p>You can also use the <code>t.test()</code> function to compute the appropriate <span class="math inline">\(t\)</span>-interval for a population mean:</p>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="21_confidence-intervals_cache/html/precip.ci_a0d3c6cfee93a25c00f8a1892c18d06c">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>precip_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(precip, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>precip_ci <span class="ot">&lt;-</span> precip_t<span class="sc">$</span>conf.int <span class="co"># get confidence interval</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>precip_ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>precip_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(precip, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb21-2"><a></a>precip_ci <span class="ot">&lt;-</span> precip_t<span class="sc">$</span>conf.int <span class="co"># get confidence interval</span></span>
+<span id="cb21-3"><a></a>precip_ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 31.61748 38.15395
 attr(,"conf.level")
@@ -695,14 +696,14 @@ attr(,"conf.level")
 <section id="comparing-t-based-and-bootstrap-confidence-intervals" class="slide level2">
 <h2>Comparing <span class="math inline">\(t\)</span>-based and bootstrap confidence intervals</h2>
 <div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="21_confidence-intervals_cache/html/precip.bootstrap.ci_c95ad50780e8c7d43efded43cdef8c77">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>bootstrap_Xbar <span class="ot">&lt;-</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(precip, <span class="at">size =</span> <span class="fu">length</span>(precip), <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">quantile</span>(bootstrap_Xbar, <span class="at">probs =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>bootstrap_Xbar <span class="ot">&lt;-</span> </span>
+<span id="cb23-2"><a></a>  <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(precip, <span class="at">size =</span> <span class="fu">length</span>(precip), <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb23-3"><a></a><span class="fu">quantile</span>(bootstrap_Xbar, <span class="at">probs =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
 31.78282 38.07286 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>precip_ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>precip_ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 31.61748 38.15395
 attr(,"conf.level")
@@ -723,8 +724,10 @@ attr(,"conf.level")
 <h2>Other confidence intervals</h2>
 <p>R has implementations for confidence intervals for many types of population parameters, including for non-normally distributed populations. Always carefully read the documentation before using these functions.</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -753,7 +756,6 @@ attr(,"conf.level")
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -970,18 +972,7 @@ attr(,"conf.level")
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1013,11 +1004,50 @@ attr(,"conf.level")
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1027,8 +1057,17 @@ attr(,"conf.level")
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1042,7 +1081,11 @@ attr(,"conf.level")
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

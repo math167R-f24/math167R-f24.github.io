@@ -8,10 +8,10 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Peter Gao">
-  <title>MATH167R - MATH167R: Prediction</title>
+  <title>MATH167R – MATH167R: Prediction</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -221,7 +221,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,8 +385,8 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="MATH167R - MATH167R: Prediction">
-<meta property="og:site-name" content="MATH167R">
+<meta property="og:title" content="MATH167R: Prediction – MATH167R">
+<meta property="og:site_name" content="MATH167R">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -507,157 +508,157 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="example-training-error-vs-test-error" class="slide level2">
 <h2>Example: Training Error vs Test Error</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># generate data</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>x <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">runif</span>(n, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb1-6"><a href="#cb1-6"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">rnorm</span>(n)</span>
-<span id="cb1-7"><a href="#cb1-7"></a>x_test <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">runif</span>(n, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb1-8"><a href="#cb1-8"></a>y_test <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>x_test <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">rnorm</span>(n)</span>
-<span id="cb1-9"><a href="#cb1-9"></a>df_train <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x, <span class="st">"y"</span> <span class="ot">=</span> y)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>df_test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x_test, <span class="st">"y"</span> <span class="ot">=</span> y_test)</span>
-<span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># store a theme</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a>my_theme <span class="ot">&lt;-</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span> </span>
-<span id="cb1-14"><a href="#cb1-14"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb1-15"><a href="#cb1-15"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># generate plots</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>g_train <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_train, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">min</span>(y, y_test), <span class="fu">max</span>(y, y_test)) <span class="sc">+</span> </span>
-<span id="cb1-20"><a href="#cb1-20"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Training Data"</span>) <span class="sc">+</span> my_theme</span>
-<span id="cb1-21"><a href="#cb1-21"></a>g_test <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_test, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">min</span>(y, y_test), <span class="fu">max</span>(y, y_test)) <span class="sc">+</span> </span>
-<span id="cb1-23"><a href="#cb1-23"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Test Data"</span>) <span class="sc">+</span> my_theme</span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="fu">ggarrange</span>(g_train, g_test) <span class="co"># from ggpubr, to put side-by-side</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-2"><a></a><span class="co"># generate data</span></span>
+<span id="cb1-3"><a></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
+<span id="cb1-4"><a></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb1-5"><a></a>x <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">runif</span>(n, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb1-6"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">rnorm</span>(n)</span>
+<span id="cb1-7"><a></a>x_test <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">runif</span>(n, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb1-8"><a></a>y_test <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>x_test <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">rnorm</span>(n)</span>
+<span id="cb1-9"><a></a>df_train <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x, <span class="st">"y"</span> <span class="ot">=</span> y)</span>
+<span id="cb1-10"><a></a>df_test <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x_test, <span class="st">"y"</span> <span class="ot">=</span> y_test)</span>
+<span id="cb1-11"><a></a></span>
+<span id="cb1-12"><a></a><span class="co"># store a theme</span></span>
+<span id="cb1-13"><a></a>my_theme <span class="ot">&lt;-</span> <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span> </span>
+<span id="cb1-14"><a></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-15"><a></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span>
+<span id="cb1-16"><a></a></span>
+<span id="cb1-17"><a></a><span class="co"># generate plots</span></span>
+<span id="cb1-18"><a></a>g_train <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_train, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-19"><a></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">min</span>(y, y_test), <span class="fu">max</span>(y, y_test)) <span class="sc">+</span> </span>
+<span id="cb1-20"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Training Data"</span>) <span class="sc">+</span> my_theme</span>
+<span id="cb1-21"><a></a>g_test <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_test, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-22"><a></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">min</span>(y, y_test), <span class="fu">max</span>(y, y_test)) <span class="sc">+</span> </span>
+<span id="cb1-23"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Test Data"</span>) <span class="sc">+</span> my_theme</span>
+<span id="cb1-24"><a></a><span class="fu">ggarrange</span>(g_train, g_test) <span class="co"># from ggpubr, to put side-by-side</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-training-error-vs-test-error-1" class="slide level2">
 <h2>Example: Training Error vs Test Error</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="example-training-error-vs-test-error-2" class="slide level2">
 <h2>Example: Training Error vs Test Error</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Fit linear model and calculate training error</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> df_train)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>yhat_train <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit)</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># (y_i - yhat_i)^2</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>train_err <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Calculate testing error</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>yhat_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
-<span id="cb2-9"><a href="#cb2-9"></a>test_err <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co"># Add linear model and error text to plot</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>g_train2 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
-<span id="cb2-13"><a href="#cb2-13"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fitted</span>(lm_fit)), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a>g_test2 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
-<span id="cb2-16"><a href="#cb2-16"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fitted</span>(lm_fit), <span class="at">x =</span> df_train<span class="sc">$</span>x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb2-18"><a href="#cb2-18"></a></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="fu">ggarrange</span>(g_train2, g_test2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Fit linear model and calculate training error</span></span>
+<span id="cb2-2"><a></a>lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> df_train)</span>
+<span id="cb2-3"><a></a>yhat_train <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit)</span>
+<span id="cb2-4"><a></a><span class="co"># (y_i - yhat_i)^2</span></span>
+<span id="cb2-5"><a></a>train_err <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a><span class="co"># Calculate testing error</span></span>
+<span id="cb2-8"><a></a>yhat_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
+<span id="cb2-9"><a></a>test_err <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb2-10"><a></a></span>
+<span id="cb2-11"><a></a><span class="co"># Add linear model and error text to plot</span></span>
+<span id="cb2-12"><a></a>g_train2 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
+<span id="cb2-13"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb2-14"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fitted</span>(lm_fit)), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb2-15"><a></a>g_test2 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
+<span id="cb2-16"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb2-17"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fitted</span>(lm_fit), <span class="at">x =</span> df_train<span class="sc">$</span>x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb2-18"><a></a></span>
+<span id="cb2-19"><a></a><span class="fu">ggarrange</span>(g_train2, g_test2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-training-error-vs-test-error-for-linear-model" class="slide level2">
 <h2>Example: Training Error vs Test Error for linear model</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="example-degree-5-polynomial" class="slide level2">
 <h2>Example: Degree 5 polynomial</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Fit 5 degree polynomial and calculate training error</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>lm_fit_5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">5</span>), <span class="at">data =</span> df_train)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>yhat_train_5 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_5)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>train_err_5 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train_5)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Calculate testing error</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>yhat_test_5 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_5, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
-<span id="cb3-8"><a href="#cb3-8"></a>test_err_5 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test_5)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># Create smooth line for plotting</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">100</span>))</span>
-<span id="cb3-12"><a href="#cb3-12"></a>line_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_fit_5, <span class="at">newdata =</span> x_fit))</span>
-<span id="cb3-13"><a href="#cb3-13"></a>                       </span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># Add linear model and error text to plot</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a>g_train3 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
-<span id="cb3-16"><a href="#cb3-16"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err_5, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb3-18"><a href="#cb3-18"></a>g_test3 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
-<span id="cb3-19"><a href="#cb3-19"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err_5, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb3-21"><a href="#cb3-21"></a></span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="fu">ggarrange</span>(g_train3, g_test3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Fit 5 degree polynomial and calculate training error</span></span>
+<span id="cb3-2"><a></a>lm_fit_5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">5</span>), <span class="at">data =</span> df_train)</span>
+<span id="cb3-3"><a></a>yhat_train_5 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_5)</span>
+<span id="cb3-4"><a></a>train_err_5 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train_5)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a><span class="co"># Calculate testing error</span></span>
+<span id="cb3-7"><a></a>yhat_test_5 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_5, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
+<span id="cb3-8"><a></a>test_err_5 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test_5)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a><span class="co"># Create smooth line for plotting</span></span>
+<span id="cb3-11"><a></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">100</span>))</span>
+<span id="cb3-12"><a></a>line_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_fit_5, <span class="at">newdata =</span> x_fit))</span>
+<span id="cb3-13"><a></a>                       </span>
+<span id="cb3-14"><a></a><span class="co"># Add linear model and error text to plot</span></span>
+<span id="cb3-15"><a></a>g_train3 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
+<span id="cb3-16"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err_5, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb3-17"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb3-18"><a></a>g_test3 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
+<span id="cb3-19"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err_5, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb3-20"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb3-21"><a></a></span>
+<span id="cb3-22"><a></a><span class="fu">ggarrange</span>(g_train3, g_test3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-degree-5-polynomial-1" class="slide level2">
 <h2>Example: Degree 5 polynomial</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="example-degree-10-polynomial" class="slide level2">
 <h2>Example: Degree 10 polynomial</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Fit 10 degree polynomial and calculate training error</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>lm_fit_10 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> df_train)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>yhat_train_10 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_10)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>train_err_10 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train_10)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co"># Calculate testing error</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>yhat_test_10 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_10, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
-<span id="cb4-8"><a href="#cb4-8"></a>test_err_10 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test_10)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb4-9"><a href="#cb4-9"></a></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co"># Create smooth line for plotting</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">100</span>))</span>
-<span id="cb4-12"><a href="#cb4-12"></a>line_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_fit_10, <span class="at">newdata =</span> x_fit))</span>
-<span id="cb4-13"><a href="#cb4-13"></a>                       </span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co"># Add linear model and error text to plot</span></span>
-<span id="cb4-15"><a href="#cb4-15"></a>g_train4 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
-<span id="cb4-16"><a href="#cb4-16"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err_10, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb4-18"><a href="#cb4-18"></a>g_test4 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
-<span id="cb4-19"><a href="#cb4-19"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err_10, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb4-21"><a href="#cb4-21"></a></span>
-<span id="cb4-22"><a href="#cb4-22"></a><span class="fu">ggarrange</span>(g_train4, g_test4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Fit 10 degree polynomial and calculate training error</span></span>
+<span id="cb4-2"><a></a>lm_fit_10 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> df_train)</span>
+<span id="cb4-3"><a></a>yhat_train_10 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_10)</span>
+<span id="cb4-4"><a></a>train_err_10 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train_10)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a><span class="co"># Calculate testing error</span></span>
+<span id="cb4-7"><a></a>yhat_test_10 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_10, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
+<span id="cb4-8"><a></a>test_err_10 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test_10)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb4-9"><a></a></span>
+<span id="cb4-10"><a></a><span class="co"># Create smooth line for plotting</span></span>
+<span id="cb4-11"><a></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">100</span>))</span>
+<span id="cb4-12"><a></a>line_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_fit_10, <span class="at">newdata =</span> x_fit))</span>
+<span id="cb4-13"><a></a>                       </span>
+<span id="cb4-14"><a></a><span class="co"># Add linear model and error text to plot</span></span>
+<span id="cb4-15"><a></a>g_train4 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
+<span id="cb4-16"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err_10, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb4-17"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb4-18"><a></a>g_test4 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
+<span id="cb4-19"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err_10, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb4-20"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb4-21"><a></a></span>
+<span id="cb4-22"><a></a><span class="fu">ggarrange</span>(g_train4, g_test4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-degree-10-polynomial-1" class="slide level2">
 <h2>Example: Degree 10 polynomial</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="example-degree-15-polynomial" class="slide level2">
 <h2>Example: Degree 15 polynomial</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Fit 15 degree polynomial and calculate training error</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>lm_fit_15 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">15</span>), <span class="at">data =</span> df_train)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>yhat_train_15 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_15)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>train_err_15 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train_15)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># Calculate testing error</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>yhat_test_15 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_15, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
-<span id="cb5-8"><a href="#cb5-8"></a>test_err_15 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test_15)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Create smooth line for plotting</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">100</span>))</span>
-<span id="cb5-12"><a href="#cb5-12"></a>line_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_fit_15, <span class="at">newdata =</span> x_fit))</span>
-<span id="cb5-13"><a href="#cb5-13"></a>                       </span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co"># Add linear model and error text to plot</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>g_train5 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
-<span id="cb5-16"><a href="#cb5-16"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err_15, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb5-18"><a href="#cb5-18"></a>g_test5 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
-<span id="cb5-19"><a href="#cb5-19"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err_15, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb5-21"><a href="#cb5-21"></a></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="fu">ggarrange</span>(g_train5, g_test5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Fit 15 degree polynomial and calculate training error</span></span>
+<span id="cb5-2"><a></a>lm_fit_15 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">15</span>), <span class="at">data =</span> df_train)</span>
+<span id="cb5-3"><a></a>yhat_train_15 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_15)</span>
+<span id="cb5-4"><a></a>train_err_15 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_train<span class="sc">$</span>y <span class="sc">-</span> yhat_train_15)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a><span class="co"># Calculate testing error</span></span>
+<span id="cb5-7"><a></a>yhat_test_15 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_fit_15, <span class="fu">data.frame</span>(<span class="at">x =</span> df_test<span class="sc">$</span>x))</span>
+<span id="cb5-8"><a></a>test_err_15 <span class="ot">&lt;-</span> <span class="fu">mean</span>((df_test<span class="sc">$</span>y <span class="sc">-</span> yhat_test_15)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb5-9"><a></a></span>
+<span id="cb5-10"><a></a><span class="co"># Create smooth line for plotting</span></span>
+<span id="cb5-11"><a></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length =</span> <span class="dv">100</span>))</span>
+<span id="cb5-12"><a></a>line_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_fit_15, <span class="at">newdata =</span> x_fit))</span>
+<span id="cb5-13"><a></a>                       </span>
+<span id="cb5-14"><a></a><span class="co"># Add linear model and error text to plot</span></span>
+<span id="cb5-15"><a></a>g_train5 <span class="ot">&lt;-</span> g_train <span class="sc">+</span> </span>
+<span id="cb5-16"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Training error:"</span>, <span class="fu">round</span>(train_err_15, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb5-17"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb5-18"><a></a>g_test5 <span class="ot">&lt;-</span> g_test <span class="sc">+</span> </span>
+<span id="cb5-19"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Test error:"</span>, <span class="fu">round</span>(test_err_15, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb5-20"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb5-21"><a></a></span>
+<span id="cb5-22"><a></a><span class="fu">ggarrange</span>(g_train5, g_test5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="example-degree-15-polynomial-1" class="slide level2">
 <h2>Example: Degree 15 polynomial</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="bias-variance-tradeoff" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
 <p>The formula for test error can be decomposed as a function of the bias and variance of our estimates.</p>
@@ -715,69 +716,69 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="sample-splitting-1" class="slide level2">
 <h2>Sample-splitting</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># Generate data</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>x <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">runif</span>(n, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb6-6"><a href="#cb6-6"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">rnorm</span>(n)</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># Randomly split data into two parts</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>inds <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">length =</span> n))</span>
-<span id="cb6-10"><a href="#cb6-10"></a>split <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(inds) <span class="sc">|&gt;</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>  <span class="fu">fct_recode</span>(<span class="at">Training =</span> <span class="st">"1"</span>, <span class="at">Test =</span> <span class="st">"2"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x, <span class="st">"y"</span> <span class="ot">=</span> y, <span class="st">"split"</span> <span class="ot">=</span> split)</span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a>g_split <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> split)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sample-splitting"</span>) <span class="sc">+</span> my_theme</span>
-<span id="cb6-16"><a href="#cb6-16"></a>g_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">library</span>(forcats)</span>
+<span id="cb6-2"><a></a><span class="co"># Generate data</span></span>
+<span id="cb6-3"><a></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
+<span id="cb6-4"><a></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb6-5"><a></a>x <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">runif</span>(n, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb6-6"><a></a>y <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">rnorm</span>(n)</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a><span class="co"># Randomly split data into two parts</span></span>
+<span id="cb6-9"><a></a>inds <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">length =</span> n))</span>
+<span id="cb6-10"><a></a>split <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(inds) <span class="sc">|&gt;</span></span>
+<span id="cb6-11"><a></a>  <span class="fu">fct_recode</span>(<span class="at">Training =</span> <span class="st">"1"</span>, <span class="at">Test =</span> <span class="st">"2"</span>)</span>
+<span id="cb6-12"><a></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x, <span class="st">"y"</span> <span class="ot">=</span> y, <span class="st">"split"</span> <span class="ot">=</span> split)</span>
+<span id="cb6-13"><a></a></span>
+<span id="cb6-14"><a></a>g_split <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> split)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-15"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Sample-splitting"</span>) <span class="sc">+</span> my_theme</span>
+<span id="cb6-16"><a></a>g_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sample-splitting-2" class="slide level2">
 <h2>Sample-splitting</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="sample-splitting-3" class="slide level2">
 <h2>Sample-splitting</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Train on the training split</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>data_train <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">==</span> <span class="st">"Training"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>lm_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_train)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>lm_10 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> data_train)</span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># Predict on the second half</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>data_test <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">==</span> <span class="st">"Test"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>pred_1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_1, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
-<span id="cb7-9"><a href="#cb7-9"></a>pred_10 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_10, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
-<span id="cb7-10"><a href="#cb7-10"></a></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co"># Calculate test error</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a>test_err_1 <span class="ot">&lt;-</span> <span class="fu">mean</span>((data_test<span class="sc">$</span>y <span class="sc">-</span> pred_1)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb7-13"><a href="#cb7-13"></a>test_err_10 <span class="ot">&lt;-</span> <span class="fu">mean</span>((data_test<span class="sc">$</span>y <span class="sc">-</span> pred_10)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Train on the training split</span></span>
+<span id="cb7-2"><a></a>data_train <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">==</span> <span class="st">"Training"</span>)</span>
+<span id="cb7-3"><a></a>lm_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_train)</span>
+<span id="cb7-4"><a></a>lm_10 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> data_train)</span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a><span class="co"># Predict on the second half</span></span>
+<span id="cb7-7"><a></a>data_test <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">==</span> <span class="st">"Test"</span>)</span>
+<span id="cb7-8"><a></a>pred_1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_1, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
+<span id="cb7-9"><a></a>pred_10 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_10, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
+<span id="cb7-10"><a></a></span>
+<span id="cb7-11"><a></a><span class="co"># Calculate test error</span></span>
+<span id="cb7-12"><a></a>test_err_1 <span class="ot">&lt;-</span> <span class="fu">mean</span>((data_test<span class="sc">$</span>y <span class="sc">-</span> pred_1)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb7-13"><a></a>test_err_10 <span class="ot">&lt;-</span> <span class="fu">mean</span>((data_test<span class="sc">$</span>y <span class="sc">-</span> pred_10)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sample-splitting-4" class="slide level2">
 <h2>Sample-splitting</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Create smooth lines for plotting</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="fu">min</span>(data<span class="sc">$</span>x), <span class="fu">max</span>(data<span class="sc">$</span>x), <span class="at">length =</span> <span class="dv">100</span>))</span>
-<span id="cb8-3"><a href="#cb8-3"></a>line_fit_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_1, <span class="at">newdata =</span> x_fit))</span>
-<span id="cb8-4"><a href="#cb8-4"></a>line_fit_10 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_10, <span class="at">newdata =</span> x_fit))</span>
-<span id="cb8-5"><a href="#cb8-5"></a>                       </span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co"># Add linear model and error text to plot</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>g_split1 <span class="ot">&lt;-</span> g_split <span class="sc">+</span> </span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 1 Test error:"</span>, <span class="fu">round</span>(test_err_1, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_1, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb8-10"><a href="#cb8-10"></a>g_split10 <span class="ot">&lt;-</span> g_split <span class="sc">+</span> </span>
-<span id="cb8-11"><a href="#cb8-11"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 10 Test error:"</span>, <span class="fu">round</span>(test_err_10, <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_10, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="fu">ggarrange</span>(g_split1, g_split10, <span class="at">common.legend =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Create smooth lines for plotting</span></span>
+<span id="cb8-2"><a></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="fu">min</span>(data<span class="sc">$</span>x), <span class="fu">max</span>(data<span class="sc">$</span>x), <span class="at">length =</span> <span class="dv">100</span>))</span>
+<span id="cb8-3"><a></a>line_fit_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_1, <span class="at">newdata =</span> x_fit))</span>
+<span id="cb8-4"><a></a>line_fit_10 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_10, <span class="at">newdata =</span> x_fit))</span>
+<span id="cb8-5"><a></a>                       </span>
+<span id="cb8-6"><a></a><span class="co"># Add linear model and error text to plot</span></span>
+<span id="cb8-7"><a></a>g_split1 <span class="ot">&lt;-</span> g_split <span class="sc">+</span> </span>
+<span id="cb8-8"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 1 Test error:"</span>, <span class="fu">round</span>(test_err_1, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb8-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_1, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb8-10"><a></a>g_split10 <span class="ot">&lt;-</span> g_split <span class="sc">+</span> </span>
+<span id="cb8-11"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 10 Test error:"</span>, <span class="fu">round</span>(test_err_10, <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb8-12"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_10, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb8-13"><a></a></span>
+<span id="cb8-14"><a></a><span class="fu">ggarrange</span>(g_split1, g_split10, <span class="at">common.legend =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sample-splitting-5" class="slide level2">
 <h2>Sample-splitting</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="sample-splitting-6" class="slide level2">
 <h2>Sample-splitting</h2>
 <p>Sample-splitting gives us a powerful tool to evaluate the performance of estimator <em>on data that was not used to train it</em>. Of course, this comes at the cost of sacrificing some of our data that could be used in order to train a model with as much information as possible, but this is a sacrifice we must make in practice if we want to appropriately evaluate the predictive performance of our models/methods!</p>
@@ -798,7 +799,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="k-fold-cross-validation-1" class="slide level2">
 <h2>k-fold Cross-validation</h2>
 
-<img data-src="images/cv.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/cv.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="k-fold-cross-validation-2" class="slide level2">
 <h2>k-fold Cross-validation</h2>
 <p>For each split, we calculate the out-of-sample mean squared prediction error. For example, for the first split, we calculate</p>
@@ -825,64 +826,64 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="k-fold-cross-validation-example" class="slide level2">
 <h2>k-fold Cross-validation Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># Split data in 5 parts, randomly</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>inds <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">length =</span> n))</span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># Use data from before</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x, <span class="st">"y"</span> <span class="ot">=</span> y, <span class="st">"split"</span> <span class="ot">=</span> inds)</span>
-<span id="cb9-7"><a href="#cb9-7"></a></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co"># Empty matrix to store predictions, 2 columns for 2 models</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a>pred_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, n, <span class="dv">2</span>)</span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
-<span id="cb9-11"><a href="#cb9-11"></a>  data_train <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">!=</span> i)</span>
-<span id="cb9-12"><a href="#cb9-12"></a>  data_test <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">==</span> i)</span>
-<span id="cb9-13"><a href="#cb9-13"></a>  </span>
-<span id="cb9-14"><a href="#cb9-14"></a>  <span class="co"># Train our models</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a>  lm_1_cv <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_train)</span>
-<span id="cb9-16"><a href="#cb9-16"></a>  lm_10_cv <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> data_train)</span>
-<span id="cb9-17"><a href="#cb9-17"></a>  </span>
-<span id="cb9-18"><a href="#cb9-18"></a>  <span class="co"># Record predictions</span></span>
-<span id="cb9-19"><a href="#cb9-19"></a>  pred_mat[inds <span class="sc">==</span> i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_1_cv, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
-<span id="cb9-20"><a href="#cb9-20"></a>  pred_mat[inds <span class="sc">==</span> i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_10_cv, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
-<span id="cb9-21"><a href="#cb9-21"></a>}</span>
-<span id="cb9-22"><a href="#cb9-22"></a></span>
-<span id="cb9-23"><a href="#cb9-23"></a><span class="co"># Compute average MSE to get CV error</span></span>
-<span id="cb9-24"><a href="#cb9-24"></a>cv_err <span class="ot">&lt;-</span> <span class="fu">colMeans</span>((pred_mat <span class="sc">-</span> data<span class="sc">$</span>y)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">set.seed</span>(<span class="dv">302</span>)</span>
+<span id="cb9-2"><a></a><span class="co"># Split data in 5 parts, randomly</span></span>
+<span id="cb9-3"><a></a>k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb9-4"><a></a>inds <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">length =</span> n))</span>
+<span id="cb9-5"><a></a><span class="co"># Use data from before</span></span>
+<span id="cb9-6"><a></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"x"</span> <span class="ot">=</span> x, <span class="st">"y"</span> <span class="ot">=</span> y, <span class="st">"split"</span> <span class="ot">=</span> inds)</span>
+<span id="cb9-7"><a></a></span>
+<span id="cb9-8"><a></a><span class="co"># Empty matrix to store predictions, 2 columns for 2 models</span></span>
+<span id="cb9-9"><a></a>pred_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, n, <span class="dv">2</span>)</span>
+<span id="cb9-10"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb9-11"><a></a>  data_train <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">!=</span> i)</span>
+<span id="cb9-12"><a></a>  data_test <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(split <span class="sc">==</span> i)</span>
+<span id="cb9-13"><a></a>  </span>
+<span id="cb9-14"><a></a>  <span class="co"># Train our models</span></span>
+<span id="cb9-15"><a></a>  lm_1_cv <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data_train)</span>
+<span id="cb9-16"><a></a>  lm_10_cv <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> data_train)</span>
+<span id="cb9-17"><a></a>  </span>
+<span id="cb9-18"><a></a>  <span class="co"># Record predictions</span></span>
+<span id="cb9-19"><a></a>  pred_mat[inds <span class="sc">==</span> i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_1_cv, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
+<span id="cb9-20"><a></a>  pred_mat[inds <span class="sc">==</span> i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">predict</span>(lm_10_cv, <span class="fu">data.frame</span>(<span class="at">x =</span> data_test<span class="sc">$</span>x))</span>
+<span id="cb9-21"><a></a>}</span>
+<span id="cb9-22"><a></a></span>
+<span id="cb9-23"><a></a><span class="co"># Compute average MSE to get CV error</span></span>
+<span id="cb9-24"><a></a>cv_err <span class="ot">&lt;-</span> <span class="fu">colMeans</span>((pred_mat <span class="sc">-</span> data<span class="sc">$</span>y)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="k-fold-cross-validation-example-1" class="slide level2">
 <h2>k-fold Cross-validation Example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Create predictive model</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>lm_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data)</span>
-<span id="cb10-3"><a href="#cb10-3"></a>lm_10 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> data)</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># Create smooth lines for plotting</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="fu">min</span>(data<span class="sc">$</span>x), <span class="fu">max</span>(data<span class="sc">$</span>x), <span class="at">length =</span> <span class="dv">100</span>))</span>
-<span id="cb10-7"><a href="#cb10-7"></a>line_fit_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_1, <span class="at">newdata =</span> x_fit))</span>
-<span id="cb10-8"><a href="#cb10-8"></a>line_fit_10 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_10, <span class="at">newdata =</span> x_fit))</span>
-<span id="cb10-9"><a href="#cb10-9"></a></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="co"># Recode split for legend</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
-<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">mutate</span>(<span class="at">Fold =</span> <span class="fu">fct_recode</span>(<span class="fu">as.factor</span>(split), <span class="st">"Fold 1"</span> <span class="ot">=</span> <span class="st">"1"</span>, <span class="st">"Fold 2"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
-<span id="cb10-13"><a href="#cb10-13"></a>                           <span class="st">"Fold 3"</span> <span class="ot">=</span> <span class="st">"3"</span>, <span class="st">"Fold 4"</span> <span class="ot">=</span> <span class="st">"4"</span>, <span class="st">"Fold 5"</span> <span class="ot">=</span> <span class="st">"5"</span>))</span>
-<span id="cb10-14"><a href="#cb10-14"></a></span>
-<span id="cb10-15"><a href="#cb10-15"></a>g_cv <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> Fold)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-16"><a href="#cb10-16"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cross-validation"</span>) <span class="sc">+</span> my_theme</span>
-<span id="cb10-17"><a href="#cb10-17"></a>g_cv1 <span class="ot">&lt;-</span> g_cv <span class="sc">+</span> </span>
-<span id="cb10-18"><a href="#cb10-18"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 1 CV error:"</span>, <span class="fu">round</span>(cv_err[<span class="dv">1</span>], <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb10-19"><a href="#cb10-19"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_1, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb10-20"><a href="#cb10-20"></a>g_cv10 <span class="ot">&lt;-</span> g_cv <span class="sc">+</span> </span>
-<span id="cb10-21"><a href="#cb10-21"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 10 CV error:"</span>, <span class="fu">round</span>(cv_err[<span class="dv">2</span>], <span class="dv">3</span>))) <span class="sc">+</span></span>
-<span id="cb10-22"><a href="#cb10-22"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_10, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb10-23"><a href="#cb10-23"></a><span class="fu">ggarrange</span>(g_cv1, g_cv10, <span class="at">common.legend =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Create predictive model</span></span>
+<span id="cb10-2"><a></a>lm_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> data)</span>
+<span id="cb10-3"><a></a>lm_10 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">10</span>), <span class="at">data =</span> data)</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="co"># Create smooth lines for plotting</span></span>
+<span id="cb10-6"><a></a>x_fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="fu">min</span>(data<span class="sc">$</span>x), <span class="fu">max</span>(data<span class="sc">$</span>x), <span class="at">length =</span> <span class="dv">100</span>))</span>
+<span id="cb10-7"><a></a>line_fit_1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_1, <span class="at">newdata =</span> x_fit))</span>
+<span id="cb10-8"><a></a>line_fit_10 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x_fit, <span class="at">y =</span> <span class="fu">predict</span>(lm_10, <span class="at">newdata =</span> x_fit))</span>
+<span id="cb10-9"><a></a></span>
+<span id="cb10-10"><a></a><span class="co"># Recode split for legend</span></span>
+<span id="cb10-11"><a></a>data <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb10-12"><a></a>  <span class="fu">mutate</span>(<span class="at">Fold =</span> <span class="fu">fct_recode</span>(<span class="fu">as.factor</span>(split), <span class="st">"Fold 1"</span> <span class="ot">=</span> <span class="st">"1"</span>, <span class="st">"Fold 2"</span> <span class="ot">=</span> <span class="st">"2"</span>,</span>
+<span id="cb10-13"><a></a>                           <span class="st">"Fold 3"</span> <span class="ot">=</span> <span class="st">"3"</span>, <span class="st">"Fold 4"</span> <span class="ot">=</span> <span class="st">"4"</span>, <span class="st">"Fold 5"</span> <span class="ot">=</span> <span class="st">"5"</span>))</span>
+<span id="cb10-14"><a></a></span>
+<span id="cb10-15"><a></a>g_cv <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> Fold)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-16"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Cross-validation"</span>) <span class="sc">+</span> my_theme</span>
+<span id="cb10-17"><a></a>g_cv1 <span class="ot">&lt;-</span> g_cv <span class="sc">+</span> </span>
+<span id="cb10-18"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 1 CV error:"</span>, <span class="fu">round</span>(cv_err[<span class="dv">1</span>], <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb10-19"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_1, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb10-20"><a></a>g_cv10 <span class="ot">&lt;-</span> g_cv <span class="sc">+</span> </span>
+<span id="cb10-21"><a></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Degree 10 CV error:"</span>, <span class="fu">round</span>(cv_err[<span class="dv">2</span>], <span class="dv">3</span>))) <span class="sc">+</span></span>
+<span id="cb10-22"><a></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> line_fit_10, <span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">x =</span> x), <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb10-23"><a></a><span class="fu">ggarrange</span>(g_cv1, g_cv10, <span class="at">common.legend =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="k-fold-cross-validation-example-2" class="slide level2">
 <h2>k-fold Cross-validation Example</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
 <section id="statistical-prediction-algorithms" class="slide level2">
 <h2>Statistical Prediction Algorithms</h2>
 <p>We’ve talked about how regression can be used for both statistical inference and prediction. We are now going to shift to talk about algorithms designed specifically for statistical prediction.</p>
@@ -907,12 +908,12 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <h2>k-nearest neighbors</h2>
 <p>This method is simple and highly flexible, but it can also be slow and inappropriate for certain settings.</p>
 
-<img data-src="images/knn.png" class="r-stretch quarto-figure-center"><p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
+<img data-src="images/knn.png" class="quarto-figure quarto-figure-center r-stretch"><p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
 </section>
 <section id="k-nearest-neighbors-2" class="slide level2">
 <h2>k-nearest neighbors</h2>
 
-<img data-src="images/knn2.png" class="r-stretch quarto-figure-center"><p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
+<img data-src="images/knn2.png" class="quarto-figure quarto-figure-center r-stretch"><p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
 </section>
 <section id="choosing-k" class="slide level2">
 <h2>Choosing k</h2>
@@ -928,11 +929,11 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="choosing-k-1" class="slide level2">
 <h2>Choosing k</h2>
 
-<img data-src="images/choosek.png" class="r-stretch quarto-figure-center"></section>
+<img data-src="images/choosek.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="choosing-k-2" class="slide level2">
 <h2>Choosing k</h2>
 
-<img data-src="images/doubledescent.png" class="r-stretch quarto-figure-center"><p><a href="https://en.wikipedia.org/wiki/Double_descent#/media/File:Double_descent_in_a_two-layer_neural_network_(Figure_3a_from_Rocks_et_al._2022).png">Image Credit</a></p>
+<img data-src="images/doubledescent.png" class="quarto-figure quarto-figure-center r-stretch"><p><a href="https://en.wikipedia.org/wiki/Double_descent#/media/File:Double_descent_in_a_two-layer_neural_network_(Figure_3a_from_Rocks_et_al._2022).png">Image Credit</a></p>
 </section>
 <section id="trees" class="slide level2">
 <h2>Trees</h2>
@@ -949,7 +950,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <p>Trees to predict class are referred to as <strong>classification trees</strong>. Trees to predict quantitative output are referred to as <strong>regression trees</strong>.</p>
 <p>This algorithm is easy, efficient, and interpretable, but it is not as flexible as <span class="math inline">\(k\)</span>-nearest neighbors.</p>
 
-<img data-src="images/tree.png" class="r-stretch quarto-figure-center"><p><a href="http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html">Image source</a></p>
+<img data-src="images/tree.png" class="quarto-figure quarto-figure-center r-stretch"><p><a href="http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html">Image source</a></p>
 </section>
 <section id="random-forest" class="slide level2">
 <h2>Random Forest</h2>
@@ -958,12 +959,12 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="random-forest-1" class="slide level2">
 <h2>Random Forest</h2>
 
-<img data-src="images/randomforest.png" class="r-stretch quarto-figure-center"><p><a href="https://towardsdatascience.com/random-forests-and-decision-trees-from-scratch-in-python-3e4fa5ae4249">Image source</a></p>
+<img data-src="images/randomforest.png" class="quarto-figure quarto-figure-center r-stretch"><p><a href="https://towardsdatascience.com/random-forests-and-decision-trees-from-scratch-in-python-3e4fa5ae4249">Image source</a></p>
 </section>
 <section id="random-forest-2" class="slide level2">
 <h2>Random Forest</h2>
 
-<img data-src="images/randomforest2.jpeg" class="r-stretch quarto-figure-center"><p><a href="https://towardsdatascience.com/understanding-random-forest-58381e0602d2">Image source</a></p>
+<img data-src="images/randomforest2.jpeg" class="quarto-figure quarto-figure-center r-stretch"><p><a href="https://towardsdatascience.com/understanding-random-forest-58381e0602d2">Image source</a></p>
 </section>
 <section id="variable-importance" class="slide level2">
 <h2>Variable Importance</h2>
@@ -982,8 +983,10 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 </ul>
 <p>These algorithms, and related topics, are likely things that you will cover if you take courses more focused on machine learning.</p>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section></section>
     </div>
@@ -1012,7 +1015,6 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1267,18 +1269,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1310,11 +1301,50 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1324,8 +1354,17 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1339,7 +1378,11 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

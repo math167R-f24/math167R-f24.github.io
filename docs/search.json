@@ -1,79 +1,166 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MATH167R: Statistical Programming with R",
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nW 8/21\nCourse Overview and Introduction to R\n\n\n\n\n\n2\nM 8/26\nR fundamentals\n\n\n\n\n\n\nW 8/28\nR fundamentals\n\n\n\n\n\n3\nM 9/2\nLabor Day - No class\n\n\n\n\n\n\nW 9/4\nExploring data with R\n\n\n\n\n\n4\nM 9/9\nExploring data with R\n\n\n\n\n\n\nW 9/11\nData visualization\n\n\n\n\n\n5\nM 9/16\nData visualization\n\n\n\n\n\n\nW 9/18\nData visualization\n\n\n\n\n\n6\nM 9/23\nData manipulation and management\n\n\n\n\n\n\nW 9/25\nData manipulation and management\n\n\n\n\n\n7\nM 9/30\nProgramming basics\n\n\n\n\n\n\nW 10/2\nProgramming basics\n\n\n\n\n\n8\nM 10/7\nProgramming basics\n\n\n\n\n\n\nW 10/9\nProgramming basics\n\n\n\n\n\n9\nM 10/14\nProgramming basics\n\n\n\n\n\n\nW 10/16\nSimulations\n\n\n\n\n\n10\nM 10/21\nSimulations\n\n\n\n\n\n\nW 10/23\nSimulations\n\n\n\n\n\n11\nM 10/28\nStatistical inference\n\n\n\n\n\n\nW 10/30\nStatistical inference\n\n\n\n\n\n12\nM 11/4\nSimulation-based inference\n\n\n\n\n\n\nW 11/6\nSimulation-based inference\n\n\n\n\n\n13\nM 11/11\nVeterans’ Day - No class\n\n\n\n\n\n\nW 11/13\nRegression\n\n\n\n\n\n14\nM 11/18\nRegression\n\n\n\n\n\n\nW 11/20\nPrediction\n\n\n\n\n\n15\nM 11/25\nPrediction\n\n\n\n\n\n\nW 11/27\nThanksgiving - No class\n\n\n\n\n\n16\nM 12/2\nFinal presentations and review\n\n\n\n\n\n\nW 12/4\nFinal presentations and review\n\n\n\n\n\n17\nM 12/9\nFinal presentations and review\n\n\n\n\n\n18\nM 12/16\nFinal exam"
+    "text": "Advanced data visualizations by Tanya Shapiro: Going above and beyond the basic capabilities of R visualizations\nData visualization with NFL data by Bradley J Congelio: Great example of using R to generate advanced data visualizations about the NFL.\nExploring college major and income: a live data analysis in R by David Robinson: Video example of a data analysis, in real time.",
+    "crumbs": [
+      "Course information",
+      "Resources"
+    ]
   },
   {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "Syllabus",
+    "objectID": "resources.html#examples-of-data-analysesvisualizations",
+    "href": "resources.html#examples-of-data-analysesvisualizations",
+    "title": "Resources",
     "section": "",
-    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 12-1:15pm in | MH235.\n\n\nOffice Hours\nMonday and Wednesday, 10:30-11:30am in MH426 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line."
+    "text": "Advanced data visualizations by Tanya Shapiro: Going above and beyond the basic capabilities of R visualizations\nData visualization with NFL data by Bradley J Congelio: Great example of using R to generate advanced data visualizations about the NFL.\nExploring college major and income: a live data analysis in R by David Robinson: Video example of a data analysis, in real time.",
+    "crumbs": [
+      "Course information",
+      "Resources"
+    ]
   },
   {
-    "objectID": "syllabus.html#course-information",
-    "href": "syllabus.html#course-information",
-    "title": "Syllabus",
-    "section": "",
-    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 12-1:15pm in | MH235.\n\n\nOffice Hours\nMonday and Wednesday, 10:30-11:30am in MH426 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line."
-  },
-  {
-    "objectID": "syllabus.html#learning-objectives",
-    "href": "syllabus.html#learning-objectives",
-    "title": "Syllabus",
-    "section": "Learning objectives",
-    "text": "Learning objectives\nIntroduction to the R programming language. Topics include data structures, reading and writing data, databases, data visualization, accessing packages, programming structures and functions.\nUpon successful completion of this course, students will be able to:\n\nUnderstand the structures of R objects\nImport data from a variety of sources.\nSave data in formats that can be used by other programs.\nCreate publication quality graphs.\nDownload and install packages.\nCreate reusable functions.\nPerform statistical analysis on R.\n\nThis course aims to help you build a foundation of computational skills for data analysis. Data encountered in real world applications are usually messy, breaking many of the assumptions we make in typical statistics courses. Throughout this course, we will practice using computers to help us understand, summarize, visualize, and model complex data in a reproducible way."
-  },
-  {
-    "objectID": "syllabus.html#materials",
-    "href": "syllabus.html#materials",
-    "title": "Syllabus",
-    "section": "Materials",
-    "text": "Materials\nThe primary text for the course will be the lecture slides, which will be posted to the course website. The following textbooks may be useful resources.\n\nGrolemund, G. (2014). Hands-On Programming with R. Available here for free.\nWickham, H. and Grolemund, G. (2023). R for Data Science. Available here for free.\nLee, B.L. (2016). An Introduction to Computational Probability and Statistics with R (Draft).\nÇetinkaya-Rundel, M. and Hardin, J. (2021) Introduction to Modern Statistics. Available here for free.\n\nThe main way we will interact with R is through the software RStudio, both of which can be downloaded and installed for free. The students will be required to have access to a computer with R and RStudio. The computer lab in MacQuarrie Hall 221 contains computers with all of the software that will be used during the semester. All of the coursework may be completed on a personal computer and the software is freely available to students."
-  },
-  {
-    "objectID": "syllabus.html#course-requirements-and-grading",
-    "href": "syllabus.html#course-requirements-and-grading",
-    "title": "Syllabus",
-    "section": "Course requirements and grading",
-    "text": "Course requirements and grading\n\nCheck-ins: On most Mondays, you will be assigned short check-in assignments. These are designed to be completed during lab or shortly after and will usually be due at the start of the next class. At the end of the quarter, your lowest check-in grade will be dropped. They will be graded on the following two point scale:\n\n0: indicates incomplete or unacceptable work\n1: represents demonstrated effort towards completing at least 75% of the assignment\n2: represents demonstrated effort towards completing the entire assignment.\n\nLabs: On most Wednesdays, you will be assigned Labs. These are extended, more complicated assignments that you will likely not be able to complete during class. They will typically be due the next Wednesday. At the end of the quarter, your lowest lab grade will be dropped.\nMidterm and Final Exams: There will be one in-person midterm during the semester and one final exam during finals week. Practice questions will be provided in advance of the exams. There will be no make-up midterm or final exams.\nClass Project: During the semester, you will complete a class project that requires you to apply the data manipulation, visualization, and analysis skills covered in this course to a real-world dataset of your choice.\nLate Work: In general, the late policy is as follows: Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%. Any assignment that is received 24 to 48 hours late will receive a grade penalty of 50%. Assignments will not be accepted more than 48 hours late.\n\n\nGrading scale\nYour final grade will be calculated as follows:\n\n10%: Check-ins\n40%: Labs\n20%: Final exam\n30%: Final project\n\n\n\n\nLetter Grade\nRaw Percentage\n\n\n\n\nA plus\n96 to 100%\n\n\nA\n93 to 95%\n\n\nA minus\n90 to 92%\n\n\nB plus\n86 to 89%\n\n\nB\n83 to 85%\n\n\nB minus\n80 to 82%\n\n\nC plus\n76 to 79%\n\n\nC\n73 to 75%\n\n\nC minus\n70 to 72%\n\n\nD plus\n66 to 69%\n\n\nD\n63 to 65%\n\n\nD minus\n60 to 62%\n\n\nF\n0 to 60%"
-  },
-  {
-    "objectID": "syllabus.html#course-schedule",
-    "href": "syllabus.html#course-schedule",
-    "title": "Syllabus",
-    "section": "Course Schedule",
-    "text": "Course Schedule\nThe updated course schedule is available on the course homepage here."
-  },
-  {
-    "objectID": "syllabus.html#policies",
-    "href": "syllabus.html#policies",
-    "title": "Syllabus",
-    "section": "Policies",
-    "text": "Policies\n\nFeedback\nI encourage and appreciate your feedback throughout the quarter. You are welcome to provide feedback on any aspect of the course at any time via email or in person. If you would prefer to do so confidentially, you can do so through the form on the course Canvas page.\n\n\nCollaboration\nOn most assignments, collaboration is allowed and encouraged. You may discuss problems, approaches, and solutions with your classmates. Acceptable collaboration is limited to your classmates in this course and you must clearly include on any collaborative work the name(s) of anyone with whom you worked. Additionally, all submitted work must be your own; you should not submit code or answers copied from any resource including your classmates. Plagiarism and cheating is easy to detect and can lead to serious negative consequences for you. If you have any questions regarding this policy, please ask for clarification.\n\n\nOnline resources\nStudents are encouraged to use online resources including large language model-based chatbots (ex. ChatGPT) as aids for learning and understanding course material. However, the use of external resources like ChatGPT to generate code or answers for course labs, assignments, exams, and projects is not permitted.\n\n\nDiscussion\nYou are encouraged to participate on the discussion forum by posting questions about assignments and answering questions from other students. Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets within reason. Participation, in the form of both questions and answers, can earn you up to 2% extra credit for your final grade. Posts will be evaluated based on how substantive and helpful they are to the class.\n\n\nUniversity policies\nPer University Policy S16-9, relevant university policy concerning all courses, such as student responsibilities, academic integrity, accommodations, dropping and adding, consent for recording of class, etc. and available student services (e.g. learning assistance, counseling, and other resources) are listed on Syllabus Information web page (link). Make sure to visit this page to review and be aware of these university policies and resources."
-  },
-  {
-    "objectID": "syllabus.html#frequently-asked-questions",
-    "href": "syllabus.html#frequently-asked-questions",
-    "title": "Syllabus",
-    "section": "Frequently Asked Questions",
-    "text": "Frequently Asked Questions\nQ1. Why doesn’t my code work? Why don’t I “get” programming?\nA1. This is a natural part of learning to program. In fact, I believe that the ability to work through “bugs” and broken code is the single most important skill you can develop in this course. If you can learn how to be resourceful and solve your own coding problems, you will be able to learn any programming language on your own.\nQ2. OK, but my homework is due in a week and I need actual advice on how to fix this bug.\nA2. It sounds like you’re getting started early! Good. If you’re running into trouble, here are a few places you can ask for help:\n\nGoogle\nStackOverflow\nThe course discussion board\nYour classmates\n\nQ3. OK, but my homework is due tomorrow and I still can’t fix this bug.\nA3. Above all, try not to put yourself in this position. Start early and ask questions early. Give yourself time to solve your own problems. Of course, sometime you will get busy or life will get in the way and you won’t have as much time as you would like to work on an assignment. My second piece of advice is don’t go it alone. There have been numerous times where I have spent hours looking for a bug only to have a friend identify it in minutes. This does not just mean asking your friends who have already completed MATH 167 for help—some times all you need is a different perspective. Ask your classmates for help—in person or on the discussion board."
+    "objectID": "resources.html#datasets",
+    "href": "resources.html#datasets",
+    "title": "Resources",
+    "section": "Datasets",
+    "text": "Datasets\n\nCDC\nData.gov\nData is Plural\nFederal Reserve Economic Data\nGeneral Social Survey\nGoogle Dataset Search\nHarvard Dataverse\nInternational Monetary Fund\nIPUMS survey data from around the world\nOur World In Data\nPew Research\nPRISM Data Archive Project\nRoper Center\nSan Francisco Open Data\nSan Jose Open Data\nStanford Large Network Dataset Collection\nThe National Bureau of Economic Research\nTidyTuesday\nUCI Machine Learning Repository\nUNICEF Data\nUnited Nations Data\nUnited Nations Statistics Division\nUS Census Data\nUS Government Data\nWorld Bank Data\nYouth Risk Behavior Surveillance System (YRBSS)",
+    "crumbs": [
+      "Course information",
+      "Resources"
+    ]
   },
   {
     "objectID": "license.html",
     "href": "license.html",
     "title": "License",
     "section": "",
-    "text": "These course materials are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.\nThis is a brief summary of the license, which can be found here. Official translations of this license are available in other languages.\nYou are free to:\n\nShare — copy and redistribute the material in any medium or format\nAdapt — remix, transform, and build upon the material\n\nUnder the following terms:\n\nAttribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\nNonCommercial — You may not use the material for commercial purposes.\nShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\nNo additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits."
+    "text": "These course materials are licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.\nThis is a brief summary of the license, which can be found here. Official translations of this license are available in other languages.\nYou are free to:\n\nShare — copy and redistribute the material in any medium or format\nAdapt — remix, transform, and build upon the material\n\nUnder the following terms:\n\nAttribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\nNonCommercial — You may not use the material for commercial purposes.\nShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.\nNo additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.",
+    "crumbs": [
+      "Course information",
+      "License"
+    ]
   },
   {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "Resources",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Examples of data analyses/visualizations\n\nAdvanced data visualizations by Tanya Shapiro: Going above and beyond the basic capabilities of R visualizations\nData visualization with NFL data by Bradley J Congelio: Great example of using R to generate advanced data visualizations about the NFL.\nExploring college major and income: a live data analysis in R by David Robinson: Video example of a data analysis, in real time.\n\n\n\nDatasets\n\nCDC\nData.gov\nData is Plural\nFederal Reserve Economic Data\nGeneral Social Survey\nGoogle Dataset Search\nHarvard Dataverse\nInternational Monetary Fund\nIPUMS survey data from around the world\nOur World In Data\nPew Research\nPRISM Data Archive Project\nRoper Center\nSan Francisco Open Data\nSan Jose Open Data\nStanford Large Network Dataset Collection\nThe National Bureau of Economic Research\nTidyTuesday\nUCI Machine Learning Repository\nUNICEF Data\nUnited Nations Data\nUnited Nations Statistics Division\nUS Census Data\nUS Government Data\nWorld Bank Data\nYouth Risk Behavior Surveillance System (YRBSS)\n\n\n\nHelpful courses\n\nData Science in a Box\nStatistical Computing at Carnegie Mellon University\nIntroduction to Data Science at Duke University\nIntroduction to Computer Science at Harvard University\nPrinciples and Techniques of Data Science at UC Berkeley\nData Visualization with R"
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nW 8/21\nCourse Overview and Introduction to R\nSlides 01\n\nLab 01\n\n\n2\nM 8/26\nR fundamentals\n\n\n\n\n\n\nW 8/28\nR fundamentals\n\n\n\n\n\n3\nM 9/2\nLabor Day - No class\n\n\n\n\n\n\nW 9/4\nExploring data with R\n\n\n\n\n\n4\nM 9/9\nExploring data with R\n\n\n\n\n\n\nW 9/11\nData visualization\n\n\n\n\n\n5\nM 9/16\nData visualization\n\n\n\n\n\n\nW 9/18\nData visualization\n\n\n\n\n\n6\nM 9/23\nData manipulation and management\n\n\n\n\n\n\nW 9/25\nData manipulation and management\n\n\n\n\n\n7\nM 9/30\nProgramming basics\n\n\n\n\n\n\nW 10/2\nProgramming basics\n\n\n\n\n\n8\nM 10/7\nProgramming basics\n\n\n\n\n\n\nW 10/9\nProgramming basics\n\n\n\n\n\n9\nM 10/14\nProgramming basics\n\n\n\n\n\n\nW 10/16\nSimulations\n\n\n\n\n\n10\nM 10/21\nSimulations\n\n\n\n\n\n\nW 10/23\nSimulations\n\n\n\n\n\n11\nM 10/28\nStatistical inference\n\n\n\n\n\n\nW 10/30\nStatistical inference\n\n\n\n\n\n12\nM 11/4\nSimulation-based inference\n\n\n\n\n\n\nW 11/6\nSimulation-based inference\n\n\n\n\n\n13\nM 11/11\nVeterans’ Day - No class\n\n\n\n\n\n\nW 11/13\nRegression\n\n\n\n\n\n14\nM 11/18\nRegression\n\n\n\n\n\n\nW 11/20\nPrediction\n\n\n\n\n\n15\nM 11/25\nPrediction\n\n\n\n\n\n\nW 11/27\nThanksgiving - No class\n\n\n\n\n\n16\nM 12/2\nFinal presentations and review\n\n\n\n\n\n\nW 12/4\nFinal presentations and review\n\n\n\n\n\n17\nM 12/9\nFinal presentations and review\n\n\n\n\n\n18\nM 12/16\nFinal exam",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "labs/01_lab.html",
+    "href": "labs/01_lab.html",
+    "title": "Lab 1: R and RStudio",
+    "section": "",
+    "text": "In this introductory lab, you will familiarize yourself with the R console and R Studio layout. Before you begin, you should install both R and RStudio using the instructions in the lecture slides. Follow the instructions below and submit a pdf document with your answers to the following questions on Canvas."
+  },
+  {
+    "objectID": "labs/01_lab.html#part-a.-introduction-to-r",
+    "href": "labs/01_lab.html#part-a.-introduction-to-r",
+    "title": "Lab 1: R and RStudio",
+    "section": "Part A. Introduction to R",
+    "text": "Part A. Introduction to R\nOpen R (not RStudio). You should see a window that looks something like this (your version number may differ slightly):\n\n\n\nR programming software interface on macOS displaying version and licensing details in the console.\n\n\nAt the bottom of this window, you should see a &gt; symbol. This is called a prompt and indicates that R is waiting for instructions (in the form of code). Type 100 + 100 and then press return or enter. R should produce the following output: [1] 200. For now, ignore the [1]. This is R’s way of letting us know that the answer is a single value: 200.\n\nCompute \\(2^{1023}\\) by typing the line: 2 ^ 1023. What is the resulting value? Do you trust R’s answer?\nCompute \\(2^{1024}\\) by typing the line: 2 ^ 1024. What is the resulting value? Do you trust R’s answer?\n\nWe can save values as objects by giving them names. Try this out by typing x &lt;- 10 and then pressing return/enter.\n\nWhat does the command print(x) produce? Try to predict what the answer will be before you run the code.\nWhat does the command x + 10 produce? Try to predict what the answer will be before you run the code.\nRun the following two lines of code, one after the other. What is the result? Try to predict what the answer will be before you run the code.\n\n\nx &lt;- x + 1\nx * x\n\n\nRun the following lines of code, one after the other. What is the result? In your own words, explain what this code is doing.\n\n\nsides &lt;- c(\"H\", \"T\")\nflip1 &lt;- sample(sides, 1, replace = T)\nprint(flip1)\n\n\nRun the following lines of code, one after the other. What is the result? In your own words, explain what this code is doing.\n\n\nsides &lt;- c(\"H\", \"T\")\nflip10 &lt;- sample(sides, 10, replace = T)\nprint(flip10)"
+  },
+  {
+    "objectID": "labs/01_lab.html#part-b.-introduction-to-rstudio",
+    "href": "labs/01_lab.html#part-b.-introduction-to-rstudio",
+    "title": "Lab 1: R and RStudio",
+    "section": "Part B. Introduction to RStudio",
+    "text": "Part B. Introduction to RStudio\nNow, open RStudio. It should look some thing like this image, from the official RStudio Guide:\n\n\n\nRStudio IDE with panels Source, Environments, Console, and Output showing a ggplot2 script and resulting scatter plot of engine displacement vs. highway mpg.\n\n\nRStudio is like Microsoft Word/Google Docs for writing R code–it has useful tools (analogous to spell check) for programmers. In the lower left corner is your Console. This should look like the R window you were working in for Part A. The Console is meant for brief interactive R commands. The top right corner should be your Environment pane, which displays R objects that you have created. Right now your environment should be empty.\n\nIn the Console, type the command x &lt;- 10. What do you see in your environment pane?\nThe bottom right pane is the Output pane, which will often be used to display results/visualizations of your R code. There are many tabs here, but click on the Files tab. What do you see? In your own words, explain what you think the Files tab shows.\nBefore this question, run the following line in the Console: install.packages(\"ggplot2\"). This will install some additional R functions for visualization. The top left pane is the Source pane. When you want to write more than one line of code at a time, it’s a good idea to organize your code in a single file. At the top of the RStudio window, click File -&gt; New File -&gt; R Script to open an untitled .R file. Copy and paste the following code into your R file. Then highlight the code and click Run (which will be in the top left corner of the Source pane). What do you see?\n\n\nlibrary(ggplot2)\nmpg_plot &lt;- ggplot(mpg, aes(x = displ, y = hwy)) + \n  geom_point(aes(color = class))\nmpg_plot\n\nWhen you are finished, remember to write up your solutions, save them in a pdf file, and submit to Canvas."
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 12-1:15pm in | MH235.\n\n\nOffice Hours\nMonday and Wednesday, 10:30-11:30am in MH426 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line.",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#course-information",
+    "href": "syllabus.html#course-information",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Instructor\nPeter Gao\n\n\nLectures\nWeekly on Monday and Wednesday, 12-1:15pm in | MH235.\n\n\nOffice Hours\nMonday and Wednesday, 10:30-11:30am in MH426 or email for an appointment\n\n\nEmail\npeter.gao [at sjsu]\nI will make every effort to respond to emails within a day, but please feel free to send me a reminder after 48 hours have passed. Please include [MATH 167R] in your subject line.",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nIntroduction to the R programming language. Topics include data structures, reading and writing data, databases, data visualization, accessing packages, programming structures and functions.\nUpon successful completion of this course, students will be able to:\n\nUnderstand the structures of R objects\nImport data from a variety of sources.\nSave data in formats that can be used by other programs.\nCreate publication quality graphs.\nDownload and install packages.\nCreate reusable functions.\nPerform statistical analysis on R.\n\nThis course aims to help you build a foundation of computational skills for data analysis. Data encountered in real world applications are usually messy, breaking many of the assumptions we make in typical statistics courses. Throughout this course, we will practice using computers to help us understand, summarize, visualize, and model complex data in a reproducible way.",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#materials",
+    "href": "syllabus.html#materials",
+    "title": "Syllabus",
+    "section": "Materials",
+    "text": "Materials\nThe primary text for the course will be the lecture slides, which will be posted to the course website. The following textbooks may be useful resources.\n\nGrolemund, G. (2014). Hands-On Programming with R. Available here for free.\nWickham, H. and Grolemund, G. (2023). R for Data Science. Available here for free.\nLee, B.L. (2016). An Introduction to Computational Probability and Statistics with R (Draft).\nÇetinkaya-Rundel, M. and Hardin, J. (2021) Introduction to Modern Statistics. Available here for free.\n\nThe main way we will interact with R is through the software RStudio, both of which can be downloaded and installed for free. The students will be required to have access to a computer with R and RStudio. The computer lab in MacQuarrie Hall 221 contains computers with all of the software that will be used during the semester. All of the coursework may be completed on a personal computer and the software is freely available to students.",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#course-requirements-and-grading",
+    "href": "syllabus.html#course-requirements-and-grading",
+    "title": "Syllabus",
+    "section": "Course requirements and grading",
+    "text": "Course requirements and grading\n\nCheck-ins: On most Mondays, you will be assigned short check-in assignments. These are designed to be completed during lab or shortly after and will usually be due at the start of the next class. At the end of the quarter, your lowest check-in grade will be dropped. They will be graded on the following two point scale:\n\n0: indicates incomplete or unacceptable work\n1: represents demonstrated effort towards completing at least 75% of the assignment\n2: represents demonstrated effort towards completing the entire assignment.\n\nLabs: On most Wednesdays, you will be assigned Labs. These are extended, more complicated assignments that you will likely not be able to complete during class. They will typically be due the next Wednesday. At the end of the quarter, your lowest lab grade will be dropped.\nMidterm and Final Exams: There will be one in-person midterm during the semester and one final exam during finals week. Practice questions will be provided in advance of the exams. There will be no make-up midterm or final exams.\nClass Project: During the semester, you will complete a class project that requires you to apply the data manipulation, visualization, and analysis skills covered in this course to a real-world dataset of your choice.\nLate Work: In general, the late policy is as follows: Any assignment that is received late but less than 24 hours late will receive a grade penalty of 25%. Any assignment that is received 24 to 48 hours late will receive a grade penalty of 50%. Assignments will not be accepted more than 48 hours late.\n\n\nGrading scale\nYour final grade will be calculated as follows:\n\n10%: Check-ins\n40%: Labs\n20%: Final exam\n30%: Final project\n\n\n\n\nLetter Grade\nRaw Percentage\n\n\n\n\nA plus\n96 to 100%\n\n\nA\n93 to 95%\n\n\nA minus\n90 to 92%\n\n\nB plus\n86 to 89%\n\n\nB\n83 to 85%\n\n\nB minus\n80 to 82%\n\n\nC plus\n76 to 79%\n\n\nC\n73 to 75%\n\n\nC minus\n70 to 72%\n\n\nD plus\n66 to 69%\n\n\nD\n63 to 65%\n\n\nD minus\n60 to 62%\n\n\nF\n0 to 60%",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#course-schedule",
+    "href": "syllabus.html#course-schedule",
+    "title": "Syllabus",
+    "section": "Course Schedule",
+    "text": "Course Schedule\nThe updated course schedule is available on the course homepage here.",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#policies",
+    "href": "syllabus.html#policies",
+    "title": "Syllabus",
+    "section": "Policies",
+    "text": "Policies\n\nFeedback\nI encourage and appreciate your feedback throughout the quarter. You are welcome to provide feedback on any aspect of the course at any time via email or in person. If you would prefer to do so confidentially, you can do so through the form on the course Canvas page.\n\n\nCollaboration\nOn most assignments, collaboration is allowed and encouraged. You may discuss problems, approaches, and solutions with your classmates. Acceptable collaboration is limited to your classmates in this course and you must clearly include on any collaborative work the name(s) of anyone with whom you worked. Additionally, all submitted work must be your own; you should not submit code or answers copied from any resource including your classmates. Plagiarism and cheating is easy to detect and can lead to serious negative consequences for you. If you have any questions regarding this policy, please ask for clarification.\n\n\nOnline resources\nStudents are encouraged to use online resources including large language model-based chatbots (ex. ChatGPT) as aids for learning and understanding course material. However, the use of external resources like ChatGPT to generate code or answers for course labs, assignments, exams, and projects is not permitted.\n\n\nDiscussion\nYou are encouraged to participate on the discussion forum by posting questions about assignments and answering questions from other students. Posts may not include substantial amounts of code that can be used for a solution to any problem, but may include code snippets within reason. Participation, in the form of both questions and answers, can earn you up to 2% extra credit for your final grade. Posts will be evaluated based on how substantive and helpful they are to the class.\n\n\nUniversity policies\nPer University Policy S16-9, relevant university policy concerning all courses, such as student responsibilities, academic integrity, accommodations, dropping and adding, consent for recording of class, etc. and available student services (e.g. learning assistance, counseling, and other resources) are listed on Syllabus Information web page (link). Make sure to visit this page to review and be aware of these university policies and resources.",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#frequently-asked-questions",
+    "href": "syllabus.html#frequently-asked-questions",
+    "title": "Syllabus",
+    "section": "Frequently Asked Questions",
+    "text": "Frequently Asked Questions\nQ1. Why doesn’t my code work? Why don’t I “get” programming?\nA1. This is a natural part of learning to program. In fact, I believe that the ability to work through “bugs” and broken code is the single most important skill you can develop in this course. If you can learn how to be resourceful and solve your own coding problems, you will be able to learn any programming language on your own.\nQ2. OK, but my homework is due in a week and I need actual advice on how to fix this bug.\nA2. It sounds like you’re getting started early! Good. If you’re running into trouble, here are a few places you can ask for help:\n\nGoogle\nStackOverflow\nThe course discussion board\nYour classmates\n\nQ3. OK, but my homework is due tomorrow and I still can’t fix this bug.\nA3. Above all, try not to put yourself in this position. Start early and ask questions early. Give yourself time to solve your own problems. Of course, sometime you will get busy or life will get in the way and you won’t have as much time as you would like to work on an assignment. My second piece of advice is don’t go it alone. There have been numerous times where I have spent hours looking for a bug only to have a friend identify it in minutes. This does not just mean asking your friends who have already completed MATH 167 for help—some times all you need is a different perspective. Ask your classmates for help—in person or on the discussion board.",
+    "crumbs": [
+      "Course information",
+      "Syllabus"
+    ]
   }
 ]

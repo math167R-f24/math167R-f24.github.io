@@ -3,7 +3,7 @@ title: "License"
 editor: 
   markdown: 
     wrap: 72
-    
+format: html
 draft: false
 ---
 
