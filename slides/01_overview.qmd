@@ -12,26 +12,14 @@ editor: visual
 +------------------+------------------------------------------------------------------------------------------------------------------+
 | **Instructor**   | Peter Gao                                                                                                        |
 +==================+==================================================================================================================+
-| **Lectures**     |  Weekly on Monday and Wednesday, 12-1:15pm in MH235.                                                 |
+| **Lectures**     | Weekly on Monday and Wednesday, 12-1:15pm in MH235.                                                              |
 +------------------+------------------------------------------------------------------------------------------------------------------+
-| **Office Hours** | M 3-4pm and W 10:30-11:30am in MH426                                                           |
+| **Office Hours** | M 3-4pm and W 10:30-11:30am in MH426                                                                             |
 +------------------+------------------------------------------------------------------------------------------------------------------+
 | **Email**        | peter.gao \[at sjsu\]                                                                                            |
 |                  |                                                                                                                  |
 |                  | *Feel free to send me a reminder after 48 hours have passed. Please include \[MATH 167R\] in your subject line.* |
 +------------------+------------------------------------------------------------------------------------------------------------------+
-
-## Learning objectives
-
-Upon successful completion of this course, students will be able to:
-
-1.  Understand the structures of R objects
-2.  Import data from a variety of sources.
-3.  Save data in formats that can be used by other programs.
-4.  Create publication quality graphs.
-5.  Download and install packages.
-6.  Create reusable functions.
-7.  Perform statistical analysis on R.
 
 ## Learning objectives
 
@@ -48,6 +36,18 @@ Advances in computation have enabled advances at every step of the data analysis
 -   Simulation 
 
 -   Communication and distribution of results
+
+## What is the point of this course?
+
+We will focus on four major applications of R for data science and statistics:
+
+1.  Statistical programming
+
+2.  Data wrangling
+
+3.  Data visualization and storytelling
+
+4.  Communication of results
 
 ## Where to look
 
@@ -163,10 +163,11 @@ Posts may not include substantial amounts of code that can be used for a solutio
 
 ## Office Hours (aka drop-in hours)
 
-|           |                                                       |
-|-----------|-------------------------------------------------------|
-| In-person | M 3-4pm and W 10:30-11:30am in MH426 or email for an appointment |
-| Zoom      | By appointment                                        |
++-------------+------------------------------------------------------------------+
+| In-person   | M 3-4pm and W 10:30-11:30am in MH426 or email for an appointment |
++-------------+------------------------------------------------------------------+
+| Zoom        | By appointment                                                   |
++-------------+------------------------------------------------------------------+
 
 Come by:
 
@@ -371,8 +372,6 @@ library(ggplot2)
 ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
   geom_point() + geom_smooth(method = "lm")
 ```
-
-
 
 ## Communication
 
