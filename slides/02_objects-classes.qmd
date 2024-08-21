@@ -4,7 +4,7 @@ author: "Peter Gao"
 format: 
   revealjs:
     theme: [./slides.scss, ../theme.scss]
-editor: visual
+editor: source
 ---
 
 ## Warm-up: Getting to know each other
@@ -162,7 +162,7 @@ Integers and doubles are both also called **numeric** vectors.
 
 ## Atomic vectors
 
-![](img/02_atomics.png){fig-align="center"}
+![Hierarchical diagram of atomic vector types in R](img/02_atomics.png){fig-align="center"}
 
 from *Advanced R*, Hadley Wickham.
 
@@ -220,7 +220,7 @@ c(TRUE, "hello", 1)
 ## Special values
 
 | Value            | Usual meaning                                          |
-|-----------------------|-------------------------------------------------|
+|------------------------|-----------------------------------------------|
 | `NA`             | Missing values                                         |
 | `NaN`            | a computed value that is not a number                  |
 | `NULL`           | an object with no value                                |
@@ -354,7 +354,7 @@ setwd("C:/Documents/")
 
 ## Example file structure
 
-![](images/Screen%20Shot%202023-08-15%20at%207.51.33%20AM.png)
+![Hierarchical tree diagram showing file structure starting from root directory branching to folder1 and folder2, with folder1 containing three files and folder2 branching to folder3 and folder4.](images/Screen%20Shot%202023-08-15%20at%207.51.33%20AM.png)
 
 ## Project-based workflow
 
@@ -461,11 +461,11 @@ This header contains **metadata** about the document that follows: the name of t
 
 ## Source Editor
 
-![](images/Screenshot%202024-01-25%20at%209.28.24%20AM.png)
+![Screenshot of source editor with header, followed by plain text, followed by code chunk wrapped in tick marks](images/Screenshot%202024-01-25%20at%209.28.24%20AM.png)
 
 ## Visual Editor
 
-![](images/Screenshot%202024-01-25%20at%209.29.11%20AM.png)
+![Screenshot of visual editor with header, followed by plain text, followed by code chunk](images/Screenshot%202024-01-25%20at%209.29.11%20AM.png)
 
 ## Code chunks
 

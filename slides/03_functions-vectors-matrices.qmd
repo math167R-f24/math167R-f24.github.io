@@ -4,7 +4,7 @@ author: "Peter Gao"
 format: 
   revealjs:
     theme: [./slides.scss, ../theme.scss]
-editor: visual
+editor: source
 ---
 
 ## Warm-up
@@ -430,8 +430,6 @@ mat_square <- mat1 %*% mat2
 mat_square
 ```
 
-
-
 **Column Bind Matrices** `cbind()`
 
 ```{r, echo = T, eval = T, error = T}
@@ -459,7 +457,6 @@ colSums(mat1)
 ```{r, echo = T, eval = T, error = T}
 rowSums(mat1)
 ```
-
 
 **Column Means** `colMeans()`
 
@@ -553,9 +550,7 @@ Frequent use of comments should allow most comments to be restricted to one line
 
 A comment should go above its corresponding line, be indented equally with the next line, and use a single `#` to mark a comment
 
-Use a string of `-` or `=` to break your code into easily noticeable chunks
-- Example: `# Data Manipulation -----------`
-- RStudio allows you to collapse chunks marked like this to help with clutter
+Use a string of `-` or `=` to break your code into easily noticeable chunks - Example: `# Data Manipulation -----------` - RStudio allows you to collapse chunks marked like this to help with clutter
 
 ## Comment Style Guide
 
