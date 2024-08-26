@@ -163,11 +163,10 @@ Posts may not include substantial amounts of code that can be used for a solutio
 
 ## Office Hours (aka drop-in hours)
 
-+--------------+------------------------------------------------------------------+
-| In-person    | M 3-4pm and W 10:30-11:30am in MH426 or email for an appointment |
-+--------------+------------------------------------------------------------------+
-| Zoom         | By appointment                                                   |
-+--------------+------------------------------------------------------------------+
+|           |                                                                  |
+|-----------|------------------------------------------------------------------|
+| In-person | M 3-4pm and W 10:30-11:30am in MH426 or email for an appointment |
+| Zoom      | By appointment                                                   |
 
 Come by:
 
@@ -190,14 +189,14 @@ example line of code
 
 ## About me
 
-* Grew up in the suburbs of Philadelphia
-* Went to the University of Chicago for college, University of Washington for graduate school
-* Second year assistant professor of statistics and data science at SJSU
-* Other classes I teach include MATH 167R, MATH 250
-* My research focuses on developing statistical methods for answering questions in
-  - **environmental science**: Can we predict how quickly the Arctic ice cap is melting?
-  - **public health**: How do we use limited data to measure local health?
-* talk to me about: getting involved in statistics research, ethics of AI, movies, hiking, knitting, ...
+-   Grew up in the suburbs of Philadelphia
+-   Went to the University of Chicago for college, University of Washington for graduate school
+-   Second year assistant professor of statistics and data science at SJSU
+-   Other classes I teach include MATH 167R, MATH 250
+-   My research focuses on developing statistical methods for answering questions in
+    -   **environmental science**: Can we predict how quickly the Arctic ice cap is melting?
+    -   **public health**: How do we use limited data to measure local health?
+-   talk to me about: getting involved in statistics research, ethics of AI, movies, hiking, knitting, ...
 
 ## Getting to know each other
 

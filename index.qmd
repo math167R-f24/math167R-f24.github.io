@@ -10,8 +10,8 @@ draft: false
 | Week | Date   | Topic                                 | Slides | Check-in | Lab |
 |:----:|--------|---------------------------------------|:------:|:--------:|:---:|
 |  1   | W 8/21 | Course Overview and Introduction to R |    [Slides 01](slides/01_overview.html){.label .label-green}          |                                                               | [Lab 01](labs/01_lab.html){.label .label-red} |
-|  2   | M 8/26 | R fundamentals                        |        |          |     |
-|      | W 8/28 | R fundamentals                        |        |          |     |
+|  2   | M 8/26 | R fundamentals                        | [Slides 02](slides/02_objects-classes.html){.label .label-green}        |  [Check-in 01](checkins/01_checkin.html){.label .label-purple}        |     |
+|      | W 8/28 | R fundamentals                        | [Slides 03](slides/03_functions-vectors-matrices.html){.label .label-green}       |          |   [Lab 02](labs/02_lab.html){.label .label-red}   |
 |  3   | M 9/2  | *Labor Day - No class*                       |        |          |     |
 |      | W 9/4 | Exploring data with R                 |        |          |     |
 |  4   | M 9/9 | Exploring data with R                 |        |          |     |
