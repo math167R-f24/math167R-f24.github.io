@@ -15,7 +15,7 @@ draft: false
 | **Lectures**    | Weekly on Monday and Wednesday, 12-1:15pm in    |
 |                 | MH235.                                          |
 +-----------------+-------------------------------------------------+
-| **Office        | Monday and Wednesday, 10:30-11:30am in MH426 or |
+| **Office        | M 3-4pm and W 10:30-11:30am in MH426 or.        |
 | Hours**         | email for an appointment                        |
 +-----------------+-------------------------------------------------+
 | **Email**       | peter.gao \[at sjsu\]                           |
