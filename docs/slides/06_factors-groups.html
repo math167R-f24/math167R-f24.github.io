@@ -614,7 +614,7 @@ $class
 <section id="movies-data" class="slide level2">
 <h2>Movies data</h2>
 <p>As an example of how factors work, let’s look at an example using Tidy Tuesday data on movie profits.</p>
-<div class="cell" data-hash="06_factors-groups_cache/revealjs/unnamed-chunk-15_cfd76b6259cf124d28cd24a5b9d7bb20">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>movies <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-10-23/movie_profit.csv"</span>)</span>
 <span id="cb37-2"><a></a>knitr<span class="sc">::</span><span class="fu">kable</span>(movies[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,], <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> F) <span class="sc">|&gt;</span></span>
 <span id="cb37-3"><a></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="st">"striped"</span>, <span class="at">full_width =</span> T) <span class="sc">|&gt;</span> </span>
@@ -865,7 +865,7 @@ $class
 </section>
 <section id="movies-genre" class="slide level2">
 <h2>Movies genre</h2>
-<div class="cell" data-hash="06_factors-groups_cache/revealjs/unnamed-chunk-16_c53d900760b61b2d642075e1c884d7f4">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>genre_char <span class="ot">&lt;-</span> movies<span class="sc">$</span>genre</span>
 <span id="cb38-2"><a></a>genre_fct <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(movies<span class="sc">$</span>genre)</span>
 <span id="cb38-3"><a></a><span class="fu">head</span>(genre_char)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -878,7 +878,7 @@ $class
 Levels: Action Adventure Comedy Drama Horror</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="06_factors-groups_cache/revealjs/unnamed-chunk-17_d5343a8e8e36d02f67732323b9ba822e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">class</span>(genre_fct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
@@ -892,7 +892,7 @@ Levels: Action Adventure Comedy Drama Horror</code></pre>
 <section id="size-of-character-and-factors" class="slide level2">
 <h2>Size of character and factors</h2>
 <p>Generally, the factor representation saves space in memory:</p>
-<div class="cell" data-hash="06_factors-groups_cache/revealjs/unnamed-chunk-18_91162d8316810c105a35df3bbb8c1bdf">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">object.size</span>(genre_char)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>27544 bytes</code></pre>
@@ -999,7 +999,7 @@ Levels: red Other</code></pre>
 </section>
 <section id="movies-data-1" class="slide level2">
 <h2>Movies data</h2>
-<div class="cell" data-hash="06_factors-groups_cache/revealjs/unnamed-chunk-24_e93087f94bbdf1d9d3d2c0be6b07a60b">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a></a>movies<span class="sc">$</span>genre <span class="ot">=</span> <span class="fu">as.factor</span>(movies<span class="sc">$</span>genre)</span>
 <span id="cb64-2"><a></a>movies <span class="ot">&lt;-</span> movies <span class="sc">|&gt;</span></span>
 <span id="cb64-3"><a></a>  <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_collapse</span>(genre,</span>
@@ -1094,7 +1094,7 @@ Levels: red Other</code></pre>
 </section>
 <section id="movies-data-2" class="slide level2">
 <h2>Movies data</h2>
-<div class="cell" data-hash="06_factors-groups_cache/revealjs/unnamed-chunk-31_76430c2ae100677b377073537e305215">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>genre_medians <span class="ot">&lt;-</span> movies <span class="sc">|&gt;</span></span>
 <span id="cb72-2"><a></a>  <span class="fu">group_by</span>(genre) <span class="sc">|&gt;</span></span>
 <span id="cb72-3"><a></a>  <span class="fu">summarize</span>(<span class="at">median_budget =</span> <span class="fu">median</span>(production_budget),</span>

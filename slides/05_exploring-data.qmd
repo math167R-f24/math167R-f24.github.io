@@ -4,7 +4,7 @@ author: "Peter Gao"
 format: 
   revealjs:
     theme: [./slides.scss, ../theme.scss]
-editor: visual
+editor: source
 ---
 
 ## Warm-up
