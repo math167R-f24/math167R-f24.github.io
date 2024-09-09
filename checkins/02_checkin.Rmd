@@ -7,6 +7,7 @@ format:
     embed-resources: true
     code-tools: true
     code-summary: "Code"
+draft: false
 ---
 
 Remember, **follow the instructions below and use R Markdown to create an html document.** You may find a template file by clicking "Code" in the top right corner of this page.

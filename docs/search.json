@@ -76,6 +76,27 @@
     "text": "Part B. Introduction to RStudio\nNow, open RStudio. It should look some thing like this image, from the official RStudio Guide:\n\n\n\nRStudio IDE with panels Source, Environments, Console, and Output showing a ggplot2 script and resulting scatter plot of engine displacement vs. highway mpg.\n\n\nRStudio is like Microsoft Word/Google Docs for writing R code–it has useful tools (analogous to spell check) for programmers. In the lower left corner is your Console. This should look like the R window you were working in for Part A. The Console is meant for brief interactive R commands. The top right corner should be your Environment pane, which displays R objects that you have created. Right now your environment should be empty.\n\nIn the Console, type the command x &lt;- 10. What do you see in your environment pane?\nThe bottom right pane is the Output pane, which will often be used to display results/visualizations of your R code. There are many tabs here, but click on the Files tab. What do you see? In your own words, explain what you think the Files tab shows.\nBefore this question, run the following line in the Console: install.packages(\"ggplot2\"). This will install some additional R functions for visualization. The top left pane is the Source pane. When you want to write more than one line of code at a time, it’s a good idea to organize your code in a single file. At the top of the RStudio window, click File -&gt; New File -&gt; R Script to open an untitled .R file. Copy and paste the following code into your R file. Then highlight the code and click Run (which will be in the top left corner of the Source pane). What do you see?\n\n\nlibrary(ggplot2)\nmpg_plot &lt;- ggplot(mpg, aes(x = displ, y = hwy)) + \n  geom_point(aes(color = class))\nmpg_plot\n\nWhen you are finished, remember to write up your solutions, save them in a pdf file, and submit to Canvas."
   },
   {
+    "objectID": "labs/03_lab.html",
+    "href": "labs/03_lab.html",
+    "title": "Lab 3: Descriptive Statistics",
+    "section": "",
+    "text": "Follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope. You may find a template file by clicking “Code” in the top right corner of this page.\nYour final submission should clearly include all code needed to generate your answers and should be formatted according to the guidelines outlined in class. In particular, make sure:\nYou may collaborate with your classmates and consult external resources, but you should write and submit your own answer. Any classmates with whom you collaborate should be credited at the top of your submission. Similarly, if you consult any external references, you should cite them clearly and explicitly."
+  },
+  {
+    "objectID": "labs/03_lab.html#a.-weather-forecast-data",
+    "href": "labs/03_lab.html#a.-weather-forecast-data",
+    "title": "Lab 3: Descriptive Statistics",
+    "section": "A. Weather Forecast Data",
+    "text": "A. Weather Forecast Data\n\nFor this lab, we’ll be using data on weather forecasts gathered by student at Saint Louis University. You can read about the dataset here. Download the weather forecasts data using the following code:\n\n\nweather_forecasts &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-20/weather_forecasts.csv')\n\n\nHow many rows are in this dataset? How many columns?\n\n\n# YOUR CODE HERE\n\n\n\nHow many cities are represented in this dataset?\n\n\n# YOUR CODE HERE\n\n\n\nCreate a new data frame containing only the forecasts for San Jose. You may have to explore the values for the city variable.\n\n\n# YOUR CODE HERE\n\n\n\nCompute the mean absolute error between observed_temp and forecast_temp for San Jose.\n\n\n# YOUR CODE HERE\n\n\n\nCompute the mean absolute error between observed_temp and forecast_temp for San Jose using only forecasts made 48 hours in advance.\n\n\n# YOUR CODE HERE\n\n\n\nCompute the mean absolute error between observed_temp and forecast_temp for San Jose using only forecasts made 12 hours in advance.\n\n\n# YOUR CODE HERE\n\n\n\nCompare your answers to 6 and 7. What do you notice? How does this compare to your expectation?\n\n\n\nPick two cities in this dataset. Investigate whether the forecast accuracy is better for one city than for the other, using an appropriate statistic. Discuss your findings."
+  },
+  {
+    "objectID": "labs/03_lab.html#b.-find-your-own-data",
+    "href": "labs/03_lab.html#b.-find-your-own-data",
+    "title": "Lab 3: Descriptive Statistics",
+    "section": "B. Find your own data",
+    "text": "B. Find your own data\nFor this component, pick a Tidy Tuesday dataset and complete the following activity.\n\nProvide a brief description of your dataset. Identify at least two questions you could try to answer using this dataset.\n\n\n\nOpen your dataset in R and compute one or more descriptive statistics that shed light on your questions. Discuss your findings.\n\n\n\nAre there any limitations of your analysis? Could additional data or more complicated methods improve your analysis? Discuss."
+  },
+  {
     "objectID": "labs/02_lab.html",
     "href": "labs/02_lab.html",
     "title": "Lab 2: R Markdown and Basic Objects",
@@ -190,6 +211,20 @@
       "Course information",
       "Syllabus"
     ]
+  },
+  {
+    "objectID": "checkins/02_checkin.html",
+    "href": "checkins/02_checkin.html",
+    "title": "Check-in 2",
+    "section": "",
+    "text": "Remember, follow the instructions below and use R Markdown to create an html document. You may find a template file by clicking “Code” in the top right corner of this page."
+  },
+  {
+    "objectID": "checkins/02_checkin.html#a.-flights-data",
+    "href": "checkins/02_checkin.html#a.-flights-data",
+    "title": "Check-in 2",
+    "section": "A. Flights Data",
+    "text": "A. Flights Data\n1. For this lab, we’ll be using the flights data. You can load this data using the following code:\n\nlibrary(nycflights13)\ndata(flights)\n\n2. Use the mutate() function to turn origin into a factor.\n\n# YOUR CODE HERE\n\n3. Compute the mean arr_delay for each origin airport. Which airport has the longest delays on average? You can drop missing rows.\n\n# YOUR CODE HERE\n\n\n4. Use the mutate() function to turn month into a factor.\n\n# YOUR CODE HERE\n\n\n5. Compute the mean arr_delay by month. What do you notice?\n\n# YOUR CODE HERE\n\n\n6. Compute the mean arr_delay by month AND origin. What do you notice?\n\n# YOUR CODE HERE"
   },
   {
     "objectID": "checkins/01_checkin.html",
