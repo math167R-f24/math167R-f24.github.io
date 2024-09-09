@@ -429,9 +429,8 @@ Two approaches:
 
 ## Another example
 
-One TidyTuesday from earlier this year featured a very simple dataset on UNESCO World Heritage sites. You can find code to download it [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-02-06/readme.md).
+Last week's TidyTuesday featured a dataset on economic diversity and student outcomes. You can find code to download it [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-09-10/readme.md). An associated visualization is at [the New York Times](https://www.nytimes.com/interactive/projects/college-mobility/san-jose-state-university).
 
-This dataset has been used for the [1 Dataset, 100 Visualizations project](https://100.datavizproject.com) --- take a look and think about which of these visualizations are the most effective.
 
 ## Activity
 
