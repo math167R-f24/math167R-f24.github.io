@@ -9,29 +9,17 @@ editor: source
 
 ## Warm-up
 
-1.  What is the main difference between matrices and data frames?
+1.  What is the main difference between vectors and lists?
 
-2.  What does the following code do?
-
-    ```{r, echo = T, eval = F}
-    B <- diag(1, nrow = 4)
-    B <- B + .01
-    print(B[2, 3])
-    ```
+2.  What is a data frame?
 
 ## Warm-up
 
 **Answer:**
 
-1.  Matrices only contain one type of data whereas each column of a data frame may contain a different type of data.
+1. Vectors only contain one type of data whereas lists may contain a different type of data.
 
-2.  
-
-    ```{r, echo = T, eval = T}
-    B <- diag(1, nrow = 4)
-    B <- B + .01
-    B
-    ```
+2. A data frame is a list of vectors, each of the same length. Typically, each vector represents a variable and the $i$th entry of each vector represents the variable's value for observation $i$.
 
 ## Overview of today
 
@@ -441,7 +429,7 @@ Two approaches:
 
 ## Another example
 
-Yesterday's TidyTuesday featured a very simple dataset on UNESCO World Heritage sites. You can find code to download it [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-02-06/readme.md).
+One TidyTuesday from earlier this year featured a very simple dataset on UNESCO World Heritage sites. You can find code to download it [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-02-06/readme.md).
 
 This dataset has been used for the [1 Dataset, 100 Visualizations project](https://100.datavizproject.com) --- take a look and think about which of these visualizations are the most effective.
 
