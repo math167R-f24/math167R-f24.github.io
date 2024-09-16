@@ -48,11 +48,39 @@
     "href": "index.html",
     "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nW 8/21\nCourse Overview and Introduction to R\nSlides 01\n\nLab 01\n\n\n2\nM 8/26\nR fundamentals\nSlides 02\nCheck-in 01\n\n\n\n\nW 8/28\nR fundamentals\nSlides 03\n\nLab 02\n\n\n3\nM 9/2\nLabor Day - No class\n\n\n\n\n\n\nW 9/4\nR fundamentals\nSlides 04\n\n\n\n\n4\nM 9/9\nExploring data with R\nSlides 05\n\nLab 03\n\n\n\nW 9/11\nExploring data with R\nSlides 06\nCheck-in 02\n\n\n\n5\nM 9/16\nData visualization\n\n\n\n\n\n\nW 9/18\nData visualization\n\n\n\n\n\n6\nM 9/23\nData manipulation and management\n\n\n\n\n\n\nW 9/25\nData manipulation and management\n\n\n\n\n\n7\nM 9/30\nProgramming basics\n\n\n\n\n\n\nW 10/2\nProgramming basics\n\n\n\n\n\n8\nM 10/7\nProgramming basics\n\n\n\n\n\n\nW 10/9\nProgramming basics\n\n\n\n\n\n9\nM 10/14\nProgramming basics\n\n\n\n\n\n\nW 10/16\nSimulations\n\n\n\n\n\n10\nM 10/21\nSimulations\n\n\n\n\n\n\nW 10/23\nSimulations\n\n\n\n\n\n11\nM 10/28\nStatistical inference\n\n\n\n\n\n\nW 10/30\nStatistical inference\n\n\n\n\n\n12\nM 11/4\nSimulation-based inference\n\n\n\n\n\n\nW 11/6\nSimulation-based inference\n\n\n\n\n\n13\nM 11/11\nVeterans’ Day - No class\n\n\n\n\n\n\nW 11/13\nRegression\n\n\n\n\n\n14\nM 11/18\nRegression\n\n\n\n\n\n\nW 11/20\nPrediction\n\n\n\n\n\n15\nM 11/25\nPrediction\n\n\n\n\n\n\nW 11/27\nThanksgiving - No class\n\n\n\n\n\n16\nM 12/2\nFinal presentations and review\n\n\n\n\n\n\nW 12/4\nFinal presentations and review\n\n\n\n\n\n17\nM 12/9\nFinal presentations and review\n\n\n\n\n\n18\nM 12/16\nFinal exam",
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nW 8/21\nCourse Overview and Introduction to R\nSlides 01\n\nLab 01\n\n\n2\nM 8/26\nR fundamentals\nSlides 02\nCheck-in 01\n\n\n\n\nW 8/28\nR fundamentals\nSlides 03\n\nLab 02\n\n\n3\nM 9/2\nLabor Day - No class\n\n\n\n\n\n\nW 9/4\nR fundamentals\nSlides 04\n\n\n\n\n4\nM 9/9\nExploring data with R\nSlides 05\n\nLab 03\n\n\n\nW 9/11\nExploring data with R\nSlides 06\nCheck-in 02\n\n\n\n5\nM 9/16\nData visualization\nSlides 07\n\n\n\n\n\nW 9/18\nData visualization\nSlides 08\n\nLab 04\n\n\n6\nM 9/23\nData manipulation and management\n\n\n\n\n\n\nW 9/25\nData manipulation and management\n\n\n\n\n\n7\nM 9/30\nProgramming basics\n\n\n\n\n\n\nW 10/2\nProgramming basics\n\n\n\n\n\n8\nM 10/7\nProgramming basics\n\n\n\n\n\n\nW 10/9\nProgramming basics\n\n\n\n\n\n9\nM 10/14\nProgramming basics\n\n\n\n\n\n\nW 10/16\nSimulations\n\n\n\n\n\n10\nM 10/21\nSimulations\n\n\n\n\n\n\nW 10/23\nSimulations\n\n\n\n\n\n11\nM 10/28\nStatistical inference\n\n\n\n\n\n\nW 10/30\nStatistical inference\n\n\n\n\n\n12\nM 11/4\nSimulation-based inference\n\n\n\n\n\n\nW 11/6\nSimulation-based inference\n\n\n\n\n\n13\nM 11/11\nVeterans’ Day - No class\n\n\n\n\n\n\nW 11/13\nRegression\n\n\n\n\n\n14\nM 11/18\nRegression\n\n\n\n\n\n\nW 11/20\nPrediction\n\n\n\n\n\n15\nM 11/25\nPrediction\n\n\n\n\n\n\nW 11/27\nThanksgiving - No class\n\n\n\n\n\n16\nM 12/2\nFinal presentations and review\n\n\n\n\n\n\nW 12/4\nFinal presentations and review\n\n\n\n\n\n17\nM 12/9\nFinal presentations and review\n\n\n\n\n\n18\nM 12/16\nFinal exam",
     "crumbs": [
       "Course information",
       "Schedule"
     ]
+  },
+  {
+    "objectID": "labs/04_lab.html",
+    "href": "labs/04_lab.html",
+    "title": "Lab 4: Data Visualization",
+    "section": "",
+    "text": "Remember, follow the instructions below and use R Markdown to create an html document with your code and answers to the following questions. You may find a template file by clicking “Code” in the top right corner of this page.\n# LOAD ANY RELEVANT PACKAGES HERE"
+  },
+  {
+    "objectID": "labs/04_lab.html#a.-basic-visualizations",
+    "href": "labs/04_lab.html#a.-basic-visualizations",
+    "title": "Lab 4: Data Visualization",
+    "section": "A. Basic visualizations",
+    "text": "A. Basic visualizations\nFor this portion, we’ll be using the palmerpenguins data. Use the following code to load the data.\n\nlibrary(palmerpenguins)\ndata(penguins)\n\n\nCreate and interpret a histogram of bill_length_mm using base R code. Be sure to use meaningful axis labels and titles.\nCreate and interpret a histogram of bill_length_mm using ggplot2. Be sure to use meaningful axis labels and titles.\nCreate and interpret a scatterplot of bill_length_mm versus bill_depth_mm using base R code. Be sure to use meaningful axis labels and titles.\nCreate and interpret a scatterplot of bill_length_mm versus bill_depth_mm using ggplot2. Be sure to use meaningful axis labels and titles.\nUpdate your ggplot2 scatterplot of bill_length_mm versus bill_depth_mm using ggplot2 so that the color of a point represents the corresponding penguin’s species."
+  },
+  {
+    "objectID": "labs/04_lab.html#b.-analyzing-trends-in-san-jose-rental-prices",
+    "href": "labs/04_lab.html#b.-analyzing-trends-in-san-jose-rental-prices",
+    "title": "Lab 4: Data Visualization",
+    "section": "B. Analyzing trends in San Jose rental prices",
+    "text": "B. Analyzing trends in San Jose rental prices\nFor this component, you will be exploring and visualizing data on Craigslist apartment rental postings in the Bay Area. The data are available here from Tidy Tuesday, as prepared by Dr. Kate Pennington. Note that you can use links within read_csv() to read online .csv files. I recommend saving a version of the unprocessed .csv on your machine in a data subfolder within your project folder so you will be able to work offline.\n\nHow many 1 bedroom listings from Santa Clara county are in this dataset?\nWhat is the median price for a 1 bedroom listing in Santa Clara county in 2018?\nWhich county has the highest median price for a 1 bedroom listing in 2018?\nCreate two histograms for the prices of 1 bedroom listings in Santa Clara county in 2005 and 2018. Compare and discuss.\nCreate and interpret a line plot with year on the x-axis and median price for a 1 bedroom apartment for Santa Clara county on the y-axis from 2000 to 2018.\nCreate and interpret a single plot with year on the x-axis and median price for a 1 bedroom apartment on the y-axis, using a separate line for each city in Santa Clara county, for the years 2000 to 2018."
+  },
+  {
+    "objectID": "labs/04_lab.html#c.-open-ended-data-visualization",
+    "href": "labs/04_lab.html#c.-open-ended-data-visualization",
+    "title": "Lab 4: Data Visualization",
+    "section": "C. Open ended data visualization",
+    "text": "C. Open ended data visualization\nFor this part, choose a dataset that interests you and identify a set of questions that you would like to explore via calculating relevant summary statistics or data visualizations. In particular, you should create three summary tables or visualizations that satisfy the following requirements.\n\nInstructions\n\nIdentify three research questions of interest that you want to study using this dataset.\nFor each of your three research questions, generate a summary statistic, table, or data visualization using your dataset. Discuss and interpret your findings.\nEach table or visualization should include a caption that fully explains how to understand it (i.e. explain all the components, legends, etc.). A good guideline is that someone who has not read your report should be able to read the caption and fully understand what that table or visualization is showing.\nEach table or visualization must be accompanied by at least one paragraph of text. This text should include an interpretation of your table or visualization as well as what is interesting about it. A strong table or visualization will be accompanied by text explaining what patterns or insights it helps us glean from the data."
   },
   {
     "objectID": "labs/01_lab.html",
@@ -80,7 +108,7 @@
     "href": "labs/03_lab.html",
     "title": "Lab 3: Descriptive Statistics",
     "section": "",
-    "text": "Follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope. You may find a template file by clicking “Code” in the top right corner of this page.\nYour final submission should clearly include all code needed to generate your answers and should be formatted according to the guidelines outlined in class. In particular, make sure:\nYou may collaborate with your classmates and consult external resources, but you should write and submit your own answer. Any classmates with whom you collaborate should be credited at the top of your submission. Similarly, if you consult any external references, you should cite them clearly and explicitly."
+    "text": "Follow the instructions below and use R Markdown to create an html document with your code and answers to the following questions on Gradescope. You may find a template file by clicking “Code” in the top right corner of this page.\nYour final submission should clearly include all code needed to generate your answers and should be formatted according to the guidelines outlined in class. In particular, make sure:\nYou may collaborate with your classmates and consult external resources, but you should write and submit your own answer. Any classmates with whom you collaborate should be credited at the top of your submission. Similarly, if you consult any external references, you should cite them clearly and explicitly."
   },
   {
     "objectID": "labs/03_lab.html#a.-weather-forecast-data",

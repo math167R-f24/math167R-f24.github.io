@@ -450,9 +450,6 @@ Peter Gao
 <li>Principles of data visualization</li>
 </ul>
 </section>
-<section id="data-visualization" class="slide level2">
-<h2>Data visualization</h2>
-</section>
 <section id="why-look-at-data" class="slide level2">
 <h2>Why look at data?</h2>
 
@@ -484,7 +481,7 @@ Peter Gao
 <section id="why-look-at-data-2" class="slide level2">
 <h2>Why look at data?</h2>
 
-<img data-src="https://socviz.co/assets/ch-01-jackman-outlier.png" class="quarto-figure quarto-figure-center r-stretch"><p>from Jackson (1980) as reproduced in Kieran Healy’s <em>Data Visualization.</em></p>
+<img data-src="https://socviz.co/assets/ch-01-jackman-outlier.png" class="quarto-figure quarto-figure-center r-stretch" alt="Scatter plot showing voter turnout versus income inequality with two trend lines, one including South Africa and one excluding it."><p>from Jackson (1980) as reproduced in Kieran Healy’s <em>Data Visualization.</em></p>
 </section>
 <section id="what-makes-a-good-data-visualization" class="slide level2">
 <h2>What makes a good data visualization?</h2>
@@ -501,31 +498,31 @@ Peter Gao
 <section id="legibility" class="slide level2">
 <h2>Legibility</h2>
 
-<img data-src="https://socviz.co/assets/ch-01-perception-adelson-checkershow.jpg" class="quarto-figure quarto-figure-center r-stretch"><p>from Edward H. Adelson as reproduced in Kieran Healy’s <em>Data Visualization.</em></p>
+<img data-src="https://socviz.co/assets/ch-01-perception-adelson-checkershow.jpg" class="quarto-figure quarto-figure-center r-stretch" alt="Optical illusion showing a checkerboard with a green cylinder casting a shadow, highlighting that two squares labeled &quot;A&quot; and &quot;B&quot; are the same shade of gray."><p>from Edward H. Adelson as reproduced in Kieran Healy’s <em>Data Visualization.</em></p>
 </section>
 <section id="legibility-1" class="slide level2">
 <h2>Legibility</h2>
 
-<img data-src="https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-dual-search-1.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-dual-search-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Five scatter plots comparing color and shape distinctions with varying sample sizes."></section>
 <section id="legibility-2" class="slide level2">
 <h2>Legibility</h2>
 
-<img data-src="https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-multichannel-1.png" class="r-stretch"><p>from Kieran Healy’s <em>Data Visualization.</em></p>
+<img data-src="https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-multichannel-1.png" alt="Two scatter plots showing the relationship between Tea and Biscuits, with data points in various colors and shapes representing different categories." class="r-stretch"><p>from Kieran Healy’s <em>Data Visualization.</em></p>
 </section>
 <section id="integrity" class="slide level2">
 <h2>Integrity</h2>
 
-<img data-src="https://socviz.co/assets/ch-01-democracy-nyt-version.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="https://socviz.co/assets/ch-01-democracy-nyt-version.png" class="quarto-figure quarto-figure-center r-stretch" alt="Line charts showing the declining percentage of people from the 1930s to the 1980s who say it is essential to live in a democracy, across Sweden, Australia, Netherlands, United States, New Zealand, and Britain."></section>
 <section id="integrity-1" class="slide level2">
 <h2>Integrity</h2>
 
-<img data-src="https://socviz.co/assets/ch-01-democracy-voeten-version-2.png" class="r-stretch"></section>
+<img data-src="https://socviz.co/assets/ch-01-democracy-voeten-version-2.png" alt="Multi-panel line graph showing the decline in the importance of democracy from the 1930s to the 1990s in Australia, the Netherlands, Sweden, Great Britain, and the United States." class="r-stretch"></section>
 <section id="example-movies-data" class="slide level2 smaller">
 <h2>Example: Movies data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>movies <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-10-23/movie_profit.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="07_visualizing-data_cache/revealjs/unnamed-chunk-6_3987ae01e2d11d81e3fcb4e9a11cf6c8">
+<div class="cell">
 <div class="cell-output-display">
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table class="table table-striped caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
@@ -794,7 +791,7 @@ Peter Gao
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-8-1.png" alt="Bar chart showing movie genres: Action 600, Adventure 500, Comedy 700, Drama 1000, Horror 300." width="960" class="r-stretch"></section>
 <section id="customizing-base-r-plots" class="slide level2 smaller">
 <h2>Customizing base R plots</h2>
 <p>Base R plotting functions have many optional arguments allowing customization:</p>
@@ -806,7 +803,7 @@ Peter Gao
 <span id="cb9-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-9-1.png" alt="Bar chart showing movie genre distribution in the Tidy Tuesday dataset: Action around 600, Adventure slightly below 600, Comedy around 800, Drama around 1000, and Horror slightly below 400." width="960" class="r-stretch"></section>
 <section id="visualizing-a-categorical-variable-1" class="slide level2 smaller">
 <h2>Visualizing a categorical variable</h2>
 <p>The <code>pie</code> function takes a <strong>named numeric vector</strong> as its first argument:</p>
@@ -814,7 +811,7 @@ Peter Gao
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">pie</span>(<span class="at">x =</span> <span class="fu">table</span>(movies<span class="sc">$</span>genre))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-10-1.png" alt="Pie chart showing categories: Adventure, Action, Horror, Drama, and Comedy, with width of slice representing count." width="960" class="r-stretch"></section>
 <section id="summarizing-a-numerical-variable" class="slide level2 smaller">
 <h2>Summarizing a numerical variable</h2>
 <div class="cell">
@@ -835,7 +832,7 @@ Peter Gao
 <span id="cb13-5"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"><p>What shape does this distribution have?</p>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-12-1.png" alt="Bar chart showing the distribution of worldwide gross of movies." width="960" class="r-stretch"><p>What shape does this distribution have?</p>
 </section>
 <section id="visualizing-a-numerical-variable-1" class="slide level2 smaller">
 <h2>Visualizing a numerical variable</h2>
@@ -849,7 +846,7 @@ Peter Gao
 <span id="cb14-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-13-1.png" alt="Box plot showing the distribution of worldwide gross earnings with a red box, black whiskers, and numerous black circular outliers." width="960" class="r-stretch"></section>
 <section id="visualizing-a-numerical-variable-2" class="slide level2 smaller">
 <h2>Visualizing a numerical variable</h2>
 <div class="cell">
@@ -862,7 +859,7 @@ Peter Gao
 <span id="cb15-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-14-1.png" alt="Boxplot showing the distribution of production budget data with outliers." width="960" class="r-stretch"></section>
 <section id="multivariate-visualizations" class="slide level2">
 <h2>Multivariate visualizations</h2>
 <p>How might we plot the relationship between a numerical variable and a categorical variable?</p>
@@ -886,20 +883,24 @@ Peter Gao
 <section id="visualizing-two-numerical-variables-1" class="slide level2 smaller">
 <h2>Visualizing two numerical variables</h2>
 
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-16-1.png" alt="Scatter plot of worldwide gross on the x-axis versus production budget on the y-axis, indicating positive relationship between budget and gross." width="960" class="r-stretch"></section>
 <section id="visualizing-a-numerical-variable-and-a-categorical-variable" class="slide level2">
 <h2>Visualizing a numerical variable and a categorical variable</h2>
 <p>The <code>plot</code> function can be used to obtain stacked boxplots for two numerical variables:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">boxplot</span>(worldwide_gross <span class="sc">~</span> genre,</span>
 <span id="cb17-2"><a></a>        <span class="at">data =</span> movies, </span>
-<span id="cb17-3"><a></a>        <span class="at">main =</span> <span class="st">"Distribution of Worldwide Gross by Genre"</span></span>
+<span id="cb17-3"><a></a>        <span class="at">main =</span> <span class="st">"Distribution of Worldwide Gross by Genre"</span>,</span>
 <span id="cb17-4"><a></a>        <span class="at">xlab =</span> <span class="st">"Worldwide Gross ($)"</span>,</span>
 <span id="cb17-5"><a></a>        <span class="at">ylab =</span> <span class="st">""</span>,</span>
 <span id="cb17-6"><a></a>        <span class="at">horizontal =</span> T,</span>
 <span id="cb17-7"><a></a>        <span class="at">las =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="visualizing-a-numerical-variable-and-a-categorical-variable-1" class="slide level2">
+<h2>Visualizing a numerical variable and a categorical variable</h2>
+
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-18-1.png" alt="Parallel boxplots of worldwide gross. There is one for each genre, indicating the Action and Adventure genres have higher grosses on average." width="960" class="r-stretch"></section>
 <section id="visualizing-two-categorical-variables" class="slide level2">
 <h2>Visualizing two categorical variables</h2>
 <div class="cell">
@@ -922,7 +923,7 @@ Peter Gao
 <span id="cb20-2"><a></a>        <span class="at">legend =</span>  <span class="fu">c</span>(<span class="st">"Action"</span>, <span class="st">"Adventure"</span>, <span class="st">"Comedy"</span>, <span class="st">"Drama"</span>, <span class="st">"Horror"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-20-1.png" alt="Stacked bar chart of movie counts by MPAA rating and genre, showing that the most movies are in the R rating." width="960" class="r-stretch"></section>
 <section id="data-visualization-with-ggplot2" class="slide level2 smaller">
 <h2>Data visualization with <code>ggplot2</code></h2>
 <p><code>ggplot2</code> is a fantastic package for making complex visualizations that many people find more intuitive to use.</p>
@@ -949,7 +950,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-22-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-23-1.png" alt="Light-gray rectangle." width="384"></p>
 </figure>
 </div>
 </div>
@@ -973,7 +974,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-24-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-25-1.png" alt="Blank graph with vertical gridlines and x-axis labeled 'production_budget'." width="384"></p>
 </figure>
 </div>
 </div>
@@ -998,7 +999,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-26-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-27-1.png" alt="Histogram showing the count of production budgets, with most values on the lower end and the amount of movies gradually decreasing as the budget increases." width="384"></p>
 </figure>
 </div>
 </div>
@@ -1020,7 +1021,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-28-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-29-1.png" alt="Histogram showing the count of production budgets, with most values on the lower end and the amount of movies gradually decreasing as the budget increases. The color has been changed to red." width="384"></p>
 </figure>
 </div>
 </div>
@@ -1044,7 +1045,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-30-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-31-1.png" alt="Histogram showing the count of production budgets, with most values on the lower end and the amount of movies gradually decreasing as the budget increases. Labels have been added to the axes and title." width="384"></p>
 </figure>
 </div>
 </div>
@@ -1090,7 +1091,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-33-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-34-1.png" alt="Scatter plot showing a positive relationship between production budget and worldwide gross revenue for action and comedy movies." width="384"></p>
 </figure>
 </div>
 </div>
@@ -1115,7 +1116,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-35-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-36-1.png" alt="Scatter plot showing a positive relationship between production budget and worldwide gross revenue for action and comedy movies. The points have been made red and labels and titles have been added." width="384"></p>
 </figure>
 </div>
 </div>
@@ -1140,7 +1141,7 @@ Peter Gao
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-37-1.png" width="384"></p>
+<p><img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-38-1.png" alt="Scatter plot showing a positive relationship between production budget and worldwide gross revenue for action and comedy movies. Now, the color of each point tells what genre the movie is. In general, action movies have higher budgets and higher grosses than comedy movies." width="384"></p>
 </figure>
 </div>
 </div>
@@ -1186,7 +1187,7 @@ Peter Gao
 <section id="beyond-two-dimensions-2" class="slide level2 smaller">
 <h2>Beyond two dimensions</h2>
 
-<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-39-1.png" width="960" class="r-stretch"></section>
+<img data-src="07_visualizing-data_files/figure-revealjs/unnamed-chunk-40-1.png" alt="Scatter plot titled Worldwide Gross vs. Budget depicting the relationship between production budget and worldwide gross revenue of films, with colors and shapes indicating genres and MPAA ratings respectively." width="960" class="r-stretch"></section>
 <section id="ggplot-cheatsheet" class="slide level2">
 <h2>ggplot cheatsheet</h2>
 <ul>
@@ -1230,17 +1231,17 @@ Peter Gao
 <section id="sometimes-breaking-the-rules-is-okay" class="slide level2">
 <h2>Sometimes breaking the rules is okay…</h2>
 
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png" class="quarto-figure quarto-figure-center r-stretch"><p>Charles Minard</p>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png" class="quarto-figure quarto-figure-center r-stretch" alt="Thematic map showing Napoleon's 1812 Russian campaign with troop sizes represented by the width of a line traveling across the map. Temperature is represented using an adjacent graph below the map."><p>Charles Minard</p>
 </section>
 <section id="sometimes-breaking-the-rules-is-okay-1" class="slide level2">
 <h2>Sometimes breaking the rules is okay…</h2>
 
-<img data-src="https://th-thumbnailer.cdn-si-edu.com/h2WL28E-CZgGj-Lrvs40-3PMAOE=/1000x750/filters:no_upscale():focal(1223x1116:1224x1117)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/3b/22/3b22a3d0-0a6f-42fb-a1d6-58019a3d9312/11_33873a_city_and_rural_population_18901.png" class="r-stretch"><p>W.E.B. DuBois</p>
+<img data-src="https://th-thumbnailer.cdn-si-edu.com/h2WL28E-CZgGj-Lrvs40-3PMAOE=/1000x750/filters:no_upscale():focal(1223x1116:1224x1117)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/3b/22/3b22a3d0-0a6f-42fb-a1d6-58019a3d9312/11_33873a_city_and_rural_population_18901.png" alt="Vintage graphic showing African American population distribution with straight colored lines for city populations and a red spiral for rural populations. The length of the line represents the size of the population." class="r-stretch"><p>W.E.B. DuBois</p>
 </section>
 <section id="sometimes-breaking-the-rules-is-okay-2" class="slide level2">
 <h2>Sometimes breaking the rules is okay…</h2>
 
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nightingale-mortality.jpg" class="r-stretch"><p>Florence Nightingale</p>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/1/17/Nightingale-mortality.jpg" alt="Diagram showing the causes of mortality in the army in the East for April 1854 to March 1855 and April 1855 to March 1856, with blue, red, and black wedges representing different causes of death." class="r-stretch"><p>Florence Nightingale</p>
 </section>
 <section id="lab-04" class="slide level2">
 <h2>Lab 04</h2>
@@ -1248,53 +1249,33 @@ Peter Gao
 </section>
 <section id="some-misleading-visualizations" class="slide level2">
 <h2>Some misleading visualizations</h2>
-<p><img src="images/bad1.jpg" height="450"></p>
+<p><img data-src="images/bad1.jpg" alt="Deceptive pie charts that claim to show how much time users invest in LinkedIn per week: 47.6% spend 0-2 hours, 26.0% spend 3-4 hours, 12.2% spend 5-6 hours, 3.7% spend 7-8 hours, and 10.5% spend 8+ hours.&quot; The size of the shaded area in each pie chart is incorrect." height="450"></p>
 <p><strong>Avoid:</strong> Pie charts? The proportions are completely off.</p>
 </section>
 <section id="some-misleading-visualizations-1" class="slide level2">
 <h2>Some misleading visualizations</h2>
-<p><img src="images/bad2.jpg" height="450"></p>
+<p><img data-src="images/bad2.jpg" alt="Deceptive pie chart that claims to show CBS News poll on Americans who have tried marijuana: 51% today, 43% last year, 34% in 1997. &quot;High support for legalizing marijuana&quot; banner below." height="450"></p>
 <p><strong>Avoid:</strong> Pie charts? Percentages don’t add up.</p>
 </section>
 <section id="some-misleading-visualizations-2" class="slide level2">
 <h2>Some misleading visualizations</h2>
-<p><img src="images/bad3.png" height="450"></p>
+<p><img data-src="images/bad3.png" alt="3D bar graph showing CpG island hypermethylation profiles for various human cancers is crowded and unreadable." height="450"></p>
 <p><strong>Avoid:</strong> 3d bar charts?!</p>
 </section>
 <section id="some-misleading-visualizations-3" class="slide level2">
 <h2>Some misleading visualizations</h2>
-<p><img src="images/bad4.png" height="450"></p>
+<p><img data-src="images/bad4.png" alt="Bar chart titled &quot;7 Main Causes for Regret&quot; showing with height representing percent assigned to each cause. Each cause is assigned the same color so it is impossible to tell which is which." height="450"></p>
 <p><strong>Avoid:</strong> Bad use of color</p>
 </section>
 <section id="some-misleading-visualizations-4" class="slide level2">
 <h2>Some misleading visualizations</h2>
-<p><img src="images/bad5.jpg" height="450"></p>
+<p><img data-src="images/bad5.jpg" alt="Bar graph of syrup-related crimes by year only has one bar at value 1, for 2012." height="450"></p>
 <p><strong>Avoid:</strong> Bad axis, lack of information, 3D bar chart</p>
 </section>
 <section id="some-misleading-visualizations-5" class="slide level2">
 <h2>Some misleading visualizations</h2>
-<p><img src="images/bad6.jpg" height="450"></p>
+<p><img data-src="images/bad6.jpg" alt="Line graph with time on x-axis and percentages on the y-axis has two different y-axes, making it difficult to compare trends." height="450"></p>
 <p><strong>Avoid:</strong> Four numbers displayed as a cluttered chart, terrible labels, bad axis range</p>
-</section>
-<section id="some-misleading-visualizations-6" class="slide level2">
-<h2>Some misleading visualizations</h2>
-<p><img src="images/bad7.jpg" height="450"></p>
-<p><strong>Avoid:</strong> Deceptively flipped y-axis! (and excessive color)</p>
-</section>
-<section id="some-misleading-visualizations-7" class="slide level2">
-<h2>Some misleading visualizations</h2>
-<p><img src="images/bad8.jpg" height="450"></p>
-<p><strong>Avoid:</strong> Two axes in a single plot, bad axis range</p>
-</section>
-<section id="some-misleading-visualizations-8" class="slide level2">
-<h2>Some misleading visualizations</h2>
-<p><img src="images/bad9.png" height="450"></p>
-<p><strong>Avoid:</strong> Deceptive axis range (should start at 0)</p>
-</section>
-<section id="some-misleading-visualizations-9" class="slide level2">
-<h2>Some misleading visualizations</h2>
-<p><img src="images/bad10.png" height="450"></p>
-<p><strong>Avoid:</strong> Inconsistent x-axis intervals</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

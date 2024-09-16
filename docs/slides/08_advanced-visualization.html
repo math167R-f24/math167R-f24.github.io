@@ -433,7 +433,7 @@ Peter Gao
 <span id="cb2-8"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-2-1.png" alt="Scatter plot showing the positive relationships between flipper length and body mass for Adelie, Chinstrap, and Gentoo penguins." width="960" class="r-stretch"></section>
 <section id="overview-of-today" class="slide level2">
 <h2>Overview of today</h2>
 <ul>
@@ -517,17 +517,17 @@ Peter Gao
 </section>
 <section id="review-cats-and-dogs-3" class="slide level2">
 <h2>Review: Cats and Dogs</h2>
-<div class="cell" data-layout-align="center" data-fig.dim="[5,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> mean_wt, </span>
 <span id="cb8-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> animal, <span class="at">y =</span> mean_wt, <span class="at">fill =</span> animal)) <span class="sc">+</span></span>
 <span id="cb8-3"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">ylab</span>(<span class="st">"Mean weight (lb)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Bar chart showing mean weight of cats and dogs both at 40 lb."></section>
 <section id="review-cats-and-dogs-4" class="slide level2">
 <h2>Review: Cats and Dogs</h2>
-<div class="cell" data-layout-align="center" data-fig.dim="[5,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># construct named vector</span></span>
 <span id="cb9-2"><a></a>mean_wt_vec <span class="ot">&lt;-</span> mean_wt<span class="sc">$</span>mean_wt</span>
 <span id="cb9-3"><a></a><span class="fu">names</span>(mean_wt_vec) <span class="ot">&lt;-</span> mean_wt<span class="sc">$</span>animal</span>
@@ -536,20 +536,20 @@ Peter Gao
 <span id="cb9-6"><a></a>        <span class="at">ylab =</span> <span class="st">"Mean weight (lb)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Bar chart showing mean weight of cats and dogs both at 40 lb."></section>
 <section id="if-possible-show-the-data" class="slide level2">
 <h2>If possible, show the data</h2>
-<div class="cell" data-layout-align="center" data-fig.dim="[5,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(animals, <span class="fu">aes</span>(<span class="at">x =</span> animal, <span class="at">y =</span> weight, <span class="at">color =</span> animal)) <span class="sc">+</span></span>
 <span id="cb10-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">height =</span> <span class="dv">0</span>)) <span class="sc">+</span></span>
 <span id="cb10-3"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Mean Weight (lb)"</span>) <span class="sc">+</span></span>
 <span id="cb10-4"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing mean weight ranges for cats and dogs in pounds. The cats are split into two subpopulations, one with mean weight 60 pounds and another with mean weight 20 pounds, while the dogs are normally distributed with mean weight 40 pounds."></section>
 <section id="if-possible-show-the-data-1" class="slide level2">
 <h2>If possible, show the data</h2>
-<div class="cell" data-layout-align="center" data-fig.dim="[5,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(animals, <span class="fu">aes</span>(<span class="at">x =</span> animal, </span>
 <span id="cb11-2"><a></a>                    <span class="at">y =</span> weight, </span>
 <span id="cb11-3"><a></a>                    <span class="at">color =</span> animal)) <span class="sc">+</span></span>
@@ -559,7 +559,7 @@ Peter Gao
 <span id="cb11-7"><a></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing mean weight ranges for cats and dogs in pounds. The cats are split into two subpopulations, one with mean weight 60 pounds and another with mean weight 20 pounds, while the dogs are normally distributed with mean weight 40 pounds. Boxplots have been added to show the median and quartiles."></section>
 <section id="review-cats-and-dogs-5" class="slide level2">
 <h2>Review: Cats and Dogs</h2>
 <p>Takeaways:</p>
@@ -572,18 +572,17 @@ Peter Gao
 <section id="gapminder-data" class="slide level2">
 <h2>Gapminder data</h2>
 
-<img data-src="images/gapminder.png" class="r-stretch"><p><a href="https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1">link</a></p>
+<img data-src="images/gapminder.png" alt="Scatter plot graph comparing GDP per capita to life expectancy for various countries in 1834 with a large gray &quot;1834&quot; watermark. Bubbles vary in size for population and are color-coded by world regions." class="r-stretch"><p><a href="https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1">link</a></p>
 </section>
 <section id="gapminder-data-1" class="slide level2">
 <h2>Gapminder data</h2>
 <ul>
-<li>What changes do we see over time? What do we notice in this visualization?</li>
-<li>What questions arise? Do you have any doubts about this visualization?</li>
+<li>What changes occur over time? What do you notice?</li>
 </ul>
 </section>
 <section id="gapminder-data-2" class="slide level2">
 <h2>Gapminder data</h2>
-<div class="cell" data-layout-align="center" data-fig.dim="[5,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(gapminder)</span>
 <span id="cb12-2"><a></a><span class="fu">data</span>(gapminder)</span>
 <span id="cb12-3"><a></a><span class="fu">head</span>(gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -602,7 +601,7 @@ Peter Gao
 </section>
 <section id="gapminder-data-3" class="slide level2">
 <h2>Gapminder data</h2>
-<div class="cell" data-layout-align="center" data-fig.dim="[5,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">summary</span>(gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        country        continent        year         lifeExp     
@@ -627,21 +626,21 @@ Peter Gao
 <section id="gapminder-data-4" class="slide level2">
 <h2>Gapminder data</h2>
 <p>Let’s work with the following data:</p>
-<div class="cell" data-layout-align="center" data-fig.dim="[5,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>gapminder_2007 <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>How do we recreate the following plot?</p>
 
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing GDP per capita versus life expectancy with different colors for each continent with population indicated by the size of each point."></section>
 <section id="gapminder-data-5" class="slide level2">
 <h2>Gapminder data</h2>
 <p>Work with the people around you to recreate this plot:</p>
 
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing GDP per capita versus life expectancy with different colors for each continent with population indicated by the size of each point."></section>
 <section id="gapminder-data-6" class="slide level2">
 <h2>Gapminder data</h2>
 <p>Hopefully, you produced something like this:</p>
-<div class="cell" data-layout-align="center" data-fig.dim="[7,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder_2007,</span>
 <span id="cb17-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap,</span>
 <span id="cb17-3"><a></a>                     <span class="at">y =</span> lifeExp,</span>
@@ -653,7 +652,7 @@ Peter Gao
 <section id="playing-with-scales" class="slide level2">
 <h2>Playing with scales</h2>
 <p><strong>Scales</strong> are another layer we can add on top of our plot:</p>
-<div class="cell" data-layout-align="center" data-fig.dim="[7,3.75]">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder_2007,</span>
 <span id="cb18-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap,</span>
 <span id="cb18-3"><a></a>                     <span class="at">y =</span> lifeExp,</span>
@@ -667,7 +666,7 @@ Peter Gao
 <section id="playing-with-scales-1" class="slide level2">
 <h2>Playing with scales</h2>
 
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing GDP per capita on a log scale versus life expectancy with different colors for each continent with population indicated by the size of each point."></section>
 <section id="playing-with-scales-2" class="slide level2">
 <h2>Playing with scales</h2>
 <div class="cell" data-layout-align="center">
@@ -681,7 +680,7 @@ Peter Gao
 <span id="cb19-8"><a></a>  <span class="fu">scale_color_viridis_d</span>() <span class="co"># discrete viridis color scale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing GDP per capita on a log scale versus life expectancy with different colors for each continent with population indicated by the size of each point. The colors have been changed to improve the distinguishability of colors."></section>
 <section id="small-multiples" class="slide level2">
 <h2>Small multiples</h2>
 <p><em>“At the heart of quantitative reasoning is a single question: Compared to what? Small multiple designs, multivariate and data bountiful, answer directly by visually enforcing comparisons of changes, of the differences among objects, of the scope of alternatives. For a wide range of problems in data presentation, small multiples are the best design solution.”</em></p>
@@ -693,7 +692,7 @@ Peter Gao
 <h2>Small multiples</h2>
 <p>We can often make comparisons clearer by splitting a plot into many “small multiples” which have the same axes:</p>
 
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Five small scatter plots showing life expectancy vs GDP per capita for countries in Africa, Americas, Asia, Europe, and Oceania, with bubble sizes representing population sizes."></section>
 <section id="facets-for-small-multiples" class="slide level2">
 <h2>Facets for small multiples</h2>
 <p>Small multiples are implemented in <code>ggplot2</code> via the <code>facet_wrap()</code> and <code>facet_grid()</code> functions:</p>
@@ -708,17 +707,17 @@ Peter Gao
 <span id="cb20-8"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Five small scatter plots showing life expectancy vs GDP per capita for countries in Africa, Americas, Asia, Europe, and Oceania, with bubble sizes representing population sizes."></section>
 <section id="gapminder-data-7" class="slide level2">
 <h2>Gapminder data</h2>
 <p>Work with the people around you to recreate this plot:</p>
 
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Three scatter plots showing GDP per capita and life expectancy for countries in the years 1957, 1982, and 2007, with bubbles sized by population and colored by continent."></section>
 <section id="themes" class="slide level2">
 <h2>Themes</h2>
 <p><code>ggplot2</code> provides a default theme: gray background, basic discrete color scheme, etc.</p>
 
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins."></section>
 <section id="other-themes" class="slide level2">
 <h2>Other themes</h2>
 <p>However, <code>ggplot2</code> also comes with additional themes that you can layer on top of your plots:</p>
@@ -731,7 +730,7 @@ Peter Gao
 <span id="cb21-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The background of this plot has been simplified and is now white."></section>
 <section id="other-themes-1" class="slide level2">
 <h2>Other themes</h2>
 <div class="cell" data-layout-align="center">
@@ -743,7 +742,7 @@ Peter Gao
 <span id="cb22-6"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The background of this plot has been simplified and is now white."></section>
 <section id="other-themes-2" class="slide level2">
 <h2>Other themes</h2>
 <div class="cell" data-layout-align="center">
@@ -755,7 +754,7 @@ Peter Gao
 <span id="cb23-6"><a></a>  <span class="fu">theme_dark</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The background of this plot has been simplified and is now dark gray."></section>
 <section id="other-themes-3" class="slide level2">
 <h2>Other themes</h2>
 <p>Other themes can be obtained from the <code>ggthemes</code> package:</p>
@@ -769,7 +768,7 @@ Peter Gao
 <span id="cb24-7"><a></a>  <span class="fu">theme_economist_white</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to resemble graphs used in The Economist magazine."></section>
 <section id="other-themes-4" class="slide level2">
 <h2>Other themes</h2>
 <div class="cell" data-layout-align="center">
@@ -781,7 +780,7 @@ Peter Gao
 <span id="cb25-6"><a></a>  <span class="fu">theme_wsj</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to resemble graphs used in The Wall Street Journal."></section>
 <section id="other-themes-5" class="slide level2">
 <h2>Other themes</h2>
 <div class="cell" data-layout-align="center">
@@ -793,7 +792,7 @@ Peter Gao
 <span id="cb26-6"><a></a>  <span class="fu">theme_fivethirtyeight</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to resemble graphs used in the website FiveThirtyEight."></section>
 <section id="themes-1" class="slide level2">
 <h2>Themes</h2>
 <p>If you want finer control over your plot appearance, you can dive into the <code>theme()</code> function:</p>
@@ -806,12 +805,12 @@ Peter Gao
 <span id="cb27-6"><a></a>  <span class="fu">theme</span>(<span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="08_advanced-visualization_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to increase the size of the legend."></section>
 <section id="themes-2" class="slide level2">
 <h2>Themes</h2>
 <p>Within the theme function, we can manipulate various <strong>theme elements</strong>:</p>
 
-<img data-src="https://henrywang.nl/wp-content/uploads/2020/04/theme_elements.png" class="r-stretch"></section>
+<img data-src="https://henrywang.nl/wp-content/uploads/2020/04/theme_elements.png" alt="Annotated ggplot2 diagram illustrating customizable theme elements such as axis, plot, faceting, and legend elements, with corresponding ggplot2 functions." class="r-stretch"></section>
 <section id="themes-3" class="slide level2">
 <h2>Themes</h2>
 <p>Other resources:</p>

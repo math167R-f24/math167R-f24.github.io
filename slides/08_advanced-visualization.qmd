@@ -24,7 +24,7 @@ editor: source
 
 ## Warm-up
 
-```{r, echo = T, eval = T, warning = F}
+```{r, echo = T, eval = T, warning = F, fig.alt = "Scatter plot showing the positive relationships between flipper length and body mass for Adelie, Chinstrap, and Gentoo penguins."}
 library(palmerpenguins)
 library(ggplot2)
 data(penguins)
@@ -111,7 +111,7 @@ In `ggplot2`, there are two geometries for bar plots: `geom_col()` and `geom_bar
 
 ## Review: Cats and Dogs
 
-```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center", fig.alt = "Bar chart showing mean weight of cats and dogs both at 40 lb."}
 ggplot(data = mean_wt, 
        aes(x = animal, y = mean_wt, fill = animal)) +
   geom_col() +
@@ -120,7 +120,7 @@ ggplot(data = mean_wt,
 
 ## Review: Cats and Dogs
 
-```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center", fig.alt = "Bar chart showing mean weight of cats and dogs both at 40 lb."}
 # construct named vector
 mean_wt_vec <- mean_wt$mean_wt
 names(mean_wt_vec) <- mean_wt$animal
@@ -131,7 +131,7 @@ barplot(mean_wt_vec,
 
 ## If possible, show the data
 
-```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center", fig.alt = "Scatter plot showing mean weight ranges for cats and dogs in pounds. The cats are split into two subpopulations, one with mean weight 60 pounds and another with mean weight 20 pounds, while the dogs are normally distributed with mean weight 40 pounds."}
 ggplot(animals, aes(x = animal, y = weight, color = animal)) +
   geom_point(position = position_jitter(height = 0)) +
   labs(x = NULL, y = "Mean Weight (lb)") +
@@ -140,7 +140,7 @@ ggplot(animals, aes(x = animal, y = weight, color = animal)) +
 
 ## If possible, show the data
 
-```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center"}
+```{r, echo = T, eval = T, warning = F, fig.dim=c(5, 3.75), out.width="100%", fig.align = "center",  fig.alt = "Scatter plot showing mean weight ranges for cats and dogs in pounds. The cats are split into two subpopulations, one with mean weight 60 pounds and another with mean weight 20 pounds, while the dogs are normally distributed with mean weight 40 pounds. Boxplots have been added to show the median and quartiles."}
 ggplot(animals, aes(x = animal, 
                     y = weight, 
                     color = animal)) +
@@ -160,14 +160,13 @@ Takeaways:
 
 ## Gapminder data
 
-![](images/gapminder.png)
+![](images/gapminder.png){fig-alt="Scatter plot graph comparing GDP per capita to life expectancy for various countries in 1834 with a large gray \"1834\" watermark. Bubbles vary in size for population and are color-coded by world regions."}
 
 [link](https://www.gapminder.org/tools/#$chart-type=bubbles&url=v1)
 
 ## Gapminder data
 
--   What changes do we see over time? What do we notice in this visualization?
--   What questions arise? Do you have any doubts about this visualization?
+-   What changes occur over time? What do you notice?
 
 ## Gapminder data
 
@@ -193,7 +192,7 @@ gapminder_2007 <- gapminder |> filter(year == 2007)
 
 How do we recreate the following plot?
 
-```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center", fig.alt = "Scatter plot showing GDP per capita versus life expectancy with different colors for each continent with population indicated by the size of each point."}
 ggplot(data = gapminder_2007,
        mapping = aes(x = gdpPercap,
                      y = lifeExp,
@@ -206,7 +205,7 @@ ggplot(data = gapminder_2007,
 
 Work with the people around you to recreate this plot:
 
-```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center", fig.alt = "Scatter plot showing GDP per capita versus life expectancy with different colors for each continent with population indicated by the size of each point."}
 ggplot(data = gapminder_2007,
        mapping = aes(x = gdpPercap,
                      y = lifeExp,
@@ -246,7 +245,7 @@ What do you expect the output to look like?
 
 ## Playing with scales
 
-```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center"}
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 3.75), out.width="100%", fig.align = "center", fig.alt = "Scatter plot showing GDP per capita on a log scale versus life expectancy with different colors for each continent with population indicated by the size of each point."}
 ggplot(data = gapminder_2007,
        mapping = aes(x = gdpPercap,
                      y = lifeExp,
@@ -267,6 +266,7 @@ ggplot(data = gapminder_2007,
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "8"
+#| fig.alt: "Scatter plot showing GDP per capita on a log scale versus life expectancy with different colors for each continent with population indicated by the size of each point. The colors have been changed to improve the distinguishability of colors."
 ggplot(data = gapminder_2007,
        mapping = aes(x = gdpPercap,
                      y = lifeExp,
@@ -298,6 +298,7 @@ We can often make comparisons clearer by splitting a plot into many "small multi
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "8"
+#| fig-alt: "Five small scatter plots showing life expectancy vs GDP per capita for countries in Africa, Americas, Asia, Europe, and Oceania, with bubble sizes representing population sizes."
 ggplot(data = gapminder_2007,
        mapping = aes(x = gdpPercap,
                      y = lifeExp,
@@ -322,6 +323,7 @@ Small multiples are implemented in `ggplot2` via the `facet_wrap()` and `facet_g
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "8"
+#| fig-alt: "Five small scatter plots showing life expectancy vs GDP per capita for countries in Africa, Americas, Asia, Europe, and Oceania, with bubble sizes representing population sizes."
 ggplot(data = gapminder_2007,
        mapping = aes(x = gdpPercap,
                      y = lifeExp,
@@ -336,7 +338,7 @@ ggplot(data = gapminder_2007,
 
 Work with the people around you to recreate this plot:
 
-```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 4.75), out.width="100%", fig.align = "center"}
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 4.75), out.width="100%", fig.align = "center", fig.alt = "Three scatter plots showing GDP per capita and life expectancy for countries in the years 1957, 1982, and 2007, with bubbles sized by population and colored by continent."}
 gapminder_sub <- gapminder |> filter(year %in% c(1957, 1982, 2007))
 ggplot(data = gapminder_sub,
        mapping = aes(x = gdpPercap,
@@ -352,7 +354,7 @@ ggplot(data = gapminder_sub,
 
 `ggplot2` provides a default theme: gray background, basic discrete color scheme, etc.
 
-```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 4.75), out.width="100%", fig.align = "center"}
+```{r, echo = F, eval = T, warning = F, fig.dim=c(7, 4.75), out.width="100%", fig.align = "center", fig.alt = "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins."}
 library(palmerpenguins)
 data(penguins)
 ggplot(penguins, 
@@ -375,6 +377,7 @@ However, `ggplot2` also comes with additional themes that you can layer on top o
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "6"
+#| fig-alt: "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The background of this plot has been simplified and is now white."
 ggplot(penguins, 
        aes(x = flipper_length_mm, 
            y = body_mass_g, 
@@ -394,6 +397,7 @@ ggplot(penguins,
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "6"
+#| fig-alt: "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The background of this plot has been simplified and is now white."
 ggplot(penguins, 
        aes(x = flipper_length_mm, 
            y = body_mass_g, 
@@ -413,6 +417,7 @@ ggplot(penguins,
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "6"
+#| fig-alt: "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The background of this plot has been simplified and is now dark gray."
 ggplot(penguins, 
        aes(x = flipper_length_mm, 
            y = body_mass_g, 
@@ -434,6 +439,7 @@ Other themes can be obtained from the `ggthemes` package:
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "1,7"
+#| fig-alt: "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to resemble graphs used in The Economist magazine."
 library(ggthemes)
 ggplot(penguins, 
        aes(x = flipper_length_mm, 
@@ -454,6 +460,7 @@ ggplot(penguins,
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "6"
+#| fig-alt: "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to resemble graphs used in The Wall Street Journal."
 ggplot(penguins, 
        aes(x = flipper_length_mm, 
            y = body_mass_g, 
@@ -473,6 +480,7 @@ ggplot(penguins,
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "6"
+#| fig-alt: "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to resemble graphs used in the website FiveThirtyEight."
 ggplot(penguins, 
        aes(x = flipper_length_mm, 
            y = body_mass_g, 
@@ -494,6 +502,7 @@ If you want finer control over your plot appearance, you can dive into the `them
 #| out.width: "100%"
 #| fig.align: "center"
 #| code-line-numbers: "6"
+#| fig-alt: "Scatter plot showing flipper length versus body mass for Adelie (red), Chinstrap (green), and Gentoo (blue) penguins. The plot has been formatted to increase the size of the legend."
 ggplot(penguins, 
        aes(x = flipper_length_mm, 
            y = body_mass_g, 
@@ -506,16 +515,16 @@ ggplot(penguins,
 
 Within the theme function, we can manipulate various **theme elements**:
 
-![](https://henrywang.nl/wp-content/uploads/2020/04/theme_elements.png)
+![](https://henrywang.nl/wp-content/uploads/2020/04/theme_elements.png){fig-alt="Annotated ggplot2 diagram illustrating customizable theme elements such as axis, plot, faceting, and legend elements, with corresponding ggplot2 functions."}
 
 ## Themes
 
 Other resources:
 
-- Clara Granell's [ggplot2 Theme System Cheatsheet](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf)
-- Andrew Heiss's [Ways to deal with long labels](https://www.andrewheiss.com/blog/2022/06/23/long-labels-ggplot/)
-- Chapter 8 of Kieran Healy's [Data Visualization](https://socviz.co/refineplots.html#change-the-appearance-of-plots-with-themes)
-- [How to create BBC style graphics](https://bbc.github.io/rcookbook/#how_to_create_bbc_style_graphics)
+-   Clara Granell's [ggplot2 Theme System Cheatsheet](https://github.com/claragranell/ggplot2/blob/main/ggplot_theme_system_cheatsheet.pdf)
+-   Andrew Heiss's [Ways to deal with long labels](https://www.andrewheiss.com/blog/2022/06/23/long-labels-ggplot/)
+-   Chapter 8 of Kieran Healy's [Data Visualization](https://socviz.co/refineplots.html#change-the-appearance-of-plots-with-themes)
+-   [How to create BBC style graphics](https://bbc.github.io/rcookbook/#how_to_create_bbc_style_graphics)
 
 ```{r, echo = F, eval = T, warning = F}
 knitr::knit_exit()

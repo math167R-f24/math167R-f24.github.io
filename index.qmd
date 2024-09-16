@@ -16,8 +16,8 @@ draft: false
 |      | W 9/4 | R fundamentals               |  [Slides 04](slides/04_lists-data-frames.html){.label .label-green}      |          |     |
 |  4   | M 9/9 | Exploring data with R                 |   [Slides 05](slides/05_exploring-data.html){.label .label-green}        |        |   [Lab 03](labs/03_lab.html){.label .label-red}    |
 |      | W 9/11 | Exploring data with R                    |   [Slides 06](slides/06_factors-groups.html){.label .label-green}      |  [Check-in 02](checkins/02_checkin.html){.label .label-purple} |                  |     |
-|  5   | M 9/16 | Data visualization                    |        |          |     |
-|      | W 9/18 | Data visualization                    |        |          |     |
+|  5   | M 9/16 | Data visualization                    | [Slides 07](slides/07_visualizing-data.html){.label .label-green}        |          |     |
+|      | W 9/18 | Data visualization                    |   [Slides 08](slides/08_advanced-visualization.html){.label .label-green}      |          |  [Lab 04](labs/04_lab.html){.label .label-red}   |
 |  6   | M 9/23 | Data manipulation and management      |        |          |     |
 |      | W 9/25 | Data manipulation and management      |        |          |     |
 |  7   | M 9/30  | Programming basics                    |        |          |     |

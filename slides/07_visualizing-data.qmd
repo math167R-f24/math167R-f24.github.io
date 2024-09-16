@@ -37,8 +37,6 @@ penguins |>
 -   Data visualization with `ggplot2`
 -   Principles of data visualization
 
-## Data visualization
-
 ## Why look at data?
 
 ```{r, echo = F, eval = T}
@@ -54,7 +52,7 @@ ggplot(datasaurus_dozen |>
 
 All of these datasets have the same means for `x` and `y`, and (approximately) the same correlation:
 
-```{r, echo = F, eval = T}
+```{r, echo = F, eval = T, fig.alt = "Grid of twelve scatterplots, each labeled and showcasing different dot formations such as circles, lines, slants, and a star shape."}
 datasaurus_dozen |>
   group_by(dataset) |> 
   summarize(mean_x = round(mean(x), 1),
@@ -64,7 +62,7 @@ datasaurus_dozen |>
 
 ## Why look at data?
 
-![](https://socviz.co/assets/ch-01-jackman-outlier.png){fig-align="center"}
+![](https://socviz.co/assets/ch-01-jackman-outlier.png){fig-alt="Scatter plot showing voter turnout versus income inequality with two trend lines, one including South Africa and one excluding it." fig-align="center"}
 
 from Jackson (1980) as reproduced in Kieran Healy's *Data Visualization.*
 
@@ -80,27 +78,27 @@ Other Readings:
 
 ## Legibility
 
-![](https://socviz.co/assets/ch-01-perception-adelson-checkershow.jpg){fig-align="center"}
+![](https://socviz.co/assets/ch-01-perception-adelson-checkershow.jpg){fig-alt="Optical illusion showing a checkerboard with a green cylinder casting a shadow, highlighting that two squares labeled \"A\" and \"B\" are the same shade of gray." fig-align="center"}
 
 from Edward H. Adelson as reproduced in Kieran Healy's *Data Visualization.*
 
 ## Legibility
 
-![](https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-dual-search-1.png){fig-align="center"}
+![](https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-dual-search-1.png){fig-alt="Five scatter plots comparing color and shape distinctions with varying sample sizes." fig-align="center"}
 
 ## Legibility
 
-![](https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-multichannel-1.png)
+![](https://socviz.co/dataviz-pdfl_files/figure-html4/ch-01-multichannel-1.png){fig-alt="Two scatter plots showing the relationship between Tea and Biscuits, with data points in various colors and shapes representing different categories."}
 
 from Kieran Healy's *Data Visualization.*
 
 ## Integrity
 
-![](https://socviz.co/assets/ch-01-democracy-nyt-version.png){fig-align="center"}
+![](https://socviz.co/assets/ch-01-democracy-nyt-version.png){fig-alt="Line charts showing the declining percentage of people from the 1930s to the 1980s who say it is essential to live in a democracy, across Sweden, Australia, Netherlands, United States, New Zealand, and Britain." fig-align="center"}
 
 ## Integrity
 
-![](https://socviz.co/assets/ch-01-democracy-voeten-version-2.png)
+![](https://socviz.co/assets/ch-01-democracy-voeten-version-2.png){fig-alt="Multi-panel line graph showing the decline in the importance of democracy from the 1930s to the 1990s in Australia, the Netherlands, Sweden, Great Britain, and the United States."}
 
 ## Example: Movies data {.smaller}
 
@@ -133,7 +131,7 @@ table(movies$genre)
 
 The `barplot` function takes a **named numeric vector** as its first argument:
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = T, fig.alt="Bar chart showing movie genres: Action 600, Adventure 500, Comedy 700, Drama 1000, Horror 300."}
 barplot(height = table(movies$genre))
 ```
 
@@ -141,7 +139,7 @@ barplot(height = table(movies$genre))
 
 Base R plotting functions have many optional arguments allowing customization:
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = T, fig.alt = "Bar chart showing movie genre distribution in the Tidy Tuesday dataset: Action around 600, Adventure slightly below 600, Comedy around 800, Drama around 1000, and Horror slightly below 400."}
 barplot(
   height = table(movies$genre), 
   main = "Distribution of Movie Genres in Tidy Tuesday dataset",
@@ -153,7 +151,7 @@ barplot(
 
 The `pie` function takes a **named numeric vector** as its first argument:
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = T, fig.alt = "Pie chart showing categories: Adventure, Action, Horror, Drama, and Comedy, with width of slice representing count."}
 pie(x = table(movies$genre))
 ```
 
@@ -165,7 +163,7 @@ summary(movies$worldwide_gross)
 
 ## Visualizing a numerical variable {.smaller}
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = T, fig.alt = "Bar chart showing the distribution of worldwide gross of movies."}
 hist(
   x = movies$worldwide_gross, 
   main = "Distribution of Worldwide Gross of Movies",
@@ -177,7 +175,7 @@ What shape does this distribution have?
 
 ## Visualizing a numerical variable {.smaller}
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = T, fig.alt = "Box plot showing the distribution of worldwide gross earnings with a red box, black whiskers, and numerous black circular outliers."}
 boxplot(
   x = movies$worldwide_gross, 
   main = "Distribution of Worldwide Gross",
@@ -189,7 +187,7 @@ boxplot(
 
 ## Visualizing a numerical variable {.smaller}
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = T, fig.alt = "Boxplot showing the distribution of production budget data with outliers."}
 boxplot(
   x = movies$production_budget, 
   main = "Distribution of Production Budget",
@@ -211,7 +209,7 @@ What if we want to visualize three variables at once?
 
 The `plot` function can be used to obtain scatter plots for two numerical variables:
 
-```{r, echo = T, eval = F}
+```{r, echo = T, eval = F, fig.alt = "Scatter plot of worldwide gross on the x-axis versus production budget on the y-axis, indicating positive relationship between budget and gross."}
 plot(
   x = movies$production_budget, 
   y = movies$worldwide_gross, 
@@ -224,7 +222,7 @@ plot(
 
 ## Visualizing two numerical variables {.smaller}
 
-```{r, echo = F, eval = T}
+```{r, echo = F, eval = T, fig.alt = "Scatter plot of worldwide gross on the x-axis versus production budget on the y-axis, indicating positive relationship between budget and gross."}
 plot(
   x = movies$production_budget, 
   y = movies$worldwide_gross, 
@@ -239,10 +237,22 @@ plot(
 
 The `plot` function can be used to obtain stacked boxplots for two numerical variables:
 
-```{r, echo = T, eval = F}
+```{r, echo = T, eval = F, fig.alt = "Parallel boxplots of worldwide gross. There is one for each genre, indicating the Action and Adventure genres have higher grosses on average."}
 boxplot(worldwide_gross ~ genre,
         data = movies, 
-        main = "Distribution of Worldwide Gross by Genre"
+        main = "Distribution of Worldwide Gross by Genre",
+        xlab = "Worldwide Gross ($)",
+        ylab = "",
+        horizontal = T,
+        las = 1)
+```
+
+## Visualizing a numerical variable and a categorical variable
+
+```{r, echo = F, eval = T, fig.alt = "Parallel boxplots of worldwide gross. There is one for each genre, indicating the Action and Adventure genres have higher grosses on average."}
+boxplot(worldwide_gross ~ genre,
+        data = movies, 
+        main = "Distribution of Worldwide Gross by Genre",
         xlab = "Worldwide Gross ($)",
         ylab = "",
         horizontal = T,
@@ -257,7 +267,7 @@ table(movies$genre, movies$mpaa_rating)
 
 ## Visualizing two categorical variables
 
-```{r, echo = T, eval = T}
+```{r, echo = T, eval = T, fig.alt="Stacked bar chart of movie counts by MPAA rating and genre, showing that the most movies are in the R rating."}
 barplot(table(movies$genre, movies$mpaa_rating),
         legend =  c("Action", "Adventure", "Comedy", "Drama", "Horror"))
 ```
@@ -293,7 +303,7 @@ ggplot(data = movies)
 :::
 
 ::: {.column width="50%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4, fig.alt="Light-gray rectangle."}
 ggplot(data = movies) 
 ```
 :::
@@ -317,7 +327,7 @@ ggplot(data = movies,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4, fig.alt = "Blank graph with vertical gridlines and x-axis labeled 'production_budget'."}
 ggplot(data = movies,
        aes(x = production_budget)) 
 ```
@@ -343,7 +353,7 @@ ggplot(data = movies,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4, fig.alt ="Histogram showing the count of production budgets, with most values on the lower end and the amount of movies gradually decreasing as the budget increases."}
 ggplot(data = movies,
        aes(x = production_budget)) +
   geom_histogram()
@@ -368,7 +378,7 @@ ggplot(data = movies,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4, fig.alt ="Histogram showing the count of production budgets, with most values on the lower end and the amount of movies gradually decreasing as the budget increases. The color has been changed to red."}
 ggplot(data = movies,
        aes(x = production_budget)) +
   geom_histogram(fill = 'red')
@@ -395,7 +405,7 @@ ggplot(data = movies,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4,  fig.alt ="Histogram showing the count of production budgets, with most values on the lower end and the amount of movies gradually decreasing as the budget increases. Labels have been added to the axes and title."}
 ggplot(data = movies,
        aes(x = production_budget)) +
   geom_histogram(fill = 'red') + 
@@ -435,7 +445,7 @@ ggplot(data = action_comedy,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4, fig.alt = "Scatter plot showing a positive relationship between production budget and worldwide gross revenue for action and comedy movies."}
 ggplot(data = action_comedy,
        aes(x = production_budget, y = worldwide_gross)) +
   geom_point()
@@ -463,7 +473,7 @@ ggplot(data = action_comedy,
 :::
 
 ::: {.column width="50%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4, fig.alt = "Scatter plot showing a positive relationship between production budget and worldwide gross revenue for action and comedy movies. The points have been made red and labels and titles have been added."}
 ggplot(data = action_comedy,
        aes(x = production_budget, y = worldwide_gross)) +
   geom_point(color = 'red', alpha = 0.5)  +
@@ -494,7 +504,7 @@ ggplot(data = action_comedy,
 :::
 
 ::: {.column width="45%"}
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4, fig.alt = "Scatter plot showing a positive relationship between production budget and worldwide gross revenue for action and comedy movies. Now, the color of each point tells what genre the movie is. In general, action movies have higher budgets and higher grosses than comedy movies."}
 ggplot(data = action_comedy,
        aes(x = production_budget, y = worldwide_gross, color = genre)) +
   geom_point(alpha = 0.5)  +
@@ -546,7 +556,7 @@ ggplot(data = movies,
 
 ## Beyond two dimensions {.smaller}
 
-```{r, echo = FALSE, eval = T}
+```{r, echo = FALSE, eval = T, fig.alt = "Scatter plot titled Worldwide Gross vs. Budget depicting the relationship between production budget and worldwide gross revenue of films, with colors and shapes indicating genres and MPAA ratings respectively."}
 ggplot(data = movies,
        aes(x = production_budget, 
            y = worldwide_gross, 
@@ -601,19 +611,19 @@ Find more tips [here!](https://github.com/rstudio/cheatsheets/raw/master/data-vi
 
 ## Sometimes breaking the rules is okay...
 
-![](https://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png){fig-align="center"}
+![](https://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png){fig-alt="Thematic map showing Napoleon's 1812 Russian campaign with troop sizes represented by the width of a line traveling across the map. Temperature is represented using an adjacent graph below the map." fig-align="center"}
 
 Charles Minard
 
 ## Sometimes breaking the rules is okay...
 
-![](https://th-thumbnailer.cdn-si-edu.com/h2WL28E-CZgGj-Lrvs40-3PMAOE=/1000x750/filters:no_upscale():focal(1223x1116:1224x1117)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/3b/22/3b22a3d0-0a6f-42fb-a1d6-58019a3d9312/11_33873a_city_and_rural_population_18901.png)
+![](https://th-thumbnailer.cdn-si-edu.com/h2WL28E-CZgGj-Lrvs40-3PMAOE=/1000x750/filters:no_upscale():focal(1223x1116:1224x1117)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/3b/22/3b22a3d0-0a6f-42fb-a1d6-58019a3d9312/11_33873a_city_and_rural_population_18901.png){fig-alt="Vintage graphic showing African American population distribution with straight colored lines for city populations and a red spiral for rural populations. The length of the line represents the size of the population."}
 
 W.E.B. DuBois
 
 ## Sometimes breaking the rules is okay...
 
-![](https://upload.wikimedia.org/wikipedia/commons/1/17/Nightingale-mortality.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/1/17/Nightingale-mortality.jpg){fig-alt="Diagram showing the causes of mortality in the army in the East for April 1854 to March 1855 and April 1855 to March 1856, with blue, red, and black wedges representing different causes of death."}
 
 Florence Nightingale
 
@@ -623,39 +633,43 @@ In this lab, we'll practice data visualization with base R and `ggplot2`.
 
 ## Some misleading visualizations
 
-<img src="images/bad1.jpg" height="450"/>
+![](images/bad1.jpg){fig-alt="Deceptive pie charts that claim to show how much time users invest in LinkedIn per week: 47.6% spend 0-2 hours, 26.0% spend 3-4 hours, 12.2% spend 5-6 hours, 3.7% spend 7-8 hours, and 10.5% spend 8+ hours.\" The size of the shaded area in each pie chart is incorrect." height="450"}
 
 **Avoid:** Pie charts? The proportions are completely off.
 
 ## Some misleading visualizations
 
-<img src="images/bad2.jpg" height="450"/>
+![](images/bad2.jpg){fig-alt="Deceptive pie chart that claims to show CBS News poll on Americans who have tried marijuana: 51% today, 43% last year, 34% in 1997. \"High support for legalizing marijuana\" banner below." height="450"}
 
 **Avoid:** Pie charts? Percentages don't add up.
 
 ## Some misleading visualizations
 
-<img src="images/bad3.png" height="450"/>
+![](images/bad3.png){fig-alt="3D bar graph showing CpG island hypermethylation profiles for various human cancers is crowded and unreadable." height="450"}
 
 **Avoid:** 3d bar charts?!
 
 ## Some misleading visualizations
 
-<img src="images/bad4.png" height="450"/>
+![](images/bad4.png){fig-alt="Bar chart titled \"7 Main Causes for Regret\" showing with height representing percent assigned to each cause. Each cause is assigned the same color so it is impossible to tell which is which." height="450"}
 
 **Avoid:** Bad use of color
 
 ## Some misleading visualizations
 
-<img src="images/bad5.jpg" height="450"/>
+![](images/bad5.jpg){fig-alt="Bar graph of syrup-related crimes by year only has one bar at value 1, for 2012." height="450"}
 
 **Avoid:** Bad axis, lack of information, 3D bar chart
 
 ## Some misleading visualizations
 
-<img src="images/bad6.jpg" height="450"/>
+![](images/bad6.jpg){fig-alt="Line graph with time on x-axis and percentages on the y-axis has two different y-axes, making it difficult to compare trends." height="450"}
 
 **Avoid:** Four numbers displayed as a cluttered chart, terrible labels, bad axis range
+
+```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
+knitr::knit_exit()
+```
 
 ## Some misleading visualizations
 
@@ -680,10 +694,6 @@ In this lab, we'll practice data visualization with base R and `ggplot2`.
 <img src="images/bad10.png" height="450"/>
 
 **Avoid:** Inconsistent x-axis intervals
-
-```{r, echo = FALSE, eval = T, fig.height = 3.5, fig.width = 4}
-knitr::knit_exit()
-```
 
 ## Example: CalEnviroScreen
 
