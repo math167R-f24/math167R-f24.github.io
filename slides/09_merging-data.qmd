@@ -89,6 +89,7 @@ Suppose I wanted to create the following plot:
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig-alt: "Line graph of cases from 1999 to 2000 in Afghanistan (0 cases), Brazil (increasing from 50,000 to 100,000 cases), and China (steady at 200,000 cases)."
 ggplot(table1, aes(x = year, y = cases)) +
   geom_line(aes(group = country), color = "grey50") +
   geom_point(aes(color = country, shape = country)) +
@@ -148,6 +149,7 @@ kable(relig_income) |>
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig-alt: "Stacked bar chart showing the count of various religious affiliations across different income brackets, with a legend detailing the color codes for each religion."
 relig_income |>
   pivot_longer(cols = !religion, names_to = "income", values_to = "count") |>
   ggplot(aes(x = income, fill = religion, y = count)) +
@@ -517,8 +519,9 @@ How can we generate the following plot?
 #| warning: false
 #| fig-width: 7
 #| fig-height: 4.75
-#| out.width: "100%"
-#| fig.align: "center"
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "Line graph showing population growth from 2010 to 2020, starting at 310 million and rising steadily to just above 330 million."
 US_pop |> 
   select(-POPESTIMATE042020) |>
   pivot_longer(contains("POPESTIMATE"), names_to = "Year", values_to = "Population") |>
@@ -539,8 +542,8 @@ Note that our data cannot be readily used with `ggplot` to generate the previous
 #| warning: false
 #| fig-width: 7
 #| fig-height: 4.75
-#| out.width: "100%"
-#| fig.align: "center"
+#| out-width: "100%"
+#| fig-align: "center"
 #| code-line-numbers: "6"
 library(tidyverse)
 US_pop <- state_population |>
@@ -628,7 +631,7 @@ head(plot_dat)
 
 Finally, we can use the `plot` function to get our desired visualization:
 
-```{r, echo = T, eval = T, error = T}
+```{r, echo = T, eval = T, error = T, fig.alt="Scatter plot showing population growth from 2010 to 2020."}
 plot(plot_dat$Year, plot_dat$Population)
 ```
 
@@ -752,6 +755,7 @@ US_pop |>
 #| code-line-numbers: "2"
 #| fig-width: 7
 #| fig-height: 4.75
+#| fig-alt: "Line graph showing population growth from 2010 to 2020, with population increasing steadily."
 US_pop |> 
   select(-POPESTIMATE042020) |>
   pivot_longer(contains("POPESTIMATE"), 
@@ -789,6 +793,7 @@ state_population |>
 #| code-line-numbers: "2, 7-8"
 #| fig-width: 7
 #| fig-height: 4.75
+#| fig-alt: "Line graph showing population trends from 2010 to 2020 for Midwest (red), Northeast (green), South (teal), and West (purple) regions."
 state_population |> 
   filter(SUMLEV == "020") |>
   select(-POPESTIMATE042020) |>
@@ -832,8 +837,8 @@ cpi <- cpi[1:203,]
 #| warning: false
 #| fig-width: 7
 #| fig-height: 4.75
-#| out.width: "100%"
-#| fig.align: "center"
+#| out-width: "100%"
+#| fig-align: "center"
 # code to print the data
 library(openxlsx)
 cpi <- read.xlsx("https://thedocs.worldbank.org/en/doc/1ad246272dbbc437c74323719506aa0c-0350012021/original/Inflation-data.xlsx",
@@ -856,8 +861,8 @@ How do we create a line plot with `Year` on the x-axis and `CPI` on the y-axis f
 #| warning: false
 #| fig-width: 7
 #| fig-height: 4.75
-#| out.width: "100%"
-#| fig.align: "center"
+#| out-width: "100%"
+#| fig-align: "center"
 #| code-line-numbers: "2-4"
 cpi |>
   pivot_longer(cols = `1970`:`2022`,
@@ -873,8 +878,8 @@ cpi |>
 #| warning: false
 #| fig-width: 7
 #| fig-height: 4.75
-#| out.width: "100%"
-#| fig.align: "center"
+#| out-width: "100%"
+#| fig-align: "center"
 cpi |>
   pivot_longer(cols = `1970`:`2022`,
                names_to = "Year", 
@@ -897,6 +902,7 @@ cpi |>
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig-alt: "Line graph of CPI from 1970 to 2020 with noticeable peaks in the early 1980s and a sharp rise after 2020."
 cpi |>
   pivot_longer(cols = `1970`:`2022`,
                names_to = "Year", 

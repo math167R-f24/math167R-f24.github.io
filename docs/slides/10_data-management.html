@@ -732,8 +732,8 @@ Peter Gao
 </section>
 <section id="inner-join-vs.-outer-join" class="slide level2">
 <h2>Inner join vs.&nbsp;outer join</h2>
-<p><img src="images/join-inner.png" height="90"></p>
-<p><img src="images/join-outer.png" height="360"></p>
+<p><img data-src="images/join-inner.png" alt="Data pivoting representation showing two connected diamonds with grids on the left, transforming into a structured table format on the right." height="90"></p>
+<p><img data-src="images/join-outer.png" alt="Three diagrams showing the process of Left Join, Right Join, and Full Join with matrices and resulting merged matrices." height="360"></p>
 <p>Images courtesy of Hadley Wickham. <a href="https://r4ds.had.co.nz/relational-data.html">(Link)</a></p>
 </section>
 <section id="base-r" class="slide level2">
@@ -967,7 +967,7 @@ Peter Gao
 <section id="exercise-flights-data-2" class="slide level2">
 <h2>Exercise: Flights data</h2>
 
-<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing the relationship between wind speed (0 to 40) and departure delay (0 to 900), with numerous black dots concentrated in the lower range of the y-axis."></section>
 <section id="example-california-data" class="slide level2">
 <h2>Example: California data</h2>
 <p>The <code>tidycensus</code> package provides easy access to Census data via R. In order to download data using <code>tidycensus</code>, you will need a <a href="https://api.census.gov/data/key_signup.html">Census API Key</a>.</p>
@@ -1068,7 +1068,7 @@ FALSE 6 06011 Colusa County, California    medincome    61861  6540</code></pre>
 <section id="example-california-data-6" class="slide level2">
 <h2>Example: California data</h2>
 
-<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-21-1.png" width="960" class="r-stretch"></section>
+<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-21-1.png" alt="Scatter plot comparing 2021 and 2010 median incomes for California counties, with a positive trend line." width="960" class="r-stretch"></section>
 <section id="data-manipulation-cheatsheet" class="slide level2">
 <h2>Data manipulation cheatsheet</h2>
 <ul>
@@ -1146,7 +1146,7 @@ FALSE 6 06011 Colusa County, California    medincome    61861  6540</code></pre>
 <span id="cb40-2"><a></a><span class="fu">print</span>(US_pop_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-28-1.png" width="960" class="r-stretch"></section>
+<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-28-1.png" alt="Line graph showing population growth from 2010 to 2020. Population increases from 3.10e+08 to just above 3.30e+08." width="960" class="r-stretch"></section>
 <section id="saving-multiple-objects" class="slide level2">
 <h2>Saving multiple objects</h2>
 <p>Using the <code>save()</code> function, you can save multiple objects as a .RData file:</p>
@@ -1159,7 +1159,7 @@ FALSE 6 06011 Colusa County, California    medincome    61861  6540</code></pre>
 <span id="cb42-2"><a></a><span class="fu">print</span>(US_pop_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"></section>
+<img data-src="10_data-management_files/figure-revealjs/unnamed-chunk-30-1.png" alt="Line graph showing population growth from 2010 to 2020. Population increases from 3.10e+08 to just above 3.30e+08." width="960" class="r-stretch"></section>
 <section id="saving-plots-locally-1" class="slide level2">
 <h2>Saving plots locally</h2>
 <p>We can save plots to .pdf files using a call to <code>pdf()</code> before the plot code and then <code>dev.off()</code> afterwards.</p>
@@ -1194,8 +1194,8 @@ FALSE 6 06011 Colusa County, California    medincome    61861  6540</code></pre>
 <section id="caching-code-chunks" class="slide level2">
 <h2>Caching code chunks</h2>
 <p>You can name your chunks and use the code chunk <code>cache = T</code> to save the output of a code chunk so you don’t have to wait for the code to run every time you knit.</p>
-<div class="cell" data-hash="10_data-management_cache/revealjs/pop_plot_76c7b1d51437aca89b0382f64f63c9e5">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb46-1"><a></a><span class="in">```{r pop_plot, cache = T}</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb46-1"><a></a><span class="in">```{r pop_plot, cache = T, fig.alt="Line graph showing US population growth from 2010 to 2020 with a continuous upward trend."}</span></span>
 <span id="cb46-2"><a></a><span class="in">US_pop_plot &lt;- US_pop_tidy |&gt;</span></span>
 <span id="cb46-3"><a></a><span class="in">  ggplot(aes(x = Year, y = Population)) + </span></span>
 <span id="cb46-4"><a></a><span class="in">  geom_line() + </span></span>
@@ -1204,7 +1204,7 @@ FALSE 6 06011 Colusa County, California    medincome    61861  6540</code></pre>
 <span id="cb46-7"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="10_data-management_files/figure-revealjs/pop_plot-1.png" width="960" class="r-stretch"></section>
+<img data-src="10_data-management_files/figure-revealjs/pop_plot-1.png" alt="Line graph showing US population growth from 2010 to 2020 with a continuous upward trend." width="960" class="r-stretch"></section>
 <section id="caching-code-chunks-1" class="slide level2">
 <h2>Caching code chunks</h2>
 <p>However, that means plots/output will <em>not</em> automatically update if you change the “upstream” data processing pipeline. You must change the cached chunk or delete the cache to rerun the code.</p>

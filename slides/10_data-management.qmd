@@ -107,9 +107,9 @@ band_members |> inner_join(band_instruments, by = join_by(name))
 
 ## Inner join vs. outer join
 
-<img src="images/join-inner.png" height="90"/>
+![](images/join-inner.png){fig-alt="Data pivoting representation showing two connected diamonds with grids on the left, transforming into a structured table format on the right." height="90"}
 
-<img src="images/join-outer.png" height="360"/>
+![](images/join-outer.png){fig-alt="Three diagrams showing the process of Left Join, Right Join, and Full Join with matrices and resulting merged matrices." height="360"}
 
 Images courtesy of Hadley Wickham. [(Link)](https://r4ds.had.co.nz/relational-data.html)
 
@@ -139,7 +139,7 @@ merge(band_members, band_instruments, by.x = "name", by.y = "name", all.y = T)
 
 ## Exercise: Flights data
 
-How can we combine the `flights` and `airlines` data? 
+How can we combine the `flights` and `airlines` data?
 
 . . .
 
@@ -162,7 +162,6 @@ flights |>
   kableExtra::scroll_box(height = "350px")
 ```
 
-
 ## Exercise: Flights data
 
 Use the `flights` and `weather` datasets from the `nycflights13` package to create a scatter plot with `wind_speed` on the x-axis and `dep_delay` on the `y-axis` for January flights from Newark.
@@ -184,8 +183,9 @@ data(weather)
 #| warning: false
 #| fig-width: 7
 #| fig-height: 4.75
-#| out.width: "100%"
-#| fig.align: "center"
+#| out-width: "100%"
+#| fig-align: "center"
+#| fig-alt: "Scatter plot showing the relationship between wind speed (0 to 40) and departure delay (0 to 900), with numerous black dots concentrated in the lower range of the y-axis."
 flights |> 
   filter(origin == "EWR" & month == 1) |>
   left_join(weather |> select(origin, time_hour, temp, wind_speed)) |>
@@ -248,7 +248,6 @@ income_2010 <- get_acs(geography = "county",
 head(income_2021)
 ```
 
-
 ## Example: California data
 
 ```{r, echo = T, eval = T}
@@ -292,7 +291,7 @@ ggplot(income_combined, aes(x = medincome_2010, y = medincome_2021)) +
 
 ## Example: California data
 
-```{r, echo = F, eval = T}
+```{r, echo = F, eval = T, fig.alt="Scatter plot comparing 2021 and 2010 median incomes for California counties, with a positive trend line."}
 income_combined <- income_2010 |>
   left_join(income_2021, by = c("GEOID", "NAME"))
 ggplot(income_combined, aes(x = medincome_2010, y = medincome_2021)) +
@@ -303,7 +302,6 @@ ggplot(income_combined, aes(x = medincome_2010, y = medincome_2021)) +
        y = "2021 Median Income",
        x = "2010 Median Income")
 ```
-
 
 ## Data manipulation cheatsheet
 
@@ -351,7 +349,7 @@ You can instead download the data to a local folder or use the following code to
 
 ```{r}
 #| echo: TRUE
-#| eval: TRUE
+#| eval: FALSE
 readr::write_csv(eggproduction, "~/Documents/MATH167R/data/egg-production.csv")
 ```
 
@@ -359,7 +357,7 @@ You can subsequently load it locally (no internet needed):
 
 ```{r}
 #| echo: TRUE
-#| eval: TRUE
+#| eval: FALSE
 eggproduction <- readr::read_csv("~/Documents/MATH167R/data/egg-production.csv")
 ```
 
@@ -395,6 +393,7 @@ US_pop_tidy <- readRDS("~/Documents/MATH167R/data/US_pop_tidy.rds")
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
+#| fig-alt: "Line graph showing population growth from 2010 to 2020."
 US_pop_plot <- US_pop_tidy |>
   ggplot(aes(x = Year, y = Population)) + 
   geom_line()
@@ -404,6 +403,7 @@ saveRDS(US_pop_plot, "~/Documents/MATH167R/data/US_pop_plot.rds")
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
+#| fig-alt: "Line graph showing population growth from 2010 to 2020. Population increases from 3.10e+08 to just above 3.30e+08."
 US_pop_plot <- readRDS("~/Documents/MATH167R/data/US_pop_plot.rds")
 print(US_pop_plot)
 ```
@@ -423,6 +423,7 @@ Load these objects using a `load()` call:
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
+#| fig-alt: "Line graph showing population growth from 2010 to 2020. Population increases from 3.10e+08 to just above 3.30e+08."
 load("~/Documents/MATH167R/data/US_pop_combined.RData")
 print(US_pop_plot)
 ```
@@ -464,7 +465,7 @@ kable(state_population, digits = 3, row.names = F) |>
 
 You can name your chunks and use the code chunk `cache = T` to save the output of a code chunk so you don't have to wait for the code to run every time you knit.
 
-```{r pop_plot, cache = T}
+```{r pop_plot, cache = T, fig.alt="Line graph showing US population growth from 2010 to 2020 with a continuous upward trend."}
 #| echo: fenced
 US_pop_plot <- US_pop_tidy |>
   ggplot(aes(x = Year, y = Population)) + 
@@ -472,7 +473,6 @@ US_pop_plot <- US_pop_tidy |>
   ggtitle("US Population, 2010-2020")
 print(US_pop_plot)
 ```
-
 
 ## Caching code chunks
 
