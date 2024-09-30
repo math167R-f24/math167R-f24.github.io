@@ -20,8 +20,8 @@ draft: false
 |      | W 9/18 | Data visualization                    |   [Slides 08](slides/08_advanced-visualization.html){.label .label-green}      |          |  [Lab 04](labs/04_lab.html){.label .label-red}   |
 |  6   | M 9/23 | Data manipulation and management      | [Slides 09](slides/09_merging-data.html){.label .label-green}        | [Check-in 03](checkins/03_checkin.html){.label .label-purple}       |     |
 |      | W 9/25 | Data manipulation and management      |  [Slides 10](slides/10_data-management.html){.label .label-green}       |          |     |
-|  7   | M 9/30  | Programming basics                    |        |          |     |
-|      | W 10/2  | Programming basics                    |        |          |     |
+|  7   | M 9/30  | Data manipulation and management                      | [Slides 11](slides/11_spatial-data.html){.label .label-green}         |          |     |
+|      | W 10/2  | Programming basics                    |  [Slides 12](slides/12_programming-basics.html){.label .label-green}        | [Check-in 04](checkins/04_checkin.html){.label .label-purple}         |   [Lab 05](labs/05_lab.html){.label .label-red}      |
 |  8   | M 10/7 | Programming basics                    |        |          |     |
 |      | W 10/9 | Programming basics                    |        |          |     |
 |  9   | M 10/14 | Programming basics                    |        |          |     |

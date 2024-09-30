@@ -89,7 +89,7 @@ summary(pm_2_5)
 
 ## Wildfire season 2023
 
-![](images/Screenshot%202024-02-20%20at%2010.24.44%20AM.png)
+![](images/Screenshot%202024-02-20%20at%2010.24.44%20AM.png){fig-alt="Smoky air over San Francisco viewed from Twin Peaks."}
 
 ## Wildfire season 2023
 
@@ -103,6 +103,7 @@ summary(pm_2_5)
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig-alt: "Histogram of PM 2.5 levels titled 'Jan 1' showing highest frequency for low PM 2.5 values."
 jan1_pm_2_5 <- pm_2_5 |> filter(Date == "2023-01-01")
 hist(jan1_pm_2_5$`Daily Mean PM2.5 Concentration`,
      main = "Jan 1",  xlab = "PM 2.5")
@@ -118,9 +119,10 @@ hist(jan1_pm_2_5$`Daily Mean PM2.5 Concentration`,
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| #| fig-alt: "Histogram of PM 2.5 levels titled 'September 19' showing highest frequency for low PM 2.5 values."
 sep19_pm_2_5 <- pm_2_5 |> filter(Date == "2023-09-19")
 hist(sep19_pm_2_5$`Daily Mean PM2.5 Concentration`,
-     main = "October 19", xlab = "PM 2.5")
+     main = "September 19", xlab = "PM 2.5")
 ```
 :::
 :::
@@ -139,6 +141,7 @@ We can't get an idea of how air quality varies over space using univariate summa
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig-alt: "Scatter plot of SITE_LATITUDE versus SITE_LONGITUDE with dots colored by daily AQI values for September 19."
 ggplot(data = sep19_pm_2_5, 
        mapping = aes(x = SITE_LONGITUDE, 
                      y = SITE_LATITUDE, 
@@ -159,6 +162,7 @@ Compare with January 1:
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Scatter plot of SITE_LATITUDE versus SITE_LONGITUDE with dots colored by daily AQI values for January 1."
 ggplot(data = jan1_pm_2_5, 
        mapping = aes(x = SITE_LONGITUDE, 
                      y = SITE_LATITUDE, 
@@ -171,7 +175,7 @@ ggplot(data = jan1_pm_2_5,
 
 We can only get so far just treating longitude and latitude as x and y. In particular, near the poles, we will get large amounts of distortion:
 
-![](https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg){fig-alt="World map with continents displaying various geographical features and a rectangular grid system."}
 
 ## Simple features
 
@@ -215,6 +219,7 @@ We can easily visualize this data now using the `geom_sf()` function, which auto
 ```{r}
 #| echo: TRUE
 #| eval: TRUE
+#| fig.alt: "Scatter plot showing points distributed from 34°N to 42°N latitude and 124°W to 116°W longitude."
 ggplot(sep19_pm_2_5) + geom_sf()
 ```
 
@@ -261,6 +266,7 @@ CA_sf <- states() |> filter(NAME == "California")
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Map of California with several black dots representing data points scattered across various locations within the state."
 ggplot() +
   geom_sf(data = CA_sf) +
   geom_sf(data = sep19_pm_2_5) 
@@ -280,6 +286,7 @@ We can then adjust the color to show `DAILY_AQI_VALUE` and also change the color
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Map of California with color-coded dots representing Daily AQI values. Colors range from purple (low) to yellow (high)."
 ggplot() +
   geom_sf(data = CA_sf) +
   geom_sf(data = sep19_pm_2_5, 
@@ -301,6 +308,7 @@ How do we create the following plot?
 #| fig-height: 6.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Four maps of California showing AQI values from September 19 to September 22, 2023, with varying colored dots."
 pm_2_5 <- pm_2_5 |>
   st_as_sf(
     coords = c("SITE_LONGITUDE", "SITE_LATITUDE"), # what columns hold lon/lat?
@@ -399,6 +407,7 @@ ggplot() +
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Choropleth map of California displaying various AQI levels across counties with colors from purple to yellow."
 sep19_county_means <- CA_counties_sf |>
   right_join(sep19_county_means, 
              by = c("NAME" = "COUNTY")) 
@@ -422,6 +431,7 @@ The `gganimate` package provides tools for animating `ggplot` visualizations:
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Animated scatterplot of countries with GDP per capita on x-axis and life expectancy on y-axis. The animation shows how the data change over time. The size of each point represents population and the color of each point represents different countries."
 library(gapminder)
 library(gganimate)
 ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
@@ -450,6 +460,7 @@ ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Animated scatterplot of countries with GDP per capita on x-axis and life expectancy on y-axis. The animation shows how the data change over time. The size of each point represents population and the color of each point represents different countries."
 ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
   geom_point(alpha = 0.7, show.legend = FALSE) +
   scale_colour_manual(values = country_colors) +
@@ -476,6 +487,7 @@ ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
 #| fig-height: 4.75
 #| out.width: "100%"
 #| fig.align: "center"
+#| fig.alt: "Animated map of AQI in California over days in September 2023. The animation shows each county in California with color representing AQI. Over time we see that the level of AQI varies quite a bit from county to county."
 pm_2_5 <- readr::read_csv("https://math167r-s24.github.io/static/CA_PM2_5_2023.csv")
 pm_2_5 <- pm_2_5 |>
   mutate(Date = mdy(Date)) |>

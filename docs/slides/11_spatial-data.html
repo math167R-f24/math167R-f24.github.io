@@ -417,7 +417,7 @@ Peter Gao
 <section id="example-pm-2.5-data" class="slide level2">
 <h2>Example: PM 2.5 data</h2>
 <p>The EPA provides daily data on air quality for monitoring stations across the country, which you can download <a href="https://www.epa.gov/outdoor-air-quality-data/download-daily-data">here</a>. The below code downloads a subset of this data from the course website for the pollutant PM 2.5 (atmospheric particulate matter with a diameter of less than 2.5 micrometers) and AQI for 2023.</p>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-1_88079df84b2e8b05ec7ea7b757a6b46c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>pm_2_5 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://math167r-s24.github.io/static/CA_PM2_5_2023.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -735,7 +735,7 @@ Peter Gao
 <section id="wildfire-season-2023" class="slide level2">
 <h2>Wildfire season 2023</h2>
 
-<img data-src="images/Screenshot 2024-02-20 at 10.24.44 AM.png" class="r-stretch"></section>
+<img data-src="images/Screenshot 2024-02-20 at 10.24.44 AM.png" alt="Smoky air over San Francisco viewed from Twin Peaks." class="r-stretch"></section>
 <section id="wildfire-season-2023-1" class="slide level2">
 <h2>Wildfire season 2023</h2>
 <div class="columns">
@@ -747,7 +747,7 @@ Peter Gao
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Histogram of PM 2.5 levels titled 'Jan 1' showing highest frequency for low PM 2.5 values."></p>
 </figure>
 </div>
 </div>
@@ -756,7 +756,7 @@ Peter Gao
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>sep19_pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Date <span class="sc">==</span> <span class="st">"2023-09-19"</span>)</span>
 <span id="cb8-2"><a></a><span class="fu">hist</span>(sep19_pm_2_5<span class="sc">$</span><span class="st">`</span><span class="at">Daily Mean PM2.5 Concentration</span><span class="st">`</span>,</span>
-<span id="cb8-3"><a></a>     <span class="at">main =</span> <span class="st">"October 19"</span>, <span class="at">xlab =</span> <span class="st">"PM 2.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a></a>     <span class="at">main =</span> <span class="st">"September 19"</span>, <span class="at">xlab =</span> <span class="st">"PM 2.5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -782,7 +782,7 @@ Peter Gao
 <span id="cb9-6"><a></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot of SITE_LATITUDE versus SITE_LONGITUDE with dots colored by daily AQI values for September 19."></section>
 <section id="naively-working-with-latitudelongitude-1" class="slide level2">
 <h2>Naively working with latitude/longitude</h2>
 <p>Compare with January 1:</p>
@@ -795,12 +795,12 @@ Peter Gao
 <span id="cb10-6"><a></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot of SITE_LATITUDE versus SITE_LONGITUDE with dots colored by daily AQI values for January 1."></section>
 <section id="naively-working-with-latitudelongitude-2" class="slide level2">
 <h2>Naively working with latitude/longitude</h2>
 <p>We can only get so far just treating longitude and latitude as x and y. In particular, near the poles, we will get large amounts of distortion:</p>
 
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg" class="r-stretch"></section>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg" alt="World map with continents displaying various geographical features and a rectangular grid system." class="r-stretch"></section>
 <section id="simple-features" class="slide level2">
 <h2>Simple features</h2>
 <p><strong>Simple Features</strong> is a set of standards for storing and accessing geographic data.</p>
@@ -858,25 +858,25 @@ Geodetic CRS:  WGS 84
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(sep19_pm_2_5) <span class="sc">+</span> <span class="fu">geom_sf</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-12-1.png" alt="Scatter plot showing points distributed from 34°N to 42°N latitude and 124°W to 116°W longitude." width="960" class="r-stretch"></section>
 <section id="visualizing-point-data-1" class="slide level2">
 <h2>Visualizing point data</h2>
 <p>We can add a basemap by downloading the outline of California from the <code>tigris</code> package.</p>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-13_626f156df3a36cb7f2434a59faa3133c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">library</span>(tigris)</span>
 <span id="cb15-2"><a></a>CA_sf <span class="ot">&lt;-</span> <span class="fu">states</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(NAME <span class="sc">==</span> <span class="st">"California"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-15_a06ed0a49e9a447ba1b55d595ff2fb82">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb16-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
 <span id="cb16-3"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_pm_2_5) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Map of California with several black dots representing data points scattered across various locations within the state."></section>
 <section id="visualizing-point-data-2" class="slide level2">
 <h2>Visualizing point data</h2>
 <p>We can then adjust the color to show <code>DAILY_AQI_VALUE</code> and also change the color scale:</p>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-16_e310a9e7a5ff6d0cf8582185588ac6a3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb17-2"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> CA_sf) <span class="sc">+</span></span>
 <span id="cb17-3"><a></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> sep19_pm_2_5, </span>
@@ -884,16 +884,16 @@ Geodetic CRS:  WGS 84
 <span id="cb17-5"><a></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Map of California with color-coded dots representing Daily AQI values. Colors range from purple (low) to yellow (high)."></section>
 <section id="exercise" class="slide level2">
 <h2>Exercise</h2>
 <p>How do we create the following plot?</p>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Four maps of California showing AQI values from September 19 to September 22, 2023, with varying colored dots."></section>
 <section id="spatial-polygon-data" class="slide level2">
 <h2>Spatial Polygon data</h2>
 <p>The AQI data we downloaded also contains county information. We can compute county level mean AQI using <code>group_by</code> and <code>summarize</code>:</p>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-18_4379410c01cc232bda4b5a0603123eee">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>sep19_county_means <span class="ot">&lt;-</span> sep19_pm_2_5 <span class="sc">|&gt;</span></span>
 <span id="cb18-2"><a></a>  <span class="co"># remove the geometry; we don't need it here</span></span>
 <span id="cb18-3"><a></a>  <span class="fu">st_set_geometry</span>(<span class="cn">NULL</span>) <span class="sc">|&gt;</span> </span>
@@ -904,10 +904,10 @@ Geodetic CRS:  WGS 84
 <section id="spatial-polygon-data-1" class="slide level2">
 <h2>Spatial Polygon data</h2>
 <p>We can then create a county-level <strong>polygon</strong> map by downloading county-level boundaries using <code>tigris</code>.</p>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-19_ec50a051a53921119b6e09754a6dfdd7">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>CA_counties_sf <span class="ot">&lt;-</span> <span class="fu">counties</span>(<span class="at">state =</span> <span class="st">"CA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-21_b7c958ad96fb908f09efeccf2252ed26">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>sep19_county_means <span class="ot">&lt;-</span> CA_counties_sf <span class="sc">|&gt;</span></span>
 <span id="cb20-2"><a></a>  <span class="fu">right_join</span>(sep19_county_means, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"NAME"</span> <span class="ot">=</span> <span class="st">"COUNTY"</span>)) </span>
 <span id="cb20-3"><a></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
@@ -919,15 +919,15 @@ Geodetic CRS:  WGS 84
 <section id="spatial-polygon-data-2" class="slide level2">
 <h2>Spatial Polygon data</h2>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Choropleth map of California displaying various AQI levels across counties with colors from purple to yellow."></section>
 <section id="animation-with-gganimate" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
 <p>The <code>gganimate</code> package provides tools for animating <code>ggplot</code> visualizations:</p>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-23-1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-23-1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Animated scatterplot of countries with GDP per capita on x-axis and life expectancy on y-axis. The animation shows how the data change over time. The size of each point represents population and the color of each point represents different countries."></section>
 <section id="animation-with-gganimate-1" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-24_47ba2cb89c4d94c1986aa17e45486e52">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(gdpPercap, lifeExp, <span class="at">size =</span> pop, <span class="at">colour =</span> country)) <span class="sc">+</span></span>
 <span id="cb21-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
 <span id="cb21-3"><a></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> country_colors) <span class="sc">+</span></span>
@@ -945,10 +945,10 @@ Geodetic CRS:  WGS 84
 <section id="animation-with-gganimate-2" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
 
-<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-25-1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="11_spatial-data_files/figure-revealjs/unnamed-chunk-25-1.gif" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Animated map of AQI in California over days in September 2023. The animation shows each county in California with color representing AQI. Over time we see that the level of AQI varies quite a bit from county to county."></section>
 <section id="animation-with-gganimate-3" class="slide level2">
 <h2>Animation with <code>gganimate</code></h2>
-<div class="cell" data-layout-align="center" data-hash="11_spatial-data_cache/revealjs/unnamed-chunk-26_5051bfb5948aa30aacdc3bf444d5a745">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>pm_2_5 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://math167r-s24.github.io/static/CA_PM2_5_2023.csv"</span>)</span>
 <span id="cb22-2"><a></a>pm_2_5 <span class="ot">&lt;-</span> pm_2_5 <span class="sc">|&gt;</span></span>
 <span id="cb22-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">mdy</span>(Date)) <span class="sc">|&gt;</span></span>

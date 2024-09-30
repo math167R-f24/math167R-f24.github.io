@@ -54,7 +54,7 @@ Algorithms should be unambiguous and precise. In other words, if the instruction
 
 You may also find it helpful to imagine an algorithm as a flowchart (from Wikipedia):
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png){fig-align="center" width="300"}
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png){fig-alt="Flowchart for troubleshooting a lamp that doesn't work." fig-align="center" width="300"}
 
 ## Algorithms in code
 
@@ -92,7 +92,7 @@ Can you write an algorithm to check if a positive integer N is divisible by 3?
 
 Most algorithms will require the interpreter to check some conditions to determine the outcome.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png){fig-align="center" width="250"}
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/LampFlowchart.svg/1024px-LampFlowchart.svg.png){fig-alt="Flowchart for troubleshooting a lamp that doesn't work." fig-align="center" width="250"}
 
 By default, the expressions in the body of a function are evaluated sequentially.
 
@@ -342,8 +342,6 @@ if (str_length(x) <= 10) {
   cat("x is a long string.")
 }
 ```
-
-
 
 ## Check class
 

@@ -8,7 +8,7 @@ format:
     code-summary: "Code"
 ---
 
-Remember, **follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope.** You may find a template file by clicking "Code" in the top right corner of this page.
+Remember, **follow the instructions below and use R Markdown to create an html document with your code and answers to the following questions.** You may find a template file by clicking "Code" in the top right corner of this page.
 
 ## 0. Cook County Assessor's Office 
 
