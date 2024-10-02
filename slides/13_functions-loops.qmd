@@ -467,7 +467,7 @@ Recursion is a method for solving a problem where the solution can be divided in
 
 **Example**: Fractals
 
-![](https://mathworld.wolfram.com/images/eps-svg/Fractal1_1000.svg){fig-align="center"}
+![](https://mathworld.wolfram.com/images/eps-svg/Fractal1_1000.svg){fig-alt="Grid of geometric shapes and fractal patterns including hexagons, triangles, stars, squares, and checkerboards." fig-align="center"}
 
 ## Recursive functions: factorial
 

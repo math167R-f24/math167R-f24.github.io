@@ -191,7 +191,7 @@ An environment is a collection of pairs of symbols (names) and values.
 
 We can think of environments as simply bags of names bound to values (figure from *Advanced R*)
 
-![](https://d33wubrfki0l68.cloudfront.net/f5dbd02f5235283e78decdd4f18692b40f1ddf42/c5683/diagrams/environments/bindings.png){fig-align="center"}
+![](https://d33wubrfki0l68.cloudfront.net/f5dbd02f5235283e78decdd4f18692b40f1ddf42/c5683/diagrams/environments/bindings.png){fig-alt="Visual representation of environment: box of variable names with each name connected to a value: a is \"a\", b is FALSE, c is 2.3." fig-align="center"}
 
 ## Environments
 
@@ -199,7 +199,7 @@ Environments are organized hierarchically: Every environment has a parent and ma
 
 There is one environment without a parent: the empty environment.
 
-![](https://d33wubrfki0l68.cloudfront.net/ff7bec1ccb1455917a6c9d0f44f114ef5c78519f/39793/diagrams/environments/parents-empty.png){fig-align="center"}
+![](https://d33wubrfki0l68.cloudfront.net/ff7bec1ccb1455917a6c9d0f44f114ef5c78519f/39793/diagrams/environments/parents-empty.png){fig-alt="Diagram showing two grey squares with labeled purple-outlined rectangles inside, connected by blue arrows to a rectangular box labeled \"R_EmptyEnv.\" This image depicts a hierarchy of three environments, with R_EmptyEnv representing the top level environment" fig-align="center"}
 
 ## The global environment
 
@@ -211,7 +211,7 @@ When we try to access a variable in the console (or click Run when editing an R 
 
 Whenever we load a package with `library()` we add a parent to the global environment:
 
-![](https://d33wubrfki0l68.cloudfront.net/038b2da4f5db1d2a8acaf4ee1e7d08d04ab36ebc/ac22a/diagrams/environments/search-path.png){fig-align="center"}
+![](https://d33wubrfki0l68.cloudfront.net/038b2da4f5db1d2a8acaf4ee1e7d08d04ab36ebc/ac22a/diagrams/environments/search-path.png){fig-alt="Sequence of six labeled rectangles: \"R_GlobalEnv,\" \"pkg::c,\" \"pkg::b,\" \"pkg::a,\" \"base,\" and \"R_EmptyEnv,\" with blue arrows connecting some boxes." fig-align="center"}
 
 We can see the current search path using the `search()` function.
 

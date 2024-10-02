@@ -545,13 +545,13 @@ Peter Gao
 <p>An environment is a collection of pairs of symbols (names) and values.</p>
 <p>We can think of environments as simply bags of names bound to values (figure from <em>Advanced R</em>)</p>
 
-<img data-src="https://d33wubrfki0l68.cloudfront.net/f5dbd02f5235283e78decdd4f18692b40f1ddf42/c5683/diagrams/environments/bindings.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="https://d33wubrfki0l68.cloudfront.net/f5dbd02f5235283e78decdd4f18692b40f1ddf42/c5683/diagrams/environments/bindings.png" class="quarto-figure quarto-figure-center r-stretch" alt="Visual representation of environment: box of variable names with each name connected to a value: a is &quot;a&quot;, b is FALSE, c is 2.3."></section>
 <section id="environments-1" class="slide level2">
 <h2>Environments</h2>
 <p>Environments are organized hierarchically: Every environment has a parent and may have one or multiple children.</p>
 <p>There is one environment without a parent: the empty environment.</p>
 
-<img data-src="https://d33wubrfki0l68.cloudfront.net/ff7bec1ccb1455917a6c9d0f44f114ef5c78519f/39793/diagrams/environments/parents-empty.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="https://d33wubrfki0l68.cloudfront.net/ff7bec1ccb1455917a6c9d0f44f114ef5c78519f/39793/diagrams/environments/parents-empty.png" class="quarto-figure quarto-figure-center r-stretch" alt="Diagram showing two grey squares with labeled purple-outlined rectangles inside, connected by blue arrows to a rectangular box labeled &quot;R_EmptyEnv.&quot; This image depicts a hierarchy of three environments, with R_EmptyEnv representing the top level environment"></section>
 <section id="the-global-environment" class="slide level2">
 <h2>The global environment</h2>
 <p>When we work in RStudio and interact with the console, we are generally working in the <strong>global environment</strong>. The global environment is often called the workspace.</p>
@@ -561,7 +561,7 @@ Peter Gao
 <h2>Package environments</h2>
 <p>Whenever we load a package with <code>library()</code> we add a parent to the global environment:</p>
 
-<img data-src="https://d33wubrfki0l68.cloudfront.net/038b2da4f5db1d2a8acaf4ee1e7d08d04ab36ebc/ac22a/diagrams/environments/search-path.png" class="quarto-figure quarto-figure-center r-stretch"><p>We can see the current search path using the <code>search()</code> function.</p>
+<img data-src="https://d33wubrfki0l68.cloudfront.net/038b2da4f5db1d2a8acaf4ee1e7d08d04ab36ebc/ac22a/diagrams/environments/search-path.png" class="quarto-figure quarto-figure-center r-stretch" alt="Sequence of six labeled rectangles: &quot;R_GlobalEnv,&quot; &quot;pkg::c,&quot; &quot;pkg::b,&quot; &quot;pkg::a,&quot; &quot;base,&quot; and &quot;R_EmptyEnv,&quot; with blue arrows connecting some boxes."><p>We can see the current search path using the <code>search()</code> function.</p>
 </section>
 <section id="searching-for-a-value" class="slide level2">
 <h2>Searching for a value</h2>
