@@ -1,7 +1,8 @@
 {
-  "hash": "2d7b660af5ddb346d79545374cd52cb1",
+  "hash": "f548d80346a9e873487825ab26a08aed",
   "result": {
-    "markdown": "---\ntitle: \"Check-in 5\"\nauthor: \"YOUR NAME HERE\"\nformat: \n  html:\n    embed-resources: true\n    code-tools: true\n    code-summary: \"Code\"\n---\n\n\nRemember, **follow the instructions below and use R Markdown to create a pdf document with your code and answers to the following questions on Gradescope.** You may find a template file by clicking \"Code\" in the top right corner of this page.\n\n1. (Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5.\n",
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Check-in 5\"\nauthor: \"YOUR NAME HERE\"\nformat: \n  html:\n    embed-resources: true\n    code-tools: true\n    code-summary: \"Code\"\n---\n\n\n\nRemember, **follow the instructions below and use R Markdown to create an html document with your code and answers to the following questions.** You may find a template file by clicking \"Code\" in the top right corner of this page.\n\n1. (Project Euler Problem 1) The natural numbers less than 10 that are divisible by 3 or 5 are 3, 5, 6, and 9. The sum of these numbers is 23. Write R code to compute the sum of all the numbers less than 1000 that are divisible by 3 or 5.\n",
     "supporting": [
       "05_checkin_files"
     ],
