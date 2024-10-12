@@ -24,8 +24,8 @@ draft: false
 |      | W 10/2  | Programming basics                    |  [Slides 12](slides/12_programming-basics.html){.label .label-green}        | [Check-in 04](checkins/04_checkin.html){.label .label-purple}         |   [Lab 05](labs/05_lab.html){.label .label-red}      |
 |  8   | M 10/7 | Programming basics                    |  [Slides 13](slides/13_functions-loops.html){.label .label-green}       |   [Check-in 05](checkins/05_checkin.html){.label .label-purple}          |     |
 |      | W 10/9 | Programming basics                    |   [Slides 14](slides/14_environment-scope.html){.label .label-green}       |          |     |
-|  9   | M 10/14 | Programming basics                    |        |          |     |
-|      | W 10/16 | Simulations                           |        |          |     |
+|  9   | M 10/14 | Programming basics                    |  [Slides 15](slides/15_data-analysis-functions.html){.label .label-green}                                                                           |                                                               |  [Lab 06](labs/06_lab.html){.label .label-red}
+|      | W 10/16 | Simulations                           |  [Slides 16](slides/16_debugging.html){.label .label-green}          |  |          |     |
 |  10  | M 10/21 | Simulations                           |        |          |     |
 |      | W 10/23 | Simulations                           |        |          |     |
 |  11  | M 10/28  | Statistical inference                 |        |          |     |
