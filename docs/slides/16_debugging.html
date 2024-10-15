@@ -847,6 +847,75 @@ $z
 <pre><code>Error in if (is_prime(i) &amp; is_palindrome(i)) {: the condition has length &gt; 1</code></pre>
 </div>
 </div>
+</section>
+<section id="efrons-dice" class="slide level2">
+<h2>Efron’s Dice</h2>
+<p>Professor Bradley Efron proposed a game involving the following four dice:</p>
+<p><br></p>
+
+<img data-src="16_debugging_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><br></p>
+<p>The game involves two players each choosing one of these four dice and rolling once. The player who rolls the higher number wins. Which die would you choose?</p>
+</section>
+<section id="efrons-dice-1" class="slide level2 smaller">
+<h2>Efron’s dice</h2>
+<p>If one player chooses <span class="math inline">\(A\)</span> and the other chooses <span class="math inline">\(B\)</span>, what is the probability that <span class="math inline">\(A\)</span> wins? We can write this as <span class="math display">\[\begin{align*}
+P(\textrm{A wins}\mid \textrm{other player chooses B})=P(\textrm{A wins}\mid B)
+\end{align*}\]</span></p>
+<p>What is <span class="math inline">\(P(\textrm{A wins}\mid B)\)</span>?</p>
+<p><br> <br></p>
+<p><span class="math inline">\(P(\textrm{A wins}\mid C)\)</span>?</p>
+<p><br> <br></p>
+<p><span class="math inline">\(P(\textrm{A wins}\mid D)\)</span>?</p>
+</section>
+<section id="efrons-dice-2" class="slide level2 smaller">
+<h2>Efron’s dice</h2>
+<p>It turns out that Efron’s dice are an example of “intransitive” dice.</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp;\textrm{A beats B with probability } &gt; 0.5\\
+&amp;\textrm{B beats C with probability } &gt; 0.5\\
+&amp;\textrm{C beats D with probability } &gt; 0.5\\
+&amp;\textrm{D beats A with probability } &gt; 0.5
+\end{align*}
+\]</span></p>
+<p><br></p>
+<p>How can we explore this using R code?</p>
+</section>
+<section id="efrons-dice-3" class="slide level2 smaller">
+<h2>Efron’s dice</h2>
+
+<img data-src="16_debugging_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>roll_die <span class="ot">&lt;-</span> <span class="cf">function</span>(die, <span class="at">n =</span> <span class="dv">1</span>) {</span>
+<span id="cb38-2"><a></a>  <span class="cf">if</span> (die <span class="sc">==</span> <span class="st">"A"</span>) {</span>
+<span id="cb38-3"><a></a>    sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb38-4"><a></a>  } <span class="cf">else</span> <span class="cf">if</span> (die <span class="sc">==</span> <span class="st">"B"</span>) {</span>
+<span id="cb38-5"><a></a>    sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb38-6"><a></a>  } <span class="cf">else</span> <span class="cf">if</span> (die <span class="sc">==</span> <span class="st">"C"</span>) {</span>
+<span id="cb38-7"><a></a>    sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">6</span>)</span>
+<span id="cb38-8"><a></a>  } <span class="cf">else</span> <span class="cf">if</span> (die <span class="sc">==</span> <span class="st">"D"</span>) {</span>
+<span id="cb38-9"><a></a>    sides <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb38-10"><a></a>  } <span class="cf">else</span> {</span>
+<span id="cb38-11"><a></a>    <span class="fu">stop</span>(<span class="st">"Invalid die option."</span>)</span>
+<span id="cb38-12"><a></a>  }</span>
+<span id="cb38-13"><a></a>  <span class="fu">return</span>(<span class="fu">sample</span>(sides, <span class="at">size =</span> n, <span class="at">replace =</span> T))</span>
+<span id="cb38-14"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="efrons-dice-4" class="slide level2 smaller">
+<h2>Efron’s dice</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>compare_dice <span class="ot">&lt;-</span> <span class="cf">function</span>(die_1, die_2, <span class="at">n =</span> <span class="dv">1000</span>) {</span>
+<span id="cb39-2"><a></a>  rolls_1 <span class="ot">&lt;-</span> <span class="fu">roll_die</span>(die_1, <span class="at">n =</span> n) </span>
+<span id="cb39-3"><a></a>  rolls_2 <span class="ot">&lt;-</span> <span class="fu">roll_die</span>(die_2, <span class="at">n =</span> n)</span>
+<span id="cb39-4"><a></a>  win_count_1 <span class="ot">&lt;-</span> <span class="fu">sum</span>(rolls_1 <span class="sc">&gt;</span> rolls_2)</span>
+<span id="cb39-5"><a></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(die_1, <span class="st">" beat "</span>, die_2, <span class="st">" in "</span>,</span>
+<span id="cb39-6"><a></a>              win_count_1, <span class="st">" of the "</span>, n, <span class="st">" trials."</span>))</span>
+<span id="cb39-7"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="efrons-dice-5" class="slide level2">
+<h2>Efron’s dice</h2>
+<p><strong>Challenge:</strong> Suppose you are given the first choice of the dice. After you pick your die, your opponent selects one of the three remaining dice at random. Which die should you pick?</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
