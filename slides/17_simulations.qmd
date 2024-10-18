@@ -36,7 +36,7 @@ What if we want to generate $n$ samples from a normal distribution? Or a binomia
 
 Can we write code to simulate this game?
 
-![](images/alice-bob.jpeg)
+![](images/alice-bob.jpeg){fig-alt="Screenshot of a tweet by Daniel Litt (@littmath) detailing a coin flip probability problem and a poll result. The text of the problem is as follows: Flip a fair coin 100 times. It gives a sequence of heads H and tails T. For each HH in the sequence, Alice gets a point; for each HT, Bob gets a point. For example for the sequence THHHT, Alice gets 2 points and Bob gets 1 point. Who is more likely to win?"}
 
 ## Simulating a coin-flipping game
 
@@ -117,6 +117,7 @@ Here's a histogram of Alice and Bob's scores across the simulations. What do you
 ```{r}
 #| echo: FALSE
 #| eval: TRUE
+#| fig.alt: "Histogram of scores for Alice and Bob, showing overlapping red and teal bell-shaped distributions. Alice's scores exhibit higher variance."
 library(ggplot2)
 ggplot() +
   geom_histogram(aes(x = HH_scores, fill = "HH"), 
@@ -399,6 +400,7 @@ lines(n_values, -digamma(1) + log(n_values), col = "red")
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "Line graph showing sample mean of maximums in black and theoretical expectation in red, both trending upwards from 3 to 7 as 'n' increases from 0 to 1000."
 plot(n_values, max_by_n,
      type = "l",
      xlab = "n", ylab = "Maximum",

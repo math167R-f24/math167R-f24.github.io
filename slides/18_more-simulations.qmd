@@ -46,6 +46,7 @@ ggplot(random_points, aes(x = x, y = y, color = in_circle)) +
 #| cache: TRUE
 #| message: FALSE
 #| warning: FALSE
+#| fig.alt: "Scatter plot with blue and red dots, where blue dots (TRUE) are organized in a circle, and red dots represent points outside the circle."
 library(tidyverse)
 library(ggplot2)
 random_points <- data.frame(x = runif(500, -1, 1),
@@ -103,6 +104,7 @@ We can then plot our results:
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "Graph titled 'A one-dimensional random walk' with x-axis labeled Step and y-axis labeled x showing a zig-zagging line with an overall upward trend from 0 to 100 steps"
 plot(1:n_steps, x, type = "l",
      xlab = "Step", ylab = "x",
      main = "A one-dimensional random walk")
@@ -135,6 +137,7 @@ walk_randomly <- function(n_steps, start = 0) {
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "Line graph titled 'A one-dimensional random walk' showing random changes in x values from 0 to 100 steps, trending generally downward"
 plot(1:100, walk_randomly(100), type = "l",
      xlab = "Step", ylab = "x",
      main = "A one-dimensional random walk")
@@ -182,6 +185,7 @@ We can use `geom_path()` to illustrate the path taken by the random walker:
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "A step-like scatter plot with x-axis from -10 to 0 and y-axis from 0 to 8, showing color-coded steps from black to light blue indicating values from 0 to 100."
 library(ggplot2)
 coords_dat <- data.frame(x = coords[, 1],
                          y = coords[, 2],
@@ -198,6 +202,7 @@ We can use the `gganimate` package to animate our visualization:
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "An animated two-dimensional random walk graph with a path varying from light blue to dark blue and labeled x and y axes."
 library(gganimate)
 anim_walk <- ggplot(coords_dat, aes(x = x, y = y, color = step)) +
   geom_path() +
@@ -235,6 +240,7 @@ plot(1:100, walk_randomly(100), type = "l",
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "Graph titled 'A one-dimensional random walk' with x-axis labeled Step and y-axis labeled x showing a zig-zagging line with an overall upward trend from 0 to 100 steps"
 take_step <- function() {
   # move forwards or backwards with equal probability
   return(sample(c(1, -1), 1))
@@ -328,6 +334,7 @@ plot(ns, expected_returns, type = "l",
 #| echo: false
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "Line graph showing the relationship between the number of steps and the mean returns to x = 0."
 set.seed(123)
 ns <- c(10, 20, 50, 100, 200, 500, 1000) 
 expected_returns <- 
@@ -427,6 +434,7 @@ proportion_no_returns
 #| echo: false
 #| eval: TRUE
 #| cache: TRUE
+#| fig.alt: "Graph showing the relationship between the number of steps and mean visits to x = 10, with a downward sloping line from 1.0 mean visits at 0 steps to below 0.2 mean visits at 20 steps. "
 set.seed(123)
 ns <- 1:20
 # for each n, estimate the proportion of random walks that do NOT return

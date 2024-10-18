@@ -434,10 +434,10 @@ Peter Gao
 <section id="warm-up-estimating-pi-1" class="slide level2">
 <h2>Warm up: Estimating <span class="math inline">\(\pi\)</span></h2>
 
-<img data-src="18_more-simulations_files/figure-revealjs/random_points_1-1.png" width="960" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/random_points_1-1.png" alt="Scatter plot with blue and red dots, where blue dots (TRUE) are organized in a circle, and red dots represent points outside the circle." width="960" class="r-stretch"></section>
 <section id="warm-up-estimating-pi-2" class="slide level2">
 <h2>Warm up: Estimating <span class="math inline">\(\pi\)</span></h2>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/random_points_425063fdb6ffed3243d497a9a0b06835">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>random_points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
 <span id="cb2-2"><a></a>                            <span class="at">y =</span> <span class="fu">runif</span>(<span class="dv">500</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb2-3"><a></a>random_points <span class="ot">&lt;-</span> random_points <span class="sc">|&gt;</span></span>
@@ -445,7 +445,7 @@ Peter Gao
 <span id="cb2-5"><a></a>random_points <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">pi_est =</span> <span class="dv">4</span> <span class="sc">*</span> <span class="fu">mean</span>(in_circle))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pi_est
-1  3.144</code></pre>
+1  3.184</code></pre>
 </div>
 </div>
 </section>
@@ -457,7 +457,7 @@ Peter Gao
 <section id="random-walks-1" class="slide level2">
 <h2>Random walks</h2>
 <p>We can simulate a one-dimensional random walk:</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_fb6d12257ddf96fdbae4c8218aee0ff6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb4-2"><a></a>n_steps <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb4-3"><a></a>x <span class="ot">&lt;-</span> <span class="fu">numeric</span>(n_steps)</span>
@@ -470,17 +470,17 @@ Peter Gao
 <section id="random-walks-2" class="slide level2">
 <h2>Random walks</h2>
 <p>We can then plot our results:</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_plot_7c5f66019ceecda4873cc30ebb602f64">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_steps, x, <span class="at">type =</span> <span class="st">"l"</span>,</span>
 <span id="cb5-2"><a></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
 <span id="cb5-3"><a></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18_more-simulations_files/figure-revealjs/random_walk_plot-1.png" width="960" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/random_walk_plot-1.png" alt="Graph titled 'A one-dimensional random walk' with x-axis labeled Step and y-axis labeled x showing a zig-zagging line with an overall upward trend from 0 to 100 steps" width="960" class="r-stretch"></section>
 <section id="a-more-functional-version-with-recursion" class="slide level2">
 <h2>A more functional version with recursion</h2>
 <p>We can also adopt a more functional approach:</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_functional_d66df8796bcb6156786c64845724d0aa">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>take_step <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb6-2"><a></a>  <span class="fu">return</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>))</span>
 <span id="cb6-3"><a></a>}</span>
@@ -496,17 +496,17 @@ Peter Gao
 </section>
 <section id="a-more-functional-version-with-recursion-1" class="slide level2">
 <h2>A more functional version with recursion</h2>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/random_walk_functional_plot_ea3a05175423579cd34206ea838b2f70">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="fu">walk_randomly</span>(<span class="dv">100</span>), <span class="at">type =</span> <span class="st">"l"</span>,</span>
 <span id="cb7-2"><a></a>     <span class="at">xlab =</span> <span class="st">"Step"</span>, <span class="at">ylab =</span> <span class="st">"x"</span>,</span>
 <span id="cb7-3"><a></a>     <span class="at">main =</span> <span class="st">"A one-dimensional random walk"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18_more-simulations_files/figure-revealjs/random_walk_functional_plot-1.png" width="960" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/random_walk_functional_plot-1.png" alt="Line graph titled 'A one-dimensional random walk' showing random changes in x values from 0 to 100 steps, trending generally downward" width="960" class="r-stretch"></section>
 <section id="a-two-dimensional-random-walk" class="slide level2">
 <h2>A two-dimensional random walk</h2>
 <p>A two-dimensional random walk takes place on the integer grid, where at each step, we can either walk north, south, east, or west.</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/2d_random_walk_functional_17a91c5c768da7afc3e696ddd782c56a">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>take_step_2d <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb8-2"><a></a>  steps <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb8-3"><a></a>                 <span class="fu">c</span>(<span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>), </span>
@@ -636,7 +636,7 @@ Peter Gao
 <section id="a-two-dimensional-random-walk-2" class="slide level2">
 <h2>A two-dimensional random walk</h2>
 <p>We can use <code>geom_path()</code> to illustrate the path taken by the random walker:</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/2d_random_walk_functional_plot_b8ee5a2c19ccc82903141791cbc519e8">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb10-2"><a></a>coords_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> coords[, <span class="dv">1</span>],</span>
 <span id="cb10-3"><a></a>                         <span class="at">y =</span> coords[, <span class="dv">2</span>],</span>
@@ -645,11 +645,11 @@ Peter Gao
 <span id="cb10-6"><a></a>  <span class="fu">geom_path</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18_more-simulations_files/figure-revealjs/2d_random_walk_functional_plot-1.png" width="960" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/2d_random_walk_functional_plot-1.png" alt="A step-like scatter plot with x-axis from -10 to 0 and y-axis from 0 to 8, showing color-coded steps from black to light blue indicating values from 0 to 100." width="960" class="r-stretch"></section>
 <section id="a-two-dimensional-random-walk-3" class="slide level2">
 <h2>A two-dimensional random walk</h2>
 <p>We can use the <code>gganimate</code> package to animate our visualization:</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/2d_random_walk_functional_anim_23650307ee002e617845645b89ee1fab">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(gganimate)</span>
 <span id="cb11-2"><a></a>anim_walk <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coords_dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> step)) <span class="sc">+</span></span>
 <span id="cb11-3"><a></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
@@ -657,11 +657,11 @@ Peter Gao
 <span id="cb11-5"><a></a>anim_walk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="18_more-simulations_files/figure-revealjs/2d_random_walk_functional_anim-1.gif" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/2d_random_walk_functional_anim-1.gif" alt="An animated two-dimensional random walk graph with a path varying from light blue to dark blue and labeled x and y axes." class="r-stretch"></section>
 <section id="random-walks-continued" class="slide level2">
 <h2>Random walks continued</h2>
 <p>Return to the code for a one-dimensional random walk:</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/unnamed-chunk-2_3a3db262f460d398ac2be4d695960191">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>take_step <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb12-2"><a></a>  <span class="co"># move forwards or backwards with equal probability</span></span>
 <span id="cb12-3"><a></a>  <span class="fu">return</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="dv">1</span>))</span>
@@ -681,7 +681,7 @@ Peter Gao
 <section id="random-walks-continued-1" class="slide level2">
 <h2>Random walks continued</h2>
 
-<img data-src="18_more-simulations_files/figure-revealjs/redux-1.png" width="960" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/redux-1.png" alt="Graph titled 'A one-dimensional random walk' with x-axis labeled Step and y-axis labeled x showing a zig-zagging line with an overall upward trend from 0 to 100 steps" width="960" class="r-stretch"></section>
 <section id="random-walks-continued-2" class="slide level2">
 <h2>Random walks continued</h2>
 <p>We can use this simulation code to estimate a number of properties about random walks, including:</p>
@@ -729,7 +729,7 @@ Peter Gao
 <section id="varying-n_steps-parameter" class="slide level2">
 <h2>Varying <code>n_steps</code> parameter</h2>
 <p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/varying_n_steps_47960fc6a3fea8f443cdd1b85daa1327">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb19-2"><a></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
 <span id="cb19-3"><a></a>expected_returns <span class="ot">&lt;-</span> </span>
@@ -746,7 +746,7 @@ Peter Gao
 <h2>Varying <code>n_steps</code> parameter</h2>
 <p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=0\)</span>, on average?</p>
 
-<img data-src="18_more-simulations_files/figure-revealjs/varying_n_steps2-1.png" width="960" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/varying_n_steps2-1.png" alt="Line graph showing the relationship between the number of steps and the mean returns to x = 0." width="960" class="r-stretch"></section>
 <section id="random-walks-continued-5" class="slide level2">
 <h2>Random walks continued</h2>
 <p>How could we adapt this code to answer the question:</p>
@@ -756,7 +756,7 @@ Peter Gao
 <section id="random-walks-continued-6" class="slide level2">
 <h2>Random walks continued</h2>
 <p><em>If we consider a random walk of length</em> <span class="math inline">\(n\)</span>, how often will the walker visit <span class="math inline">\(x=10\)</span>, on average?</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/varying_n_steps_10_acd156f26db65d9ebc2aa7c65edd0399">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb20-2"><a></a>ns <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>) </span>
 <span id="cb20-3"><a></a>expected_returns <span class="ot">&lt;-</span> </span>
@@ -784,7 +784,7 @@ Peter Gao
 </section>
 <section id="expected-time-of-return-1" class="slide level2">
 <h2>Expected time of return</h2>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/expected_return_41d36a43213f2085389c4938db8ac5b6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb21-2"><a></a>ns <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
 <span id="cb21-3"><a></a><span class="co"># for each n, estimate the proportion of random walks that do NOT return</span></span>
@@ -802,18 +802,18 @@ Peter Gao
 </section>
 <section id="expected-time-of-return-2" class="slide level2">
 <h2>Expected time of return</h2>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/expected_return2_1030adf14e388fc00615b256e9b8e50d">
+<div class="cell">
 
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 1.0000 1.0000 0.5080 0.4828 0.3720 0.3704 0.3308 0.3036 0.2836 0.2700
 [11] 0.2336 0.2504 0.2136 0.2340 0.2140 0.2084 0.1944 0.2196 0.1944 0.1784</code></pre>
 </div>
 </div>
-<img data-src="18_more-simulations_files/figure-revealjs/expected_return2-1.png" width="960" class="r-stretch"></section>
+<img data-src="18_more-simulations_files/figure-revealjs/expected_return2-1.png" alt="Graph showing the relationship between the number of steps and mean visits to x = 10, with a downward sloping line from 1.0 mean visits at 0 steps to below 0.2 mean visits at 20 steps. " width="960" class="r-stretch"></section>
 <section id="expected-time-of-return-3" class="slide level2">
 <h2>Expected time of return</h2>
 <p>Does the infinite series converge?</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/partial_sums_2b0dae7e4ffd98193401cefa73372052">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># calculate partial sums of the infinite series</span></span>
 <span id="cb23-2"><a></a><span class="fu">cumsum</span>(proportion_no_returns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -837,7 +837,7 @@ Peter Gao
 <p>When running simulations, the number of different dimensions we consider (number of simulations, number of steps, etc.) can rapidly increase computational cost.</p>
 <p>We often may want to be able to estimate the runtime of our simulations or to compare the speed of various versions of a simulation.</p>
 <p><strong>Example</strong>: Which is faster: vectorized code or a for loop?</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/example_vec_52e92f694d855fded8ecad789087a1c8">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># vectorized</span></span>
 <span id="cb25-2"><a></a>x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb25-3"><a></a></span>
@@ -851,12 +851,12 @@ Peter Gao
 <section id="sys.time" class="slide level2">
 <h2><code>Sys.time()</code></h2>
 <p>The <code>Sys.time()</code> function can be used to report the time at evaluation.</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/systime_fe8e00a89f5c0876f1a2c3d0390b26ee">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb26-2"><a></a>x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb26-3"><a></a><span class="fu">print</span>(<span class="fu">Sys.time</span>() <span class="sc">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.003158092 secs</code></pre>
+<pre><code>Time difference of 0.00347209 secs</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
 <span id="cb28-2"><a></a>x_for <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
@@ -865,14 +865,14 @@ Peter Gao
 <span id="cb28-5"><a></a>}</span>
 <span id="cb28-6"><a></a><span class="fu">print</span>(<span class="fu">Sys.time</span>() <span class="sc">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 0.1249311 secs</code></pre>
+<pre><code>Time difference of 0.13658 secs</code></pre>
 </div>
 </div>
 </section>
 <section id="system.time" class="slide level2">
 <h2><code>system.time()</code></h2>
 <p>Altenatively, the <code>system.time()</code> function can be used to time the evaluation of a specific expression,</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/systemtime_46ec9c93364c067ef80cd7bdbffa9b68">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">system.time</span>(x_vec <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100000</span>) <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
@@ -887,14 +887,14 @@ Peter Gao
 <span id="cb32-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.108   0.009   0.118 </code></pre>
+  0.106   0.008   0.115 </code></pre>
 </div>
 </div>
 </section>
 <section id="microbenchmark" class="slide level2 smaller">
 <h2><code>microbenchmark</code></h2>
 <p>Finally, the <code>microbenchmark</code> package can be used to time functions repeatedly.</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/microbenchmark_ea2c13f560d2d14287414a1dc1608977">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="co"># vectorized</span></span>
 <span id="cb34-2"><a></a>sq_vectorized <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb34-3"><a></a>    <span class="fu">return</span>(x <span class="sc">^</span> <span class="dv">2</span>)</span>
@@ -916,9 +916,9 @@ Peter Gao
 <span id="cb34-19"><a></a>compare_sq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: nanoseconds
-             expr   min    lq     mean median    uq     max neval
- sq_vectorized(x)   574   615  5870.79    656   738  517502   100
-   sq_for_loop(x) 26691 26855 42603.92  26896 27060 1527578   100</code></pre>
+             expr   min      lq     mean  median    uq     max neval
+ sq_vectorized(x)   492   635.5  5452.59   697.0   738  473591   100
+   sq_for_loop(x) 27347 27552.0 42420.65 27695.5 27798 1493507   100</code></pre>
 </div>
 </div>
 </section>
@@ -935,7 +935,7 @@ Peter Gao
 <section id="example-inverting-matrices." class="slide level2">
 <h2>Example: inverting matrices.</h2>
 <p>In practice, timing code can be used to examine these relationships.</p>
-<div class="cell" data-hash="18_more-simulations_cache/revealjs/inversion_b72712dd7f5d83e0c53f7afdc3629f7e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>compare_mat <span class="ot">&lt;-</span> </span>
 <span id="cb36-2"><a></a>  <span class="fu">microbenchmark</span>(</span>
 <span id="cb36-3"><a></a>    <span class="at">mat_3_x_3 =</span> <span class="fu">solve</span>(<span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">9</span>), <span class="at">nrow =</span> <span class="dv">3</span>)),</span>
@@ -947,11 +947,11 @@ Peter Gao
 <span id="cb36-9"><a></a>compare_mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: microseconds
-      expr    min      lq     mean  median      uq      max neval
- mat_3_x_3  6.601  7.0930  7.47143  7.3390  7.6260   15.047   100
- mat_5_x_5  7.503  7.9950  9.08191  8.2820  8.9380   50.512   100
- mat_7_x_7  8.815  9.2455  9.94455  9.6965 10.1680   18.655   100
- mat_9_x_9 10.332 10.8650 70.48310 11.5005 12.4435 5861.155   100</code></pre>
+      expr    min     lq      mean  median      uq       max neval
+ mat_3_x_3  7.298  7.626   8.69569  7.7695  8.0155    39.278   100
+ mat_5_x_5  8.364  8.774   9.80310  9.0200  9.4300    69.003   100
+ mat_7_x_7  9.635 10.086  11.03023 10.4140 10.9675    34.768   100
+ mat_9_x_9 11.521 11.890 678.47948 12.2180 12.6280 66517.539   100</code></pre>
 </div>
 </div>
 </section>
