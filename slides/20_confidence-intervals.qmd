@@ -31,6 +31,7 @@ The LLN can be formalized as follows: if $X_1,\ldots, X_n$ are iid random variab
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Line graph showing the average value decreasing from 6.0 to 3.5 over 1000 rolls, with a red line oscillating around the value of 3.5 and a blue horizontal line at 3.5 as a baseline."
 set.seed(1028)
 dice_rolls <- sample(1:6, 1000, replace = TRUE)
 sample_avg <- sapply(1:length(dice_rolls), function(i) mean(dice_rolls[1:i]))
@@ -62,6 +63,7 @@ Suppose $X_1,\ldots, X_{10}\sim N(2, 4)$:
 #| cache: TRUE
 #| warning: FALSE
 #| message: FALSE
+#| fig-alt: ": Histogram with a density plot overlay, x-axis labeled 'Xbar,' y-axis labeled 'density.'"
 library(ggplot2)
 Xbars <- data.frame(Xbar = replicate(1000, mean(rnorm(10, mean = 2, sd = 2))))
 ggplot(Xbars, aes(x = Xbar)) + 
@@ -77,6 +79,7 @@ What if $n = 5$?
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram with vertical black bars and a red density plot line overlaid, depicting a bell-shaped distribution. The x-axis is labeled 'Xbar,' and the y-axis is labeled 'density'."
 n <- 5
 Xbars <- data.frame(Xbar = replicate(1000, mean(rnorm(n, mean = 2, sd = 2))))
 ggplot(Xbars, aes(x = Xbar)) + 
@@ -94,6 +97,7 @@ What if $n = 5$, but $X_1,\ldots, X_{5}\sim \mathrm{Exp}(1)$:
 #| cache: TRUE
 #| warning: FALSE
 #| message: FALSE
+#| fig-alt: "Histogram with black bars and a red density curve"
 n <- 5
 Xbars <- data.frame(Xbar = replicate(1000, mean(rexp(n, rate = 1))))
 ggplot(Xbars, aes(x = Xbar)) + 
@@ -198,6 +202,7 @@ Code to visualize all of our confidence intervals:
 #| cache: TRUE
 #| warning: FALSE
 #| message: FALSE
+#| fig-alt: "Horizontal error bar plot with teal and red bars, and a central black line at Y equals 10."
 library(tidyverse)
 plot_dat <- data.frame(id = 1:100,
                        Xbar = Xbars) |>
@@ -286,6 +291,7 @@ The `precip` dataset includes annual precipitation in inches for a number of US 
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram of precipitation frequency distribution with values on the x-axis from 0 to 70 and frequency on the y-axis from 0 to 25."
 head(precip)
 hist(precip)
 ```
@@ -298,6 +304,7 @@ The `qqnorm()` function can be used to compare the empirical/sample quantiles an
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Normal Q-Q Plot showing precipitation data for 70 US cities, with points plotted against theoretical quantiles and a reference line indicating expected normal distribution."
 qqnorm(precip, ylab = "Precipitation [in/yr] for 70 US cities", pch = 16)
 qqline(precip)
 ```
@@ -308,6 +315,7 @@ qqline(precip)
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Normal Q-Q Plot comparing Penguin bill lengths to theoretical quantiles."
 library(palmerpenguins)
 data(penguins)
 qqnorm(penguins$bill_length_mm, ylab = "Penguin bill lengths", pch = 16)
@@ -320,6 +328,7 @@ qqline(penguins$bill_length_mm)
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram showing the distribution of penguin bill lengths in millimeters."
 hist(penguins$bill_length_mm)
 ```
 
@@ -329,6 +338,7 @@ hist(penguins$bill_length_mm)
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Normal Q-Q plot comparing Penguin bill lengths to theoretical quantiles, with points closely following a diagonal line."
 adelie <- penguins |> dplyr::filter(species == "Adelie")
 qqnorm(adelie$bill_length_mm, ylab = "Penguin bill lengths", pch = 16)
 qqline(adelie$bill_length_mm)
@@ -340,6 +350,7 @@ qqline(adelie$bill_length_mm)
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram of adelie$bill_length_mm with frequencies ranging from 0 to 30 on the y-axis and bill lengths from 32 to 46 mm on the x-axis."
 hist(adelie$bill_length_mm)
 ```
 

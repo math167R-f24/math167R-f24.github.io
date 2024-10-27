@@ -28,6 +28,7 @@ Example simulation: Suppose $X_1,\ldots, X_{100}\sim N(0,1)$.
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram of sampling distribution of mean of 100 normal variables with mean 0 and standard deviation 1 with frequency on the vertical axis and Xbar on the horizontal axis."
 set.seed(123)
 Xbar <- replicate(10000, mean(rnorm(100)))
 hist(Xbar, main = "Sampling distribution of mean of 100 N(0, 1) variables")
@@ -41,6 +42,7 @@ What if $X_1,\ldots, X_{100}\sim \mathrm{Exp}(1)$?
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram of sampling distribution of mean of 100 exponential variables with parameter 1 with frequency on the vertical axis and Xbar on the horizontal axis."
 set.seed(123)
 Xbar <- replicate(10000, mean(rexp(100, rate = 1)))
 hist(Xbar, main = "Sampling distribution of mean of 100 Exponential(1) variables")
@@ -54,6 +56,7 @@ What if $X_1,\ldots, X_{100}\sim \mathrm{Poisson}(1)$?
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram showing the sampling distribution of the mean of 100 Poisson(1) variables with the peak centered around Xbar equal to 1.0."
 set.seed(123)
 Xbar <- replicate(10000, mean(rpois(100, lambda = 1)))
 hist(Xbar, main = "Sampling distribution of mean of 100 Poisson(1) variables")
@@ -93,6 +96,7 @@ hist(Xbar_poisson, main = "Poisson(1)")
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Three side-by-side histograms showing normal, exponential, and Poisson distributions."
 set.seed(123)
 Xbar_normal <- replicate(10000, mean(rnorm(10)))
 Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1)))
@@ -129,6 +133,7 @@ What if we want the sampling distribution of the maximum? For each of these popu
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Three histograms representing normal, exponential, and Poisson distributions."
 set.seed(123)
 Xmax_normal <- replicate(10000, max(rnorm(10)))
 Xmax_exp <- replicate(10000, max(rexp(10, rate = 1)))
@@ -165,6 +170,7 @@ We can easily simulate sampling distributions for statistics summarizing the dis
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Three histograms showing the frequency distributions of squared values from normal, exponential, and Poisson distributions."
 set.seed(123)
 Xbar_normal <- replicate(10000, mean(rnorm(10) ^ 2))
 Xbar_exp <- replicate(10000, mean(rexp(10, rate = 1) ^ 2))
@@ -187,10 +193,9 @@ The previous simulations are all based on parametric models (normal, exponential
 
 Suppose we want to estimate the average age of US pennies. We can't observe every single penny---so what if we take a sample of 50 pennies?
 
-![](images/pennies.png)
+![](images/pennies.png){fig-alt="Two photographs: one of a busy street corner with pedestrians and a Florence Bank branch, and one of a hand holding a wrapper of fifty pennies."}
 
 Based on an example from [ModernDive](https://moderndive.com/8-confidence-intervals.html).
-
 
 ## Estimating the age of US pennies
 
@@ -219,12 +224,12 @@ The `moderndive` package contains data on a sample of 50 pennies in the `pennies
 #| out.width: "80%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Bar chart showing counts for years 1970, 1990, 2000, 2010, and 2020. "
 library(tidyverse)
 ggplot(pennies_sample, aes(x = year)) +
   geom_histogram(binwidth = 10, color = "white") +
   theme_minimal()
 ```
-
 
 ## Estimating the age of US pennies
 
@@ -269,7 +274,6 @@ pennies_resample %>%
   summarize(mean_year = mean(year))
 ```
 
-
 ## Resampling the pennies {.smaller}
 
 Imagine we put our 50 pennies in a bag and draw a **new** sample of 50 pennies by sampling with replacement. This is called **resampling with replacement.**
@@ -285,6 +289,7 @@ Imagine we put our 50 pennies in a bag and draw a **new** sample of 50 pennies b
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Two bar charts comparing 'Original sample' and 'Resample' data by year (1970, 1990, 2010). The y-axis is labeled 'count,' and the x-axis is labeled 'year.' "
 pennies_combined <- 
   bind_rows(pennies_sample |> mutate(title = "Original sample"),
             pennies_resample |> mutate(title = "Resample"))
@@ -348,12 +353,12 @@ We can compute each resample mean:
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Bar chart showing count distribution over sampled years 1989, 1992, 1995, and 1998, with highest count of 8 in 1995."
 ggplot(resampled_means, aes(x = mean_year)) +
   geom_histogram(binwidth = 1, color = "white", boundary = 1990) +
   labs(x = "Sampled mean year") +
   theme_minimal()
 ```
-
 
 ## Resampling the pennies 1000 times
 
@@ -395,6 +400,7 @@ Using simulation, we can repeat this process virtually 1000 times:
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Bar graph showing a distribution with a peak around 1995."
 ggplot(virtual_resampled_means, aes(x = mean_year)) +
   geom_histogram(binwidth = 1, color = "white", boundary = 1990) +
   labs(x = "sample mean") +
@@ -436,6 +442,7 @@ We can obtain a confidence interval based on our resample means:
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Histogram showing the frequency distribution of sample means with vertical red lines marking 1990 and 2000."
 quantile(virtual_resampled_means$mean_year, c(.025, .975))
 ggplot(virtual_resampled_means, aes(x = mean_year)) +
   geom_histogram(binwidth = 1, color = "white", boundary = 1990) +
@@ -465,7 +472,6 @@ virtual_resampled_means |>
             upper = mean(mean_year) + 1.96 * sd(mean_year))
 ```
 
-
 ## Resampling methods
 
 Suppose we know $X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)$. The sampling distribution of the sample mean can be simulated as follows:
@@ -474,6 +480,7 @@ Suppose we know $X_1,\ldots, X_{20}\sim \mathrm{Exp}(1)$. The sampling distribut
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram of sampling distribution of mean of exponentials with red overlay for density"
 set.seed(123)
 Xbar_exp <- replicate(10000, mean(rexp(20, rate = 1)))
 hist(Xbar_exp)
@@ -503,6 +510,7 @@ lines(x_axis, dnorm(x_axis, mean = mean(X), sd = sd(X) / sqrt(20)), col = 'red')
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram of sampling distribution of mean of exponentials with red overlay for density"
 X <- rexp(20, rate = 1)
 x_axis <- seq(0, 3, length.out = 1000)
 
@@ -535,6 +543,7 @@ We can repeatedly resample from $X$, then compute the resample sample means and 
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Histogram of the bootstrap sample means"
 bootstrap_Xbar <- replicate(10000, mean(sample(X, size = 20, replace = TRUE)))
 hist(bootstrap_Xbar - mean(X) + 1)
 ```
@@ -567,6 +576,7 @@ We can compare the bootstrap sampling distributions and true sampling distributi
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Density plot of three sources: Bootstrap (red), Parametric (Exp) (green), and Parametric (Normal) (blue)."
 library(ggplot2)
 plot_dat <-
   data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),

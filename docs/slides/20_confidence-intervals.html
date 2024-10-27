@@ -424,7 +424,7 @@ Peter Gao
 </section>
 <section id="law-of-large-numbers-simulation" class="slide level2">
 <h2>Law of large numbers simulation</h2>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/lln_2623dd7134279721392c3a9e70874be7">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">1028</span>)</span>
 <span id="cb1-2"><a></a>dice_rolls <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a></a>sample_avg <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dice_rolls), <span class="cf">function</span>(i) <span class="fu">mean</span>(dice_rolls[<span class="dv">1</span><span class="sc">:</span>i]))</span>
@@ -433,7 +433,7 @@ Peter Gao
 <span id="cb1-6"><a></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">3.5</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/lln-1.png" width="960" class="r-stretch"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/lln-1.png" alt="Line graph showing the average value decreasing from 6.0 to 3.5 over 1000 rolls, with a red line oscillating around the value of 3.5 and a blue horizontal line at 3.5 as a baseline." width="960" class="r-stretch"></section>
 <section id="central-limit-theorem" class="slide level2">
 <h2>Central limit theorem</h2>
 <p>What does the central limit theorem say?</p>
@@ -449,7 +449,7 @@ Peter Gao
 <section id="central-limit-theorem-1" class="slide level2">
 <h2>Central limit theorem</h2>
 <p>Suppose <span class="math inline">\(X_1,\ldots, X_{10}\sim N(2, 4)\)</span>:</p>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/clt1_c51d1c359f9e35396f4cef06d8d9c2ac">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-2"><a></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span>))))</span>
 <span id="cb2-3"><a></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
@@ -457,11 +457,11 @@ Peter Gao
 <span id="cb2-5"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">10</span>)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/clt1-1.png" width="960" class="r-stretch"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/clt1-1.png" alt=": Histogram with a density plot overlay, x-axis labeled 'Xbar,' y-axis labeled 'density.'" width="960" class="r-stretch"></section>
 <section id="central-limit-theorem-2" class="slide level2">
 <h2>Central limit theorem</h2>
 <p>What if <span class="math inline">\(n = 5\)</span>?</p>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/clt2_9ad34e744234dbf9f35eeef6e45ce2c3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb3-2"><a></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span>))))</span>
 <span id="cb3-3"><a></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
@@ -469,11 +469,11 @@ Peter Gao
 <span id="cb3-5"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/clt2-1.png" width="960" class="r-stretch"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/clt2-1.png" alt="Histogram with vertical black bars and a red density plot line overlaid, depicting a bell-shaped distribution. The x-axis is labeled 'Xbar,' and the y-axis is labeled 'density'." width="960" class="r-stretch"></section>
 <section id="central-limit-theorem-3" class="slide level2">
 <h2>Central limit theorem</h2>
 <p>What if <span class="math inline">\(n = 5\)</span>, but <span class="math inline">\(X_1,\ldots, X_{5}\sim \mathrm{Exp}(1)\)</span>:</p>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/clt3_d71d1114bc0c762bda0c8d6275950d99">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb4-2"><a></a>Xbars <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Xbar =</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>))))</span>
 <span id="cb4-3"><a></a><span class="fu">ggplot</span>(Xbars, <span class="fu">aes</span>(<span class="at">x =</span> Xbar)) <span class="sc">+</span> </span>
@@ -481,7 +481,7 @@ Peter Gao
 <span id="cb4-5"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(n)), <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/clt3-1.png" width="960" class="r-stretch"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/clt3-1.png" alt="Histogram with black bars and a red density curve" width="960" class="r-stretch"></section>
 <section id="exercise" class="slide level2">
 <h2>Exercise</h2>
 <p>How can you break the central limit theorem?</p>
@@ -541,7 +541,7 @@ Peter Gao
 </section>
 <section id="simulating-many-confidence-intervals" class="slide level2">
 <h2>Simulating many confidence intervals</h2>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/many.ci_80b4c78943bf5ec2212f4a35592d2f8d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># sample size</span></span>
 <span id="cb5-2"><a></a>mu <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># unknown true mean</span></span>
 <span id="cb5-3"><a></a>sigma <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># known standard deviation</span></span>
@@ -556,7 +556,7 @@ Peter Gao
 <section id="simulating-many-confidence-intervals-1" class="slide level2">
 <h2>Simulating many confidence intervals</h2>
 <p>Code to visualize all of our confidence intervals:</p>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/many.ci.vis_bd7b81c29b329a9b0ed4faef3d653dc3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb7-2"><a></a>plot_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
 <span id="cb7-3"><a></a>                       <span class="at">Xbar =</span> Xbars) <span class="sc">|&gt;</span></span>
@@ -583,7 +583,7 @@ Peter Gao
 </section>
 <section id="simulating-many-confidence-intervals-3" class="slide level2">
 <h2>Simulating many confidence intervals</h2>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/many.ci.pois_874f9d4cfa0058c2725657316640ff0a">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">30</span> <span class="co"># sample size</span></span>
 <span id="cb8-2"><a></a>lambda <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb8-3"><a></a>sample_stats_poisson <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
@@ -623,7 +623,7 @@ Peter Gao
 <section id="example-precipitation" class="slide level2">
 <h2>Example: Precipitation</h2>
 <p>The <code>precip</code> dataset includes annual precipitation in inches for a number of US cities. Is this normally distributed?</p>
-<div class="cell" data-hash="20_confidence-intervals_cache/revealjs/precip_e1687bfcc78425e6a959367ceb0f6caa">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">head</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Mobile      Juneau     Phoenix Little Rock Los Angeles  Sacramento 
@@ -632,54 +632,54 @@ Peter Gao
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">hist</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/precip-1.png" width="960" class="r-stretch"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/precip-1.png" alt="Histogram of precipitation frequency distribution with values on the x-axis from 0 to 70 and frequency on the y-axis from 0 to 25." width="960" class="r-stretch"></section>
 <section id="example-precipitation-1" class="slide level2">
 <h2>Example: Precipitation</h2>
 <p>The <code>qqnorm()</code> function can be used to compare the empirical/sample quantiles and the theoretical quantiles of a standard normal. The <code>qqline()</code> function adds a line that passes through the first and third quartiles.</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="20_confidence-intervals_cache/revealjs/precip.qq_186f0d24b05ce75337e9d64b32f1b7f3">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">qqnorm</span>(precip, <span class="at">ylab =</span> <span class="st">"Precipitation [in/yr] for 70 US cities"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
 <span id="cb15-2"><a></a><span class="fu">qqline</span>(precip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/precip.qq-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/precip.qq-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Normal Q-Q Plot showing precipitation data for 70 US cities, with points plotted against theoretical quantiles and a reference line indicating expected normal distribution." width="480"></section>
 <section id="example-penguins" class="slide level2">
 <h2>Example: Penguins</h2>
-<div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="20_confidence-intervals_cache/revealjs/peng.qq_b4988568ff015680a2039cd32a692bdb">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb16-2"><a></a><span class="fu">data</span>(penguins)</span>
 <span id="cb16-3"><a></a><span class="fu">qqnorm</span>(penguins<span class="sc">$</span>bill_length_mm, <span class="at">ylab =</span> <span class="st">"Penguin bill lengths"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
 <span id="cb16-4"><a></a><span class="fu">qqline</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/peng.qq-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/peng.qq-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Normal Q-Q Plot comparing Penguin bill lengths to theoretical quantiles." width="480"></section>
 <section id="example-penguins-1" class="slide level2">
 <h2>Example: Penguins</h2>
-<div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="20_confidence-intervals_cache/revealjs/peng.hist.2_2c3f4251e863783770eb934c58dd1348">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">hist</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/peng.hist.2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/peng.hist.2-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Histogram showing the distribution of penguin bill lengths in millimeters." width="480"></section>
 <section id="example-penguins-2" class="slide level2">
 <h2>Example: Penguins</h2>
-<div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="20_confidence-intervals_cache/revealjs/peng.qq.2_6bbd194b9d9d8c8cdf6a636757c2e310">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>adelie <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
 <span id="cb18-2"><a></a><span class="fu">qqnorm</span>(adelie<span class="sc">$</span>bill_length_mm, <span class="at">ylab =</span> <span class="st">"Penguin bill lengths"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
 <span id="cb18-3"><a></a><span class="fu">qqline</span>(adelie<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/peng.qq.2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/peng.qq.2-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Normal Q-Q plot comparing Penguin bill lengths to theoretical quantiles, with points closely following a diagonal line." width="480"></section>
 <section id="example-penguins-3" class="slide level2">
 <h2>Example: Penguins</h2>
-<div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="20_confidence-intervals_cache/revealjs/peng.hist.3_fc988741ca231c229621217ead6d4761">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">hist</span>(adelie<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="20_confidence-intervals_files/figure-revealjs/peng.hist.3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="480"></section>
+<img data-src="20_confidence-intervals_files/figure-revealjs/peng.hist.3-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Histogram of adelie$bill_length_mm with frequencies ranging from 0 to 30 on the y-axis and bill lengths from 32 to 46 mm on the x-axis." width="480"></section>
 <section id="using-r-to-compute-confidence-intervals" class="slide level2">
 <h2>Using R to compute confidence intervals</h2>
 <p>Generally, if you are only doing a simple normal-based or <span class="math inline">\(t\)</span>-based confidence interval for a mean, I recommend computing <span class="math inline">\(\overline{X}_n\)</span> and <span class="math inline">\(S\)</span> using <code>mean()</code> and <code>sd()</code>, and then computing the confidence interval by hand.</p>
 <p>You can also use the <code>t.test()</code> function to compute the appropriate <span class="math inline">\(t\)</span>-interval for a population mean:</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="20_confidence-intervals_cache/revealjs/precip.ci_e194040e1582fc4a2205bbdce7c632c8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>precip_t <span class="ot">&lt;-</span> <span class="fu">t.test</span>(precip, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
 <span id="cb20-2"><a></a>precip_ci <span class="ot">&lt;-</span> precip_t<span class="sc">$</span>conf.int <span class="co"># get confidence interval</span></span>
 <span id="cb20-3"><a></a>precip_ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -692,7 +692,7 @@ attr(,"conf.level")
 </section>
 <section id="comparing-t-based-and-bootstrap-confidence-intervals" class="slide level2">
 <h2>Comparing <span class="math inline">\(t\)</span>-based and bootstrap confidence intervals</h2>
-<div class="cell" data-layout-align="center" data-fig.asp="0.8" data-hash="20_confidence-intervals_cache/revealjs/precip.bootstrap.ci_56cc940128e1fa017c2e03f283c6e651">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>bootstrap_Xbar <span class="ot">&lt;-</span> </span>
 <span id="cb22-2"><a></a>  <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(precip, <span class="at">size =</span> <span class="fu">length</span>(precip), <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
 <span id="cb22-3"><a></a><span class="fu">quantile</span>(bootstrap_Xbar, <span class="at">probs =</span> <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
