@@ -556,7 +556,7 @@ Peter Gao
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb9-2"><a></a><span class="fu">ggplot</span>(pennies_sample, <span class="fu">aes</span>(<span class="at">x =</span> year)) <span class="sc">+</span></span>
 <span id="cb9-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="19_simulation-based-inference_files/figure-revealjs/pennies_2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%" alt="Bar chart showing counts for years 1970, 1990, 2000, 2010, and 2020. "></section>
@@ -610,7 +610,7 @@ Peter Gao
 <span id="cb16-4"><a></a><span class="fu">ggplot</span>(pennies_combined, <span class="fu">aes</span>(<span class="at">x =</span> year)) <span class="sc">+</span></span>
 <span id="cb16-5"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb16-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>title) <span class="sc">+</span> </span>
-<span id="cb16-7"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-7"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="19_simulation-based-inference_files/figure-revealjs/pennies_5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Two bar charts comparing 'Original sample' and 'Resample' data by year (1970, 1990, 2010). The y-axis is labeled 'count,' and the x-axis is labeled 'year.' "></section>
@@ -661,7 +661,7 @@ Peter Gao
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(resampled_means, <span class="fu">aes</span>(<span class="at">x =</span> mean_year)) <span class="sc">+</span></span>
 <span id="cb21-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">boundary =</span> <span class="dv">1990</span>) <span class="sc">+</span></span>
 <span id="cb21-3"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sampled mean year"</span>) <span class="sc">+</span></span>
-<span id="cb21-4"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-4"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="19_simulation-based-inference_files/figure-revealjs/pennies_8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Bar chart showing count distribution over sampled years 1989, 1992, 1995, and 1998, with highest count of 8 in 1995."></section>
@@ -722,7 +722,7 @@ Peter Gao
 <span id="cb30-3"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">quantile</span>(virtual_resampled_means<span class="sc">$</span>mean_year, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), </span>
 <span id="cb30-4"><a></a>             <span class="at">color =</span> <span class="st">'red'</span>) <span class="sc">+</span></span>
 <span id="cb30-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"sample mean"</span>) <span class="sc">+</span></span>
-<span id="cb30-6"><a></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-6"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
 <img data-src="19_simulation-based-inference_files/figure-revealjs/pennies_12-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Histogram showing the frequency distribution of sample means with vertical red lines marking 1990 and 2000."></section>
@@ -813,7 +813,8 @@ Peter Gao
 <span id="cb40-7"><a></a>  <span class="fu">geom_function</span>(<span class="at">fun =</span> dnorm, </span>
 <span id="cb40-8"><a></a>                <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">20</span>)),</span>
 <span id="cb40-9"><a></a>                <span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Parametric (Normal)"</span>)) <span class="sc">+</span></span>
-<span id="cb40-10"><a></a>  <span class="fu">xlab</span>(<span class="st">"Xbar - E(Xbar)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-10"><a></a>  <span class="fu">xlab</span>(<span class="st">"Xbar - E(Xbar)"</span>) <span class="sc">+</span></span>
+<span id="cb40-11"><a></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bootstrap-samples-3" class="slide level2">

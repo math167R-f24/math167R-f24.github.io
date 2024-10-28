@@ -412,7 +412,7 @@
     "href": "slides/19_simulation-based-inference.html#estimating-the-age-of-us-pennies-2",
     "title": "MATH167R: Simulation based inference",
     "section": "Estimating the age of US pennies",
-    "text": "Estimating the age of US pennies\nThe moderndive package contains data on a sample of 50 pennies in the pennies_sample data frame.\n\nlibrary(tidyverse)\nggplot(pennies_sample, aes(x = year)) +\n  geom_histogram(binwidth = 10, color = \"white\") +\n  theme_minimal()"
+    "text": "Estimating the age of US pennies\nThe moderndive package contains data on a sample of 50 pennies in the pennies_sample data frame.\n\nlibrary(tidyverse)\nggplot(pennies_sample, aes(x = year)) +\n  geom_histogram(binwidth = 10, color = \"white\") +\n  theme_minimal(base_size = 28)"
   },
   {
     "objectID": "slides/19_simulation-based-inference.html#estimating-the-age-of-us-pennies-3",
@@ -433,7 +433,7 @@
     "href": "slides/19_simulation-based-inference.html#resampling-the-pennies-1",
     "title": "MATH167R: Simulation based inference",
     "section": "Resampling the pennies",
-    "text": "Resampling the pennies\nImagine we put our 50 pennies in a bag and draw a new sample of 50 pennies by sampling with replacement. This is called resampling with replacement.\n\npennies_combined &lt;- \n  bind_rows(pennies_sample |&gt; mutate(title = \"Original sample\"),\n            pennies_resample |&gt; mutate(title = \"Resample\"))\nggplot(pennies_combined, aes(x = year)) +\n  geom_histogram(binwidth = 10, color = \"white\") +\n  facet_wrap(~title) + \n  theme_minimal()"
+    "text": "Resampling the pennies\nImagine we put our 50 pennies in a bag and draw a new sample of 50 pennies by sampling with replacement. This is called resampling with replacement.\n\npennies_combined &lt;- \n  bind_rows(pennies_sample |&gt; mutate(title = \"Original sample\"),\n            pennies_resample |&gt; mutate(title = \"Resample\"))\nggplot(pennies_combined, aes(x = year)) +\n  geom_histogram(binwidth = 10, color = \"white\") +\n  facet_wrap(~title) + \n  theme_minimal(base_size = 14)"
   },
   {
     "objectID": "slides/19_simulation-based-inference.html#resampling-the-pennies-2",
@@ -454,7 +454,7 @@
     "href": "slides/19_simulation-based-inference.html#resampling-the-pennies-4",
     "title": "MATH167R: Simulation based inference",
     "section": "Resampling the pennies",
-    "text": "Resampling the pennies\nWe can compute each resample mean:\n\nggplot(resampled_means, aes(x = mean_year)) +\n  geom_histogram(binwidth = 1, color = \"white\", boundary = 1990) +\n  labs(x = \"Sampled mean year\") +\n  theme_minimal()"
+    "text": "Resampling the pennies\nWe can compute each resample mean:\n\nggplot(resampled_means, aes(x = mean_year)) +\n  geom_histogram(binwidth = 1, color = \"white\", boundary = 1990) +\n  labs(x = \"Sampled mean year\") +\n  theme_minimal(base_size = 20)"
   },
   {
     "objectID": "slides/19_simulation-based-inference.html#resampling-the-pennies-1000-times",
@@ -482,7 +482,7 @@
     "href": "slides/19_simulation-based-inference.html#resampling-confidence-intervals",
     "title": "MATH167R: Simulation based inference",
     "section": "Resampling confidence intervals",
-    "text": "Resampling confidence intervals\nWe can obtain a confidence interval based on our resample means:\n\nquantile(virtual_resampled_means$mean_year, c(.025, .975))\n\n    2.5%    97.5% \n1991.358 1999.441 \n\nggplot(virtual_resampled_means, aes(x = mean_year)) +\n  geom_histogram(binwidth = 1, color = \"white\", boundary = 1990) +\n  geom_vline(xintercept = quantile(virtual_resampled_means$mean_year, c(.025, .975)), \n             color = 'red') +\n  labs(x = \"sample mean\") +\n  theme_minimal()"
+    "text": "Resampling confidence intervals\nWe can obtain a confidence interval based on our resample means:\n\nquantile(virtual_resampled_means$mean_year, c(.025, .975))\n\n    2.5%    97.5% \n1991.358 1999.441 \n\nggplot(virtual_resampled_means, aes(x = mean_year)) +\n  geom_histogram(binwidth = 1, color = \"white\", boundary = 1990) +\n  geom_vline(xintercept = quantile(virtual_resampled_means$mean_year, c(.025, .975)), \n             color = 'red') +\n  labs(x = \"sample mean\") +\n  theme_minimal(base_size = 24)"
   },
   {
     "objectID": "slides/19_simulation-based-inference.html#resampling-confidence-intervals-1",
@@ -531,7 +531,7 @@
     "href": "slides/19_simulation-based-inference.html#bootstrap-samples-2",
     "title": "MATH167R: Simulation based inference",
     "section": "Bootstrap samples",
-    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions for \\(\\overline{X}-E(\\overline{X})\\).\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = 0, sd = 1 / sqrt(20)),\n                aes(color = \"Parametric (Normal)\")) +\n  xlab(\"Xbar - E(Xbar)\")"
+    "text": "Bootstrap samples\nWe can compare the bootstrap sampling distributions and true sampling distributions for \\(\\overline{X}-E(\\overline{X})\\).\n\nlibrary(ggplot2)\nplot_dat &lt;-\n  data.frame(Xbar = c(Xbar_exp - 1, bootstrap_Xbar - mean(X)),\n             source = rep(c(\"Parametric (Exp)\", \"Bootstrap\"), each = 10000))\nggplot(plot_dat, aes(x = Xbar, color = source)) +\n  geom_density() +\n  geom_function(fun = dnorm, \n                args = list(mean = 0, sd = 1 / sqrt(20)),\n                aes(color = \"Parametric (Normal)\")) +\n  xlab(\"Xbar - E(Xbar)\") +\n  theme_minimal(base_size = 20)"
   },
   {
     "objectID": "slides/19_simulation-based-inference.html#bootstrap-samples-3",

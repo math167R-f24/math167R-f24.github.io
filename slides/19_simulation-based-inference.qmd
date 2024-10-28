@@ -228,7 +228,7 @@ The `moderndive` package contains data on a sample of 50 pennies in the `pennies
 library(tidyverse)
 ggplot(pennies_sample, aes(x = year)) +
   geom_histogram(binwidth = 10, color = "white") +
-  theme_minimal()
+  theme_minimal(base_size = 28)
 ```
 
 ## Estimating the age of US pennies
@@ -296,7 +296,7 @@ pennies_combined <-
 ggplot(pennies_combined, aes(x = year)) +
   geom_histogram(binwidth = 10, color = "white") +
   facet_wrap(~title) + 
-  theme_minimal()
+  theme_minimal(base_size = 14)
 ```
 
 ## Resampling the pennies
@@ -357,7 +357,7 @@ We can compute each resample mean:
 ggplot(resampled_means, aes(x = mean_year)) +
   geom_histogram(binwidth = 1, color = "white", boundary = 1990) +
   labs(x = "Sampled mean year") +
-  theme_minimal()
+  theme_minimal(base_size = 20)
 ```
 
 ## Resampling the pennies 1000 times
@@ -449,7 +449,7 @@ ggplot(virtual_resampled_means, aes(x = mean_year)) +
   geom_vline(xintercept = quantile(virtual_resampled_means$mean_year, c(.025, .975)), 
              color = 'red') +
   labs(x = "sample mean") +
-  theme_minimal()
+  theme_minimal(base_size = 24)
 ```
 
 ## Resampling confidence intervals
@@ -565,7 +565,8 @@ ggplot(plot_dat, aes(x = Xbar, color = source)) +
   geom_function(fun = dnorm, 
                 args = list(mean = 0, sd = 1 / sqrt(20)),
                 aes(color = "Parametric (Normal)")) +
-  xlab("Xbar - E(Xbar)")
+  xlab("Xbar - E(Xbar)") +
+  theme_minimal(base_size = 20)
 ```
 
 ## Bootstrap samples
@@ -586,7 +587,8 @@ ggplot(plot_dat, aes(x = Xbar, color = source)) +
   geom_function(fun = dnorm, 
                 args = list(mean = 0, sd = 1 / sqrt(20)),
                 aes(color = "Parametric (Normal)")) +
-  xlab("Xbar - E(Xbar)")
+  xlab("Xbar - E(Xbar)") +
+  theme_minimal(base_size = 20)
 ```
 
 ## Bootstrap confidence intervals
