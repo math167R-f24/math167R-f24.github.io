@@ -28,8 +28,8 @@ draft: false
 |      | W 10/16 | Simulations                           |  [Slides 16](slides/16_debugging.html){.label .label-green}          |  |          |     |
 |  10  | M 10/21 | Simulations                           |  [Slides 17](slides/17_simulations.html){.label .label-green}          |          |     |
 |      | W 10/23 | Simulations                           |   [Slides 18](slides/18_more-simulations.html){.label .label-green}          |   [Check-in 06](checkins/06_checkin.html){.label .label-purple}         |     |
-|  11  | M 10/28  | Statistical inference                 |  [Slides 19](slides/19_simulation-based-inference.html){.label .label-green}      |          |     |
-|      | W 10/30 | Statistical inference                 |[Slides 20](slides/20_confidence-intervals.html){.label .label-green}         |       | [Lab 07](labs/07_lab.html){.label .label-red}       |
+|  11  | M 10/28  | Statistical inference                 |  [Slides 19](slides/20_confidence-intervals.html){.label .label-green}     |          |     |
+|      | W 10/30 | Statistical inference                 |[Slides 20](slides/19_simulation-based-inference.html){.label .label-green}        |       | [Lab 07](labs/07_lab.html){.label .label-red}       |
 |  12  | M 11/4 | Simulation-based inference                  |        |          |     |
 |      | W 11/6 | Simulation-based inference            |        |          |     |
 |  13  | M 11/11 | *Veterans' Day - No class*                           |        |          |     |
