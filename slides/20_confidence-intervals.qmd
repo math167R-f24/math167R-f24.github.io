@@ -241,7 +241,7 @@ ggplot(plot_dat,
 
 **What if we do not know whether the population distribution is normal?** Provided $n$ is sufficiently large, the CLT implies that $\overline{X}_n$ is approximately normal regardless of the population distribution.
 
-**What if we do not know** $\sigma?$ Again, provided $n$ is sufficiently large, we can replace $\sigma$ with the sample standard deviation $S$.
+What if we **do not** know $\sigma?$ Again, provided $n$ is sufficiently large, we can replace $\sigma$ with the sample standard deviation $S$.
 
 We obtain the confidence interval formula:
 
@@ -274,6 +274,28 @@ $$T=\frac{\overline{X}_n-\mu}{S/\sqrt{n}}$$
 has a $t$ distribution with $n-1$ degrees of freedom. We can thus use the confidence interval
 
 $$\overline{X}_n\pm t_{\alpha/2, n-1}(S/\sqrt{n})$$ where $P(T\leq t_{p, n-1})=p$ when $T$ follows a $t$-distribution with $n-1$ degrees of freedom.
+
+
+## $t$-distribution vs. normal distribution
+
+```{r t.vs.n}
+#| echo: false
+#| eval: TRUE
+#| cache: TRUE
+#| fig.alt: "Comparison of standard normal density and t-density for various values of degrees of freedom, indicating that as degrees of freedom increases, the t-density approaches the standard normal"
+library(ggplot2)
+dat <- data.frame(x = seq(-4, 4, length.out = 500)) 
+ggplot(dat, aes(x = x)) +
+  geom_function(fun = dnorm, aes(color = "normal"),
+                linewidth = 1.4) +
+  geom_function(fun = dt, args = list(df = 1), aes(color = "t, df = 1"),
+                linewidth = 1.4) + 
+  geom_function(fun = dt, args = list(df = 5), aes(color = "t, df = 5"),
+                linewidth = 1.4) + 
+  geom_function(fun = dt, args = list(df = 20), aes(color = "t, df = 20"),
+                linewidth = 1.4) +
+  theme_bw(base_size = 22) + ylab("f(x)") + ggtitle("Comparison of normal and t densities")
+```
 
 ## Assessing normality of the population distribution
 
@@ -396,3 +418,19 @@ Note that this formula only gives an approximate CI because of the use of $\wide
 ## Other confidence intervals
 
 R has implementations for confidence intervals for many types of population parameters, including for non-normally distributed populations. Always carefully read the documentation before using these functions.
+
+## Summary
+
+Suppose you have independent and identically distributed data $X_1,\ldots, X_n$ with mean $\mu$ and variance $\sigma^2$. If  you wish to construct a confidence interval for a mean parameter $\mu$:
+
+* When $n$ is large, you can assume $\overline{X}_n$ is normally distributed with mean $\mu$ and variance $\sigma^2/n$.
+
+* When $n$ is small, **but $X_1,\ldots, X_n$ are normally distributed, ** you can use a $t$-interval since 
+$$T=\frac{\overline{X}_n-\mu}{S/\sqrt{n}}$$
+has a $t$-distribution with $n-1$ degrees of freedom.
+
+* What about when $n$ is small and $X_1,\ldots, X_n$ are **not** normally distributed, what do we do?
+
+## Simulations
+
+What if $n$ is small and $X_1,\ldots, X_n$ are Poisson? Exponential? Negative binomial? We can use simulation to see how poorly our intervals do.

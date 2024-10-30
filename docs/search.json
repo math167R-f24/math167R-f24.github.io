@@ -6435,6 +6435,13 @@
     "text": "When \\(n\\) is small but \\(\\sigma\\) unknown: \\(t\\)-intervals\nWhat about when \\(n\\) is small, but \\(\\sigma\\) is unknown? Assuming again that the population distribution is normal,\n\\[T=\\frac{\\overline{X}_n-\\mu}{S/\\sqrt{n}}\\]\nhas a \\(t\\) distribution with \\(n-1\\) degrees of freedom. We can thus use the confidence interval\n\\[\\overline{X}_n\\pm t_{\\alpha/2, n-1}(S/\\sqrt{n})\\] where \\(P(T\\leq t_{p, n-1})=p\\) when \\(T\\) follows a \\(t\\)-distribution with \\(n-1\\) degrees of freedom."
   },
   {
+    "objectID": "slides/20_confidence-intervals.html#t-distribution-vs.-normal-distribution",
+    "href": "slides/20_confidence-intervals.html#t-distribution-vs.-normal-distribution",
+    "title": "MATH167R: Statistical inference",
+    "section": "\\(t\\)-distribution vs. normal distribution",
+    "text": "\\(t\\)-distribution vs. normal distribution"
+  },
+  {
     "objectID": "slides/20_confidence-intervals.html#assessing-normality-of-the-population-distribution",
     "href": "slides/20_confidence-intervals.html#assessing-normality-of-the-population-distribution",
     "title": "MATH167R: Statistical inference",
@@ -6510,6 +6517,20 @@
     "title": "MATH167R: Statistical inference",
     "section": "Other confidence intervals",
     "text": "Other confidence intervals\nR has implementations for confidence intervals for many types of population parameters, including for non-normally distributed populations. Always carefully read the documentation before using these functions."
+  },
+  {
+    "objectID": "slides/20_confidence-intervals.html#summary",
+    "href": "slides/20_confidence-intervals.html#summary",
+    "title": "MATH167R: Statistical inference",
+    "section": "Summary",
+    "text": "Summary\nSuppose you have independent and identically distributed data \\(X_1,\\ldots, X_n\\) with mean \\(\\mu\\) and variance \\(\\sigma^2\\). If you wish to construct a confidence interval for a mean parameter \\(\\mu\\):\n\nWhen \\(n\\) is large, you can assume \\(\\overline{X}_n\\) is normally distributed with mean \\(\\mu\\) and variance \\(\\sigma^2/n\\).\nWhen \\(n\\) is small, but \\(X_1,\\ldots, X_n\\) are normally distributed,  you can use a \\(t\\)-interval since \\[T=\\frac{\\overline{X}_n-\\mu}{S/\\sqrt{n}}\\] has a \\(t\\)-distribution with \\(n-1\\) degrees of freedom.\nWhat about when \\(n\\) is small and \\(X_1,\\ldots, X_n\\) are not normally distributed, what do we do?"
+  },
+  {
+    "objectID": "slides/20_confidence-intervals.html#simulations",
+    "href": "slides/20_confidence-intervals.html#simulations",
+    "title": "MATH167R: Statistical inference",
+    "section": "Simulations",
+    "text": "Simulations\nWhat if \\(n\\) is small and \\(X_1,\\ldots, X_n\\) are Poisson? Exponential? Negative binomial? We can use simulation to see how poorly our intervals do."
   },
   {
     "objectID": "slides/02_objects-classes.html#warm-up-getting-to-know-each-other",
