@@ -286,7 +286,7 @@ $$\overline{X}_n\pm t_{\alpha/2, n-1}(S/\sqrt{n})$$ where $P(T\leq t_{p, n-1})=p
 library(ggplot2)
 dat <- data.frame(x = seq(-4, 4, length.out = 500)) 
 ggplot(dat, aes(x = x)) +
-  geom_function(fun = dnorm, aes(color = "normal"),
+  geom_function(fun = dnorm, aes(color = "N(0, 1)"),
                 linewidth = 1.4) +
   geom_function(fun = dt, args = list(df = 1), aes(color = "t, df = 1"),
                 linewidth = 1.4) + 

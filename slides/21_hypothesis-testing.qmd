@@ -170,7 +170,7 @@ Problems begin when our null distribution is misspecified (for example, when ass
 
 ## Visualizing $P$-values
 
-![(Devore)](images/Screenshot%202023-10-28%20at%2010.30.53%20AM.png)
+![(Devore)](images/Screenshot%202023-10-28%20at%2010.30.53%20AM.png){fig-alt="Graph of standard normal distribution for two-tailed z-test with P-value formula and labeled calculated z-scores."}
 
 ## Summary: hypothesis testing
 
@@ -180,7 +180,7 @@ Problems begin when our null distribution is misspecified (for example, when ass
 
 ## Which man is named "Tim" and which is named "Bob"?
 
-![[Lea et al. (2007)](https://link.springer.com/article/10.3758/BF03194119)](images/tim_bob.png)
+![[Lea et al. (2007)](https://link.springer.com/article/10.3758/BF03194119)](images/tim_bob.png){fig-alt="Two side-by-side black-and-white headshots of men with neutral expressions, one with wavy hair and a goatee, the other bald with a goatee."}
 
 ## Which man is named "Tim" and which is named "Bob"?
 
