@@ -489,7 +489,7 @@
     "href": "slides/19_simulation-based-inference.html#resampling-confidence-intervals-1",
     "title": "MATH167R: Simulation based inference",
     "section": "Resampling confidence intervals",
-    "text": "Resampling confidence intervals\nCompare with a normal sampling distribution based confidence interval:\n\nvirtual_resampled_means |&gt;\n  summarize(lower = mean(mean_year) - 1.96 * sd(mean_year),\n            upper = mean(mean_year) + 1.96 * sd(mean_year))\n\n# A tibble: 1 × 2\n  lower upper\n  &lt;dbl&gt; &lt;dbl&gt;\n1 1991. 2000."
+    "text": "Resampling confidence intervals\nCompare with a normal sampling distribution based confidence interval:\n\nt.test(pennies_sample$year)$conf.int\n\n[1] 1991.127 1999.753\nattr(,\"conf.level\")\n[1] 0.95"
   },
   {
     "objectID": "slides/19_simulation-based-inference.html#resampling-methods-1",

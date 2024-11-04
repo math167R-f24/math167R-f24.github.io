@@ -467,9 +467,7 @@ Compare with a normal sampling distribution based confidence interval:
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
-virtual_resampled_means |>
-  summarize(lower = mean(mean_year) - 1.96 * sd(mean_year),
-            upper = mean(mean_year) + 1.96 * sd(mean_year))
+t.test(pennies_sample$year)$conf.int
 ```
 
 ## Resampling methods

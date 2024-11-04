@@ -730,14 +730,11 @@ Peter Gao
 <h2>Resampling confidence intervals</h2>
 <p>Compare with a normal sampling distribution based confidence interval:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>virtual_resampled_means <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> <span class="fu">mean</span>(mean_year) <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(mean_year),</span>
-<span id="cb31-3"><a></a>            <span class="at">upper =</span> <span class="fu">mean</span>(mean_year) <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(mean_year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">t.test</span>(pennies_sample<span class="sc">$</span>year)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  lower upper
-  &lt;dbl&gt; &lt;dbl&gt;
-1 1991. 2000.</code></pre>
+<pre><code>[1] 1991.127 1999.753
+attr(,"conf.level")
+[1] 0.95</code></pre>
 </div>
 </div>
 </section>
