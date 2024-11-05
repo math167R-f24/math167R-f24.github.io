@@ -268,7 +268,7 @@ Imagine we put our 50 pennies in a bag and draw a **new** sample of 50 pennies b
 #| fig-cap: ""
 set.seed(327)
 pennies_resample <-
-  data.frame(year = sample(pennies$year, 50, replace = T))
+  data.frame(year = sample(pennies_sample$year, 50, replace = T))
 head(pennies_resample)
 pennies_resample %>% 
   summarize(mean_year = mean(year))

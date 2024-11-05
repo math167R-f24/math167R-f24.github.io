@@ -581,22 +581,22 @@ Peter Gao
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">set.seed</span>(<span class="dv">327</span>)</span>
 <span id="cb12-2"><a></a>pennies_resample <span class="ot">&lt;-</span></span>
-<span id="cb12-3"><a></a>  <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">sample</span>(pennies<span class="sc">$</span>year, <span class="dv">50</span>, <span class="at">replace =</span> T))</span>
+<span id="cb12-3"><a></a>  <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="fu">sample</span>(pennies_sample<span class="sc">$</span>year, <span class="dv">50</span>, <span class="at">replace =</span> T))</span>
 <span id="cb12-4"><a></a><span class="fu">head</span>(pennies_resample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year
-1 1973
-2 1977
-3 1976
-4 2004
-5 1981
-6 2000</code></pre>
+1 1979
+2 2015
+3 1978
+4 2017
+5 2006
+6 1979</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>pennies_resample <span class="sc">%&gt;%</span> </span>
 <span id="cb14-2"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_year =</span> <span class="fu">mean</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  mean_year
-1   1987.58</code></pre>
+1   1997.56</code></pre>
 </div>
 </div>
 </section>

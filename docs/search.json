@@ -426,7 +426,7 @@
     "href": "slides/19_simulation-based-inference.html#resampling-the-pennies",
     "title": "MATH167R: Simulation based inference",
     "section": "Resampling the pennies",
-    "text": "Resampling the pennies\nImagine we put our 50 pennies in a bag and draw a new sample of 50 pennies by sampling with replacement. This is called resampling with replacement.\n\nset.seed(327)\npennies_resample &lt;-\n  data.frame(year = sample(pennies$year, 50, replace = T))\nhead(pennies_resample)\n\n  year\n1 1973\n2 1977\n3 1976\n4 2004\n5 1981\n6 2000\n\npennies_resample %&gt;% \n  summarize(mean_year = mean(year))\n\n  mean_year\n1   1987.58"
+    "text": "Resampling the pennies\nImagine we put our 50 pennies in a bag and draw a new sample of 50 pennies by sampling with replacement. This is called resampling with replacement.\n\nset.seed(327)\npennies_resample &lt;-\n  data.frame(year = sample(pennies_sample$year, 50, replace = T))\nhead(pennies_resample)\n\n  year\n1 1979\n2 2015\n3 1978\n4 2017\n5 2006\n6 1979\n\npennies_resample %&gt;% \n  summarize(mean_year = mean(year))\n\n  mean_year\n1   1997.56"
   },
   {
     "objectID": "slides/19_simulation-based-inference.html#resampling-the-pennies-1",
