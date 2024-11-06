@@ -67,11 +67,11 @@ t.test(extra ~ group, data = sleep)
 
 ## "There is only one test"
 
-![Image by [Allen Downey](https://allendowney.github.io/ElementsOfDataScience/13_hypothesis.html)](images/hypothesis_testing.png)
+![Image by [Allen Downey](https://allendowney.github.io/ElementsOfDataScience/13_hypothesis.html)](images/hypothesis_testing.png){fig-alt="Flowchart demonstrating data to observed effect δ* with simulated data and p-value distribution under H0."}
 
 ## "There is only one test": Tim and Bob
 
-![[Lea et al. (2007)](https://link.springer.com/article/10.3758/BF03194119)](images/tim_bob.png)
+![[Lea et al. (2007)](https://link.springer.com/article/10.3758/BF03194119)](images/tim_bob.png){fig-alt="Black and white headshots of two men, one with curly hair and a goatee, the other bald with a goatee."}
 
 ## "There is only one test": Tim and Bob
 
@@ -142,6 +142,7 @@ Can you tell which is real and which are fake?
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-align: "A composite chart with five horizontal strips labeled A to E, each showing zigzag patterns of teal and red circles."
 flips_long <- flips |>
   mutate(id = 1:200) |>
   pivot_longer(-id,  names_to = "Sequence", values_to = "Flip")
@@ -258,6 +259,7 @@ This suggests that sequence C has too many heads.
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Histogram showing the distribution of the number of heads with five colored vertical lines (A-red, B-green, C-blue, D-yellow, E-pink)."
 sim_totals <- data.frame(x = rbinom(30000, 200, .5))
 flip_totals <- flips_long |>
   group_by(Sequence) |>
@@ -376,7 +378,7 @@ ggplot() +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
-#| 
+#| fig-alt: "Bar chart showing distribution of longest streak counts, with red, green, blue, yellow, and purple vertical lines indicating sequences A, B, C, D, and E."
 sim_streaks <- 
   data.frame(
     x = replicate(10000, 

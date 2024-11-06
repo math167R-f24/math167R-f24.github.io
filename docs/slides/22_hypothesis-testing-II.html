@@ -479,11 +479,11 @@ mean in group 1 mean in group 2
 <section id="there-is-only-one-test" class="slide level2">
 <h2>“There is only one test”</h2>
 
-<img data-src="images/hypothesis_testing.png" class="r-stretch quarto-figure-center"><p class="caption">Image by <a href="https://allendowney.github.io/ElementsOfDataScience/13_hypothesis.html">Allen Downey</a></p></section>
+<img data-src="images/hypothesis_testing.png" alt="Flowchart demonstrating data to observed effect δ* with simulated data and p-value distribution under H0." class="r-stretch quarto-figure-center"><p class="caption">Image by <a href="https://allendowney.github.io/ElementsOfDataScience/13_hypothesis.html">Allen Downey</a></p></section>
 <section id="there-is-only-one-test-tim-and-bob" class="slide level2">
 <h2>“There is only one test”: Tim and Bob</h2>
 
-<img data-src="images/tim_bob.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://link.springer.com/article/10.3758/BF03194119">Lea et al.&nbsp;(2007)</a></p></section>
+<img data-src="images/tim_bob.png" alt="Black and white headshots of two men, one with curly hair and a goatee, the other bald with a goatee." class="r-stretch quarto-figure-center"><p class="caption"><a href="https://link.springer.com/article/10.3758/BF03194119">Lea et al.&nbsp;(2007)</a></p></section>
 <section id="there-is-only-one-test-tim-and-bob-1" class="slide level2">
 <h2>“There is only one test”: Tim and Bob</h2>
 
@@ -492,7 +492,7 @@ mean in group 1 mean in group 2
 <section id="designing-your-own-hypothesis-test" class="slide level2">
 <h2>Designing your own hypothesis test</h2>
 <p>Suppose we have five sequences of 200 coin flips.</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/load_flips_70bebb464c266053be8261ee6b36b0a7">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   A     B     C     D     E    
@@ -512,7 +512,7 @@ mean in group 1 mean in group 2
 <section id="designing-your-own-hypothesis-test-1" class="slide level2">
 <h2>Designing your own hypothesis test</h2>
 <p>First, load the flips using the following code.</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/load_flips_dummy_634832f50599f10a49889eeaabaedb88">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb4-2"><a></a>flips <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://math167r-s24.github.io/static/flips.csv"</span>)</span>
 <span id="cb4-3"><a></a><span class="fu">head</span>(flips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -533,10 +533,10 @@ mean in group 1 mean in group 2
 <section id="visual-inspection" class="slide level2">
 <h2>Visual inspection</h2>
 
-<img data-src="22_hypothesis-testing-II_files/figure-revealjs/visualize_flips-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="22_hypothesis-testing-II_files/figure-html/visualize_flips-1.png" class="quarto-figure quarto-figure-A composite chart with five horizontal strips labeled A to E, each showing zigzag patterns of teal and red circles. r-stretch" style="width:100.0%"></section>
 <section id="visual-inspection-1" class="slide level2">
 <h2>Visual inspection</h2>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/visualize_flips_dummy_3702003664385ce21257f4ea69413430">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>flips_long <span class="ot">&lt;-</span> flips <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">200</span>) <span class="sc">|&gt;</span></span>
 <span id="cb6-3"><a></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>id,  <span class="at">names_to =</span> <span class="st">"Sequence"</span>, <span class="at">values_to =</span> <span class="st">"Flip"</span>)</span>
@@ -564,7 +564,7 @@ H_a: p&amp;\neq 1/2
 <section id="a-simple-test-counting-the-number-of-heads-1" class="slide level2">
 <h2>A simple test: Counting the number of heads</h2>
 <p>What are the test statistics for each of our sequences? One option is to use the total number of heads.</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/test_stats_fa3df0db1124f8369ee02bcdb0e9e75d">
+<div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   Sequence nHeads
@@ -581,7 +581,7 @@ H_a: p&amp;\neq 1/2
 <h2>A simple test: Counting the number of heads</h2>
 <p>Do any of these indicate that certain sequences are fake? How could we get corresponding P-values?</p>
 <p><strong>Approach one</strong>: Use the normal approximation: <span class="math display">\[\widehat{p}\sim N\left(p, \sqrt{\frac{p(1-p)}{n}}\right)\]</span></p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/Pvalues_5834dfc8e618fccad8aa9d795d687c09">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>phats <span class="ot">&lt;-</span> flips_long <span class="sc">|&gt;</span></span>
 <span id="cb8-2"><a></a>  <span class="fu">group_by</span>(Sequence) <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a></a>  <span class="fu">summarize</span>(<span class="at">phat =</span> <span class="fu">mean</span>(Flip <span class="sc">==</span> <span class="st">"H"</span>))</span>
@@ -597,11 +597,11 @@ H_a: p&amp;\neq 1/2
 <h2>A simple test: Counting the number of heads</h2>
 <p><strong>Approach two</strong>: Use simulations to estimate the distribution of number of heads <strong>under the null</strong>:</p>
 
-<img data-src="22_hypothesis-testing-II_files/figure-revealjs/Pvalues_sim-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="22_hypothesis-testing-II_files/figure-html/Pvalues_sim-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Histogram showing the distribution of the number of heads with five colored vertical lines (A-red, B-green, C-blue, D-yellow, E-pink)."></section>
 <section id="a-simple-test-counting-the-number-of-heads-4" class="slide level2">
 <h2>A simple test: Counting the number of heads</h2>
 <p><strong>Approach two</strong>: Use simulations to estimate the distribution of number of heads <strong>under the null</strong>:</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/Pvalues_sim_dummy_hist_81094fb6de4972292e4e3b2e42b5fe2e">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>sim_totals <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rbinom</span>(<span class="dv">30000</span>, <span class="dv">200</span>, .<span class="dv">5</span>))</span>
 <span id="cb10-2"><a></a>flip_totals <span class="ot">&lt;-</span> flips_long <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a></a>  <span class="fu">group_by</span>(Sequence) <span class="sc">|&gt;</span></span>
@@ -615,19 +615,19 @@ H_a: p&amp;\neq 1/2
 <section id="a-simple-test-counting-the-number-of-heads-5" class="slide level2">
 <h2>A simple test: Counting the number of heads</h2>
 <p><strong>Approach two</strong>: Use simulations to estimate the distribution of number of heads <strong>under the null</strong>:</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/Pvalues_sim_dummy_9cb82adabefa1f5965f6118b0ba08315">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>p_vals <span class="ot">&lt;-</span> <span class="fu">sapply</span>(flip_totals<span class="sc">$</span>nHeads,</span>
 <span id="cb11-2"><a></a>                 <span class="cf">function</span>(x) <span class="fu">mean</span>(<span class="fu">abs</span>(sim_totals <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">&gt;=</span> (x <span class="sc">-</span> <span class="dv">100</span>)))</span>
 <span id="cb11-3"><a></a>p_vals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.00000000 0.28623333 0.05573333 0.94486667 1.00000000</code></pre>
+<pre><code>[1] 1.00000000 0.29033333 0.05516667 0.94340000 1.00000000</code></pre>
 </div>
 </div>
 </section>
 <section id="a-slightly-different-test-streak-length" class="slide level2">
 <h2>A slightly different test: streak length</h2>
 <p>We can also consider a different test statistic: longest streak.</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/streaks_05001c151d3a173483ec1d27f3c41a7c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>flip_streaks <span class="ot">&lt;-</span> flips_long <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a></a>  <span class="fu">group_by</span>(Sequence) <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a></a>  <span class="fu">summarize</span>(<span class="at">longest_streak =</span> <span class="fu">max</span>(<span class="fu">rle</span>(Flip)<span class="sc">$</span>length))</span>
@@ -647,7 +647,7 @@ H_a: p&amp;\neq 1/2
 <section id="a-slightly-different-test-streak-length-1" class="slide level2">
 <h2>A slightly different test: streak length</h2>
 <p>We can then simulate the null distribution of streak length.</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/streaks_sim_dummy_0cae9273331f7c1dc20d019e72e64044">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>sim_streaks <span class="ot">&lt;-</span> </span>
 <span id="cb15-2"><a></a>  <span class="fu">data.frame</span>(</span>
 <span id="cb15-3"><a></a>    <span class="at">x =</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, </span>
@@ -664,16 +664,16 @@ H_a: p&amp;\neq 1/2
 <section id="a-slightly-different-test-streak-length-2" class="slide level2">
 <h2>A slightly different test: streak length</h2>
 
-<img data-src="22_hypothesis-testing-II_files/figure-revealjs/streaks_sim-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="22_hypothesis-testing-II_files/figure-html/streaks_sim-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Bar chart showing distribution of longest streak counts, with red, green, blue, yellow, and purple vertical lines indicating sequences A, B, C, D, and E."></section>
 <section id="a-slightly-different-test-streak-length-3" class="slide level2">
 <h2>A slightly different test: streak length</h2>
 <p>Note that calculating the P-value is tricky here–a one-sided test may make the most sense.</p>
-<div class="cell" data-layout-align="center" data-hash="22_hypothesis-testing-II_cache/revealjs/Pvalues_streak_e1127abf9d16fc82a73d6a8fbe325217">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>p_vals <span class="ot">&lt;-</span> <span class="fu">sapply</span>(flip_streaks<span class="sc">$</span>longest_streak,</span>
 <span id="cb16-2"><a></a>                 <span class="cf">function</span> (x) <span class="fu">mean</span>(sim_streaks<span class="sc">$</span>x <span class="sc">&gt;</span> x))</span>
 <span id="cb16-3"><a></a>p_vals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.0000 0.0057 0.1679 0.3186 0.7961</code></pre>
+<pre><code>[1] 1.0000 0.0054 0.1769 0.3216 0.8019</code></pre>
 </div>
 </div>
 <p>This suggests that the longest streaks are too long for sequence B. Note that we could try other test statistics. What about average streak length?</p>
@@ -690,6 +690,9 @@ H_a: p&amp;\neq 1/2
 <h2>P-Hacking: Designing a test after seeing the data</h2>
 <p>In principle, we should decide which test to use <strong>before</strong> seeing the data. Why?</p>
 <p>I could use the following test statistic: number of times the exact sequence <span class="math inline">\(D\)</span> is obtained. What is the P-value for each sequence?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>knitr<span class="sc">::</span><span class="fu">knit_exit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -907,44 +910,6 @@ H_a: p&amp;\neq 1/2
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

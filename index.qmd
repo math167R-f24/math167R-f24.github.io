@@ -31,15 +31,15 @@ draft: false
 |  11  | M 10/28  | Statistical inference                 |  [Slides 19](slides/20_confidence-intervals.html){.label .label-green}     |          |     |
 |      | W 10/30 | Statistical inference                 |       |       | [Lab 07](labs/07_lab.html){.label .label-red}       |
 |  12  | M 11/4 | Simulation-based inference                  |[Slides 20](slides/19_simulation-based-inference.html){.label .label-green}         |          |     |
-|      | W 11/6 | Simulation-based inference            |   [Slides 21](slides/21_hypothesis-testing.html){.label .label-green}      |    [Check-in 07](checkins/07_checkin.html){.label .label-purple}       |     |
+|      | W 11/6 | Simulation-based inference            |   [Slides 21](slides/21_hypothesis-testing.html){.label .label-green}      |           |     |
 |  13  | M 11/11 | *Veterans' Day - No class*                           |        |          |     |
-|      | W 11/13 | Regression                          |        |          |     |
-|  14  | M 11/18 | Regression                           |        |          |     |
-|      | W 11/20  | Prediction                         |        |          |     |
-|  15  | M 11/25  | Prediction      |        |          |     |
+|      | W 11/13 | Hypothesis Testing                          |    [Slides 22](slides/22_hypothesis-testing-II.html){.label .label-green}    |   [Check-in 07](checkins/07_checkin.html){.label .label-purple}       | [Lab 08](labs/08_lab.html){.label .label-red}     |
+|  14  | M 11/18 | Hypothesis Testing                         |       |          |     |
+|      | W 11/20  | Regression                         |        |          |     |
+|  15  | M 11/25  | Regression      |        |          |     |
 |      | W 11/27  | *Thanksgiving - No class*     |        |          |     |
-|  16  | M 12/2  | Interactives                  |        |          |     |
-|      | W 12/4 | Interactives                   |        |          |     |
+|  16  | M 12/2  | Prediction                |        |          |     |
+|      | W 12/4 | Prediction                  |        |          |     |
 |  17  | M 12/9  | Review                   |        |          |     |
 |   18   | M 12/16 | *Final exam*                   |        |          |     |
 :::

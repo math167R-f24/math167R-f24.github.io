@@ -34,8 +34,6 @@ head(flips)
 
 Can you tell which is real and which are fake?
 
-
-
 ## Visual inspection
 
 ```{r visualize_flips}
@@ -49,6 +47,7 @@ Can you tell which is real and which are fake?
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Five horizontal plots labeled A through E with teal 'T' and red 'H' dots connected by crisscrossing lines."
 flips_long <- flips |>
   mutate(id = 1:200) |>
   pivot_longer(-id,  names_to = "Sequence", values_to = "Flip")
@@ -63,7 +62,6 @@ flips_long |>
     axis.title = element_blank()
   )
 ```
-
 
 ## Visual inspection
 
@@ -92,7 +90,6 @@ flips_long |>
     axis.title = element_blank()
   )
 ```
-
 
 ## A slightly different test: streak length
 
@@ -180,6 +177,7 @@ If the null hypothesis is true, the shuffled data sets will resemble the origina
 #| echo: false
 #| message: false
 #| warning: false
+#| fig-alt: "Side-by-side comparison of three heatmaps labeled 'Data', 'Shuffled', and 'Shuffled and reordered' showing different distributions of red and blue shading."
 library(tidyverse)
 library(ggplot2)
 data_dat <- data.frame(carrier = carrier, 
@@ -223,6 +221,7 @@ ggplot(plot_dat, aes(x = Variable, y = id, fill = Variable)) +
 #| echo: false
 #| message: false
 #| warning: false
+#| fig-alt: "Three heatmaps showing data arrangements: original, shuffled, and shuffled and reordered"
 library(tidyverse)
 library(ggplot2)
 data_dat <- data.frame(carrier = carrier, 
@@ -307,6 +306,7 @@ test_stats_null <- replicate(1000, single_test(carrier, null_y))
 ```{r}
 #| eval: true
 #| echo: true
+#| fig-alt: Histogram of test_stats_alt with a bell-shaped distribution and a vertical purple line slightly above zero."
 hist(test_stats_null)
 abline(v = null_diff, lwd=2, col="purple")
 mean(abs(test_stats_null) > abs(null_diff)) # P-value
@@ -319,6 +319,7 @@ Compare with the case where the null hypothesis is false.
 ```{r}
 #| eval: true
 #| echo: true
+#| fig-alt: "Histogram of test_stats_alt with a bell-shaped distribution and a vertical purple line slightly above zero."
 set.seed(1)
 alt_diff <- mean(alt_y[carrier==1]) - mean(alt_y[carrier==0])
 test_stats_alt <- replicate(1000, single_test(carrier, alt_y))
@@ -337,12 +338,12 @@ What if we apply this idea to the `sleep` data?
 head(sleep)
 ```
 
-
 ## Permutation tests: `sleep` data
 
 ```{r}
 #| eval: true
 #| echo: true
+#| fig-alt: "Histogram of test_stats_alt with a purple vertical line at approximately -2."
 test_stat <- mean(sleep$extra[sleep$group == 1]) - 
   mean(sleep$extra[sleep$group == 2])
 single_test <- function(label, y) {
@@ -414,6 +415,7 @@ ggplot(x, aes(x = x)) +
 ```{r}
 #| eval: true
 #| echo: false
+#| fig-alt: "Line graph showing power versus true population mean for three sample sizes: n=10 (red), n=20 (green), and n=5 (blue)."
 one_sample_z_power <- function(mu_a, alpha, n) {
   z <- qnorm(1 - alpha / 2)
   return(1 - pnorm(z - mu_a * sqrt(n)) + pnorm(-z - mu_a * sqrt(n)))
@@ -475,6 +477,7 @@ ggplot(mu_a, aes(x = mu_a)) +
 #| eval: true
 #| echo: false
 #| cache: true
+#| fig-alt: "Line graph showing power vs. true population mean with curves for n = 5, n = 10, and n = 20."
 simulate_test <- function(mu_a, alpha, n) {
   Xbar <- mean(rnorm(n, mean = mu_a, sd = 1))
   Z_score <- Xbar * sqrt(n)
@@ -503,7 +506,6 @@ ggplot(mu_a, aes(x = mu_a)) +
   theme_bw()
 ```
 
-
 ## Exercise: estimating power
 
 If $X_1,\ldots X_n\sim N(1, 1)$, what is the power for a one-sample $t$ test for the hypotheses $H_0:\mu = 0$ and $H_a:\mu\not=0$ if $n=30$?
@@ -521,6 +523,7 @@ Suppose we simulate 25 observations of 8 variables which we know to be uncorrela
 ```{r phack.sim, eval = F, echo = T}
 #| eval: true
 #| echo: true
+#| fig-alt: "Matrix of 64 scatter plots arranged in an 8x8 grid, with rows and columns labeled var 1 to var 8"
 no_signal_data <- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix
 pairs(no_signal_data) # pairwise scatter plots
 ```
@@ -531,6 +534,7 @@ pairs(no_signal_data) # pairwise scatter plots
 #| eval: true
 #| echo: true
 #| cache: true
+#| fig-alt: "Matrix of 64 scatter plots arranged in an 8x8 grid, with rows and columns labeled var 1 to var 8"
 no_signal_data <- matrix(rnorm(200), ncol = 8) # 25 x 8 matrix
 pairs(no_signal_data) # pairwise scatter plots
 ```
