@@ -254,8 +254,7 @@ $$y_i = (\beta_0+\beta_1x_{i1})+\epsilon_i$$
 
 with a **reduced** model:
 
-$$y_i=\beta_0+\epsilon_i$$
-## The General Linear $F$-test
+$$y_i=\beta_0+\epsilon_i$$ \## The General Linear $F$-test
 
 **Hypotheses**:
 

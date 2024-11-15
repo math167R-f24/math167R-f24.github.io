@@ -4,6 +4,9 @@ author: "Peter Gao"
 format: 
   revealjs:
     theme: [./slides.scss, ../theme.scss]
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ## Overview of today
@@ -13,11 +16,12 @@ format:
 
 ## Relating numerical variables
 
-![](images/Screenshot%202023-10-29%20at%2010.20.45%20AM.png)
+![](images/Screenshot%202023-10-29%20at%2010.20.45%20AM.png){fig-alt="Scatter plot of survey data showing the percentage of 15- to 24-year-olds and 40+ year-olds who believe the world is getting better across various countries."}
 
 ## Covariance and correlation
 
-In statistics, correlation and covariance usually refer to a specific type of association.
+In statistics, correlation and covariance usually refer to a specific
+type of association.
 
 -   If $X$ and $Y$ are linearly associated, then they are correlated.
 
@@ -25,11 +29,14 @@ In statistics, correlation and covariance usually refer to a specific type of as
 
 Correlation can also refer to the correlation coefficient.
 
-The (Pearson) correlation coefficient $R$ is a statistic between $-1$ and 1 that describes the strength and direction of the linear relationship between two variables.
+The (Pearson) correlation coefficient $R$ is a statistic between $-1$
+and 1 that describes the strength and direction of the linear
+relationship between two variables.
 
 $$R = \frac{1}{n-1}\sum_{i=1}^n\frac{x_i-\overline{x}}{s_x}\frac{y_i-\overline{y}}{s_y}$$
 
-The sign of $R$ indicates the direction of the relationship. The absolute value of $R$ indicates the strength.
+The sign of $R$ indicates the direction of the relationship. The
+absolute value of $R$ indicates the strength.
 
 ## Correlation and covariance
 
@@ -48,6 +55,7 @@ cov(mpg, wt)
 #| echo: TRUE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Matrix of scatter plots showing relationships between mpg, hp, and wt"
 pairs(~mpg + hp + wt, mtcars)
 ```
 
@@ -55,22 +63,30 @@ pairs(~mpg + hp + wt, mtcars)
 
 Assume we have some data:
 
--   $X_1,\ldots, X_p$: $p$ **independent variables/explanatory variables/covariates/predictors**
+-   $X_1,\ldots, X_p$: $p$ **independent variables/explanatory
+    variables/covariates/predictors**
 -   $Y$: the **dependent variables/response/outcome**.
 
-We want to know the relationship between our covariates and our response, we can do this with a method called **regression**. Regression provides us with a statistical method to conduct inference and prediction.
+We want to know the relationship between our covariates and our
+response, we can do this with a method called **regression**. Regression
+provides us with a statistical method to conduct inference and
+prediction.
 
 ## Regression methods
 
--   **inference:** assess the relationship between our variables, our statistical model as a whole, predictor importance
+-   **inference:** assess the relationship between our variables, our
+    statistical model as a whole, predictor importance
     -   What is the relationship between sleep and GPA?
-    -   Is parents' education or parents' income more important for explaining income?
--   **prediction:** predict new/future outcomes from new/future covariates
+    -   Is parents' education or parents' income more important for
+        explaining income?
+-   **prediction:** predict new/future outcomes from new/future
+    covariates
     -   Can we predict test scores based on hours spent studying?
 
 ## Why is it called regression?
 
-![](https://upload.wikimedia.org/wikipedia/commons/b/b2/Galton%27s_correlation_diagram_1875.jpg){fig-align="center"}
+![](https://upload.wikimedia.org/wikipedia/commons/b/b2/Galton%27s_correlation_diagram_1875.jpg){fig-alt="A scientific diagram showing the relationship between the heights of mid-parents and adult children, with axes labeled in inches and deviations, and an oval plot with labeled segments and data points."
+fig-align="center"}
 
 ## Simple linear regression
 
@@ -87,6 +103,7 @@ How does the speed of a car affect its stopping distance?
 #| out.width: "60%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing the relationship between speed (mph) and stopping distance (ft) with blue dots indicating data points."
 plot(dist ~ speed, data = cars,
      xlab = "Speed (mph)",
      ylab = "Stopping Distance (ft)",
@@ -95,38 +112,55 @@ plot(dist ~ speed, data = cars,
 
 ## Simple linear regression
 
-Suppose $x_1,\ldots, x_n$ represent the `speed` values of each car in our dataset. Let $Y_1,\ldots, Y_n$ represent the `dist` variable.
+Suppose $x_1,\ldots, x_n$ represent the `speed` values of each car in
+our dataset. Let $Y_1,\ldots, Y_n$ represent the `dist` variable.
 
-The **simple linear regression model** is given by $$Y_i=\beta_0+\beta_1x_i+\epsilon_i$$ where:
+The **simple linear regression model** is given by
+$$Y_i=\beta_0+\beta_1x_i+\epsilon_i$$ where:
 
 -   $\beta_0$ is the intercept parameter
 
 -   $\beta_1$ is the slope parameter
 
--   $\epsilon_i$ represents iid $N(0,\sigma^2)$ errors, where $\sigma^2$ is the variance of $\epsilon_i$.
+-   $\epsilon_i$ represents iid $N(0,\sigma^2)$ errors, where $\sigma^2$
+    is the variance of $\epsilon_i$.
 
 ## Simple linear regression
 
-Under this model, we can also write that $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$ As a result $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$ $$\mathrm{Var}(Y_i\mid X_i= x_i)= \sigma^2$$
+Under this model, we can also write that
+$$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$ As a result
+$$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
+$$\mathrm{Var}(Y_i\mid X_i= x_i)= \sigma^2$$
 
 ## Simple linear regression
 
-Typically, we say there are four assumptions for simple linear regression:
+Typically, we say there are four assumptions for simple linear
+regression:
 
--   **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
--   **Independence**: The observations $Y_1,\ldots, Y_n$ are independent of each other.
--   **Normality**: $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
--   **Equal variance**: The variance of the errors $\epsilon_i$ is the same for all values of $x_i$.
+-   **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is
+    linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
+-   **Independence**: The observations $Y_1,\ldots, Y_n$ are independent
+    of each other.
+-   **Normality**:
+    $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
+-   **Equal variance**: The variance of the errors $\epsilon_i$ is the
+    same for all values of $x_i$.
 
-Note that even if one or more of these assumptions breaks, linear regression can still be useful if used with caution.
+Note that even if one or more of these assumptions breaks, linear
+regression can still be useful if used with caution.
 
 ## Simple linear regression: Least squares
 
-Typically, we start with data $Y_1,\ldots, Y_n$ and $x_1,\ldots, x_n$. How do we estimate $\beta_0$ and $\beta_1$?
+Typically, we start with data $Y_1,\ldots, Y_n$ and $x_1,\ldots, x_n$.
+How do we estimate $\beta_0$ and $\beta_1$?
 
-In other words, what is the best line to use for modeling the relationship between $X$ and $Y$?
+In other words, what is the best line to use for modeling the
+relationship between $X$ and $Y$?
 
-Usually, we use the least squares line, which is the solution to the following optimization problem: $$\arg\min\sum_{i=1}^n (y_i-(\beta_0+\beta_1x_i))^2=\arg\min\sum_{i=1}^n (y_i-\widehat{y}_i)^2$$ where $\widehat{y}_i$ is the model prediction for $y_i$.
+Usually, we use the least squares line, which is the solution to the
+following optimization problem:
+$$\arg\min\sum_{i=1}^n (y_i-(\beta_0+\beta_1x_i))^2=\arg\min\sum_{i=1}^n (y_i-\widehat{y}_i)^2$$
+where $\widehat{y}_i$ is the model prediction for $y_i$.
 
 ## Simple linear regression: the `lm` function
 
@@ -158,6 +192,7 @@ lm_res
 #| out.width: "60%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing the positive correlation between speed (mph) and stopping distance (ft) with blue data points and a red trend line."
 plot(dist ~ speed, data = cars,
      xlab = "Speed (mph)",
      ylab = "Stopping Distance (ft)", 
@@ -167,7 +202,8 @@ abline(lm_res,  col = "red")
 
 ## Simple linear regression: Inference
 
-For the simple linear regression model, typically we wish to carry out inference on $\beta_1$. One way to do so is via a hypothesis test:
+For the simple linear regression model, typically we wish to carry out
+inference on $\beta_1$. One way to do so is via a hypothesis test:
 
 $H_0:\beta_1=0$ $H_a:\beta_1\not=0$
 
@@ -187,7 +223,8 @@ summary(lm_res)
 
 ## Simple linear regression: Inference
 
-We can also construct a confidence interval for $\beta_1$ if our focus isn't on developing evidence against any null hypothesis:
+We can also construct a confidence interval for $\beta_1$ if our focus
+isn't on developing evidence against any null hypothesis:
 
 ```{r cars_inf2}
 #| echo: true
@@ -205,7 +242,9 @@ confint(lm_res)
 
 ## Simple linear regression: Prediction
 
-Prediction generally involves estimating the value of new data $Y_{n+1}$ given $X_{n+1}$. We can use the `predict()` function with our `lm()` results:
+Prediction generally involves estimating the value of new data $Y_{n+1}$
+given $X_{n+1}$. We can use the `predict()` function with our `lm()`
+results:
 
 ```{r cars_pred}
 #| echo: true
@@ -228,10 +267,15 @@ predict(lm_res,
 
 ## Simple linear regression: Prediction
 
-Note that the `predict()` function can also be used to generate "confidence" intervals:
+Note that the `predict()` function can also be used to generate
+"confidence" intervals:
 
--   `interval = "prediction"`: Construct a confidence interval for $Y_{n+1}|X_{n+1}=x_{n+1}$, the value of a new **observation** for which $X_{n+1}=x_{n+1}$
--   `interval = "confidence"`: Construct a confidence interval for $E(Y_{n+1}|X_{n+1}=x_{n+1})$, the value of the **conditional mean** when $X_{n+1}=x_{n+1}$
+-   `interval = "prediction"`: Construct a confidence interval for
+    $Y_{n+1}|X_{n+1}=x_{n+1}$, the value of a new **observation** for
+    which $X_{n+1}=x_{n+1}$
+-   `interval = "confidence"`: Construct a confidence interval for
+    $E(Y_{n+1}|X_{n+1}=x_{n+1})$, the value of the **conditional mean**
+    when $X_{n+1}=x_{n+1}$
 
 ## Simple linear regression: Prediction
 
@@ -258,28 +302,37 @@ predict(lm_res,
 
 ## Warm-up
 
-What is the method of least squares and how does it relate to linear regression?
+What is the method of least squares and how does it relate to linear
+regression?
 
 Classify the following questions as **inference** or **prediction**:
 
-1. Can we use high school students' SAT/ACT scores to estimate their college GPAs?
-2. Is there an association between political candidates' heights and the number of votes they receive?
-3. Do states with higher minimum wages have lower poverty rates?
+1.  Can we use high school students' SAT/ACT scores to estimate their
+    college GPAs?
+2.  Is there an association between political candidates' heights and
+    the number of votes they receive?
+3.  Do states with higher minimum wages have lower poverty rates?
 
 ## Simple linear regression: Checking assumptions
 
-Typically, we say there are four assumptions for simple linear regression:
+Typically, we say there are four assumptions for simple linear
+regression:
 
--   **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
--   **Independence**: The observations $Y_1,\ldots, Y_n$ are independent of each other.
--   **Normality**: $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
--   **Equal variance**: The variance of the errors $\epsilon_i$ is the same for all values of $x_i$.
+-   **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is
+    linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
+-   **Independence**: The observations $Y_1,\ldots, Y_n$ are independent
+    of each other.
+-   **Normality**:
+    $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
+-   **Equal variance**: The variance of the errors $\epsilon_i$ is the
+    same for all values of $x_i$.
 
 ## Checking linearity
 
 ::: columns
 ::: {.column width="50%"}
 **Linear**
+
 ```{r lin}
 #| echo: false
 #| eval: true
@@ -291,6 +344,7 @@ Typically, we say there are four assumptions for simple linear regression:
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot with data points and a red trend line showing a positive correlation between x and y axes.s"
 library(tidyverse)
 set.seed(123)
 x <- runif(n = 40, min = 0, max = 5)
@@ -309,6 +363,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 
 ::: {.column width="50%"}
 **Nonlinear**
+
 ```{r nonlin}
 #| echo: false
 #| eval: true
@@ -320,6 +375,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot with black dots and a red trend line, showing a positive correlation."
 library(tidyverse)
 set.seed(123)
 x <- runif(n = 40, min = 0, max = 5)
@@ -339,8 +395,10 @@ ggplot(mapping = aes(x = x, y = y)) +
 
 ## Checking linearity with residual plot
 
-We can also plot the residuals against our independent variable, where we define the **residual** as follows:
+We can also plot the residuals against our independent variable, where
+we define the **residual** as follows:
 $$\widehat{\epsilon}_i = \mathrm{Residual} = \mathrm{Observed} - \mathrm{Predicted}=y -\widehat{y}$$
+
 ```{r cars_resid}
 #| echo: false
 #| eval: true
@@ -352,6 +410,7 @@ $$\widehat{\epsilon}_i = \mathrm{Residual} = \mathrm{Observed} - \mathrm{Predict
 #| out.width: "60%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing residuals versus speed in mph, with a horizontal red line at zero."
 lm_res <- lm(dist ~ speed, cars)
 plot(resid(lm_res) ~ speed, data = cars,
      xlab = "Speed (mph)",
@@ -359,11 +418,13 @@ plot(resid(lm_res) ~ speed, data = cars,
      pch  = 16, col  = "blue")
 abline(h = 0,  col = "red")
 ```
+
 ## Checking linearity with residual plot
 
 ::: columns
 ::: {.column width="50%"}
 **Linear**
+
 ```{r lin_resid}
 #| echo: false
 #| eval: true
@@ -375,6 +436,7 @@ abline(h = 0,  col = "red")
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot of residuals against x with a red horizontal line at y equals 0."
 set.seed(123)
 x <- runif(n = 40, min = 0, max = 5)
 y <- rnorm(n = 40, mean = 1 + 2 * x)
@@ -392,6 +454,7 @@ ggplot(mapping = aes(x = x, y = resid(lm_res))) +
 
 ::: {.column width="50%"}
 **Nonlinear**
+
 ```{r nonlin_resid}
 #| echo: false
 #| eval: true
@@ -403,6 +466,7 @@ ggplot(mapping = aes(x = x, y = resid(lm_res))) +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot of residuals versus variable x with a horizontal red reference line at y = 0."
 set.seed(123)
 x <- runif(n = 40, min = 0, max = 5)
 y <- rnorm(n = 40, mean = (x - 2.5) ^ 2 + x)
@@ -421,11 +485,14 @@ ggplot(mapping = aes(x = x, y = resid(lm_res))) +
 
 ## Checking independence
 
-Checking independence is typically more difficult. We require that conditional on the dependent variables $x_1,\ldots, x_n$, the response variables $Y_1,\ldots, Y_n$ are independent. 
+Checking independence is typically more difficult. We require that
+conditional on the dependent variables $x_1,\ldots, x_n$, the response
+variables $Y_1,\ldots, Y_n$ are independent.
 
 Example of independence: survey data obtained via simple random sampling
 
-Example of dependence: height and weight measurements of penguins, where each penguin is measured twice
+Example of dependence: height and weight measurements of penguins, where
+each penguin is measured twice
 
 ## Checking normality of errors
 
@@ -434,6 +501,7 @@ Can you spot the difference?
 ::: columns
 ::: {.column width="50%"}
 **Normal errors**
+
 ```{r norm_err}
 #| echo: false
 #| eval: true
@@ -445,6 +513,7 @@ Can you spot the difference?
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot with black data points trending upward and a red regression line indicating a positive correlation between x (0 to 5) and y (0.0 to 12.5)."
 set.seed(123)
 x <- runif(n = 80, min = 0, max = 5)
 y <- rnorm(n = 80, mean = 1 + 2 * x)
@@ -462,6 +531,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 
 ::: {.column width="50%"}
 **Non-normal errors**
+
 ```{r nonnorm_err}
 #| echo: false
 #| eval: true
@@ -473,6 +543,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot with black data points and a red trend line, x-axis labeled 'x' and y-axis labeled 'y'."
 set.seed(125)
 x <- runif(n = 80, min = 0, max = 5)
 y <- 1 + 2 * x + rt(n = 80, df = 2)
@@ -491,7 +562,8 @@ ggplot(mapping = aes(x = x, y = y)) +
 
 ## Checking normality of errors with quantile-quantile plot
 
-We can use a quantile-quantile plot to see whether our estimated residuals are approximately normally distributed.
+We can use a quantile-quantile plot to see whether our estimated
+residuals are approximately normally distributed.
 
 ```{r cars_resid_qq_dummy}
 #| echo: true
@@ -504,6 +576,7 @@ We can use a quantile-quantile plot to see whether our estimated residuals are a
 #| out.width: "60%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Normal Q-Q Plot with sample quantiles on the y-axis and theoretical quantiles on the x-axis. Points mostly follow the reference line from bottom-left to top-right."
 lm_res <- lm(dist ~ speed, cars)
 qqnorm(resid(lm_res))
 qqline(resid(lm_res))
@@ -524,18 +597,18 @@ What do you notice?
 #| out.width: "60%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Normal Q-Q Plot with sample quantiles on the y-axis and theoretical quantiles on the x-axis. Points mostly follow the reference line from bottom-left to top-right."
 lm_res <- lm(dist ~ speed, cars)
 qqnorm(resid(lm_res))
 qqline(resid(lm_res))
 ```
 
-
 ## Checking normality of errors with quantile-quantile plot
-
 
 ::: columns
 ::: {.column width="50%"}
 **Normal errors**
+
 ```{r norm_err_qq}
 #| echo: false
 #| eval: true
@@ -547,6 +620,7 @@ qqline(resid(lm_res))
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Normal Q-Q plot comparing sample quantiles to theoretical quantiles with points clustering around a diagonal line. "
 set.seed(123)
 x <- runif(n = 80, min = 0, max = 5)
 y <- rnorm(n = 80, mean = 1 + 2 * x)
@@ -558,6 +632,7 @@ qqline(resid(lm_res))
 
 ::: {.column width="50%"}
 **Non-normal errors**
+
 ```{r nonnorm_err_qq}
 #| echo: false
 #| eval: true
@@ -569,6 +644,7 @@ qqline(resid(lm_res))
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Normal Q-Q plot with sample quantiles versus theoretical quantiles. Points do not fall on a line."
 set.seed(125)
 x <- runif(n = 80, min = 0, max = 5)
 y <- 1 + 2 * x + rt(n = 80, df = 2)
@@ -581,12 +657,12 @@ qqline(resid(lm_res))
 
 ## Checking equal variances (homoskedasticity)
 
-
 Can you spot the difference?
 
 ::: columns
 ::: {.column width="50%"}
 **Equal variances**
+
 ```{r eq_var}
 #| echo: false
 #| eval: true
@@ -598,6 +674,7 @@ Can you spot the difference?
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing black dots with a red trend line indicating a positive correlation between x and y values."
 set.seed(123)
 x <- runif(n = 80, min = 0, max = 5)
 y <- rnorm(n = 80, mean = 1 + 2 * x)
@@ -615,6 +692,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 
 ::: {.column width="50%"}
 **Unequal variances**
+
 ```{r uneq_var}
 #| echo: false
 #| eval: true
@@ -626,6 +704,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot graph with labeled axes and a red line of best fit showing a positive linear relationship."
 set.seed(123)
 x <- runif(n = 80, min = 0, max = 5)
 y <- rnorm(n = 80, mean = 1 + 2 * x, sd = .4 * x)
@@ -649,6 +728,7 @@ Can you spot the difference using the residual plot?
 ::: columns
 ::: {.column width="50%"}
 **Equal variances**
+
 ```{r eq_var_resid}
 #| echo: false
 #| eval: true
@@ -660,6 +740,7 @@ Can you spot the difference using the residual plot?
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot with black dots showing residuals across a range of x-values from 0 to 5, with a red horizontal line at y=0."
 set.seed(123)
 x <- runif(n = 80, min = 0, max = 5)
 y <- rnorm(n = 80, mean = 1 + 2 * x)
@@ -677,6 +758,7 @@ ggplot(mapping = aes(x = x, y = resid(lm_res))) +
 
 ::: {.column width="50%"}
 **Unequal variances**
+
 ```{r uneq_var_resid}
 #| echo: false
 #| eval: true
@@ -688,6 +770,7 @@ ggplot(mapping = aes(x = x, y = resid(lm_res))) +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot of residuals versus x with many black dots and a horizontal red line at residuals equal to 0. Points are not normally distributed around the line."
 set.seed(123)
 x <- runif(n = 80, min = 0, max = 5)
 y <- rnorm(n = 80, mean = 1 + 2 * x, sd = .4 * x)
@@ -704,7 +787,6 @@ ggplot(mapping = aes(x = x, y = resid(lm_res))) +
 :::
 :::
 
-
 ## Multiple linear regression
 
 What if we have multiple input variables?
@@ -719,7 +801,8 @@ head(mtcars)
 
 ## Multiple linear regression
 
-Given our response $Y$ and our predictors $X_1, \ldots, X_p$, a **linear regression model** takes the form:
+Given our response $Y$ and our predictors $X_1, \ldots, X_p$, a **linear
+regression model** takes the form:
 
 $$
 \begin{align}
@@ -728,7 +811,8 @@ Y &= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 \end{align}
 $$
 
-**Note:** If we wish to include a categorical covariate, we can add indicator variables for each category.
+**Note:** If we wish to include a categorical covariate, we can add
+indicator variables for each category.
 
 ## Multiple linear regression
 
@@ -742,7 +826,9 @@ $$
 -   $Y$: dependent variable, outcome, response
 -   $X_j$: independent variable, covariate, predictor
 -   $\beta_0$: Intercept
--   $\beta_j$: coefficient, the expected difference in the response between two observations differing by one unit in $X_j$, with all other covariates identical.
+-   $\beta_j$: coefficient, the expected difference in the response
+    between two observations differing by one unit in $X_j$, with all
+    other covariates identical.
 -   $\epsilon$: error, noise, with mean $0$ and variance $\sigma^2$
 
 ## Multiple linear regression: example
@@ -767,7 +853,8 @@ head(penguins)
 
 ## Multiple linear regression: example
 
-Suppose we are interested in predicting `body_mass_g` using `flipper_length_mm`.
+Suppose we are interested in predicting `body_mass_g` using
+`flipper_length_mm`.
 
 ```{r penguins2}
 #| echo: true
@@ -780,13 +867,13 @@ Suppose we are interested in predicting `body_mass_g` using `flipper_length_mm`.
 #| out.width: "60%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot comparing flipper length in millimeters (x-axis) versus body mass in grams (y-axis) with a blue regression line showing a positive correlation"
 ggplot(penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point() +
   geom_smooth(method = "lm")
 ```
 
 ## Multiple linear regression: example
-
 
 ```{r movies3}
 #| echo: true
@@ -805,8 +892,10 @@ summary(lm_res)
 
 ## Multiple linear regression: example
 
-Consider the following residual plot, where we define the **residual** as follows:
+Consider the following residual plot, where we define the **residual**
+as follows:
 $$\mathrm{Residual} = \mathrm{Observed} - \mathrm{Predicted}=y -\widehat{y}$$
+
 ```{r penguins_resid}
 #| echo: false
 #| eval: true
@@ -818,6 +907,7 @@ $$\mathrm{Residual} = \mathrm{Observed} - \mathrm{Predicted}=y -\widehat{y}$$
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot of residuals versus flipper length for three penguin species: Adelie (black dots), Chinstrap (red dots), and Gentoo (green dots)."
 plot(na.omit(penguins$flipper_length_mm), resid(lm_res), col = match(penguins$species, c("Adelie", "Chinstrap", "Gentoo")),
      ylab = "Observed - Predicted",  xlab = "Flipper length", pch = 16)
 legend("topleft", col = c(1,2,3), legend = c("Adelie", "Chinstrap", "Gentoo"), pch = 16)
@@ -826,7 +916,8 @@ abline(h = 0)
 
 ## Multiple linear regression: example
 
-What if I also want to include `species` in the model? There are a few ways to do so.
+What if I also want to include `species` in the model? There are a few
+ways to do so.
 
 ```{r movies4}
 #| echo: false
@@ -839,6 +930,7 @@ What if I also want to include `species` in the model? There are a few ways to d
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing penguin body mass versus flipper length for Adelie, Chinstrap, and Gentoo species."
 ggplot(penguins,
        mapping = aes(x =  flipper_length_mm,
                      y = body_mass_g, 
@@ -848,7 +940,8 @@ ggplot(penguins,
 
 ## Multiple linear regression: Group intercepts
 
-The first way is to add `species` into the formula for our linear regression model:
+The first way is to add `species` into the formula for our linear
+regression model:
 
 ```{r penguins_species}
 #| echo: true
@@ -869,29 +962,35 @@ summary(lm_species_res)
 ## Multiple linear regression: Group intercepts
 
 In this case, the model is as follows:
-$$Y=\beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3+\epsilon_i$$
-where:
+$$Y=\beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3+\epsilon_i$$ where:
 
-* $Y$ is `body_mass_g`
-* $x_1$ is `flipper_length_mm`
-* $x_2$ is a **dummy variable** equal to 1 if the penguin is Chinstrap and 0 otherwise.
-* $x_3$ is a **dummy variable** equal to 1 if the penguin is Gentoo and 0 otherwise.
+-   $Y$ is `body_mass_g`
+-   $x_1$ is `flipper_length_mm`
+-   $x_2$ is a **dummy variable** equal to 1 if the penguin is Chinstrap
+    and 0 otherwise.
+-   $x_3$ is a **dummy variable** equal to 1 if the penguin is Gentoo
+    and 0 otherwise.
 
 What happened to the Adelie penguins?
 
 ## Multiple linear regression: Group intercepts
 
-When including a categorical variable in a linear regression model, R automatically treats one category as the **reference group**.
+When including a categorical variable in a linear regression model, R
+automatically treats one category as the **reference group**.
 
-The value of the intercept $\beta_0$ thus represents the expected value of $Y$ when $x_1$ is zero for an Adelie penguin.
+The value of the intercept $\beta_0$ thus represents the expected value
+of $Y$ when $x_1$ is zero for an Adelie penguin.
 
 How do we interpret the other $\beta$ parameters?
 
 ## Multiple linear regression: Group intercepts
 
-* $\beta_1$ represents the expected change in $Y$ when flipper length increases by 1 mm.
-* $\beta_2+\beta_0$ represents the expected value of $Y$ when $x_1$ is zero for a Chinstrap penguin.
-* $\beta_2+\beta_0$ represents the expected value of $Y$ when $x_1$ is zero for a Gentoo penguin.
+-   $\beta_1$ represents the expected change in $Y$ when flipper length
+    increases by 1 mm.
+-   $\beta_2+\beta_0$ represents the expected value of $Y$ when $x_1$ is
+    zero for a Chinstrap penguin.
+-   $\beta_2+\beta_0$ represents the expected value of $Y$ when $x_1$ is
+    zero for a Gentoo penguin.
 
 ## Multiple linear regression: Group intercepts
 
@@ -908,6 +1007,7 @@ This model thus yields three parallel lines, one for each group.
 #| out.width: "60%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing the relationship between flipper length and body mass for three penguin species: Adelie (red), Chinstrap (green), and Gentoo (blue). We have separate regression lines for each species."
 ggplot(penguins,
        mapping = aes(x =  flipper_length_mm,
                      y = body_mass_g, 
@@ -933,16 +1033,18 @@ Now we obtain the following residual plot:
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing the difference between observed and predicted values against flipper length for Adelie (black dots), Chinstrap (red dots), and Gentoo (green dots) penguins. The residuals are now clearly centered around the horizontal y = 0 line."
 plot(na.omit(penguins$flipper_length_mm), resid(lm_species_res), col = match(penguins$species, c("Adelie", "Chinstrap", "Gentoo")),
      ylab = "Observed - Predicted", xlab = "Flipper length", pch = 16)
 legend("topleft", col = c(1,2,3), legend = c("Adelie", "Chinstrap", "Gentoo"), pch = 16)
 abline(h = 0)
 ```
 
+## Multiple linear regression: Group-specific slopes
 
-## Multiple linear regression: Group-specific slopes 
-
-The previous model gave us group-specific intercepts, resulting in parallel lines. What if we want to let the slope vary across each species?
+The previous model gave us group-specific intercepts, resulting in
+parallel lines. What if we want to let the slope vary across each
+species?
 
 ```{r penguins_slopes}
 #| echo: false
@@ -955,6 +1057,7 @@ The previous model gave us group-specific intercepts, resulting in parallel line
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot showing relationship between flipper length and body mass for Adelie, Chinstrap, and Gentoo penguins with respective trend lines."
 ggplot(penguins,
        mapping = aes(x =  flipper_length_mm,
                      y = body_mass_g, 
@@ -983,16 +1086,16 @@ lm_int_res <- lm(body_mass_g ~ flipper_length_mm * species,
 summary(lm_int_res)
 ```
 
-## Multiple linear regression: Group-specific slopes 
+## Multiple linear regression: Group-specific slopes
 
 The standard approach is to introduce interaction terms:
 
 $$Y=\beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3+\beta_4(x_1 * x_2) + \beta_5(x_1*x_3)+\epsilon_i$$
 where:
 
-* $\beta_1$ is now the slope for our reference group (Adelie)
-* $\beta_1+\beta_4$ is the slope for Chinstrap
-* $\beta_1+\beta_5$ is the slope for Gentoo
+-   $\beta_1$ is now the slope for our reference group (Adelie)
+-   $\beta_1+\beta_4$ is the slope for Chinstrap
+-   $\beta_1+\beta_5$ is the slope for Gentoo
 
 ## Linear Regression
 
@@ -1021,14 +1124,21 @@ $$
 \end{align}
 $$
 
--   $\mathbf{Y} \in \mathbb{R}^{n \times 1}$: an n-dimensional vector of the response
--   $\mathbf{X} \in \mathbb{R}^{n \times (k+1)}$: a $((k+1)\times n)$ matrix of the predictors (including intercept)
--   $\beta \in \mathbb{R}^{((k+1)\times 1)}$: a $(k+1)$-dimensional vector of regression parameters
--   $\epsilon \in \mathbb{R}^{n \times 1}$: an n-dimensional vector of the error term
+-   $\mathbf{Y} \in \mathbb{R}^{n \times 1}$: an n-dimensional vector of
+    the response
+-   $\mathbf{X} \in \mathbb{R}^{n \times (k+1)}$: a $((k+1)\times n)$
+    matrix of the predictors (including intercept)
+-   $\beta \in \mathbb{R}^{((k+1)\times 1)}$: a $(k+1)$-dimensional
+    vector of regression parameters
+-   $\epsilon \in \mathbb{R}^{n \times 1}$: an n-dimensional vector of
+    the error term
 
 ## $\large \epsilon$: Error term
 
-$\epsilon$, pronounced epsilon, represents the **error term** of our model. We can model $Y$ as a linear function of the $X$'s, but in the real world, the relationship won't always be perfect. There is noise! It can come from
+$\epsilon$, pronounced epsilon, represents the **error term** of our
+model. We can model $Y$ as a linear function of the $X$'s, but in the
+real world, the relationship won't always be perfect. There is noise! It
+can come from
 
 -   Measurement error in the $X$'s
 -   Measurement error in the $Y$'s
@@ -1036,7 +1146,8 @@ $\epsilon$, pronounced epsilon, represents the **error term** of our model. We c
 -   Deviations in the true model from linearity
 -   True randomness
 
-In linear regression, we assume that this error term is normally distributed with mean zero and variance $\sigma^2$.
+In linear regression, we assume that this error term is normally
+distributed with mean zero and variance $\sigma^2$.
 
 ## $\beta_0$: Intercept
 
@@ -1044,25 +1155,41 @@ $\beta_0$ is the **intercept term** of our model. Notice that
 
 $$\mathbb{E}[Y|X_1 = X_2 = \cdots = X_p = 0] = \beta_0$$
 
-Thus, $\beta_0$ is the expected value of our response if all the covariates are equal to $0$. This is also known as the y-intercept of our model.
+Thus, $\beta_0$ is the expected value of our response if all the
+covariates are equal to $0$. This is also known as the y-intercept of
+our model.
 
 ## $X_j$: Independent variable
 
-$X_j$ represents the $j$<sup>th</sup> independent variable in our model. Notice that $$\mathbb{E}[Y|X_1,\ldots, X_p] = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p$$ What happens to this expectation if we increase $X_j$ by 1 unit, holding everything else constant?
+$X_j$ represents the $j$<sup>th</sup> independent variable in our model.
+Notice that
+$$\mathbb{E}[Y|X_1,\ldots, X_p] = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p$$
+What happens to this expectation if we increase $X_j$ by 1 unit, holding
+everything else constant?
 
 The conditional expectation of $Y$ increases by $\beta_j$.
 
 ## $\beta_j$: Coefficient
 
-$\beta_j$ represents the $j$<sup>th</sup> regression coefficient in our model. From the previous slide, we saw that for every 1 unit increase in $X_j$, holding all other variables constant, the expected value of the response increases by $\beta_j$. From this we can derive an interpretation.
+$\beta_j$ represents the $j$<sup>th</sup> regression coefficient in our
+model. From the previous slide, we saw that for every 1 unit increase in
+$X_j$, holding all other variables constant, the expected value of the
+response increases by $\beta_j$. From this we can derive an
+interpretation.
 
-**Interpretation of** $\beta_j$: the expected difference in the response between two observations differing by one unit in $X_j$, with all other covariates identical.
+**Interpretation of** $\beta_j$: the expected difference in the response
+between two observations differing by one unit in $X_j$, with all other
+covariates identical.
 
 ## `lm()`: Linear Model
 
-We fit a linear regression model in R using `lm()`. The first argument is a **formula**, which is a type of R object. Formulas typically take the following form: `Y ~ X_1 + X_2 + ... + X_p`.
+We fit a linear regression model in R using `lm()`. The first argument
+is a **formula**, which is a type of R object. Formulas typically take
+the following form: `Y ~ X_1 + X_2 + ... + X_p`.
 
-The dependent variable, `Y` goes on the left-hand side of the tilde `~`, which marks the formula. The independent variables are added on the right-hand side. Using this formula will give us a model in the form of
+The dependent variable, `Y` goes on the left-hand side of the tilde `~`,
+which marks the formula. The independent variables are added on the
+right-hand side. Using this formula will give us a model in the form of
 
 $$
 \begin{align}
@@ -1089,7 +1216,8 @@ my_lm
 
 ## `lm()`: Linear Model
 
-We can see from `names()` that `lm` objects contain a lot more than they print out by default.
+We can see from `names()` that `lm` objects contain a lot more than they
+print out by default.
 
 ```{r}
 #| echo: TRUE
@@ -1100,12 +1228,17 @@ names(my_lm)
 
 ## `summary()` Model summaries
 
-`summary()` or `summary.lm()` gives us a summary of our `lm` object in R.
+`summary()` or `summary.lm()` gives us a summary of our `lm` object in
+R.
 
--   The quantiles of the residuals: hopefully, they match a normal distribution.
--   Coefficients, their standard errors, and their individual significances
--   (Adjusted) R-squared value: how much of the overall variability in the response is explained by the model?
--   F-statistic: hypothesis test for the significance of the overall model
+-   The quantiles of the residuals: hopefully, they match a normal
+    distribution.
+-   Coefficients, their standard errors, and their individual
+    significances
+-   (Adjusted) R-squared value: how much of the overall variability in
+    the response is explained by the model?
+-   F-statistic: hypothesis test for the significance of the overall
+    model
 
 ## `summary()` Model summaries
 
@@ -1118,15 +1251,31 @@ summary(my_lm)
 
 ## `plot()`: Regression model diagnostics
 
-Calling `plot(my_lm)` will return several diagnostic plots. Remember that we want our error term to look normally distributed with mean zero. We won't go into all the details for this class, but here are some tips:
+Calling `plot(my_lm)` will return several diagnostic plots. Remember
+that we want our error term to look normally distributed with mean zero.
+We won't go into all the details for this class, but here are some tips:
 
--   **Residuals vs Fitted:** these are your errors (residuals) plotted over the predicted outcome (fitted). Errors should be random, so here you want to see randomly scattered points with no discernable pattern. You want the trend line to be approximately horizontal.
--   **Normal Q-Q plot:** These are the quantiles of your errors against the quantiles of a normal distribution. In theory, your errors should be normally distributed, so you are hoping that points are mostly along the 45-degree $y=x$ line.
+-   **Residuals vs Fitted:** these are your errors (residuals) plotted
+    over the predicted outcome (fitted). Errors should be random, so
+    here you want to see randomly scattered points with no discernable
+    pattern. You want the trend line to be approximately horizontal.
+-   **Normal Q-Q plot:** These are the quantiles of your errors against
+    the quantiles of a normal distribution. In theory, your errors
+    should be normally distributed, so you are hoping that points are
+    mostly along the 45-degree $y=x$ line.
 
 ## `plot()`: Regression model diagnostics
 
--   **Scale-location:** This looks at the magnitude of standardized residuals over the predicted outcome. Similar interpretation as residuals vs fitted. This can make it slightly easier to identify undesireable patterns.
--   **Residuals vs leverage:** This can help identify highly influential points, such as outliers. If points are outside dotted red lines, then removing them would noticeably alter your results. *Never just remove outliers!* If it's real data, it's valid and removing it will bias your results. It is much more important to understand why outliers are there than to remove them.
+-   **Scale-location:** This looks at the magnitude of standardized
+    residuals over the predicted outcome. Similar interpretation as
+    residuals vs fitted. This can make it slightly easier to identify
+    undesireable patterns.
+-   **Residuals vs leverage:** This can help identify highly influential
+    points, such as outliers. If points are outside dotted red lines,
+    then removing them would noticeably alter your results. *Never just
+    remove outliers!* If it's real data, it's valid and removing it will
+    bias your results. It is much more important to understand why
+    outliers are there than to remove them.
 
 ## `plot()`: Regression model diagnostics
 
@@ -1141,6 +1290,7 @@ plot(my_lm)
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Scatter plot titled Residuals vs Fitted showing fitted values on the x-axis and residuals on the y-axis with a red trend line and labeled data points."
 plot(my_lm,  which = 1)
 ```
 
@@ -1150,6 +1300,7 @@ plot(my_lm,  which = 1)
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Q-Q plot comparing theoretical quantiles to standardized residuals with some labeled data points."
 plot(my_lm,  which = 2)
 ```
 
@@ -1159,6 +1310,7 @@ plot(my_lm,  which = 2)
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Scatter plot of standardized residuals against fitted values with a red trend line and labeled points for Chrysler Imperial, Fiat 128, and Toyota Corolla."
 plot(my_lm,  which = 3)
 ```
 
@@ -1168,6 +1320,7 @@ plot(my_lm,  which = 3)
 #| echo: FALSE
 #| eval: TRUE
 #| cache: TRUE
+#| fig-alt: "Scatter plot titled 'Residuals vs Leverage' with labeled data points for 'Toyota Corolla,' 'Chrysler Imperial,' and 'Maserati Bora.' Plot shows standardized residuals on the vertical axis and leverage on the horizontal axis, with Cook's distance thresholds indicated by dashed lines and a red regression line."
 plot(my_lm,  which = 5)
 ```
 
@@ -1184,12 +1337,15 @@ coef(my_lm)
 
 ## `fitted()` Extract fitted values
 
-Use `fitted()` to extract the fitted/estimated values for the response. This can be useful to compare how our fitted values compare to the estimated values to help assess model fit.
+Use `fitted()` to extract the fitted/estimated values for the response.
+This can be useful to compare how our fitted values compare to the
+estimated values to help assess model fit.
 
 ```{r}
 #| echo: TRUE
 #| eval: FALSE
 #| cache: TRUE
+#| fig-alt: "Scatter plot of actual vs. fitted values with black data points and a red dashed line of best fit, showing a positive correlation."
 library(ggplot2)
 mod_fits <- fitted(my_lm)
 my_df <- data.frame(actual = mtcars$mpg, fitted = mod_fits)
@@ -1220,7 +1376,9 @@ ggplot(my_df, aes(x = fitted, y = actual)) +
 
 ## `predict()`: Predict new outcomes
 
-Use `predict()` to predict new outcomes given new explanatory variables. For example, pretend we observe two new cars with horsepowers of `100` and `150`, respectively, and weights of `3000` and `3500`, respectively.
+Use `predict()` to predict new outcomes given new explanatory variables.
+For example, pretend we observe two new cars with horsepowers of `100`
+and `150`, respectively, and weights of `3000` and `3500`, respectively.
 
 ```{r}
 #| echo: TRUE
@@ -1246,11 +1404,15 @@ residuals(my_lm)
 
 ## Manipulating formulas
 
-Working with formulas in R can be somewhat confusing, so it is important to understand how formulas work to make sure you are fitting the intended model.
+Working with formulas in R can be somewhat confusing, so it is important
+to understand how formulas work to make sure you are fitting the
+intended model.
 
 ## `- 1`
 
-Use `- 1` to remove an intercept from your model. Only do this if you are very sure that what you are doing is appropriate. I don't recommend doing this in practice.
+Use `- 1` to remove an intercept from your model. Only do this if you
+are very sure that what you are doing is appropriate. I don't recommend
+doing this in practice.
 
 ```{r}
 #| echo: TRUE
@@ -1262,9 +1424,14 @@ summary(no_intercept)
 
 ## `:` operator
 
-Use `X1:X2` to include an interaction effect in your model. This is useful if you have reason to believe two covariates interact, such as gender and education in a wage model. In our case, we'll assume horsepower and weight interact in their effect on mpg.
+Use `X1:X2` to include an interaction effect in your model. This is
+useful if you have reason to believe two covariates interact, such as
+gender and education in a wage model. In our case, we'll assume
+horsepower and weight interact in their effect on mpg.
 
-Typically (always?), if you include an interaction effect, you should also include the marginal effects. You can do this automatically using `X1*X2`.
+Typically (always?), if you include an interaction effect, you should
+also include the marginal effects. You can do this automatically using
+`X1*X2`.
 
 ## `:` operator
 
@@ -1288,7 +1455,8 @@ summary(interact)
 
 ## `.` operator
 
-Use `~ .` to include all non-response variables in the input data as independent variables.
+Use `~ .` to include all non-response variables in the input data as
+independent variables.
 
 ```{r}
 include_all <- lm(mpg ~ ., data = mtcars)
@@ -1299,62 +1467,73 @@ summary(include_all)
 
 How do we choose/estimate $\beta_{(k+1)\times1}$?
 
-Least squares finds the line that minimizes the squared distance between the points and the line, i.e. makes $$\left[y_i - (\beta_0 + \beta_1 x_{i, 1} + \dots + \beta_k x_{i,k})\right]^2$$ as small as possible for all $i = 1, \dots, n$.
+Least squares finds the line that minimizes the squared distance between
+the points and the line, i.e. makes
+$$\left[y_i - (\beta_0 + \beta_1 x_{i, 1} + \dots + \beta_k x_{i,k})\right]^2$$
+as small as possible for all $i = 1, \dots, n$.
 
-The vector $\widehat{\beta}$ that minimizes the sum of the squared distances is ()
+The vector $\widehat{\beta}$ that minimizes the sum of the squared
+distances is ()
 
 $$ \widehat{\beta}=\left(\mathbf{X}^T \mathbf{X} \right)^{-1}\mathbf{X}^T \mathbf{Y}.$$
 
-Note: In statistics, once we have estimated a parameter we put a "hat" on it, e.g. $\widehat{\beta_0}$ is the estimate of the true parameter $\beta_0$.
-
+Note: In statistics, once we have estimated a parameter we put a "hat"
+on it, e.g. $\widehat{\beta_0}$ is the estimate of the true parameter
+$\beta_0$.
 
 ## Overview of today
 
-- Review of linear regression 
-- Why use a linear model?
-- Pitfalls of linear regression: breaking assumptions and more
-
-
+-   Review of linear regression
+-   Why use a linear model?
+-   Pitfalls of linear regression: breaking assumptions and more
 
 ## Why linear regression?
 
-Regression methods focus on modeling the relationship between response $Y$ and explanatory variables $X_1,\ldots, X_p$. 
+Regression methods focus on modeling the relationship between response
+$Y$ and explanatory variables $X_1,\ldots, X_p$.
 
 Linear regression proposes a model of the form
 $$Y=\beta_0+\beta_1X_1+\cdots +\beta_p X_p+\epsilon; \hspace{1em} \epsilon\sim N(0, \sigma^2)$$
 Sometimes, the following weaker form is used (why is this weaker?)
-$$E(Y\mid X_1,\ldots, X_p)=\beta_0+\beta_1X_1+\cdots +\beta_p X_p$$
-In other words, the expected value of $Y$ (given $X_1,\ldots, X_p$) is a linear transformation of $X_1,\ldots, X_p$.
-
+$$E(Y\mid X_1,\ldots, X_p)=\beta_0+\beta_1X_1+\cdots +\beta_p X_p$$ In
+other words, the expected value of $Y$ (given $X_1,\ldots, X_p$) is a
+linear transformation of $X_1,\ldots, X_p$.
 
 ## Why linear regression?
 
-1. **Simplicity**: Easy to fit, usually gets the general trend correct, hard to **overfit**
-2. **Interpretability**: Consider the following log-normal model:
-$$Y=\exp(\beta_0+\beta_1X_1+\cdots +\beta_p X_p+\epsilon); \hspace{1em} \epsilon\sim N(0, \sigma^2)$$
-How do we interpret $\beta_1$? 
+1.  **Simplicity**: Easy to fit, usually gets the general trend correct,
+    hard to **overfit**
+2.  **Interpretability**: Consider the following log-normal model:
+    $$Y=\exp(\beta_0+\beta_1X_1+\cdots +\beta_p X_p+\epsilon); \hspace{1em} \epsilon\sim N(0, \sigma^2)$$
+    How do we interpret $\beta_1$?
 
 ## Additivity
 
-Note that linear regression can often be generalized to encompass other models. Consider the following model:
-$$Y=\beta_0+\beta_1X_1 +\beta_2X_1^2$$
-This is an example of polynomial regression, but the methods for fitting this model are essentially the same as ordinary least squares, using $X_1^2$ as an extra covariate.
+Note that linear regression can often be generalized to encompass other
+models. Consider the following model:
+$$Y=\beta_0+\beta_1X_1 +\beta_2X_1^2$$ This is an example of polynomial
+regression, but the methods for fitting this model are essentially the
+same as ordinary least squares, using $X_1^2$ as an extra covariate.
 
-Many alternative models can be written in this form by transforming the covariates or transforming the response $Y$.
+Many alternative models can be written in this form by transforming the
+covariates or transforming the response $Y$.
 
 ## Assumptions of linear regression
 
-
-- **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
-- **Independence**: The observations $Y_1,\ldots, Y_n$ are independent of each other.
-- **Normality**: $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
-- **Equal variance**: The variance of the errors $\epsilon_i$ is the same for all values of $x_i$.
+-   **Linearity**: The relationship between $X$ and $E(Y\mid X)$ is
+    linear: $$E(Y_i\mid X_i= x_i)= \beta_0+\beta_1x_i$$
+-   **Independence**: The observations $Y_1,\ldots, Y_n$ are independent
+    of each other.
+-   **Normality**:
+    $$Y_i\mid X_i= x_i\sim N(\beta_0+\beta_1x_i, \sigma^2)$$
+-   **Equal variance**: The variance of the errors $\epsilon_i$ is the
+    same for all values of $x_i$.
 
 ## All assumptions true
 
 ::: columns
 ::: {.column width="60%"}
-::: {.smaller}
+::: smaller
 ```{r lm_ex_dummy}
 #| echo: true
 #| eval: false
@@ -1394,6 +1573,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot with an upward-sloping red trend line, data points dispersed roughly linearly, x-axis labeled x and y-axis labeled y"
 library(tidyverse)
 x <- runif(n = 40, min = 0, max = 5)
 y <- rnorm(n = 40, mean = 1 + 2 * x)
@@ -1414,8 +1594,9 @@ ggplot(mapping = aes(x = x, y = y)) +
 
 ::: columns
 ::: {.column width="45%"}
-::: {.smaller}
-**Inference**: Asymptotically valid confidence intervals and hypothesis tests for $\beta_0$ and $\beta_1$.
+::: smaller
+**Inference**: Asymptotically valid confidence intervals and hypothesis
+tests for $\beta_0$ and $\beta_1$.
 :::
 :::
 
@@ -1436,13 +1617,13 @@ summary(lm_res)
 :::
 :::
 
-
 ## All assumptions true
 
 ::: columns
 ::: {.column width="45%"}
-::: {.smaller}
-**Prediction**: Assuming the model holds for new data, unbiased point predictions and asymptotically valid prediction intervals for $Y_{n+1}$.
+::: smaller
+**Prediction**: Assuming the model holds for new data, unbiased point
+predictions and asymptotically valid prediction intervals for $Y_{n+1}$.
 :::
 :::
 
@@ -1469,10 +1650,9 @@ predict(lm_res,
 
 What if $E(Y_i\mid X_i= x_i)\not= \beta_0+\beta_1x_i$?
 
-
 ::: columns
 ::: {.column width="60%"}
-::: {.smaller}
+::: smaller
 ```{r cubic_ex_dummy}
 #| echo: true
 #| eval: false
@@ -1511,6 +1691,7 @@ ggplot(mapping = aes(x = x, y = y)) +
 #| out.width: "100%"
 #| fig.align: "center"
 #| fig-cap: ""
+#| fig-alt: "Scatter plot with black data points and a red diagonal line of best fit showing an increasing trend. The x-axis ranges from 0 to 5, and the y-axis from 0 to 200."
 x <- runif(n = 40, min = 0, max = 5)
 y <- rnorm(n = 40, mean = 1 + 2 * x^3)
 lm_res <- lm(y ~ x)
@@ -1526,20 +1707,21 @@ ggplot(mapping = aes(x = x, y = y)) +
 :::
 :::
 
-
 ## Breaking linearity
 
-Our standard inference and prediction strategies no longer work in general.
+Our standard inference and prediction strategies no longer work in
+general.
 
-**Inference**: Confidence intervals and hypothesis tests for $\beta_0$ and $\beta_1$ are no longer valid.
+**Inference**: Confidence intervals and hypothesis tests for $\beta_0$
+and $\beta_1$ are no longer valid.
 
-**Prediction**: Point predictions are no longer unbiased and prediction intervals are no longer valid.
-
-
+**Prediction**: Point predictions are no longer unbiased and prediction
+intervals are no longer valid.
 
 ## Collinearity
 
-What if our predictor variables are closely related? Consider the following simulation:
+What if our predictor variables are closely related? Consider the
+following simulation:
 
 ```{r}
 #| echo: TRUE
@@ -1554,10 +1736,10 @@ lm(y ~ x1)
 lm(y ~ x1 + x2)
 ```
 
-
 ## Collinearity
 
-What if our predictor variables are closely related? Consider the following simulation:
+What if our predictor variables are closely related? Consider the
+following simulation:
 
 ```{r}
 #| echo: TRUE

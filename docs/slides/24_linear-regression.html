@@ -414,7 +414,7 @@ Peter Gao
 <section id="relating-numerical-variables" class="slide level2">
 <h2>Relating numerical variables</h2>
 
-<img data-src="images/Screenshot 2023-10-29 at 10.20.45 AM.png" class="r-stretch"></section>
+<img data-src="images/Screenshot 2023-10-29 at 10.20.45 AM.png" alt="Scatter plot of survey data showing the percentage of 15- to 24-year-olds and 40+ year-olds who believe the world is getting better across various countries." class="r-stretch"></section>
 <section id="covariance-and-correlation" class="slide level2">
 <h2>Covariance and correlation</h2>
 <p>In statistics, correlation and covariance usually refer to a specific type of association.</p>
@@ -431,7 +431,7 @@ Peter Gao
 </section>
 <section id="correlation-and-covariance" class="slide level2">
 <h2>Correlation and covariance</h2>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-1_1a139a6310d72e25265f29807261e8dc">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">attach</span>(mtcars)</span>
 <span id="cb1-2"><a></a><span class="fu">cor</span>(mpg, wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -445,11 +445,11 @@ Peter Gao
 </section>
 <section id="pairs-plots-for-assessing-many-relationships" class="slide level2">
 <h2>Pairs plots for assessing many relationships</h2>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-2_3f1e4eaaaf2fadc8f331413f4fa5f1a7">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">pairs</span>(<span class="sc">~</span>mpg <span class="sc">+</span> hp <span class="sc">+</span> wt, mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-2-1.png" alt="Matrix of scatter plots showing relationships between mpg, hp, and wt" width="960" class="r-stretch"></section>
 <section id="regression-methods" class="slide level2">
 <h2>Regression methods</h2>
 <p>Assume we have some data:</p>
@@ -476,18 +476,18 @@ Peter Gao
 <section id="why-is-it-called-regression" class="slide level2">
 <h2>Why is it called regression?</h2>
 
-<img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Galton%27s_correlation_diagram_1875.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Galton%27s_correlation_diagram_1875.jpg" class="quarto-figure quarto-figure-center r-stretch" alt="A scientific diagram showing the relationship between the heights of mid-parents and adult children, with axes labeled in inches and deviations, and an oval plot with labeled segments and data points."></section>
 <section id="simple-linear-regression" class="slide level2">
 <h2>Simple linear regression</h2>
 <p>How does the speed of a car affect its stopping distance?</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars_383e332520c414f10e79be23993768a5">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">plot</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars,</span>
 <span id="cb6-2"><a></a>     <span class="at">xlab =</span> <span class="st">"Speed (mph)"</span>,</span>
 <span id="cb6-3"><a></a>     <span class="at">ylab =</span> <span class="st">"Stopping Distance (ft)"</span>,</span>
 <span id="cb6-4"><a></a>     <span class="at">pch  =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="24_linear-regression_files/figure-revealjs/cars-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/cars-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%" alt="Scatter plot showing the relationship between speed (mph) and stopping distance (ft) with blue dots indicating data points."></section>
 <section id="simple-linear-regression-1" class="slide level2">
 <h2>Simple linear regression</h2>
 <p>Suppose <span class="math inline">\(x_1,\ldots, x_n\)</span> represent the <code>speed</code> values of each car in our dataset. Let <span class="math inline">\(Y_1,\ldots, Y_n\)</span> represent the <code>dist</code> variable.</p>
@@ -521,7 +521,7 @@ Peter Gao
 </section>
 <section id="simple-linear-regression-the-lm-function" class="slide level2">
 <h2>Simple linear regression: the <code>lm</code> function</h2>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars2_8797e070922b7733b0aa252703533a8c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>lm_res <span class="ot">=</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
 <span id="cb7-2"><a></a>lm_res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -537,7 +537,7 @@ Coefficients:
 </section>
 <section id="simple-linear-regression-the-lm-function-1" class="slide level2">
 <h2>Simple linear regression: the <code>lm</code> function</h2>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars3_acfc57ee61f091f9152c64a6979afb47">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">plot</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars,</span>
 <span id="cb9-2"><a></a>     <span class="at">xlab =</span> <span class="st">"Speed (mph)"</span>,</span>
 <span id="cb9-3"><a></a>     <span class="at">ylab =</span> <span class="st">"Stopping Distance (ft)"</span>, </span>
@@ -545,12 +545,12 @@ Coefficients:
 <span id="cb9-5"><a></a><span class="fu">abline</span>(lm_res,  <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="24_linear-regression_files/figure-revealjs/cars3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/cars3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%" alt="Scatter plot showing the positive correlation between speed (mph) and stopping distance (ft) with blue data points and a red trend line."></section>
 <section id="simple-linear-regression-inference" class="slide level2">
 <h2>Simple linear regression: Inference</h2>
 <p>For the simple linear regression model, typically we wish to carry out inference on <span class="math inline">\(\beta_1\)</span>. One way to do so is via a hypothesis test:</p>
 <p><span class="math inline">\(H_0:\beta_1=0\)</span> <span class="math inline">\(H_a:\beta_1\not=0\)</span></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars_inf_8e4c230cd91aa391f2224148d0a0b668">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">summary</span>(lm_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -577,7 +577,7 @@ F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12</code></pre>
 <section id="simple-linear-regression-inference-1" class="slide level2">
 <h2>Simple linear regression: Inference</h2>
 <p>We can also construct a confidence interval for <span class="math inline">\(\beta_1\)</span> if our focus isn’t on developing evidence against any null hypothesis:</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars_inf2_e633622282b5266bdf581bcf5039f6ec">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">confint</span>(lm_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 2.5 %    97.5 %
@@ -589,7 +589,7 @@ speed         3.096964  4.767853</code></pre>
 <section id="simple-linear-regression-prediction" class="slide level2">
 <h2>Simple linear regression: Prediction</h2>
 <p>Prediction generally involves estimating the value of new data <span class="math inline">\(Y_{n+1}\)</span> given <span class="math inline">\(X_{n+1}\)</span>. We can use the <code>predict()</code> function with our <code>lm()</code> results:</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars_pred_c6578d1e2a7f32c3d7b0d40178cd8d40">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">predict</span>(lm_res,</span>
 <span id="cb14-2"><a></a>        <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">speed =</span> <span class="fl">19.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -616,7 +616,7 @@ speed         3.096964  4.767853</code></pre>
 </section>
 <section id="simple-linear-regression-prediction-2" class="slide level2">
 <h2>Simple linear regression: Prediction</h2>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars_pred2_518b3f84b754d5e0435d129d2f4cde1a">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># prediction interval</span></span>
 <span id="cb18-2"><a></a><span class="fu">predict</span>(lm_res, </span>
 <span id="cb18-3"><a></a>        <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">speed =</span> <span class="fl">19.5</span>),</span>
@@ -660,22 +660,22 @@ speed         3.096964  4.767853</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Linear</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/lin_02fcf20d63fe47da2ebb27518deafaea">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/lin-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/lin-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot with data points and a red trend line showing a positive correlation between x and y axes.s"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Nonlinear</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/nonlin_e18b55fe7ba7c05d7bf49d609eee12e0">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/nonlin-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/nonlin-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot with black dots and a red trend line, showing a positive correlation."></p>
 </figure>
 </div>
 </div>
@@ -686,28 +686,28 @@ speed         3.096964  4.767853</code></pre>
 <h2>Checking linearity with residual plot</h2>
 <p>We can also plot the residuals against our independent variable, where we define the <strong>residual</strong> as follows: <span class="math display">\[\widehat{\epsilon}_i = \mathrm{Residual} = \mathrm{Observed} - \mathrm{Predicted}=y -\widehat{y}\]</span></p>
 
-<img data-src="24_linear-regression_files/figure-revealjs/cars_resid-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/cars_resid-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%" alt="Scatter plot showing residuals versus speed in mph, with a horizontal red line at zero."></section>
 <section id="checking-linearity-with-residual-plot-1" class="slide level2">
 <h2>Checking linearity with residual plot</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Linear</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/lin_resid_63ac0f4095c8b4b67598f3c4ac412d15">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/lin_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/lin_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot of residuals against x with a red horizontal line at y equals 0."></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Nonlinear</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/nonlin_resid_cfc4363be4a8768210241fb2d94913a0">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/nonlin_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/nonlin_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot of residuals versus variable x with a horizontal red reference line at y = 0."></p>
 </figure>
 </div>
 </div>
@@ -726,22 +726,22 @@ speed         3.096964  4.767853</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Normal errors</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/norm_err_31b47f75f985b99a059893addffa76e2">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/norm_err-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/norm_err-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot with black data points trending upward and a red regression line indicating a positive correlation between x (0 to 5) and y (0.0 to 12.5)."></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Non-normal errors</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/nonnorm_err_86780495c6f833966354d89290a8b568">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/nonnorm_err-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/nonnorm_err-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot with black data points and a red trend line, x-axis labeled 'x' and y-axis labeled 'y'."></p>
 </figure>
 </div>
 </div>
@@ -751,7 +751,7 @@ speed         3.096964  4.767853</code></pre>
 <section id="checking-normality-of-errors-with-quantile-quantile-plot" class="slide level2">
 <h2>Checking normality of errors with quantile-quantile plot</h2>
 <p>We can use a quantile-quantile plot to see whether our estimated residuals are approximately normally distributed.</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cars_resid_qq_dummy_c1f1bd60a9c370d2b113bc5e4c89c206">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>lm_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, cars)</span>
 <span id="cb22-2"><a></a><span class="fu">qqnorm</span>(<span class="fu">resid</span>(lm_res))</span>
 <span id="cb22-3"><a></a><span class="fu">qqline</span>(<span class="fu">resid</span>(lm_res))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -761,28 +761,28 @@ speed         3.096964  4.767853</code></pre>
 <h2>Checking normality of errors with quantile-quantile plot</h2>
 <p>What do you notice?</p>
 
-<img data-src="24_linear-regression_files/figure-revealjs/cars_resid_qq-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/cars_resid_qq-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%" alt="Normal Q-Q Plot with sample quantiles on the y-axis and theoretical quantiles on the x-axis. Points mostly follow the reference line from bottom-left to top-right."></section>
 <section id="checking-normality-of-errors-with-quantile-quantile-plot-2" class="slide level2">
 <h2>Checking normality of errors with quantile-quantile plot</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Normal errors</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/norm_err_qq_5a398f687b356585426e64d4834538ce">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/norm_err_qq-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/norm_err_qq-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Normal Q-Q plot comparing sample quantiles to theoretical quantiles with points clustering around a diagonal line. "></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Non-normal errors</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/nonnorm_err_qq_55011cea5418a5a8a6b5684e121db222">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/nonnorm_err_qq-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/nonnorm_err_qq-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Normal Q-Q plot with sample quantiles versus theoretical quantiles. Points do not fall on a line."></p>
 </figure>
 </div>
 </div>
@@ -795,22 +795,22 @@ speed         3.096964  4.767853</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Equal variances</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/eq_var_3919adf2ed600b0995007000cdd334cd">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/eq_var-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/eq_var-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot showing black dots with a red trend line indicating a positive correlation between x and y values."></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Unequal variances</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/uneq_var_665856160fd8f706f0bb388e77141e53">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/uneq_var-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/uneq_var-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot graph with labeled axes and a red line of best fit showing a positive linear relationship."></p>
 </figure>
 </div>
 </div>
@@ -823,22 +823,22 @@ speed         3.096964  4.767853</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Equal variances</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/eq_var_resid_1ce515a8de3a105312dd229a5aabd4bc">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/eq_var_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/eq_var_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot with black dots showing residuals across a range of x-values from 0 to 5, with a red horizontal line at y=0."></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Unequal variances</strong></p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/uneq_var_resid_512609e18951307ed808520545b107ce">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/uneq_var_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/uneq_var_resid-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot of residuals versus x with many black dots and a horizontal red line at residuals equal to 0. Points are not normally distributed around the line."></p>
 </figure>
 </div>
 </div>
@@ -848,7 +848,7 @@ speed         3.096964  4.767853</code></pre>
 <section id="multiple-linear-regression" class="slide level2">
 <h2>Multiple linear regression</h2>
 <p>What if we have multiple input variables?</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-3_91b000e86b54bd6b9a2e6ebed27e8db8">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">data</span>(mtcars)</span>
 <span id="cb23-2"><a></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -892,7 +892,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="multiple-linear-regression-example" class="slide level2">
 <h2>Multiple linear regression: example</h2>
 <p>Consider the following example using the <code>penguins</code> data.</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/penguins_17d1b17a2e4ac1b42e9eb46b9269069c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb25-2"><a></a><span class="fu">data</span>(penguins)</span>
 <span id="cb25-3"><a></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -913,16 +913,16 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="multiple-linear-regression-example-1" class="slide level2">
 <h2>Multiple linear regression: example</h2>
 <p>Suppose we are interested in predicting <code>body_mass_g</code> using <code>flipper_length_mm</code>.</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/penguins2_0d221af4a0f6b674db15740dd8cf776c">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
 <span id="cb27-2"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb27-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="24_linear-regression_files/figure-revealjs/penguins2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/penguins2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%" alt="Scatter plot comparing flipper length in millimeters (x-axis) versus body mass in grams (y-axis) with a blue regression line showing a positive correlation"></section>
 <section id="multiple-linear-regression-example-2" class="slide level2">
 <h2>Multiple linear regression: example</h2>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/movies3_3e3ec5c7d3096fdf000dc2d079ae0ddc">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>lm_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm, <span class="at">data =</span> penguins)</span>
 <span id="cb28-2"><a></a><span class="fu">summary</span>(lm_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -952,16 +952,16 @@ F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2>Multiple linear regression: example</h2>
 <p>Consider the following residual plot, where we define the <strong>residual</strong> as follows: <span class="math display">\[\mathrm{Residual} = \mathrm{Observed} - \mathrm{Predicted}=y -\widehat{y}\]</span></p>
 
-<img data-src="24_linear-regression_files/figure-revealjs/penguins_resid-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/penguins_resid-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot of residuals versus flipper length for three penguin species: Adelie (black dots), Chinstrap (red dots), and Gentoo (green dots)."></section>
 <section id="multiple-linear-regression-example-4" class="slide level2">
 <h2>Multiple linear regression: example</h2>
 <p>What if I also want to include <code>species</code> in the model? There are a few ways to do so.</p>
 
-<img data-src="24_linear-regression_files/figure-revealjs/movies4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/movies4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing penguin body mass versus flipper length for Adelie, Chinstrap, and Gentoo species."></section>
 <section id="multiple-linear-regression-group-intercepts" class="slide level2">
 <h2>Multiple linear regression: Group intercepts</h2>
 <p>The first way is to add <code>species</code> into the formula for our linear regression model:</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/penguins_species_948b450b6c544e573c054969813d905e">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>lm_species_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">+</span> species,</span>
 <span id="cb30-2"><a></a>                     <span class="at">data =</span> penguins)</span>
 <span id="cb30-3"><a></a><span class="fu">summary</span>(lm_species_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1019,21 +1019,21 @@ F-statistic: 405.7 on 3 and 338 DF,  p-value: &lt; 2.2e-16</code></pre>
 <h2>Multiple linear regression: Group intercepts</h2>
 <p>This model thus yields three parallel lines, one for each group.</p>
 
-<img data-src="24_linear-regression_files/figure-revealjs/penguins_species_2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/penguins_species_2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%" alt="Scatter plot showing the relationship between flipper length and body mass for three penguin species: Adelie (red), Chinstrap (green), and Gentoo (blue). We have separate regression lines for each species."></section>
 <section id="multiple-linear-regression-example-5" class="slide level2">
 <h2>Multiple linear regression: example</h2>
 <p>Now we obtain the following residual plot:</p>
 
-<img data-src="24_linear-regression_files/figure-revealjs/penguins_resid_2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/penguins_resid_2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing the difference between observed and predicted values against flipper length for Adelie (black dots), Chinstrap (red dots), and Gentoo (green dots) penguins. The residuals are now clearly centered around the horizontal y = 0 line."></section>
 <section id="multiple-linear-regression-group-specific-slopes" class="slide level2">
 <h2>Multiple linear regression: Group-specific slopes</h2>
 <p>The previous model gave us group-specific intercepts, resulting in parallel lines. What if we want to let the slope vary across each species?</p>
 
-<img data-src="24_linear-regression_files/figure-revealjs/penguins_slopes-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/penguins_slopes-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%" alt="Scatter plot showing relationship between flipper length and body mass for Adelie, Chinstrap, and Gentoo penguins with respective trend lines."></section>
 <section id="multiple-linear-regression-group-specific-slopes-1" class="slide level2">
 <h2>Multiple linear regression: Group-specific slopes</h2>
 <p>The standard approach is to introduce interaction terms:</p>
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/penguins_int_8581abb3998a60da0be07c548dd707d5">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>lm_int_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(body_mass_g <span class="sc">~</span> flipper_length_mm <span class="sc">*</span> species,</span>
 <span id="cb32-2"><a></a>                     <span class="at">data =</span> penguins)</span>
 <span id="cb32-3"><a></a><span class="fu">summary</span>(lm_int_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1146,7 +1146,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 </section>
 <section id="lm-linear-model-1" class="slide level2">
 <h2><code>lm()</code>: Linear Model</h2>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-5_be02ddecafd0e83f88e7fd43d203d653">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">data</span>(mtcars)</span>
 <span id="cb34-2"><a></a>my_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt, <span class="at">data =</span> mtcars)</span>
 <span id="cb34-3"><a></a><span class="fu">class</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1168,7 +1168,7 @@ Coefficients:
 <section id="lm-linear-model-2" class="slide level2">
 <h2><code>lm()</code>: Linear Model</h2>
 <p>We can see from <code>names()</code> that <code>lm</code> objects contain a lot more than they print out by default.</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-6_0d38a1213fd226f53904ec8ae9aac7ef">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">names</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "coefficients"  "residuals"     "effects"       "rank"         
@@ -1189,7 +1189,7 @@ Coefficients:
 </section>
 <section id="summary-model-summaries-1" class="slide level2">
 <h2><code>summary()</code> Model summaries</h2>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-7_5ec8fd56d206f9b0c069a8d199d7808a">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">summary</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1231,27 +1231,27 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 </section>
 <section id="plot-regression-model-diagnostics-2" class="slide level2">
 <h2><code>plot()</code>: Regression model diagnostics</h2>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-8_31012482bdc3cbf55357b74c15eafac3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">plot</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-9-1.png" alt="Scatter plot titled Residuals vs Fitted showing fitted values on the x-axis and residuals on the y-axis with a red trend line and labeled data points." width="960" class="r-stretch"></section>
 <section id="plot-regression-model-diagnostics-3" class="slide level2">
 <h2><code>plot()</code>: Regression model diagnostics</h2>
 
-<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-10-1.png" alt="Q-Q plot comparing theoretical quantiles to standardized residuals with some labeled data points." width="960" class="r-stretch"></section>
 <section id="plot-regression-model-diagnostics-4" class="slide level2">
 <h2><code>plot()</code>: Regression model diagnostics</h2>
 
-<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-11-1.png" alt="Scatter plot of standardized residuals against fitted values with a red trend line and labeled points for Chrysler Imperial, Fiat 128, and Toyota Corolla." width="960" class="r-stretch"></section>
 <section id="plot-regression-model-diagnostics-5" class="slide level2">
 <h2><code>plot()</code>: Regression model diagnostics</h2>
 
-<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<img data-src="24_linear-regression_files/figure-revealjs/unnamed-chunk-12-1.png" alt="Scatter plot titled 'Residuals vs Leverage' with labeled data points for 'Toyota Corolla,' 'Chrysler Imperial,' and 'Maserati Bora.' Plot shows standardized residuals on the vertical axis and leverage on the horizontal axis, with Cook's distance thresholds indicated by dashed lines and a red regression line." width="960" class="r-stretch"></section>
 <section id="coef-extract-coefficients" class="slide level2">
 <h2><code>coef()</code>: Extract coefficients</h2>
 <p>Use <code>coef()</code> to extract estimated coefficients as a vector.</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-13_60cf8561a1f99a618bdf5a9018b370d1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a><span class="fu">coef</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)          hp          wt 
@@ -1262,7 +1262,7 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <section id="fitted-extract-fitted-values" class="slide level2">
 <h2><code>fitted()</code> Extract fitted values</h2>
 <p>Use <code>fitted()</code> to extract the fitted/estimated values for the response. This can be useful to compare how our fitted values compare to the estimated values to help assess model fit.</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-14_98d220184bb5d57224080cf40eecef71">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb45-2"><a></a>mod_fits <span class="ot">&lt;-</span> <span class="fu">fitted</span>(my_lm)</span>
 <span id="cb45-3"><a></a>my_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">actual =</span> mtcars<span class="sc">$</span>mpg, <span class="at">fitted =</span> mod_fits)</span>
@@ -1281,7 +1281,7 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <section id="predict-predict-new-outcomes" class="slide level2">
 <h2><code>predict()</code>: Predict new outcomes</h2>
 <p>Use <code>predict()</code> to predict new outcomes given new explanatory variables. For example, pretend we observe two new cars with horsepowers of <code>100</code> and <code>150</code>, respectively, and weights of <code>3000</code> and <code>3500</code>, respectively.</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-16_6bd642a896b25b0f917ad61d17302199">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="co"># Note: wt is in 1000s of lbs</span></span>
 <span id="cb46-2"><a></a>new_obs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hp =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">150</span>), <span class="at">wt =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">3.5</span>))</span>
 <span id="cb46-3"><a></a><span class="fu">predict</span>(my_lm, new_obs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1295,7 +1295,7 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <section id="residuals-compute-residuals" class="slide level2">
 <h2><code>residuals()</code>: Compute residuals</h2>
 <p>Use <code>residuals()</code> to compute the residuals for fitted values.</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-17_84d9fe4ef01d097d83629cf37b6b5c57">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">residuals</span>(my_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Mazda RX4       Mazda RX4 Wag          Datsun 710      Hornet 4 Drive 
@@ -1324,7 +1324,7 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <section id="section" class="slide level2">
 <h2><code>- 1</code></h2>
 <p>Use <code>- 1</code> to remove an intercept from your model. Only do this if you are very sure that what you are doing is appropriate. I don’t recommend doing this in practice.</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-18_90f922470d97b24a0babf20de3c7ede9">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>no_intercept <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp <span class="sc">+</span> wt <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> mtcars)</span>
 <span id="cb50-2"><a></a><span class="fu">summary</span>(no_intercept)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1356,7 +1356,7 @@ F-statistic: 39.83 on 2 and 30 DF,  p-value: 3.599e-09</code></pre>
 </section>
 <section id="operator-1" class="slide level2">
 <h2><code>:</code> operator</h2>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-19_1d44fb9ff30124541041a64fd0f25eb9">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp<span class="sc">:</span>wt, <span class="at">data =</span> mtcars)</span>
 <span id="cb52-2"><a></a><span class="fu">summary</span>(interact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1383,7 +1383,7 @@ F-statistic: 74.14 on 1 and 30 DF,  p-value: 1.321e-09</code></pre>
 </section>
 <section id="operator-2" class="slide level2">
 <h2><code>*</code> operator</h2>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-20_05dafa583c5457e21a5d2f680f25a9c5">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> hp<span class="sc">*</span>wt, <span class="at">data =</span> mtcars)</span>
 <span id="cb54-2"><a></a><span class="fu">summary</span>(interact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1492,7 +1492,7 @@ F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07</code></pre>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="smaller">
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/lm_ex_dummy_18f78fc8bf522226b77d0812db476371">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb57-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">5</span>)</span>
 <span id="cb57-3"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">mean =</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x)</span>
@@ -1508,11 +1508,11 @@ F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/lm_ex_02bf0a0ede1a333779efa910c05b1c26">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/lm_ex-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/lm_ex-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot with an upward-sloping red trend line, data points dispersed roughly linearly, x-axis labeled x and y-axis labeled y"></p>
 </figure>
 </div>
 </div>
@@ -1527,7 +1527,7 @@ F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07</code></pre>
 <p><strong>Inference</strong>: Asymptotically valid confidence intervals and hypothesis tests for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
 </div>
 </div><div class="column" style="width:55%;">
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/lm_res_inf_d4a0d1925c8bddc5c7e57b78c1c6998b">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a><span class="fu">summary</span>(lm_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1560,7 +1560,7 @@ F-statistic: 303.4 on 1 and 38 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><strong>Prediction</strong>: Assuming the model holds for new data, unbiased point predictions and asymptotically valid prediction intervals for <span class="math inline">\(Y_{n+1}\)</span>.</p>
 </div>
 </div><div class="column" style="width:55%;">
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/lm_res_pred_18ae5a1080e28fa669c12535ec0285b8">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a></a><span class="fu">predict</span>(lm_res, </span>
 <span id="cb60-2"><a></a>        <span class="at">newdata =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span>), </span>
 <span id="cb60-3"><a></a>        <span class="at">interval =</span> <span class="st">"prediction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1577,7 +1577,7 @@ F-statistic: 303.4 on 1 and 38 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="smaller">
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cubic_ex_dummy_95a6a757551b3910a4ea2737089e9e28">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">5</span>)</span>
 <span id="cb62-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">40</span>, <span class="at">mean =</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">3</span>)</span>
 <span id="cb62-3"><a></a>lm_res <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
@@ -1592,11 +1592,11 @@ F-statistic: 303.4 on 1 and 38 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center" data-hash="24_linear-regression_cache/revealjs/cubic_ex_bb96884f32513b45a065254cc9680417">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="24_linear-regression_files/figure-revealjs/cubic_ex-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="24_linear-regression_files/figure-revealjs/cubic_ex-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="Scatter plot with black data points and a red diagonal line of best fit showing an increasing trend. The x-axis ranges from 0 to 5, and the y-axis from 0 to 200."></p>
 </figure>
 </div>
 </div>
@@ -1612,7 +1612,7 @@ F-statistic: 303.4 on 1 and 38 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="collinearity" class="slide level2">
 <h2>Collinearity</h2>
 <p>What if our predictor variables are closely related? Consider the following simulation:</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-22_b5cde243af13aa6feb9fbf85508067d7">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">50</span></span>
 <span id="cb63-2"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
 <span id="cb63-3"><a></a>x2 <span class="ot">&lt;-</span> x1 <span class="sc">*</span> <span class="dv">2</span></span>
@@ -1626,7 +1626,7 @@ lm(formula = y ~ x1)
 
 Coefficients:
 (Intercept)           x1  
-     0.8597       2.7042  </code></pre>
+      1.156        2.814  </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1636,14 +1636,14 @@ lm(formula = y ~ x1 + x2)
 
 Coefficients:
 (Intercept)           x1           x2  
-     0.8597       2.7042           NA  </code></pre>
+      1.156        2.814           NA  </code></pre>
 </div>
 </div>
 </section>
 <section id="collinearity-1" class="slide level2">
 <h2>Collinearity</h2>
 <p>What if our predictor variables are closely related? Consider the following simulation:</p>
-<div class="cell" data-hash="24_linear-regression_cache/revealjs/unnamed-chunk-23_5d6e882cd8fd0b6eca36557b7af55690">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>x2b <span class="ot">&lt;-</span> x1 <span class="sc">*</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> .<span class="dv">01</span>)</span>
 <span id="cb67-2"><a></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1653,7 +1653,7 @@ lm(formula = y ~ x1 + x2b)
 
 Coefficients:
 (Intercept)           x1          x2b  
-     0.8372     -35.8202      19.2636  </code></pre>
+      1.156       -2.759        2.787  </code></pre>
 </div>
 </div>
 

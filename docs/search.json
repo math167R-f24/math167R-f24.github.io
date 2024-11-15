@@ -3177,14 +3177,14 @@
     "href": "slides/24_linear-regression.html#collinearity",
     "title": "MATH167R: Linear regression",
     "section": "Collinearity",
-    "text": "Collinearity\nWhat if our predictor variables are closely related? Consider the following simulation:\n\nn &lt;- 50\nx1 &lt;- rnorm(n)\nx2 &lt;- x1 * 2\ne &lt;- rnorm(n)\ny &lt;- 1 + 3 * x1 + e\nlm(y ~ x1)\n\n\nCall:\nlm(formula = y ~ x1)\n\nCoefficients:\n(Intercept)           x1  \n     0.8597       2.7042  \n\nlm(y ~ x1 + x2)\n\n\nCall:\nlm(formula = y ~ x1 + x2)\n\nCoefficients:\n(Intercept)           x1           x2  \n     0.8597       2.7042           NA"
+    "text": "Collinearity\nWhat if our predictor variables are closely related? Consider the following simulation:\n\nn &lt;- 50\nx1 &lt;- rnorm(n)\nx2 &lt;- x1 * 2\ne &lt;- rnorm(n)\ny &lt;- 1 + 3 * x1 + e\nlm(y ~ x1)\n\n\nCall:\nlm(formula = y ~ x1)\n\nCoefficients:\n(Intercept)           x1  \n      1.156        2.814  \n\nlm(y ~ x1 + x2)\n\n\nCall:\nlm(formula = y ~ x1 + x2)\n\nCoefficients:\n(Intercept)           x1           x2  \n      1.156        2.814           NA"
   },
   {
     "objectID": "slides/24_linear-regression.html#collinearity-1",
     "href": "slides/24_linear-regression.html#collinearity-1",
     "title": "MATH167R: Linear regression",
     "section": "Collinearity",
-    "text": "Collinearity\nWhat if our predictor variables are closely related? Consider the following simulation:\n\nx2b &lt;- x1 * 2 + rnorm(n, sd = .01)\nlm(y ~ x1 + x2b)\n\n\nCall:\nlm(formula = y ~ x1 + x2b)\n\nCoefficients:\n(Intercept)           x1          x2b  \n     0.8372     -35.8202      19.2636"
+    "text": "Collinearity\nWhat if our predictor variables are closely related? Consider the following simulation:\n\nx2b &lt;- x1 * 2 + rnorm(n, sd = .01)\nlm(y ~ x1 + x2b)\n\n\nCall:\nlm(formula = y ~ x1 + x2b)\n\nCoefficients:\n(Intercept)           x1          x2b  \n      1.156       -2.759        2.787"
   },
   {
     "objectID": "slides/04_lists-data-frames.html#warm-up",
@@ -4573,7 +4573,7 @@
     "href": "index.html",
     "title": "MATH167R: Statistical Programming with R",
     "section": "",
-    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nW 8/21\nCourse Overview and Introduction to R\nSlides 01\n\nLab 01\n\n\n2\nM 8/26\nR fundamentals\nSlides 02\nCheck-in 01\n\n\n\n\nW 8/28\nR fundamentals\nSlides 03\n\nLab 02\n\n\n3\nM 9/2\nLabor Day - No class\n\n\n\n\n\n\nW 9/4\nR fundamentals\nSlides 04\n\n\n\n\n4\nM 9/9\nExploring data with R\nSlides 05\n\nLab 03\n\n\n\nW 9/11\nExploring data with R\nSlides 06\nCheck-in 02\n\n\n\n5\nM 9/16\nData visualization\nSlides 07\n\n\n\n\n\nW 9/18\nData visualization\nSlides 08\n\nLab 04\n\n\n6\nM 9/23\nData manipulation and management\nSlides 09\nCheck-in 03\n\n\n\n\nW 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n7\nM 9/30\nData manipulation and management\nSlides 11\n\n\n\n\n\nW 10/2\nProgramming basics\nSlides 12\nCheck-in 04\nLab 05\n\n\n8\nM 10/7\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/9\nProgramming basics\nSlides 14\n\n\n\n\n9\nM 10/14\nProgramming basics\nSlides 15\n\nLab 06\n\n\n\nW 10/16\nSimulations\nSlides 16\n\n\n\n\n10\nM 10/21\nSimulations\nSlides 17\n\n\n\n\n\nW 10/23\nSimulations\nSlides 18\nCheck-in 06\n\n\n\n11\nM 10/28\nStatistical inference\nSlides 19\n\n\n\n\n\nW 10/30\nStatistical inference\n\n\nLab 07\n\n\n12\nM 11/4\nSimulation-based inference\nSlides 20\n\n\n\n\n\nW 11/6\nSimulation-based inference\nSlides 21\n\n\n\n\n13\nM 11/11\nVeterans’ Day - No class\n\n\n\n\n\n\nW 11/13\nHypothesis Testing\nSlides 22\nCheck-in 07\nLab 08\n\n\n14\nM 11/18\nHypothesis Testing\n\n\n\n\n\n\nW 11/20\nRegression\n\n\n\n\n\n15\nM 11/25\nRegression\n\n\n\n\n\n\nW 11/27\nThanksgiving - No class\n\n\n\n\n\n16\nM 12/2\nPrediction\n\n\n\n\n\n\nW 12/4\nPrediction\n\n\n\n\n\n17\nM 12/9\nReview\n\n\n\n\n\n18\nM 12/16\nFinal exam",
+    "text": "Week\nDate\nTopic\nSlides\nCheck-in\nLab\n\n\n\n\n1\nW 8/21\nCourse Overview and Introduction to R\nSlides 01\n\nLab 01\n\n\n2\nM 8/26\nR fundamentals\nSlides 02\nCheck-in 01\n\n\n\n\nW 8/28\nR fundamentals\nSlides 03\n\nLab 02\n\n\n3\nM 9/2\nLabor Day - No class\n\n\n\n\n\n\nW 9/4\nR fundamentals\nSlides 04\n\n\n\n\n4\nM 9/9\nExploring data with R\nSlides 05\n\nLab 03\n\n\n\nW 9/11\nExploring data with R\nSlides 06\nCheck-in 02\n\n\n\n5\nM 9/16\nData visualization\nSlides 07\n\n\n\n\n\nW 9/18\nData visualization\nSlides 08\n\nLab 04\n\n\n6\nM 9/23\nData manipulation and management\nSlides 09\nCheck-in 03\n\n\n\n\nW 9/25\nData manipulation and management\nSlides 10\n\n\n\n\n7\nM 9/30\nData manipulation and management\nSlides 11\n\n\n\n\n\nW 10/2\nProgramming basics\nSlides 12\nCheck-in 04\nLab 05\n\n\n8\nM 10/7\nProgramming basics\nSlides 13\nCheck-in 05\n\n\n\n\nW 10/9\nProgramming basics\nSlides 14\n\n\n\n\n9\nM 10/14\nProgramming basics\nSlides 15\n\nLab 06\n\n\n\nW 10/16\nSimulations\nSlides 16\n\n\n\n\n10\nM 10/21\nSimulations\nSlides 17\n\n\n\n\n\nW 10/23\nSimulations\nSlides 18\nCheck-in 06\n\n\n\n11\nM 10/28\nStatistical inference\nSlides 19\n\n\n\n\n\nW 10/30\nStatistical inference\n\n\nLab 07\n\n\n12\nM 11/4\nSimulation-based inference\nSlides 20\n\n\n\n\n\nW 11/6\nSimulation-based inference\nSlides 21\n\n\n\n\n13\nM 11/11\nVeterans’ Day - No class\n\n\n\n\n\n\nW 11/13\nHypothesis Testing\nSlides 22\nCheck-in 07\nLab 08\n\n\n14\nM 11/18\nHypothesis Testing\nSlides 22\n\n\n\n\n\nW 11/20\nRegression\nSlides 22\n\n\n\n\n15\nM 11/25\nRegression\n\n\n\n\n\n\nW 11/27\nThanksgiving - No class\n\n\n\n\n\n16\nM 12/2\nPrediction\n\n\n\n\n\n\nW 12/4\nPrediction\n\n\n\n\n\n17\nM 12/9\nReview\n\n\n\n\n\n18\nM 12/16\nFinal exam",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -5609,41 +5609,6 @@
     "text": "Overview of today\n\nSimulations for power analysis\nP-hacking simulations"
   },
   {
-    "objectID": "slides/23_hypothesis-testing-III.html#designing-your-own-hypothesis-test",
-    "href": "slides/23_hypothesis-testing-III.html#designing-your-own-hypothesis-test",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Designing your own hypothesis test",
-    "text": "Designing your own hypothesis test\nFirst, load the flips using the following code.\n\nlibrary(tidyverse)\nflips &lt;- read_csv(\"https://math167r-s24.github.io/static/flips.csv\")\nhead(flips)\n\n# A tibble: 6 × 5\n  A     B     C     D     E    \n  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;\n1 T     H     H     T     H    \n2 H     H     H     H     H    \n3 T     H     T     H     H    \n4 H     T     H     H     H    \n5 H     T     T     H     T    \n6 T     H     T     T     H    \n\n\nCan you tell which is real and which are fake?"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-III.html#visual-inspection",
-    "href": "slides/23_hypothesis-testing-III.html#visual-inspection",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Visual inspection",
-    "text": "Visual inspection"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-III.html#visual-inspection-1",
-    "href": "slides/23_hypothesis-testing-III.html#visual-inspection-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "Visual inspection",
-    "text": "Visual inspection\n\nflips_long &lt;- flips |&gt;\n  mutate(id = 1:200) |&gt;\n  pivot_longer(-id,  names_to = \"Sequence\", values_to = \"Flip\")\n\nflips_long |&gt; \n  ggplot(aes(x = id, y = Flip, group = Sequence)) +\n  geom_line() +\n  geom_point(aes(color = Flip)) +\n  facet_grid(rows = vars(Sequence)) + \n  theme(\n    legend.position = \"none\",\n    axis.title = element_blank()\n  )"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-III.html#a-slightly-different-test-streak-length",
-    "href": "slides/23_hypothesis-testing-III.html#a-slightly-different-test-streak-length",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "A slightly different test: streak length",
-    "text": "A slightly different test: streak length\nWe can also consider a different test statistic: longest streak.\n\nflip_streaks &lt;- flips_long |&gt;\n  group_by(Sequence) |&gt;\n  summarize(longest_streak = max(rle(Flip)$length))\nflip_streaks\n\n# A tibble: 5 × 2\n  Sequence longest_streak\n  &lt;chr&gt;             &lt;int&gt;\n1 A                     2\n2 B                    14\n3 C                     9\n4 D                     8\n5 E                     6"
-  },
-  {
-    "objectID": "slides/23_hypothesis-testing-III.html#a-slightly-different-test-streak-length-1",
-    "href": "slides/23_hypothesis-testing-III.html#a-slightly-different-test-streak-length-1",
-    "title": "MATH167R: Hypothesis Testing",
-    "section": "A slightly different test: streak length",
-    "text": "A slightly different test: streak length\nWe can then simulate the null distribution of streak length.\n\nsim_streaks &lt;- \n  data.frame(\n    x = replicate(10000, \n                  max(rle(sample(c(\"H\", \"T\"), size = 200, replace = T))$length)\n    )\n  )\nggplot() +\n  geom_histogram(data = sim_streaks, aes(x = x), binwidth = 1) +\n  geom_vline(data = flip_streaks,\n             aes(color = Sequence, xintercept = longest_streak)) +\n  xlab(\"Longest streak\")"
-  },
-  {
     "objectID": "slides/23_hypothesis-testing-III.html#permutation-tests",
     "href": "slides/23_hypothesis-testing-III.html#permutation-tests",
     "title": "MATH167R: Hypothesis Testing",
@@ -5690,14 +5655,14 @@
     "href": "slides/23_hypothesis-testing-III.html#permutation-tests-4",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = 0.083086, df = 298, p-value = 0.9338\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.2388674  0.2599262\nsample estimates:\nmean of x mean of y \n0.1034732 0.0929438"
+    "text": "Permutation tests\nIn the case of our simulated data, we know the true distribution of the difference of sample means. We can thus use a \\(t\\)-test to perform our hypothesis test:\n\nt.test(null_y[carrier == 0], null_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  null_y[carrier == 0] and null_y[carrier == 1]\nt = 0.40101, df = 298, p-value = 0.6887\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -0.1957495  0.2959423\nsample estimates:\n  mean of x   mean of y \n-0.03127240 -0.08136878"
   },
   {
     "objectID": "slides/23_hypothesis-testing-III.html#permutation-tests-5",
     "href": "slides/23_hypothesis-testing-III.html#permutation-tests-5",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -43.259, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.250986 -4.794020\nsample estimates:\n  mean of x   mean of y \n-0.05958365  4.96291939"
+    "text": "Permutation tests\nCompare with the \\(t\\)-test for the alternative hypothesis data:\n\nt.test(alt_y[carrier == 0], alt_y[carrier == 1], var.equal=TRUE)\n\n\n    Two Sample t-test\n\ndata:  alt_y[carrier == 0] and alt_y[carrier == 1]\nt = -41.436, df = 298, p-value &lt; 2.2e-16\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -5.108675 -4.645416\nsample estimates:\nmean of x mean of y \n0.1121617 4.9892071"
   },
   {
     "objectID": "slides/23_hypothesis-testing-III.html#permutation-tests-6",
@@ -5711,7 +5676,7 @@
     "href": "slides/23_hypothesis-testing-III.html#permutation-tests-7",
     "title": "MATH167R: Hypothesis Testing",
     "section": "Permutation tests",
-    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.934"
+    "text": "Permutation tests\n\nhist(test_stats_null)\nabline(v = null_diff, lwd=2, col=\"purple\")\n\nmean(abs(test_stats_null) &gt; abs(null_diff)) # P-value\n\n[1] 0.691"
   },
   {
     "objectID": "slides/23_hypothesis-testing-III.html#permutation-tests-8",
