@@ -34,8 +34,8 @@ draft: false
 |      | W 11/6 | Simulation-based inference            |   [Slides 21](slides/21_hypothesis-testing.html){.label .label-green}      |           |     |
 |  13  | M 11/11 | *Veterans' Day - No class*                           |        |          |     |
 |      | W 11/13 | Hypothesis Testing                          |    [Slides 22](slides/22_hypothesis-testing-II.html){.label .label-green}    |   [Check-in 07](checkins/07_checkin.html){.label .label-purple}       | [Lab 08](labs/08_lab.html){.label .label-red}     |
-|  14  | M 11/18 | Hypothesis Testing                         |  [Slides 22](slides/23_hypothesis-testing-III.html){.label .label-green}      |          |     |
-|      | W 11/20  | Regression                         |  [Slides 22](slides/24_linear-reression.html){.label .label-green}        |          |     |
+|  14  | M 11/18 | Hypothesis Testing                         |  [Slides 23](slides/23_hypothesis-testing-III.html){.label .label-green}      |          |     |
+|      | W 11/20  | Regression                         |  [Slides 24](slides/24_linear-regression.html){.label .label-green}        |          |     |
 |  15  | M 11/25  | Regression      |        |          |     |
 |      | W 11/27  | *Thanksgiving - No class*     |        |          |     |
 |  16  | M 12/2  | Prediction                |        |          |     |
