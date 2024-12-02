@@ -38,8 +38,8 @@ draft: false
 |      | W 11/20  | Regression                         |  [Slides 24](slides/24_linear-regression.html){.label .label-green}        |          |     |
 |  15  | M 11/25  | Regression      |        |          |     |
 |      | W 11/27  | *Thanksgiving - No class*     |        |          |     |
-|  16  | M 12/2  | Prediction                |        |          |     |
-|      | W 12/4 | Prediction                  |        |          |     |
+|  16  | M 12/2  | Regression               | [Slides 25](slides/25_advanced-statistics.html){.label .label-green}        |          |     |
+|      | W 12/4 | Prediction                  |  [Slides 26](slides/26_prediction.html){.label .label-green}        |          |     |
 |  17  | M 12/9  | Review                   |        |          |     |
 |   18   | M 12/16 | *Final exam*                   |        |          |     |
 :::

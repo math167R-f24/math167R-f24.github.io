@@ -537,7 +537,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="example-training-error-vs-test-error-1" class="slide level2">
 <h2>Example: Training Error vs Test Error</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Scatter plots comparing Training Data and Test Data." width="960"></section>
 <section id="example-training-error-vs-test-error-2" class="slide level2">
 <h2>Example: Training Error vs Test Error</h2>
 <div class="cell">
@@ -565,7 +565,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="example-training-error-vs-test-error-for-linear-model" class="slide level2">
 <h2>Example: Training Error vs Test Error for linear model</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Scatter plots showing training data with an error of 3.309 and test data with an error of 3.866, both with a positive trend line." width="960"></section>
 <section id="example-degree-5-polynomial" class="slide level2">
 <h2>Example: Degree 5 polynomial</h2>
 <div class="cell">
@@ -596,7 +596,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="example-degree-5-polynomial-1" class="slide level2">
 <h2>Example: Degree 5 polynomial</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Side-by-side scatter plots comparing training data (left) and test data (right) with trend lines." width="960"></section>
 <section id="example-degree-10-polynomial" class="slide level2">
 <h2>Example: Degree 10 polynomial</h2>
 <div class="cell">
@@ -627,7 +627,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="example-degree-10-polynomial-1" class="slide level2">
 <h2>Example: Degree 10 polynomial</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Two scatter plots showing training data and test data with fitted red curves and respective errors: Training error is 2.264 and Test error is 8.193." width="960"></section>
 <section id="example-degree-15-polynomial" class="slide level2">
 <h2>Example: Degree 15 polynomial</h2>
 <div class="cell">
@@ -658,7 +658,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="example-degree-15-polynomial-1" class="slide level2">
 <h2>Example: Degree 15 polynomial</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Two scatter plots titled Training Data and Test Data with respective training and test errors. Both have black data points and a red curve fitting the points." width="960"></section>
 <section id="bias-variance-tradeoff" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
 <p>The formula for test error can be decomposed as a function of the bias and variance of our estimates.</p>
@@ -677,6 +677,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="bias-variance-tradeoff-2" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
 <p><img src="images/bvtradeoff.png" height="500"></p>
+<p>Four target charts illustrating combinations of bias and variance: “low bias, low variance,” “low bias, high variance,” “high bias, low variance,” and “high bias, high variance.”</p>
 <p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
 </section>
 <section id="bias-variance-tradeoff-3" class="slide level2">
@@ -686,11 +687,13 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <li><p><strong>Variance:</strong> overfitting, error from high sensitivity</p></li>
 </ul>
 <p><img src="images/underover1.png" height="300"></p>
+<p>Three graphs showing underfitted, well-fitted, and overfitted data models.</p>
 <p><a href="https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76">Image Source</a></p>
 </section>
 <section id="bias-variance-tradeoff-4" class="slide level2">
 <h2>Bias-Variance Tradeoff</h2>
 <p><img src="images/underover2.png" height="300"></p>
+<p>Three scatterplots depicting under-fitting, appropriate-fitting, and over-fitting in data fitting, with blue lines representing different fit types.</p>
 <p><a href="https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76">Image Source</a></p>
 </section>
 <section id="bias-variance-tradeoff-5" class="slide level2">
@@ -737,7 +740,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="sample-splitting-2" class="slide level2">
 <h2>Sample-splitting</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Scatter plot titled Sample-splitting, showing red dots for Training and cyan dots for Test samples." width="960"></section>
 <section id="sample-splitting-3" class="slide level2">
 <h2>Sample-splitting</h2>
 <div class="cell" data-layout-align="center">
@@ -799,7 +802,8 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="k-fold-cross-validation-1" class="slide level2">
 <h2>k-fold Cross-validation</h2>
 
-<img data-src="images/cv.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/cv.png" class="quarto-figure quarto-figure-center r-stretch"><p>Data split into training (blue) and test (red) sets arranged in rows and columns.</p>
+</section>
 <section id="k-fold-cross-validation-2" class="slide level2">
 <h2>k-fold Cross-validation</h2>
 <p>For each split, we calculate the out-of-sample mean squared prediction error. For example, for the first split, we calculate</p>
@@ -883,7 +887,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="k-fold-cross-validation-example-2" class="slide level2">
 <h2>k-fold Cross-validation Example</h2>
 
-<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="26_prediction_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" alt="Two scatter plots showing cross-validation results with a linear fit on the left (Degree 1 CV error: 4.24) and a complex fit on the right (Degree 10 CV error: 17.372)." width="960"></section>
 <section id="statistical-prediction-algorithms" class="slide level2">
 <h2>Statistical Prediction Algorithms</h2>
 <p>We’ve talked about how regression can be used for both statistical inference and prediction. We are now going to shift to talk about algorithms designed specifically for statistical prediction.</p>
@@ -907,13 +911,13 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="k-nearest-neighbors-1" class="slide level2">
 <h2>k-nearest neighbors</h2>
 <p>This method is simple and highly flexible, but it can also be slow and inappropriate for certain settings.</p>
-
-<img data-src="images/knn.png" class="quarto-figure quarto-figure-center r-stretch"><p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
+<p><img data-src="images/knn.png">{fig-align=“center” fig-alt=“Side-by-side scatter plots; the left has an”X” within a green circle amidst scattered blue and orange dots, and the right shows a grid of tiny blue and orange dots divided by irregular lines.”}</p>
+<p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
 </section>
 <section id="k-nearest-neighbors-2" class="slide level2">
 <h2>k-nearest neighbors</h2>
 
-<img data-src="images/knn2.png" class="quarto-figure quarto-figure-center r-stretch"><p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
+<img data-src="images/knn2.png" class="quarto-figure quarto-figure-center r-stretch" alt="KNN classification comparison with K=1 and K=100, showing different boundary shapes between two classes of data points."><p>Image Credit: An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani</p>
 </section>
 <section id="choosing-k" class="slide level2">
 <h2>Choosing k</h2>
@@ -929,11 +933,11 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="choosing-k-1" class="slide level2">
 <h2>Choosing k</h2>
 
-<img data-src="images/choosek.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/choosek.png" class="quarto-figure quarto-figure-center r-stretch" alt="Line graph showing training and test error rates versus ( \frac{1}{K} ). Training errors (turquoise) decrease to zero, test errors (orange) fluctuate and increase around 0.1. Legend included."></section>
 <section id="choosing-k-2" class="slide level2">
 <h2>Choosing k</h2>
 
-<img data-src="images/doubledescent.png" class="quarto-figure quarto-figure-center r-stretch"><p><a href="https://en.wikipedia.org/wiki/Double_descent#/media/File:Double_descent_in_a_two-layer_neural_network_(Figure_3a_from_Rocks_et_al._2022).png">Image Credit</a></p>
+<img data-src="images/doubledescent.png" class="quarto-figure quarto-figure-center r-stretch" alt="Graph showing training error (blue squares) decreasing and test error (black circles) initially decreasing, sharply increasing, and then decreasing with annotation indicating &quot;Interpolation Threshold.&quot;"><p><a href="https://en.wikipedia.org/wiki/Double_descent#/media/File:Double_descent_in_a_two-layer_neural_network_(Figure_3a_from_Rocks_et_al._2022).png">Image Credit</a></p>
 </section>
 <section id="trees" class="slide level2">
 <h2>Trees</h2>
@@ -950,7 +954,7 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <p>Trees to predict class are referred to as <strong>classification trees</strong>. Trees to predict quantitative output are referred to as <strong>regression trees</strong>.</p>
 <p>This algorithm is easy, efficient, and interpretable, but it is not as flexible as <span class="math inline">\(k\)</span>-nearest neighbors.</p>
 
-<img data-src="images/tree.png" class="quarto-figure quarto-figure-center r-stretch"><p><a href="http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html">Image source</a></p>
+<img data-src="images/tree.png" class="quarto-figure quarto-figure-center r-stretch" alt="Scatter plot titled &quot;Tree with 5 leaves,&quot; divided into five colored regions with black data points."><p><a href="http://www.stat.cmu.edu/~ryantibs/statcomp/lectures/prediction.html">Image source</a></p>
 </section>
 <section id="random-forest" class="slide level2">
 <h2>Random Forest</h2>
@@ -959,12 +963,12 @@ Y &amp;= \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p + \epsilon,\\
 <section id="random-forest-1" class="slide level2">
 <h2>Random Forest</h2>
 
-<img data-src="images/randomforest.png" class="quarto-figure quarto-figure-center r-stretch"><p><a href="https://towardsdatascience.com/random-forests-and-decision-trees-from-scratch-in-python-3e4fa5ae4249">Image source</a></p>
+<img data-src="images/randomforest.png" class="quarto-figure quarto-figure-center r-stretch" alt="Diagram showing a dataset leading into three decision trees, with their mean providing a prediction."><p><a href="https://towardsdatascience.com/random-forests-and-decision-trees-from-scratch-in-python-3e4fa5ae4249">Image source</a></p>
 </section>
 <section id="random-forest-2" class="slide level2">
 <h2>Random Forest</h2>
 
-<img data-src="images/randomforest2.jpeg" class="quarto-figure quarto-figure-center r-stretch"><p><a href="https://towardsdatascience.com/understanding-random-forest-58381e0602d2">Image source</a></p>
+<img data-src="images/randomforest2.jpeg" class="quarto-figure quarto-figure-center r-stretch" alt="A 3x3 grid of hierarchical tree diagrams predicting either 1 or 0, with a tally indicating six 1s and three 0s. Overall prediction is 1."><p><a href="https://towardsdatascience.com/understanding-random-forest-58381e0602d2">Image source</a></p>
 </section>
 <section id="variable-importance" class="slide level2">
 <h2>Variable Importance</h2>
